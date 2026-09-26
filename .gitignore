@@ -1,0 +1,39 @@
+# Secrets and credentials — never commit
+.env
+.env.*
+*.key
+*.pem
+*.pfx
+*.p12
+secrets/
+credentials*
+*.session
+
+# Dependencies
+node_modules/
+
+# Generated output
+dist/
+build/
+out/
+coverage/
+.cache/
+.vite/
+*.tsbuildinfo
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS artifacts (Windows checkout)
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Editor/IDE local state
+.vscode/
+.idea/
+*.swp
