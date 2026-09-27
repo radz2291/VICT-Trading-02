@@ -44,3 +44,9 @@ A filled handoff draft covering target/provenance, push rules, and a pre-authori
 | O-07 | Live provider, account and risk settings | Separate owner decision and G6 proof |
 
 Update this page after every gate. Supersede a decision explicitly and retain its earlier evidence. Do not present a proposal as an accepted product rule.
+
+## Operational conventions (agent orchestration)
+
+- **In-session role separation is implemented with pi subagents, not tmux-hosted agent processes.** Builder work uses forked-context implementation agents; fresh verification uses a fresh-context verifier agent whose prompt requires falsification attempts, independent evidence, and no silent repairs; an oracle agent may guard inherited state. Structured outputs and run logs are retained as evidence.
+- **Tmux is used only for long-running processes** (dev servers, test watchers, builds) — never for agent roles.
+- Parallel agent work only where files and authority do not overlap, per RUNBOOK.md; one integrator reconciles before verification.
