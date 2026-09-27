@@ -1,6 +1,6 @@
 # Repository-specific autonomous handoff — VICT Trading Workspace
 
-**STATUS: DRAFT — NOT YET ACCEPTED.** This handoff grants no authority until the owner records acceptance (see "Owner acceptance" below). If accepted, this file at the pinned commit SHA becomes the authority record for the stages it covers.
+**STATUS: ACCEPTED.** Owner acceptance recorded 2026-09-27 for this file as committed at `5ed125aa222c4b2f17832e5a5dbad8140b3638e4` (owner instruction: "Ok then please proceed", given after review of the draft). This handoff is the authority record for the stages it covers, currently **G0 only**.
 
 ## Target and provenance
 
@@ -41,4 +41,4 @@ After each candidate: exact branch/full SHA, diff summary, commands/results, bro
 
 ## Owner acceptance
 
-To activate this handoff, the owner records acceptance of this exact file at a pinned commit SHA, e.g. by replying: **"Handoff accepted at SHA <full SHA>."** Partial acceptance (e.g. accepting only G0) is valid; anything not accepted remains unauthorized. This draft was prepared 2026-09-27 by the bootstrap session; it has not been accepted by the owner and confers no execution authority yet.
+**ACCEPTED 2026-09-27** by the owner (radz2291) in the orchestration session, following preparation and review of this draft. The owner authorized autonomous stage-by-stage execution with the orchestrator delegating implementation to subagents. Acceptance covers the G0 stage scope above; G1–G7 remain unauthorized until individually scoped and accepted. Accepted-at SHA (handoff bytes): `5ed125aa222c4b2f17832e5a5dbad8140b3638e4`.

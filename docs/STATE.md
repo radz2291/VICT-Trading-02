@@ -2,7 +2,7 @@
 
 **As of 2026-09-27 (B0 repository bootstrap):** This remains a proposed development pack pending owner review; it has not been independently verified, and no owner experience review has occurred. B0 is complete: the repository is initialized at https://github.com/radz2291/VICT-Trading-02 (branch `main`) with the pack installed under `docs/`; the remote was empty before B0 (see B0-BOOTSTRAP-REPORT.md). No accepted repo-specific handoff, published VICT release identity, chart library, script runtime, engine, provider or broker has been pinned. G0–G7 have not begun; G0 technology intake is next.
 
-A filled handoff draft covering target/provenance, push rules, and a pre-authorized G0 stage scope is at `HANDOFF.md`; it is **pending owner acceptance** and grants no authority until accepted at a pinned SHA.
+A filled handoff at `HANDOFF.md` covering target/provenance, push rules, and a pre-authorized G0 stage scope was **accepted by the owner on 2026-09-27** (handoff bytes at `5ed125aa222c4b2f17832e5a5dbad8140b3638e4`). G0 is now authorized; G1–G7 require their own accepted scopes. G0 intake begins with the published VICT platform check.
 
 ## Accepted product direction from the conversation
 
