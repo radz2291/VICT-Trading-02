@@ -1,0 +1,226 @@
+[
+  {
+    "name": "appdata-sqlite",
+    "path": "packages/appdata-sqlite",
+    "sha": "b55b5063a40a1fa8e2efcb052341a5106b74e784",
+    "size": 0,
+    "url": "https://api.github.com/repos/radz2291/vict-02/contents/packages/appdata-sqlite?ref=main",
+    "html_url": "https://github.com/radz2291/vict-02/tree/main/packages/appdata-sqlite",
+    "git_url": "https://api.github.com/repos/radz2291/vict-02/git/trees/b55b5063a40a1fa8e2efcb052341a5106b74e784",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/radz2291/vict-02/contents/packages/appdata-sqlite?ref=main",
+      "git": "https://api.github.com/repos/radz2291/vict-02/git/trees/b55b5063a40a1fa8e2efcb052341a5106b74e784",
+      "html": "https://github.com/radz2291/vict-02/tree/main/packages/appdata-sqlite"
+    }
+  },
+  {
+    "name": "application",
+    "path": "packages/application",
+    "sha": "33525ff8625c92036e7ec6ae2aa8f9f1e6239ba4",
+    "size": 0,
+    "url": "https://api.github.com/repos/radz2291/vict-02/contents/packages/application?ref=main",
+    "html_url": "https://github.com/radz2291/vict-02/tree/main/packages/application",
+    "git_url": "https://api.github.com/repos/radz2291/vict-02/git/trees/33525ff8625c92036e7ec6ae2aa8f9f1e6239ba4",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/radz2291/vict-02/contents/packages/application?ref=main",
+      "git": "https://api.github.com/repos/radz2291/vict-02/git/trees/33525ff8625c92036e7ec6ae2aa8f9f1e6239ba4",
+      "html": "https://github.com/radz2291/vict-02/tree/main/packages/application"
+    }
+  },
+  {
+    "name": "builder-kit",
+    "path": "packages/builder-kit",
+    "sha": "801aacef1984a801f459ba70b6ebfdee0fd9505a",
+    "size": 0,
+    "url": "https://api.github.com/repos/radz2291/vict-02/contents/packages/builder-kit?ref=main",
+    "html_url": "https://github.com/radz2291/vict-02/tree/main/packages/builder-kit",
+    "git_url": "https://api.github.com/repos/radz2291/vict-02/git/trees/801aacef1984a801f459ba70b6ebfdee0fd9505a",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/radz2291/vict-02/contents/packages/builder-kit?ref=main",
+      "git": "https://api.github.com/repos/radz2291/vict-02/git/trees/801aacef1984a801f459ba70b6ebfdee0fd9505a",
+      "html": "https://github.com/radz2291/vict-02/tree/main/packages/builder-kit"
+    }
+  },
+  {
+    "name": "cli",
+    "path": "packages/cli",
+    "sha": "2cdb4b91a5a07f2cdf4ab34a232e457491354a39",
+    "size": 0,
+    "url": "https://api.github.com/repos/radz2291/vict-02/contents/packages/cli?ref=main",
+    "html_url": "https://github.com/radz2291/vict-02/tree/main/packages/cli",
+    "git_url": "https://api.github.com/repos/radz2291/vict-02/git/trees/2cdb4b91a5a07f2cdf4ab34a232e457491354a39",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/radz2291/vict-02/contents/packages/cli?ref=main",
+      "git": "https://api.github.com/repos/radz2291/vict-02/git/trees/2cdb4b91a5a07f2cdf4ab34a232e457491354a39",
+      "html": "https://github.com/radz2291/vict-02/tree/main/packages/cli"
+    }
+  },
+  {
+    "name": "contracts",
+    "path": "packages/contracts",
+    "sha": "d8a669d8d147dd476502d925f8797b317b8df195",
+    "size": 0,
+    "url": "https://api.github.com/repos/radz2291/vict-02/contents/packages/contracts?ref=main",
+    "html_url": "https://github.com/radz2291/vict-02/tree/main/packages/contracts",
+    "git_url": "https://api.github.com/repos/radz2291/vict-02/git/trees/d8a669d8d147dd476502d925f8797b317b8df195",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/radz2291/vict-02/contents/packages/contracts?ref=main",
+      "git": "https://api.github.com/repos/radz2291/vict-02/git/trees/d8a669d8d147dd476502d925f8797b317b8df195",
+      "html": "https://github.com/radz2291/vict-02/tree/main/packages/contracts"
+    }
+  },
+  {
+    "name": "control",
+    "path": "packages/control",
+    "sha": "321038db743a01e5ad5f5c070822f2d40f59861f",
+    "size": 0,
+    "url": "https://api.github.com/repos/radz2291/vict-02/contents/packages/control?ref=main",
+    "html_url": "https://github.com/radz2291/vict-02/tree/main/packages/control",
+    "git_url": "https://api.github.com/repos/radz2291/vict-02/git/trees/321038db743a01e5ad5f5c070822f2d40f59861f",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/radz2291/vict-02/contents/packages/control?ref=main",
+      "git": "https://api.github.com/repos/radz2291/vict-02/git/trees/321038db743a01e5ad5f5c070822f2d40f59861f",
+      "html": "https://github.com/radz2291/vict-02/tree/main/packages/control"
+    }
+  },
+  {
+    "name": "kernel",
+    "path": "packages/kernel",
+    "sha": "bfbbf20ac7eef6f8fe6349c39b9f1b539a6f80ad",
+    "size": 0,
+    "url": "https://api.github.com/repos/radz2291/vict-02/contents/packages/kernel?ref=main",
+    "html_url": "https://github.com/radz2291/vict-02/tree/main/packages/kernel",
+    "git_url": "https://api.github.com/repos/radz2291/vict-02/git/trees/bfbbf20ac7eef6f8fe6349c39b9f1b539a6f80ad",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/radz2291/vict-02/contents/packages/kernel?ref=main",
+      "git": "https://api.github.com/repos/radz2291/vict-02/git/trees/bfbbf20ac7eef6f8fe6349c39b9f1b539a6f80ad",
+      "html": "https://github.com/radz2291/vict-02/tree/main/packages/kernel"
+    }
+  },
+  {
+    "name": "mastra",
+    "path": "packages/mastra",
+    "sha": "b23f457c9d718675737ed7f562d6889b8e2d9bac",
+    "size": 0,
+    "url": "https://api.github.com/repos/radz2291/vict-02/contents/packages/mastra?ref=main",
+    "html_url": "https://github.com/radz2291/vict-02/tree/main/packages/mastra",
+    "git_url": "https://api.github.com/repos/radz2291/vict-02/git/trees/b23f457c9d718675737ed7f562d6889b8e2d9bac",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/radz2291/vict-02/contents/packages/mastra?ref=main",
+      "git": "https://api.github.com/repos/radz2291/vict-02/git/trees/b23f457c9d718675737ed7f562d6889b8e2d9bac",
+      "html": "https://github.com/radz2291/vict-02/tree/main/packages/mastra"
+    }
+  },
+  {
+    "name": "renderer-svelte",
+    "path": "packages/renderer-svelte",
+    "sha": "b102d9d9fdfbff068e02b52593ad60ff098eee8f",
+    "size": 0,
+    "url": "https://api.github.com/repos/radz2291/vict-02/contents/packages/renderer-svelte?ref=main",
+    "html_url": "https://github.com/radz2291/vict-02/tree/main/packages/renderer-svelte",
+    "git_url": "https://api.github.com/repos/radz2291/vict-02/git/trees/b102d9d9fdfbff068e02b52593ad60ff098eee8f",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/radz2291/vict-02/contents/packages/renderer-svelte?ref=main",
+      "git": "https://api.github.com/repos/radz2291/vict-02/git/trees/b102d9d9fdfbff068e02b52593ad60ff098eee8f",
+      "html": "https://github.com/radz2291/vict-02/tree/main/packages/renderer-svelte"
+    }
+  },
+  {
+    "name": "runtime",
+    "path": "packages/runtime",
+    "sha": "fc1f35bae8cb9ab91008812fe1a9dc6aac251335",
+    "size": 0,
+    "url": "https://api.github.com/repos/radz2291/vict-02/contents/packages/runtime?ref=main",
+    "html_url": "https://github.com/radz2291/vict-02/tree/main/packages/runtime",
+    "git_url": "https://api.github.com/repos/radz2291/vict-02/git/trees/fc1f35bae8cb9ab91008812fe1a9dc6aac251335",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/radz2291/vict-02/contents/packages/runtime?ref=main",
+      "git": "https://api.github.com/repos/radz2291/vict-02/git/trees/fc1f35bae8cb9ab91008812fe1a9dc6aac251335",
+      "html": "https://github.com/radz2291/vict-02/tree/main/packages/runtime"
+    }
+  },
+  {
+    "name": "scaffolder",
+    "path": "packages/scaffolder",
+    "sha": "7687b4d985f118f267222a9cffd203e6764c5aed",
+    "size": 0,
+    "url": "https://api.github.com/repos/radz2291/vict-02/contents/packages/scaffolder?ref=main",
+    "html_url": "https://github.com/radz2291/vict-02/tree/main/packages/scaffolder",
+    "git_url": "https://api.github.com/repos/radz2291/vict-02/git/trees/7687b4d985f118f267222a9cffd203e6764c5aed",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/radz2291/vict-02/contents/packages/scaffolder?ref=main",
+      "git": "https://api.github.com/repos/radz2291/vict-02/git/trees/7687b4d985f118f267222a9cffd203e6764c5aed",
+      "html": "https://github.com/radz2291/vict-02/tree/main/packages/scaffolder"
+    }
+  },
+  {
+    "name": "sdk",
+    "path": "packages/sdk",
+    "sha": "94ed415719a3de7a640f5fd179adfbcd9941f147",
+    "size": 0,
+    "url": "https://api.github.com/repos/radz2291/vict-02/contents/packages/sdk?ref=main",
+    "html_url": "https://github.com/radz2291/vict-02/tree/main/packages/sdk",
+    "git_url": "https://api.github.com/repos/radz2291/vict-02/git/trees/94ed415719a3de7a640f5fd179adfbcd9941f147",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/radz2291/vict-02/contents/packages/sdk?ref=main",
+      "git": "https://api.github.com/repos/radz2291/vict-02/git/trees/94ed415719a3de7a640f5fd179adfbcd9941f147",
+      "html": "https://github.com/radz2291/vict-02/tree/main/packages/sdk"
+    }
+  },
+  {
+    "name": "server",
+    "path": "packages/server",
+    "sha": "aaba1ae7718854425c575d6216432388b0fd3bde",
+    "size": 0,
+    "url": "https://api.github.com/repos/radz2291/vict-02/contents/packages/server?ref=main",
+    "html_url": "https://github.com/radz2291/vict-02/tree/main/packages/server",
+    "git_url": "https://api.github.com/repos/radz2291/vict-02/git/trees/aaba1ae7718854425c575d6216432388b0fd3bde",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/radz2291/vict-02/contents/packages/server?ref=main",
+      "git": "https://api.github.com/repos/radz2291/vict-02/git/trees/aaba1ae7718854425c575d6216432388b0fd3bde",
+      "html": "https://github.com/radz2291/vict-02/tree/main/packages/server"
+    }
+  },
+  {
+    "name": "store-sqlite",
+    "path": "packages/store-sqlite",
+    "sha": "4ddebe79c8743a6f50663309ed02c15f3e7991e0",
+    "size": 0,
+    "url": "https://api.github.com/repos/radz2291/vict-02/contents/packages/store-sqlite?ref=main",
+    "html_url": "https://github.com/radz2291/vict-02/tree/main/packages/store-sqlite",
+    "git_url": "https://api.github.com/repos/radz2291/vict-02/git/trees/4ddebe79c8743a6f50663309ed02c15f3e7991e0",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/radz2291/vict-02/contents/packages/store-sqlite?ref=main",
+      "git": "https://api.github.com/repos/radz2291/vict-02/git/trees/4ddebe79c8743a6f50663309ed02c15f3e7991e0",
+      "html": "https://github.com/radz2291/vict-02/tree/main/packages/store-sqlite"
+    }
+  }
+]

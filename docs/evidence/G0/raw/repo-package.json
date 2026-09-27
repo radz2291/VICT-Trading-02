@@ -1,0 +1,62 @@
+{
+  "name": "vict-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Vict - agent-native application operating layer. Stage 02 greenfield kernel with durable identity and stores.",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "workspaces": [
+    "packages/*",
+    "examples/*",
+    "packs/*"
+  ],
+  "scripts": {
+    "bench": "tsx scripts/benchmark.ts",
+    "build": "npm run build -w @victframework/contracts && npm run build -w @victframework/sdk && npm run build -w @victframework/kernel && npm run build -w @victframework/runtime && npm run build -w @victframework/store-sqlite && npm run build -w @victframework/control && npm run build -w @victframework/application && npm run build -w @victframework/appdata-sqlite && npm run build -w @victframework/renderer-svelte && npm run build -w @victframework/scaffolder && npm run build -w @victframework/mastra && npm run build -w @victframework/server && npm run build -w @victframework/cli",
+    "example": "tsx examples/ara-proof/src/main.ts",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "kit:generate": "tsx packages/builder-kit/src/cli.ts generate",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:integration": "vitest run --project integration",
+    "test:unit": "vitest run --project unit",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "verify:consumer": "node scripts/isolated-consumer-check.mjs",
+    "verify:stage2": "node scripts/verify-stage2.mjs",
+    "verify:stage3": "node scripts/verify-stage3.mjs",
+    "example:application": "npm run build -w application-proof && npm run test -w application-proof",
+    "verify:stage4": "node scripts/verify-stage4.mjs",
+    "verify:stage5": "node scripts/verify-stage5.mjs",
+    "verify:stage6a": "node scripts/verify-stage6a.mjs",
+    "verify:stage6b": "node scripts/verify-stage6b.mjs",
+    "verify:clean-clone": "node scripts/verify-clean-clone.mjs",
+    "verify:n1": "node scripts/verify-n1-emitted.mjs",
+    "verify:release-set": "node scripts/check-release-set.mjs",
+    "verify:release-consumer": "node scripts/verify-release-consumer.mjs",
+    "verify:builder-kit": "node scripts/verify-builder-kit.mjs",
+    "release:validate": "node scripts/oidc-release.mjs",
+    "release:trust-bootstrap": "node scripts/trust-bootstrap.mjs",
+    "verify:stage7a": "node scripts/verify-stage7a.mjs",
+    "publish:release": "node scripts/publish-release.mjs"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@sveltejs/vite-plugin-svelte": "^5.1.1",
+    "@types/node": "^26.4.0",
+    "eslint": "^10.9.1",
+    "globals": "^17.11.0",
+    "happy-dom": "^15.11.7",
+    "js-yaml": "^4.1.0",
+    "prettier": "^3.9.6",
+    "svelte": "^5.57.0",
+    "tsx": "^4.23.13",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.68.0",
+    "vitest": "^4.1.11",
+    "zod": "^3.25.76"
+  },
+  "license": "Apache-2.0"
+}
