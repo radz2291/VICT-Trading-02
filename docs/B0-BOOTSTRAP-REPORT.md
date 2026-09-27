@@ -29,7 +29,7 @@ The development pack was present under `docs/` exactly as supplied. All 10 indiv
 | `docs/STATE.md` | Current state and decision register |
 | `docs/HANDOFF-TEMPLATE.md` | Repository-specific handoff template (unfilled) |
 | `docs/AGENTS.md` | Short agent entry point for the pack |
-| `docs/VICT-Trading-Workspace-Development-Pack.md` | Combined readable edition (contains every file above) |
+| `docs/VICT-Trading-Workspace-Development-Pack.md` | Combined readable edition (contains every file above) — **removed 2026-09-27 as a duplicate; recoverable in git history at the B0 SHA. The 10 individual files above are canonical.** |
 
 No missing files, no duplicate or conflicting copies. The user's local copies were **not** replaced or overwritten with any external download.
 
