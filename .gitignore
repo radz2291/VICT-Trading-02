@@ -19,6 +19,7 @@ out/
 coverage/
 .cache/
 .vite/
+.svelte-kit/
 *.tsbuildinfo
 
 # Logs
