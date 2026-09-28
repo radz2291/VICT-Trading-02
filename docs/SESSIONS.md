@@ -49,3 +49,30 @@ One line: **Repository bootstrapped and governed; handoff accepted; G0 platform 
 ### Commit lineage (this session)
 
 `3e7535f` B0 bootstrap → `101668c` handoff draft → `8c090be` constitution → `4cd3ae6` dedupe → `5ed125a` orchestration convention → `6a77d2f` acceptance → `2114d11` G0 intake evidence → `6262ad1` G0 HELD record. All pushed to `origin/main` and verified remote==local at each step.
+## Session 2026-09-28/29 — G0 gap closure, G1 execution end-to-end
+
+### 1. Autonomous decisions (technical merit)
+
+| Decision | Why | Why no founding intent |
+|---|---|---|
+| Evolve `host/` in place rather than rename to `app/` | Path stability; avoids churn; name is cosmetic | Routine layout choice, owner delegated layout |
+| Async runs for agents, foreground only when a parent-crash coupling is unacceptable | Detached children survive orchestrator crashes (proven); one async child at a time | Operational reliability |
+| G0 verdict synthesis: chart selection O-03 (LWC 5.0.8) recorded as evidence-selected | Only candidate passing the verifier-confirmed demo; ARCHITECTURE criterion selects it | Pack gives the criterion; evidence selects the option |
+| uPlot adapter removed from product page | Owner instruction; history + G0 evidence preserve it | Owner-decided |
+| Remediation scope: F-V1 required, F-V2..F-V4 same-area cheap fixes | Bounded, per EVALUATION.md remediation rules | In-scope fixes |
+
+### 2. Escalations presented
+- G1 scope (owner pre-accepted by instruction; recorded verbatim in HANDOFF.md).
+- rc-vs-stable (F5/RF5) — recommendation: re-verify at stable 0.4.0; owner accepted rc for G1 with recheck requirement.
+
+### 3. Owner decisions recorded
+- G1 scope accepted (2026-09-28 instruction, baseline 74da07c): rc accepted for G1 development; stable-0.4.0 recheck required; W1 as product test; fresh verifier mandatory; stop after G1.
+
+### 4. Deferred
+- F-R1 (low): fixed-height readout band at narrow widths. RF4: keyboard arbitrary-price level placement. F5: stable-0.4.0 recheck before/during G1 successor. Engine LGPL owner decision (G3). G2+ stage scopes.
+
+### 5. Progress
+- **G1 complete — PASS WITH NON-BLOCKING FINDINGS** at remediated candidate `24e81f0`; lineage: `ee3e0c7` (G1 acceptance) → `bc7edbf` (G0 gaps closed) → `3965e27` (candidate) → `4bdc0a1` (verifier evidence) → `24e81f0` (remediation) → `d607f60` (re-verification evidence) → `5583996` (STATE verdict). Evidence: builder report, 2 verifier reports, 59 verifier screenshots, remediation report. W1 passed; persistence across reload + full Chrome restart; no console errors anywhere.
+
+### 6. Summary
+**G1 delivered and independently verified: a working chart-first workspace with no prerequisites, full drawing lifecycle through the VICT contract path, durable persistence, honest states — one medium finding caught by the fresh verifier and fixed before closure.**
