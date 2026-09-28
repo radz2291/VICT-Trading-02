@@ -23,7 +23,22 @@ Implement the accepted G0–G7 program defined in `docs/STAGES.md` to the extent
 
 **Authority boundaries (all stages):** no live account connection, no real orders, no publishing of packages, no edits outside the authorized remote, no secrets in source/fixtures/logs/screenshots. Where the verified Builder Kit requires accepted-scope records tied to exact handoff bytes, obtain and preserve them; never self-accept.
 
-## Stage handoff record — G0
+## Stage handoff record — G1 (ACCEPTED 2026-09-28)
+
+Owner accepted the G1 scope below by direct instruction on 2026-09-28 (baseline `74da07c4bfd7a130b0d5c0dd6cbecdeffcdd05c4`), including: G0 technical choices carry into G1 (lightweight-charts 5.0.8, published VICT `0.4.0-rc.1` set, published `ui-svelte` extension path); **owner accepts the release candidate for G1 development** — recheck compatibility when stable `0.4.0` is published; VICT and Trading OS repos remain read-only; uPlot spike stays as historical G0 evidence.
+
+- **Pre-close work in this run (owner-directed):** close two G0 evidence gaps — (1) fresh clone or isolated worktree: install, build, run the documented host; (2) narrow-browser-width check of the G0 host. Record in a short G0 addendum; preserve the original G0 report and its red uPlot findings; fix any failing check and re-verify before G1 work. Correct stale opening lines in `docs/STATE.md`.
+- **Outcome:** the first real workspace experience on the G0 spike foundation — open a useful chart immediately; choose XAUUSD or EURUSD and a timeframe; inspect candles; pan and zoom; create, select, edit, move, remove, undo and redo a drawing anchored to market price and time; save the workspace so symbol, timeframe, drawings and arrangement survive reload and a fresh browser session; clear saving/saved/failed/unavailable states; chart remains usable with a tool panel open.
+- **Product test:** W1 walkthrough (docs/EXPERIENCE.md) as the main test. No Program, Method, Session or account prerequisites. Keyboard access for essential controls. Desktop + narrow-width browser checks. Real interaction screenshots/recording. Restrained visual design; routine layout choices may be made and improved on walkthrough friction.
+- **Carry-forwards from G0:** LWC visual bridging of missing data remains a recorded finding for G2 — missing intervals must not be presented as verified continuous data.
+- **In-scope paths:** `host/**` (the consumer app — the G0 spike host evolves into the workspace), `docs/evidence/G1/**`, `docs/STATE.md` (status updates), `docs/HANDOFF.md` (this record), `.gitignore` if needed.
+- **Prohibited:** replay, scripting, backtesting, trading engine, live feeds, brokers, accounts, G2 work; modifying pack product documents; publishing; any VICT/Trading OS repo edits; secrets.
+- **Required checks:** build + typecheck; W1 real-browser walkthrough (fresh profile, no prerequisites); persistence across reload AND fresh browser session; desktop + narrow width; keyboard access for essential controls; interaction screenshots/recording.
+- **Verifier:** fresh agent/session against the exact candidate commit; includes persistence and narrow-layout testing. Builder cannot self-certify.
+- **Stop conditions:** drawing lost after reload/fresh session; prerequisite form blocking the bare chart; static chart mockup; drawing stored only as screen pixels; time/price anchoring broken by pan/zoom/timeframe change; or any prohibited-capability temptation — record HELD/FAIL and stop.
+- **Exit:** candidate commit + verifier verdict + STATE.md verdict+SHA + report to owner. G2 NOT authorized by this record.
+
+## Stage handoff record — G0 (COMPLETED)
 
 - **Prerequisite candidate SHA:** `3e7535f0788f612de8509043c6e8ae9eafcfc4ff` (clean tree)
 - **Criterion source:** `docs/STAGES.md` G0 pass/stop conditions; `docs/ARCHITECTURE.md` platform intake and chart/engine selection proofs; `docs/EVALUATION.md` shared checks.
