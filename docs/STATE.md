@@ -4,7 +4,13 @@
 
 A filled handoff at `HANDOFF.md` covering target/provenance, push rules, and a pre-authorized G0 stage scope was **accepted by the owner on 2026-09-27** (handoff bytes at `5ed125aa222c4b2f17832e5a5dbad8140b3638e4`). G0 is now authorized; G1–G7 require their own accepted scopes.
 
-**G0 status (2026-09-28, orchestrator record):** Platform intake attempts 2+3 COMPLETE. Owner confirmed new UI packages published (2026-09-28) — G0 hold LIFTED. Attempt-3 (docs/evidence/G0/attempt-3-platform-intake-brief.md + raw2/): `@victframework/ui` and `@victframework/ui-svelte` published at 0.4.0-rc.1 (integrity byte-verified); `renderer-svelte` retired; release set advanced to `vict-release-set@1/0.4.0-rc.1` (contentId `v1_2a70a29a…` recomputed MATCH); consumer path = `VitApp` from `@victframework/ui-svelte` with registry/dispatch; island props domain EXPANDED (strings/finite numbers/booleans + closed `{param|record|view}` source bindings + `input` action mapping + `useVictActions()`). Traps: `latest` on ui/ui-svelte is a non-functional `0.0.0-bootstrap.1` marker — pin `0.4.0-rc.1` explicitly; svelte peer floor `^5.33.0`. Chart-candidate spike AUTHORIZED against the published 0.4.0-rc.1 seam. Builder Kit remains in development (npm 404, private) — deferred owner item, not a G0 blocker. rc-stage caveat noted: gate may prefer stable 0.4.0 when published; spike proves the seam regardless. G0 intake begins with the published VICT platform check.
+**G0 status (2026-09-28, orchestrator record — VERDICT):** **PASS WITH NON-BLOCKING FINDINGS** at candidate SHA `212d490219921e75e4a3554c6f7f575aa22441f7`.
+
+- **Chart selection proof (O-03):** `lightweight-charts 5.0.8` (Apache-2.0) selected for G1 — the only candidate whose verifier-confirmed evidence passes the G0 demo (pan, zoom, crosshair time/price mapping verified against fixture values, durable drawing via create→reload→redraw→edit→reload loop with real browser interaction; 30 verifier screenshots). `uPlot 1.6.32` **FALSIFIED** as implemented: CSS never imported (cursor dislocation, no containment), level lines invisible (2-elem series vs 2023-length x), dblclick adds spurious levels — findings preserved, not discarded.
+- **Platform intake:** release set `vict-release-set@1/0.4.0-rc.1` verified (attempts 2+3; contentId recomputed MATCH; 14/14 tarball integrity). Consumer path: `VitApp` via `@victframework/ui-svelte@0.4.0-rc.1` + `createComponentRegistry`. `renderer-svelte` retired.
+- **Engine (O-05): explicitly OPEN with proof task** — neither NT nor LEAN decided. NT: LGPL-3.0 (owner license decision required before selection); LEAN: Apache-2.0 but weak release provenance (Docker-tag identity, no usable GitHub release since 2017). Gap semantics undocumented in both — the pinned gap fixture must test. No simulation code needed for G1, so deferral is within the G0 pass condition.
+- **Carry-forward findings:** LWC silently bridges the 2h fixture gap visually (crosshair times truthful) — must be fixed or explicitly documented at G2; LWC price lines not autoscaled; no in-app edit affordance yet (G1 scope); F1 upstream question: `useVictActions` lives only on the `./component-actions` subpath in published rc.1 (repo-tip exports from root) — narrow public-contract question, non-blocking; F5: gate accepted the rc pin because stable 0.4.0 does not exist — **G1 must re-verify against stable 0.4.0 when published or explicitly accept rc risk (owner-informed)**. Cold-clone install was reproduced in-place, not as a separate fresh-clone run — commands documented in `docs/evidence/G0/spike-host.md`.
+- **Evidence:** builder report `docs/evidence/G0/spike-host.md`; verifier report `docs/evidence/G0/verifier-report-G0-spike.md` + 30 screenshots `verifier-shots/`; intake briefs attempts 1–3 + raw/ + raw2/ + raw3/. Verifier session independent of builder; verdict vocabulary per EVALUATION.md. G0 intake begins with the published VICT platform check.
 
 ## Accepted product direction from the conversation
 
@@ -39,9 +45,9 @@ A filled handoff at `HANDOFF.md` covering target/provenance, push rules, and a p
 |---|---|---|
 | O-01 | New repository identity and authorized remote/branch | Repository initialized at the user-supplied URL in B0 (https://github.com/radz2291/VICT-Trading-02, branch `main`); accepted binding handoff still pending |
 | O-02 | VICT release and UI extension contract | Published artifacts and browser spike, G0 |
-| O-03 | Chart component and drawing model | Candidate task comparison, G0 |
+| O-03 | Chart component and drawing model | **lightweight-charts 5.0.8 selected for G1** — G0 spike + fresh verifier PASS (durable drawing, pan/zoom/mapping); uPlot falsified (see G0 record); final drawing/editing model proven at G1 |
 | O-04 | Historical/current data provider and resolution | Provenance, availability, rights, G0–G2 |
-| O-05 | Simulation engine and script language | Replay/script proofs, G0–G3 |
+| O-05 | Simulation engine and script language | Explicitly open: NT (LGPL-3.0 — owner license decision required) vs LEAN (Apache-2.0, weak release provenance); both need gap-semantics + future-isolation behavioral proof on the pinned fixture, G3 |
 | O-06 | Package extraction boundary | Consumer dependency and second-use evidence, G3–G5 |
 | O-07 | Live provider, account and risk settings | Separate owner decision and G6 proof |
 
