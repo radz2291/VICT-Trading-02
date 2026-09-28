@@ -1,7 +1,9 @@
 /**
- * Thin candidate-neutral chart interface for the G0 spike.
- * Each candidate implements this; the islands never import a candidate
- * directly, keeping the comparison honest (same fixture, same contract).
+ * Candidate-neutral chart interface.
+ *
+ * G1: the product workspace uses lightweight-charts only (G0 selection,
+ * verifier-confirmed). The interface stays candidate-neutral so a future
+ * candidate comparison (G2+) can slot in without touching island logic.
  */
 
 import type { Bar } from './fixture.js';
@@ -10,34 +12,41 @@ export interface Level {
 	id: string;
 	price: number;
 	note?: string;
+	/** instrument the level was drawn on (host enriches at creation) */
+	symbol?: string;
+	/** creation time, unix seconds (host enriches at creation) */
+	createdAt?: number;
 }
 
 export interface CrosshairRead {
 	price: number;
 	time: number | null;
+	/** the bar under the crosshair, for OHLC readout */
+	bar: Bar | null;
 }
 
 export interface ChartController {
 	setData(bars: Bar[]): void;
 	/** Replace the full set of drawn horizontal levels (diffing done by impl). */
 	setLevels(levels: Level[]): void;
-	/** Price currently under the crosshair, plus the bar time if on a bar. */
+	/** Visually highlight the selected level; null clears. */
+	setSelected(id: string | null): void;
+	/** Price currently under the crosshair + bar OHLC. */
 	readCrosshair(): CrosshairRead | null;
 	destroy(): void;
 }
 
 export interface ChartCallbacks {
 	onCrosshairMove(read: CrosshairRead | null): void;
-	/** Fire when the user clicks the chart (candidate adds level at that price). */
-	onAddLevelAtPrice(price: number): void;
+	/** User clicked empty chart space (small movement) → create a level at that price. */
+	onCreateAtPrice(price: number): void;
+	/** User clicked/pressed on an existing level → select it. */
+	onSelectLevel(id: string): void;
+	/** Finished dragging a level to a new price (final — dispatch once). */
+	onLevelMoved(id: string, price: number): void;
 }
 
 export interface ChartHost {
-	/** container element (sized by CSS) */
+	/** container element (sized by CSS; the chart auto-sizes to it) */
 	container: HTMLElement;
-	width: number;
-	height: number;
 }
-
-export const CANDIDATES = ['lightweight-charts', 'uPlot'] as const;
-export type CandidateName = (typeof CANDIDATES)[number];

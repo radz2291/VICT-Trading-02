@@ -1,26 +1,42 @@
 <script lang="ts">
 	import { VitApp, type ActionResult } from '@victframework/ui-svelte';
 	import { createComponentRegistry } from '@victframework/application/renderer';
-	import { compileSpikePlan, levelSaveInput, levelDeleteInput } from '$lib/definition.js';
+	import {
+		compileWorkspacePlan,
+		levelSaveInput,
+		levelUpdateInput,
+		levelDeleteInput,
+		workspaceSetInput
+	} from '$lib/definition.js';
 	import ChartIslandLWC from '$lib/islands/ChartIslandLWC.svelte';
-	import ChartIslandUPlot from '$lib/islands/ChartIslandUPlot.svelte';
+	import { SYMBOLS, TIMEFRAMES, type InstrumentSymbol, type Timeframe } from '$lib/fixture.js';
 	import type { Level } from '$lib/chart-api.js';
 
 	// Registry authority stays host-side (consumer code), per the ui-svelte contract.
-	const registry = createComponentRegistry('registry.g0.chart-spike', '1');
+	const registry = createComponentRegistry('registry.g1.workspace', '1');
 	registry.register({ componentId: 'cmp.chart.lwc', revision: '1', implementation: ChartIslandLWC });
-	registry.register({ componentId: 'cmp.chart.uplot', revision: '1', implementation: ChartIslandUPlot });
 
-	const plan = compileSpikePlan();
+	const plan = compileWorkspacePlan();
 
-	// ---- durable levels store (host-side) --------------------------------
-	const STORE_KEY = 'g0.spike.levels.v1';
+	// ---- durable stores (host-side) --------------------------------------
+	const LEVELS_KEY = 'g1.levels.v1';
+	const WORKSPACE_KEY = 'g1.workspace.v1';
+
+	interface WorkspaceRow {
+		id: string;
+		symbol: InstrumentSymbol;
+		timeframe: Timeframe;
+		panelOpen: number;
+	}
+
+	const DEFAULT_WS: WorkspaceRow = { id: 'active', symbol: 'XAUUSD', timeframe: '15m', panelOpen: 1 };
+
 	let dataVersion = $state(0);
 
 	function loadLevels(): Level[] {
 		if (typeof window === 'undefined') return [];
 		try {
-			const raw = window.localStorage.getItem(STORE_KEY);
+			const raw = window.localStorage.getItem(LEVELS_KEY);
 			const parsed = raw ? (JSON.parse(raw) as unknown) : [];
 			return Array.isArray(parsed) ? (parsed as Level[]) : [];
 		} catch {
@@ -28,45 +44,430 @@
 		}
 	}
 
-	function persistLevels(levels: Level[]): void {
-		if (typeof window === 'undefined') return;
-		window.localStorage.setItem(STORE_KEY, JSON.stringify(levels));
-		dataVersion += 1;
+	function loadWorkspace(): WorkspaceRow {
+		if (typeof window === 'undefined') return DEFAULT_WS;
+		try {
+			const raw = window.localStorage.getItem(WORKSPACE_KEY);
+			const parsed = raw ? (JSON.parse(raw) as Partial<WorkspaceRow>) : null;
+			if (parsed && typeof parsed.symbol === 'string' && typeof parsed.timeframe === 'string') {
+				return {
+					id: 'active',
+					symbol: parsed.symbol as InstrumentSymbol,
+					timeframe: parsed.timeframe as Timeframe,
+					panelOpen: parsed.panelOpen === 0 ? 0 : 1
+				};
+			}
+		} catch {
+			// fall through to default
+		}
+		return DEFAULT_WS;
+	}
+
+	// ---- panel state (host-side mirror of the workspace resource) ---------
+	let ws = $state<WorkspaceRow>(DEFAULT_WS);
+	let panelStatus = $state<'idle' | 'saving' | 'saved' | 'failed' | 'unavailable'>('idle');
+	let panelDetail = $state('');
+	let saveTimer: ReturnType<typeof setTimeout> | undefined;
+
+	$effect(() => {
+		// hydrate panel state once on the client
+		ws = loadWorkspace();
+	});
+
+	function persistWorkspace(row: WorkspaceRow): void {
+		panelStatus = 'saving';
+		panelDetail = '';
+		try {
+			window.localStorage.setItem(WORKSPACE_KEY, JSON.stringify(row));
+			dataVersion += 1; // refetch views → island props update
+			panelStatus = 'saved';
+		} catch (e) {
+			panelStatus = 'failed';
+			panelDetail = e instanceof Error && e.name === 'QuotaExceededError' ? 'quota' : 'storage';
+		}
+	}
+
+	function schedulePersist(row: WorkspaceRow): void {
+		panelStatus = 'saving';
+		if (saveTimer) clearTimeout(saveTimer);
+		saveTimer = setTimeout(() => persistWorkspace(row), 250);
 	}
 
 	async function dispatch(actionId: string, input: unknown): Promise<ActionResult> {
-		if (actionId === 'act.level.save') {
-			const parsed = levelSaveInput.parse(input);
-			if (!parsed.ok) {
-				return { ok: false, code: 'CONTRACT_REJECTED', message: parsed.issues[0]?.message ?? 'invalid input' };
+		try {
+			if (actionId === 'act.level.save') {
+				const parsed = levelSaveInput.parse(input);
+				if (!parsed.ok) {
+					return { ok: false, code: 'CONTRACT_REJECTED', message: parsed.issues[0]?.message ?? 'invalid input' };
+				}
+				const levels = loadLevels().filter((l) => l.id !== parsed.value.id);
+				levels.push(parsed.value);
+				window.localStorage.setItem(LEVELS_KEY, JSON.stringify(levels));
+				dataVersion += 1;
+				return { ok: true, value: { levels } };
 			}
-			const levels = loadLevels().filter((l) => l.id !== parsed.value.id);
-			levels.push(parsed.value);
-			persistLevels(levels);
-			return { ok: true, value: { levels } };
-		}
-		if (actionId === 'act.level.delete') {
-			const parsed = levelDeleteInput.parse(input);
-			if (!parsed.ok) {
-				return { ok: false, code: 'CONTRACT_REJECTED', message: parsed.issues[0]?.message ?? 'invalid input' };
+			if (actionId === 'act.level.update') {
+				const parsed = levelUpdateInput.parse(input);
+				if (!parsed.ok) {
+					return { ok: false, code: 'CONTRACT_REJECTED', message: parsed.issues[0]?.message ?? 'invalid input' };
+				}
+				const levels = loadLevels();
+				const idx = levels.findIndex((l) => l.id === parsed.value.id);
+				if (idx === -1) {
+					return { ok: false, code: 'NOT_FOUND', message: 'no level ' + parsed.value.id };
+				}
+				levels[idx] = {
+					...levels[idx],
+					price: parsed.value.price,
+					note: parsed.value.note
+				};
+				window.localStorage.setItem(LEVELS_KEY, JSON.stringify(levels));
+				dataVersion += 1;
+				return { ok: true, value: { levels } };
 			}
-			const levels = loadLevels().filter((l) => l.id !== parsed.value.id);
-			persistLevels(levels);
-			return { ok: true, value: { levels } };
+			if (actionId === 'act.level.delete') {
+				const parsed = levelDeleteInput.parse(input);
+				if (!parsed.ok) {
+					return { ok: false, code: 'CONTRACT_REJECTED', message: parsed.issues[0]?.message ?? 'invalid input' };
+				}
+				const levels = loadLevels().filter((l) => l.id !== parsed.value.id);
+				window.localStorage.setItem(LEVELS_KEY, JSON.stringify(levels));
+				dataVersion += 1;
+				return { ok: true, value: { levels } };
+			}
+			if (actionId === 'act.workspace.set') {
+				const parsed = workspaceSetInput.parse(input);
+				if (!parsed.ok) {
+					return { ok: false, code: 'CONTRACT_REJECTED', message: parsed.issues[0]?.message ?? 'invalid input' };
+				}
+				const row: WorkspaceRow = {
+					id: 'active',
+					symbol: parsed.value.symbol as InstrumentSymbol,
+					timeframe: parsed.value.timeframe as Timeframe,
+					panelOpen: parsed.value.panelOpen
+				};
+				window.localStorage.setItem(WORKSPACE_KEY, JSON.stringify(row));
+				dataVersion += 1;
+				return { ok: true, value: { row } };
+			}
+			return { ok: false, code: 'DATA_UNKNOWN_ACTION', message: 'unknown action ' + actionId };
+		} catch (e) {
+			return { ok: false, code: 'STORAGE_FAILED', message: e instanceof Error ? e.message : 'storage failed' };
 		}
-		return { ok: false, code: 'DATA_UNKNOWN_ACTION', message: 'unknown action ' + actionId };
+	}
+
+	function setSymbol(sym: string): void {
+		const row = { ...ws, symbol: sym as InstrumentSymbol };
+		ws = row;
+		schedulePersist(row);
+		void dispatch('act.workspace.set', { symbol: row.symbol, timeframe: row.timeframe, panelOpen: row.panelOpen }).then(
+			(r) => {
+				if (r.ok === false) {
+					panelStatus = 'failed';
+					panelDetail = r.code ?? 'rejected';
+				}
+			}
+		);
+	}
+
+	function setTimeframe(tf: string): void {
+		const row = { ...ws, timeframe: tf as Timeframe };
+		ws = row;
+		schedulePersist(row);
+		void dispatch('act.workspace.set', { symbol: row.symbol, timeframe: row.timeframe, panelOpen: row.panelOpen }).then(
+			(r) => {
+				if (r.ok === false) {
+					panelStatus = 'failed';
+					panelDetail = r.code ?? 'rejected';
+				}
+			}
+		);
+	}
+
+	function togglePanel(): void {
+		const row = { ...ws, panelOpen: ws.panelOpen === 1 ? 0 : 1 };
+		ws = row;
+		void dispatch('act.workspace.set', { symbol: row.symbol, timeframe: row.timeframe, panelOpen: row.panelOpen });
+	}
+
+	function resetWorkspace(): void {
+		if (!window.confirm('Reset the workspace? All drawings will be removed.')) return;
+		try {
+			window.localStorage.removeItem(LEVELS_KEY);
+			window.localStorage.removeItem(WORKSPACE_KEY);
+			location.reload();
+		} catch {
+			panelStatus = 'failed';
+			panelDetail = 'storage';
+		}
 	}
 
 	const viewData = $derived.by(() => {
 		void dataVersion; // refetch dependency
+		const levels = loadLevels() as unknown as Record<string, unknown>[];
+		const stored = (() => {
+			if (typeof window === 'undefined') return null;
+			try {
+				const raw = window.localStorage.getItem(WORKSPACE_KEY);
+				return raw ? (JSON.parse(raw) as Record<string, unknown>) : null;
+			} catch {
+				return null;
+			}
+		})();
+		const workspaceRow = stored ?? { id: 'active', symbol: ws.symbol, timeframe: ws.timeframe, panelOpen: ws.panelOpen };
 		return {
-			'v.levels': { rows: loadLevels() as unknown as Record<string, unknown>[] }
+			'v.levels': { rows: levels },
+			'v.workspace': { rows: [workspaceRow] }
 		};
 	});
+
+	const panelLevels = $derived.by(() => {
+		void dataVersion;
+		return loadLevels()
+			.filter((l) => !l.symbol || l.symbol === ws.symbol)
+			.sort((a, b) => (a.createdAt ?? 0) - (b.createdAt ?? 0));
+	});
+
+	function fmtCreated(t?: number): string {
+		if (!t) return '—';
+		return new Date(t * 1000).toISOString().slice(0, 16).replace('T', ' ') + 'Z';
+	}
 </script>
 
 <svelte:head>
-	<title>G0 Chart Spike</title>
+	<title>VICT Trading Workspace</title>
 </svelte:head>
 
-<VitApp {plan} {registry} {dispatch} path="/" {viewData} record={null} onInvalidate={() => { dataVersion += 1; }} />
+<div class="workspace" data-testid="workspace">
+	<header class="topbar">
+		<span class="brand">VICT Trading Workspace</span>
+		<span class="pill" class:failed={panelStatus === 'failed'} data-testid="panel-status">
+			{panelStatus === 'idle' ? 'ready' : panelStatus}{panelDetail ? ': ' + panelDetail : ''}
+		</span>
+		<span class="feed-note">fixture data — not live market</span>
+		<button class="panel-toggle" data-testid="btn-toggle-panel" onclick={togglePanel} aria-expanded={ws.panelOpen === 1}>
+			{ws.panelOpen === 1 ? 'Hide panel' : 'Show panel'}
+		</button>
+	</header>
+
+	<div class="body" class:panel-closed={ws.panelOpen !== 1}>
+		<main class="main">
+			<VitApp {plan} {registry} {dispatch} path="/" {viewData} record={null} onInvalidate={() => { dataVersion += 1; }} />
+		</main>
+
+		{#if ws.panelOpen === 1}
+			<aside class="panel" data-testid="panel" aria-label="Workspace panel">
+				<div class="group">
+					<label class="ctl">
+						Instrument
+						<select data-testid="sel-symbol" value={ws.symbol} onchange={(e) => setSymbol(e.currentTarget.value)}>
+							{#each SYMBOLS as s}<option value={s}>{s}</option>{/each}
+						</select>
+					</label>
+					<label class="ctl">
+						Timeframe
+						<select data-testid="sel-timeframe" value={ws.timeframe} onchange={(e) => setTimeframe(e.currentTarget.value)}>
+							{#each TIMEFRAMES as t}<option value={t}>{t}</option>{/each}
+						</select>
+					</label>
+				</div>
+
+				<div class="group">
+					<h3>Drawings — {ws.symbol}</h3>
+					{#if panelLevels.length === 0}
+						<p class="empty" data-testid="panel-empty">None yet. Click the chart to draw a level.</p>
+					{:else}
+						<ul class="drawings" data-testid="panel-drawings">
+							{#each panelLevels as l (l.id)}
+								<li>
+									<span class="d-price">{l.price}</span>
+									<span class="d-note">{l.note ?? ''}</span>
+									<span class="d-time">{fmtCreated(l.createdAt)}</span>
+								</li>
+							{/each}
+						</ul>
+					{/if}
+				</div>
+
+				<div class="group">
+					<h3>Data</h3>
+					<p class="data-note">
+						Deterministic fixture with deliberate gaps (block + singles). The chart bridges gaps visually — treat as a
+						known limitation until G2. Never live market data.
+					</p>
+				</div>
+
+				<div class="group">
+					<button class="danger" data-testid="btn-reset" onclick={resetWorkspace}>Reset workspace</button>
+					<p class="hint">Storage: browser-local. Nothing leaves this machine.</p>
+				</div>
+			</aside>
+		{/if}
+	</div>
+</div>
+
+<style>
+	.workspace {
+		display: flex;
+		flex-direction: column;
+		height: 100vh;
+		min-width: 0;
+		font: 13px system-ui;
+		color: #d6e2f0;
+		background: #0b0e12;
+	}
+	.topbar {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		padding: 6px 12px;
+		border-bottom: 1px solid #1c232b;
+		background: #0d1117;
+	}
+	.brand {
+		font-weight: 600;
+		letter-spacing: 0.02em;
+	}
+	.pill {
+		font: 11px ui-monospace, Consolas, monospace;
+		padding: 1px 8px;
+		border-radius: 10px;
+		background: #16202b;
+		color: #2f9e63;
+	}
+	.pill.failed {
+		color: #ff7b72;
+	}
+	.feed-note {
+		color: #e0c96b;
+		font-size: 11px;
+	}
+	.panel-toggle {
+		margin-left: auto;
+		background: #16202b;
+		color: #d6e2f0;
+		border: 1px solid #2f7dd1;
+		border-radius: 4px;
+		padding: 4px 10px;
+		cursor: pointer;
+		font: 12px system-ui;
+	}
+	.panel-toggle:focus-visible,
+	.panel select:focus-visible,
+	.panel button:focus-visible {
+		outline: 2px solid #ffd54a;
+		outline-offset: 1px;
+	}
+	.body {
+		display: flex;
+		flex: 1;
+		min-height: 0;
+		min-width: 0;
+	}
+	.main {
+		flex: 1;
+		min-width: 0;
+		overflow: auto;
+		padding: 8px;
+	}
+	.panel {
+		width: 260px;
+		flex: 0 0 260px;
+		border-left: 1px solid #1c232b;
+		background: #0d1117;
+		padding: 10px;
+		overflow-y: auto;
+		display: flex;
+		flex-direction: column;
+		gap: 14px;
+	}
+	.group h3 {
+		margin: 0 0 6px;
+		font-size: 11px;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		color: #7d8b99;
+	}
+	.ctl {
+		display: block;
+		margin-bottom: 8px;
+		font-size: 12px;
+		color: #9fb0c0;
+	}
+	.ctl select {
+		display: block;
+		width: 100%;
+		margin-top: 3px;
+		background: #101820;
+		color: #d6e2f0;
+		border: 1px solid #2f7dd1;
+		border-radius: 4px;
+		padding: 5px 6px;
+		font: 13px system-ui;
+	}
+	.drawings {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.drawings li {
+		display: flex;
+		gap: 8px;
+		padding: 4px 2px;
+		border-bottom: 1px solid #16202b;
+		font: 12px ui-monospace, Consolas, monospace;
+	}
+	.d-price {
+		color: #e0c96b;
+		min-width: 72px;
+	}
+	.d-note {
+		color: #d6e2f0;
+		flex: 1;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.d-time {
+		color: #586a7a;
+		font-size: 10px;
+	}
+	.empty {
+		color: #586a7a;
+		font-size: 12px;
+		margin: 0;
+	}
+	.data-note,
+	.hint {
+		color: #586a7a;
+		font-size: 11px;
+		margin: 0;
+	}
+	.danger {
+		background: #241418;
+		color: #ff7b72;
+		border: 1px solid #7a3b38;
+		border-radius: 4px;
+		padding: 5px 10px;
+		cursor: pointer;
+		font: 12px system-ui;
+		width: 100%;
+	}
+
+	/* narrow widths: panel stacks below the chart, nothing overflows */
+	@media (max-width: 768px) {
+		.body {
+			flex-direction: column-reverse;
+			overflow-y: auto;
+		}
+		.panel {
+			width: 100%;
+			flex: 0 0 auto;
+			border-left: none;
+			border-top: 1px solid #1c232b;
+		}
+		.main {
+			overflow: visible;
+		}
+	}
+</style>

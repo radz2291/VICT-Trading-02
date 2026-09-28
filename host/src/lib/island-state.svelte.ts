@@ -1,90 +1,292 @@
 /**
- * Shared island logic: both candidates get identical behavior through
- * ChartController, so the comparison isolates the candidate difference.
+ * Workspace chart island logic (G1) — single island, lightweight-charts.
  *
- * Durability path (published contract only):
- *  - write: useVictActions().run('act.level.save'/'act.level.delete', input)
- *    → host dispatch persists → bumps its data version
- *  - read:  the plan binds props.levels to `{ view: 'v.levels' }`; the host
- *    feeds viewData from its persisted store, so saved levels arrive as a
- *    reactive prop (including after a full reload).
+ * VICT contract paths (published 0.4.0-rc.1 only):
+ *  - write: useVictActions().run('act.level.save' | 'act.level.update' |
+ *    'act.level.delete' | 'act.workspace.set', input) → host dispatch
+ *    validates via the same defineContract parsers → persists → bumps its
+ *    data version. (useVictActions lives on the ./component-actions subpath
+ *    at rc.1 — recorded as G0 finding F1.)
+ *  - read: props.levels bound to `{ view: 'v.levels' }`; props.workspace
+ *    bound to `{ view: 'v.workspace' }` — reactive, survives full reload.
+ *
+ * G1 additions over the verified G0 pattern:
+ *  - symbol/timeframe come from the workspace view (host panel dispatches
+ *    act.workspace.set); bars are derived per symbol/timeframe from the
+ *    deterministic fixtures (aggregation is honest — no invented bars).
+ *  - full drawing lifecycle: create / select / edit / drag-move / remove /
+ *    undo / redo. Undo/redo is a symmetric stack of prebuilt {undo, redo}
+ *    action pairs, every entry dispatched through the same contract path,
+ *    so an undo across a symbol switch restores the level on its ORIGINAL
+ *    instrument (symbol/createdAt ride in the save contract, rev 2).
  *
  * Reactivity note: `props` must be the raw `$props()` proxy (NOT a
- * destructured copy) so `$derived` re-reads `props.levels` on updates.
+ * destructured copy) so `$derived` re-reads the view rows on updates.
  */
 import { onMount } from 'svelte';
 import { useVictActions } from '@victframework/ui-svelte/component-actions';
-import { buildFixture } from './fixture.js';
-import type { ChartCallbacks, ChartController, ChartHost, CrosshairRead, Level } from './chart-api.js';
+import { buildSeries, SYMBOLS, TIMEFRAMES, type Bar, type InstrumentSymbol, type Timeframe } from './fixture.js';
+import type { ChartCallbacks, ChartController, Level } from './chart-api.js';
+import { createLwcChart } from './lwc.js';
 
-export interface IslandFactory {
-	candidate: string;
-	factory: (host: ChartHost, bars: ReturnType<typeof buildFixture>, cb: ChartCallbacks) => ChartController;
+export type MutationStatus = 'idle' | 'saving' | 'saved' | 'deleting' | 'failed';
+
+/** A prebuilt, replayable action pair — the unit of the undo/redo stacks. */
+interface ActionPair {
+	undo: { actionId: string; input: Record<string, unknown> };
+	redo: { actionId: string; input: Record<string, unknown> };
 }
 
-export type IslandProps = { symbol?: string; timeframe?: string; levels?: unknown };
+export type IslandProps = { symbol?: string; timeframe?: string; levels?: unknown; workspace?: unknown };
 
-export function islandState(cfg: IslandFactory, props: IslandProps) {
+interface WorkspaceRow {
+	symbol?: string;
+	timeframe?: string;
+}
+
+function rowsOf(v: unknown): Record<string, unknown>[] {
+	return Array.isArray(v) ? (v as Record<string, unknown>[]) : [];
+}
+
+export function workspaceState(props: IslandProps) {
 	const actions = useVictActions();
 	let container: HTMLDivElement | undefined = $state();
 	let controller: ChartController | null = null;
-	let readout: CrosshairRead | null = $state(null);
-	let status: string = $state('boot');
+	let readout = $state<{ price: number; time: number | null; bar: Bar | null } | null>(null);
+	let status: MutationStatus = $state('idle');
+	let statusDetail: string = $state('');
+	let selectedId: string | null = $state(null);
+	let editPrice: string = $state('');
+	let editNote: string = $state('');
 
+	const undoStack: ActionPair[] = [];
+	const redoStack: ActionPair[] = [];
+	let stackVersion = $state(0); // reactivity trigger for canUndo/canRedo
+
+	// ---- workspace view → symbol/timeframe (host panel is the writer) ----
+	const workspaceRow = $derived(rowsOf(props.workspace)[0] as WorkspaceRow | undefined);
+	const symbol = $derived(
+		SYMBOLS.includes((workspaceRow?.symbol ?? 'XAUUSD') as InstrumentSymbol)
+			? ((workspaceRow?.symbol ?? 'XAUUSD') as InstrumentSymbol)
+			: 'XAUUSD'
+	);
+	const timeframe = $derived(
+		TIMEFRAMES.includes((workspaceRow?.timeframe ?? '15m') as Timeframe)
+			? ((workspaceRow?.timeframe ?? '15m') as Timeframe)
+			: '15m'
+	);
+
+	// levels for THIS instrument, oldest first
 	const incoming = $derived(Array.isArray(props.levels) ? (props.levels as Level[]) : []);
+	const myLevels = $derived(
+		incoming
+			.filter((l) => !l.symbol || l.symbol === symbol)
+			.slice()
+			.sort((a, b) => (a.createdAt ?? 0) - (b.createdAt ?? 0))
+	);
+
+	// drop the selection if its level no longer exists (e.g. removed via undo)
+	$effect(() => {
+		if (selectedId !== null && !myLevels.some((l) => l.id === selectedId)) {
+			selectLevel(null);
+		}
+	});
+
+	// bars: deterministic fixture per symbol, honestly aggregated per timeframe
+	const bars = $derived(buildSeries(symbol, timeframe));
+
+	const callbacks: ChartCallbacks = {
+		onCrosshairMove: (r) => {
+			readout = r;
+		},
+		onCreateAtPrice: (price) => {
+			void createLevel(price);
+		},
+		onSelectLevel: (id) => {
+			selectLevel(id);
+		},
+		onLevelMoved: (id, price) => {
+			void moveLevel(id, price);
+		}
+	};
 
 	onMount(() => {
 		if (!container) return;
-		const rect = container.getBoundingClientRect();
-		const width = Math.max(320, Math.floor(rect.width) || 920);
-		const height = 360;
-		controller = cfg.factory(
-			{ container, width, height },
-			buildFixture(),
-			{
-				onCrosshairMove: (r) => {
-					readout = r;
-				},
-				onAddLevelAtPrice: (price) => {
-					status = 'saving';
-					actions
-						.run('act.level.save', {
-							id: 'lvl-' + Math.random().toString(36).slice(2, 10),
-							price: Math.round(price * 100) / 100,
-							note: 'level'
-						})
-						.then((r) => {
-							status = r && r.ok === false ? 'failed: ' + (r.code ?? '') : 'saved';
-						})
-						.catch(() => {
-							status = 'failed';
-						});
-				}
-			}
-		);
-		controller.setData(buildFixture());
-		status = 'ready';
+		controller = createLwcChart({ container }, bars, callbacks);
+		controller.setData(bars);
+		controller.setLevels(myLevels);
 		return () => {
 			controller?.destroy();
 			controller = null;
 		};
 	});
 
-	// reconcile drawn levels whenever the host-persisted view rows change
+	// data swap on symbol/timeframe change (levels persist: price-anchored)
 	$effect(() => {
-		if (controller) controller.setLevels(incoming);
+		if (controller) controller.setData(bars);
+	});
+	$effect(() => {
+		if (controller) controller.setLevels(myLevels);
 	});
 
-	function removeLevel(id: string): void {
-		status = 'deleting';
-		actions
-			.run('act.level.delete', { id })
-			.then((r) => {
-				status = r && r.ok === false ? 'failed: ' + (r.code ?? '') : 'deleted';
-			})
-			.catch(() => {
+	// ---- mutation plumbing ------------------------------------------------
+	function genId(): string {
+		return 'lvl-' + Math.random().toString(36).slice(2, 10);
+	}
+
+	async function runAction(actionId: string, input: Record<string, unknown>): Promise<boolean> {
+		status = actionId === 'act.level.delete' ? 'deleting' : 'saving';
+		statusDetail = '';
+		try {
+			const r = await actions.run(actionId, input);
+			if (r && r.ok === false) {
 				status = 'failed';
+				statusDetail = r.code ?? 'rejected';
+				return false;
+			}
+			status = 'saved';
+			return true;
+		} catch {
+			status = 'failed';
+			statusDetail = 'dispatch error';
+			return false;
+		}
+	}
+
+	function current(id: string): Level | undefined {
+		return incoming.find((l) => l.id === id);
+	}
+
+	async function createLevel(price: number): Promise<void> {
+		const id = genId();
+		const snapshot: Level = {
+			id,
+			price,
+			note: 'level',
+			symbol,
+			createdAt: Math.floor(Date.now() / 1000)
+		};
+		const save = { actionId: 'act.level.save', input: { ...snapshot } };
+		if (await runAction(save.actionId, save.input)) {
+			undoStack.push({ undo: { actionId: 'act.level.delete', input: { id } }, redo: save });
+			redoStack.length = 0;
+			stackVersion++;
+			selectLevel(id);
+		}
+	}
+
+	async function moveLevel(id: string, price: number): Promise<void> {
+		const cur = current(id);
+		if (!cur) return;
+		await pushEdit(id, price, cur.note, { price: cur.price, note: cur.note });
+	}
+
+	async function editSelected(price: number, note: string): Promise<void> {
+		if (selectedId === null) return;
+		const cur = current(selectedId);
+		if (!cur) return;
+		await pushEdit(selectedId, price, note === '' ? undefined : note, {
+			price: cur.price,
+			note: cur.note
+		});
+	}
+
+	async function pushEdit(
+		id: string,
+		price: number,
+		note: string | undefined,
+		before: { price: number; note?: string }
+	): Promise<void> {
+		if (price === before.price && note === before.note) return;
+		const after = { price, note };
+		if (
+			await runAction('act.level.update', {
+				id,
+				price,
+				note
+			})
+		) {
+			undoStack.push({
+				undo: { actionId: 'act.level.update', input: { id, price: before.price, note: before.note } },
+				redo: { actionId: 'act.level.update', input: { id, price: after.price, note: after.note } }
 			});
+			redoStack.length = 0;
+			stackVersion++;
+		}
+	}
+
+	async function removeSelected(): Promise<void> {
+		if (selectedId === null) return;
+		const cur = current(selectedId);
+		if (!cur) return;
+		const snapshot: Level = { ...cur };
+		if (await runAction('act.level.delete', { id: cur.id })) {
+			undoStack.push({
+				undo: { actionId: 'act.level.save', input: { ...snapshot } },
+				redo: { actionId: 'act.level.delete', input: { id: cur.id } }
+			});
+			redoStack.length = 0;
+			stackVersion++;
+			selectLevel(null);
+		}
+	}
+
+	async function undo(): Promise<void> {
+		const op = undoStack.pop();
+		if (!op) return;
+		if (await runAction(op.undo.actionId, op.undo.input)) {
+			redoStack.push(op);
+		} else {
+			undoStack.push(op); // failed undo: put it back, stay honest
+		}
+		stackVersion++;
+	}
+
+	async function redo(): Promise<void> {
+		const op = redoStack.pop();
+		if (!op) return;
+		if (await runAction(op.redo.actionId, op.redo.input)) {
+			undoStack.push(op);
+		} else {
+			redoStack.push(op);
+		}
+		stackVersion++;
+	}
+
+	function selectLevel(id: string | null): void {
+		selectedId = id;
+		controller?.setSelected(id);
+		const cur = id !== null ? current(id) : undefined;
+		editPrice = cur ? String(cur.price) : '';
+		editNote = cur?.note ?? '';
+	}
+
+	function onKeydown(e: KeyboardEvent): void {
+		const target = e.target as HTMLElement | null;
+		if (target && target.closest('input, select, textarea')) {
+			if (e.key === 'Escape') (target as HTMLElement).blur();
+			return;
+		}
+		if ((e.key === 'Delete' || e.key === 'Backspace') && selectedId !== null) {
+			e.preventDefault();
+			void removeSelected();
+		} else if ((e.ctrlKey || e.metaKey) && !e.shiftKey && e.key.toLowerCase() === 'z') {
+			e.preventDefault();
+			void undo();
+		} else if (
+			((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === 'z') ||
+			((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'y')
+		) {
+			e.preventDefault();
+			void redo();
+		} else if (e.key === 'Escape') {
+			selectLevel(null);
+		}
+	}
+
+	function addLevelAtLastClose(): void {
+		const last = bars[bars.length - 1];
+		if (last) void createLevel(last.close);
 	}
 
 	return {
@@ -100,9 +302,50 @@ export function islandState(cfg: IslandFactory, props: IslandProps) {
 		get status() {
 			return status;
 		},
-		get levels() {
-			return incoming;
+		get statusDetail() {
+			return statusDetail;
 		},
-		removeLevel
+		get levels() {
+			return myLevels;
+		},
+		get selectedId() {
+			return selectedId;
+		},
+		get editPrice() {
+			return editPrice;
+		},
+		set editPrice(v: string) {
+			editPrice = v;
+		},
+		get editNote() {
+			return editNote;
+		},
+		set editNote(v: string) {
+			editNote = v;
+		},
+		get canUndo() {
+			void stackVersion;
+			return undoStack.length > 0;
+		},
+		get canRedo() {
+			void stackVersion;
+			return redoStack.length > 0;
+		},
+		get symbol() {
+			return symbol;
+		},
+		get timeframe() {
+			return timeframe;
+		},
+		get bars() {
+			return bars;
+		},
+		selectLevel,
+		editSelected,
+		removeSelected,
+		undo,
+		redo,
+		onKeydown,
+		addLevelAtLastClose
 	};
 }
