@@ -1,0 +1,146 @@
+[
+  {
+    "name": "1-Overview-Simple.jpg",
+    "path": "Documentation/1-Overview-Simple.jpg",
+    "sha": "444fde4f0af34adb4356987b33ce21a0ca30e200",
+    "size": 180219,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Documentation/1-Overview-Simple.jpg?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/Documentation/1-Overview-Simple.jpg",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/444fde4f0af34adb4356987b33ce21a0ca30e200",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Documentation/1-Overview-Simple.jpg",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Documentation/1-Overview-Simple.jpg?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/444fde4f0af34adb4356987b33ce21a0ca30e200",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/Documentation/1-Overview-Simple.jpg"
+    }
+  },
+  {
+    "name": "2-Overview-Detailed-New.png",
+    "path": "Documentation/2-Overview-Detailed-New.png",
+    "sha": "a5b1d06de423e9418ad8529188948c88fe2f5bdf",
+    "size": 29773,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Documentation/2-Overview-Detailed-New.png?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/Documentation/2-Overview-Detailed-New.png",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/a5b1d06de423e9418ad8529188948c88fe2f5bdf",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Documentation/2-Overview-Detailed-New.png",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Documentation/2-Overview-Detailed-New.png?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/a5b1d06de423e9418ad8529188948c88fe2f5bdf",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/Documentation/2-Overview-Detailed-New.png"
+    }
+  },
+  {
+    "name": "2-Overview-Detailed.jpg",
+    "path": "Documentation/2-Overview-Detailed.jpg",
+    "sha": "2521fdaf916bdf461bf49046180bc9b9ecccdec0",
+    "size": 271622,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Documentation/2-Overview-Detailed.jpg?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/Documentation/2-Overview-Detailed.jpg",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/2521fdaf916bdf461bf49046180bc9b9ecccdec0",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Documentation/2-Overview-Detailed.jpg",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Documentation/2-Overview-Detailed.jpg?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/2521fdaf916bdf461bf49046180bc9b9ecccdec0",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/Documentation/2-Overview-Detailed.jpg"
+    }
+  },
+  {
+    "name": "3-Initializing Algorithms.jpg",
+    "path": "Documentation/3-Initializing Algorithms.jpg",
+    "sha": "e107cc3cd4ebfd646c18e5e4f382dd0c2ab024a7",
+    "size": 251523,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Documentation/3-Initializing%20Algorithms.jpg?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/Documentation/3-Initializing%20Algorithms.jpg",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/e107cc3cd4ebfd646c18e5e4f382dd0c2ab024a7",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Documentation/3-Initializing%20Algorithms.jpg",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Documentation/3-Initializing%20Algorithms.jpg?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/e107cc3cd4ebfd646c18e5e4f382dd0c2ab024a7",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/Documentation/3-Initializing%20Algorithms.jpg"
+    }
+  },
+  {
+    "name": "4-Security Object.jpg",
+    "path": "Documentation/4-Security Object.jpg",
+    "sha": "bcae0e879e112fe06bfafca734665fb26282fc63",
+    "size": 323391,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Documentation/4-Security%20Object.jpg?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/Documentation/4-Security%20Object.jpg",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/bcae0e879e112fe06bfafca734665fb26282fc63",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Documentation/4-Security%20Object.jpg",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Documentation/4-Security%20Object.jpg?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/bcae0e879e112fe06bfafca734665fb26282fc63",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/Documentation/4-Security%20Object.jpg"
+    }
+  },
+  {
+    "name": "5-QCAlgorithm-IAlgorithm.jpg",
+    "path": "Documentation/5-QCAlgorithm-IAlgorithm.jpg",
+    "sha": "1d32bdb6b1f43434a355bcb71123e31bd65da8ea",
+    "size": 671515,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Documentation/5-QCAlgorithm-IAlgorithm.jpg?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/Documentation/5-QCAlgorithm-IAlgorithm.jpg",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/1d32bdb6b1f43434a355bcb71123e31bd65da8ea",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Documentation/5-QCAlgorithm-IAlgorithm.jpg",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Documentation/5-QCAlgorithm-IAlgorithm.jpg?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/1d32bdb6b1f43434a355bcb71123e31bd65da8ea",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/Documentation/5-QCAlgorithm-IAlgorithm.jpg"
+    }
+  },
+  {
+    "name": "6-QCAlgorithm-Portfolio.jpg",
+    "path": "Documentation/6-QCAlgorithm-Portfolio.jpg",
+    "sha": "e8e68d72070ed9b41ce3eb111cbead001f902c59",
+    "size": 398227,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Documentation/6-QCAlgorithm-Portfolio.jpg?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/Documentation/6-QCAlgorithm-Portfolio.jpg",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/e8e68d72070ed9b41ce3eb111cbead001f902c59",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Documentation/6-QCAlgorithm-Portfolio.jpg",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Documentation/6-QCAlgorithm-Portfolio.jpg?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/e8e68d72070ed9b41ce3eb111cbead001f902c59",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/Documentation/6-QCAlgorithm-Portfolio.jpg"
+    }
+  },
+  {
+    "name": "logo.white.small.png",
+    "path": "Documentation/logo.white.small.png",
+    "sha": "ca27cd598331a4be2269f62078ca2dfc2d4483ad",
+    "size": 8951,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Documentation/logo.white.small.png?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/Documentation/logo.white.small.png",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/ca27cd598331a4be2269f62078ca2dfc2d4483ad",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Documentation/logo.white.small.png",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Documentation/logo.white.small.png?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/ca27cd598331a4be2269f62078ca2dfc2d4483ad",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/Documentation/logo.white.small.png"
+    }
+  },
+  {
+    "name": "readme.md",
+    "path": "Documentation/readme.md",
+    "sha": "4c75c18a4123e314d5e19db1ffc51eb58384a9f6",
+    "size": 1525,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Documentation/readme.md?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/Documentation/readme.md",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/4c75c18a4123e314d5e19db1ffc51eb58384a9f6",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Documentation/readme.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Documentation/readme.md?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/4c75c18a4123e314d5e19db1ffc51eb58384a9f6",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/Documentation/readme.md"
+    }
+  }
+]

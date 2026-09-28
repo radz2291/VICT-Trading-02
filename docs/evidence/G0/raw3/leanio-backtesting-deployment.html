@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" id="QuantConnect" class="quantconnect" prefix="og: http://ogp.me/ns#" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:image" content="https://cdn.quantconnect.com/docs/i/lean-cli/backtesting/deployment.png"> 
+<meta name="twitter:card" content="summary_large_image"> 
+<meta name="twitter:site" content="@QuantConnect"> 
+<meta name="twitter:creator" content="@QuantConnect"> 
+<meta name="description" content="Learn how to deploy a backtest in Lean CLI."> 
+<meta name="keywords" content="lean cli, backtesting, deployment, local backtest, cloud backtest, download dataset"> 
+<meta property="og:description" content="Learn how to deploy a backtest in Lean CLI."> 
+<meta property="og:title" content="Deployment - Documentation QuantConnect.com"> 
+<meta property="og:type" content="website"> 
+<meta property="og:site_name" content="Deployment - QuantConnect.com"> 
+<meta property="og:url" content="https://www.lean.io/docs/lean/v2/lean-cli/backtesting/deployment"> 
+<meta name="Content-Type" content="text/html; charset=utf-8"> 
+    <link rel="shortcut icon" type="image/x-icon" href="/lean-header-icon.ico">
+       <link type="text/css" rel="stylesheet"  href="https://fonts.googleapis.com/css?family=Droid+Sans" >
+   <link type="text/css" rel="stylesheet"  href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" >
+   <link type="text/css" rel="stylesheet"  href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" >
+   <link type="text/css" rel="stylesheet"  href="/css/build/docs/documentation.v2.css?tm=1789575271" >
+ <script >
+        window.iUserID = null;
+        window.sChannel = 'docs-support-352978c504e45aeafd4e1bb645d3099d';
+         </script>
+ <script >
+if( qc == undefined ){
+    var qc = {};
+}
+
+qc.ini = {
+    stripePublicKey : 'pk_live_wtJs3phYuWFDHJPX86acHNbT',
+    pusherPublicKey : 'dc76725ff9039da2029f'
+};
+ </script>
+<title>Deployment - QuantConnect.com</title>    </head>
+<body>
+    <div class="height-fixer" style="min-height: 100%; position: relative;">
+        <header class="standard desktop-header">
+            <nav class="navbar navbar-inverse navbar-fixed-top" style="top: unset">
+                <div class="container-fluid" style="padding: 0 15px;background-color: #202024;border-bottom: solid 1px #26262b;">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#qc-navbar-collapse" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
+                            <span class="icon-bar"></span> <span class="icon-bar"></span>
+                        </button>
+                        <a id="header-qc-lean-logo" href="https://www.lean.io" class="logo FL clearfix navbar-brand" title="QuantConnect Lean - Democratizing Finance, Empowering Individuals"> </a>
+                    </div>
+                    <div class="" id="qc-navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            
+                            <li class="top nav-documentation">
+                                <a href="https://www.lean.io/terminal-link/" class="top" title="">
+                                    <span class="hidden-sm hidden-md qc-hidden-lg">Terminal Link</span>
+                                    <span class="visible-sm visible-md">Terminal Link</span>
+                                    <span class="qc-visible-lg-block">Terminal Link</span> </a>
+                            </li>
+                            <li class="top nav-cli">
+                                <a class="top" href="/cli/" title="Harness the power of LEAN locally or in the cloud">
+                                    CLI </a>
+                            </li>
+                            <li class="top nav-documentation">
+                                <a href="https://www.lean.io/blog/" class="top" title="">
+                                    <span class="hidden-sm hidden-md qc-hidden-lg">Blog</span>
+                                    <span class="visible-sm visible-md"></span>
+                                    <span class="qc-visible-lg-block">Blog</span> </a>
+                            </li>
+                            <li class="top nav-documentation">
+                                <a href="https://www.quantconnect.com/forum/discussions/1/lean" class="top" title="">
+                                    <span class="hidden-sm hidden-md qc-hidden-lg">Community</span>
+                                    <span class="visible-sm visible-md"></span>
+                                    <span class="qc-visible-lg-block">Community</span> </a>
+                            </li>
+                            <li class="top nav-documentation">
+                                <a href="https://www.quantconnect.com/docs/v2/writing-algorithms/api-reference" class="top" title="Learn more about how to make the most of QuantConnect in the documentation">
+                                    <span class="hidden-sm hidden-md qc-hidden-lg">Documentation</span>
+                                    <span class="visible-sm visible-md">Docs</span>
+                                    <span class="qc-visible-lg-block">Docs</span> </a>
+                            </li>
+                            <li class="top nav-documentation">
+                                <a href="/cli/#plugins" class="top" style="color: #F5AE29" title="Learn more about how to make the most of QuantConnect in the documentation">
+                                    <span class="hidden-sm hidden-md qc-hidden-lg">Plugins</span>
+                                    <span class="visible-sm visible-md">Plugins</span> <span class="qc-visible-lg-block">Plugins</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <script>
+    function toggleNavigation() {
+        let mobileNavDropdown = $("#qc-navbar-collapse-mobile");
+        mobileNavDropdown.toggleClass('hidden');
+        if (mobileNavDropdown.hasClass('hidden')) {
+            window.removeEventListener('touchmove', blockNavigationTouchPropagtation, {
+                passive: false
+            });
+        } else {
+            window.addEventListener('touchmove', blockNavigationTouchPropagtation, {
+                passive: false
+            });
+        }
+    }
+
+    function blockNavigationTouchPropagtation(event) {
+        if (!$("#qc-navbar-collapse-mobile").hasClass('hidden')) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+        }
+    }
+
+    // $(document).ready(function () {
+    //     const ps = new PerfectScrollbar('#qc-navbar-collapse-mobile', {
+    //         wheelSpeed: 2,
+    //         suppressScrollX: true,
+    //         wheelPropagation: false,
+    //     });
+    // });
+</script>
+<header class="thin mobile-header">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid" style="padding: 0 15px;">
+            <div class="navbar-header navbar-header-mobile">
+                <button type="button" class="navbar-toggle collapsed" onclick="toggleNavigation()">
+                    <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
+                    <span class="icon-bar"></span> <span class="icon-bar"></span>
+                </button>
+                                    <p id="mobile-navigation-controller" class="mobile-collapsed">
+                        <i class="fa fa-chevron-right"></i>
+                    </p>
+                                <a id="header-qc-lean-logo" href="https://www.lean.io" class="logo FL clearfix navbar-brand" title="QuantConnect - Democratizing Finance, Empowering Individuals"> </a>
+                <span class="service-name hidden-xs hidden-sm hidden-md">Web</span>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="navbar-collapse hidden" id="qc-navbar-collapse-mobile" style="overflow: hidden;">
+    <ul class="nav navbar-nav">
+
+        <li class="top nav-forum">
+            <a class="top" href="/terminal-link/" title="Radically opensource algorithmic trading paired with the Bloomberg Terminal.">
+                Terminal Link </a>
+        </li>
+        <li class="top dataButton hidden-sm hidden-md">
+            <a class="top" href="/cli/" title="Harness the power of LEAN locally or in the cloud">
+                CLI </a>
+        </li>
+        <li class="top nav-forum">
+            <a class="top" href="/blog/" title="Get the latest LEAN updates and tips.">
+                Blog
+            </a>
+        </li>
+        <li class="top nav-forum">
+            <a class="top" href="/research/" title="Seek help and read through the latest quant research by the QuantConnect team and community.">
+                Research
+            </a>
+        </li>
+        <li class="divider-vertical top hidden-sm hidden-md dataButton"></li>
+        <li class="top nav-documentation">
+            <a href="https://www.quantconnect.com/docs/v2/writing-algorithms/api-reference" class="top" title="Learn more about how to make the most of QuantConnect in the documentation">
+                <span class="hidden-sm hidden-md qc-hidden-lg">Documentation</span>
+                <span class="visible-sm visible-md">Docs</span> <span class="qc-visible-lg-block">Docs</span> </a>
+        </li>
+        <li class="top dataButton hidden-sm hidden-md">
+            <a class="top" href="https://www.lean.io/cli#plugins" style="color: #F5AE29" title="Harness The Power of LEAN Locally or in The cloud">
+                Plugins </a>
+        </li>
+    </ul>
+</div>        <div class="container main-container"><div class="documentation">
+    <div id="main-documentation-container" class="row">
+        <!-- Side Bar Menu -->
+        <div id="doc-menu">
+            <div id="scroll-menu-container" class="ps">
+                <div class="menu-wrapper">
+                    <h4 class="text-uppercase nav-heading">Browse</h4>
+                    <a class="category-item active" href="/docs/v2/lean-cli"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="16" viewBox="0 0 19 16"><defs><style>.a,.b,.c,.e{fill:none;}.a,.b,.c{stroke:#f5ae29;stroke-width:2px;}.b,.c{stroke-linecap:round;}.b{stroke-linejoin:round;}.d{stroke:none;}</style></defs><g transform="translate(-22 -993)"><g class="a" transform="translate(22 993)"><rect class="d" width="19" height="16" rx="3"/><rect class="e" x="1" y="1" width="17" height="14" rx="2"/></g><path class="b" d="M9,11l2.5-2.5L9,6" transform="translate(18 992)"/><line class="c" x2="3" transform="translate(32 1003)"/></g></svg><h3 class="category-name active">LEAN CLI<span></span></h3></a><a class="category-item" href="/docs/v2/lean-cli/key-concepts/getting-started"><h3 class="sub-menu-item  has-subs" onclick="$('.menu-nav.list-of-key-concepts').toggle();$(this).toggleClass('open')" data-category-key="key-concepts"><div class="nav-drop-envelop" onclick="$('.menu-nav.list-of-key-concepts').toggle();$(this).parent().toggleClass('open'); event.preventDefault(); event.stopPropagation();" ><span class="nav-drop-toggle">&#9654;</span></div>Key Concepts</h3></a><ul class="menu-nav list-of-key-concepts" style="display: none"><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/key-concepts/getting-started"><span class='menu-spacer' ></span>Getting Started<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/key-concepts/troubleshooting"><span class='menu-spacer' ></span>Troubleshooting<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li></ul><a class="category-item" href="/docs/v2/lean-cli/installation/installing-pip"><h3 class="sub-menu-item  has-subs" onclick="$('.menu-nav.list-of-installation').toggle();$(this).toggleClass('open')" data-category-key="installation"><div class="nav-drop-envelop" onclick="$('.menu-nav.list-of-installation').toggle();$(this).parent().toggleClass('open'); event.preventDefault(); event.stopPropagation();" ><span class="nav-drop-toggle">&#9654;</span></div>Installation</h3></a><ul class="menu-nav list-of-installation" style="display: none"><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/installation/installing-pip"><span class='menu-spacer' ></span>Installing pip<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/installation/installing-lean-cli"><span class='menu-spacer' ></span>Installing Lean CLI<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li></ul><a class="category-item" href="/docs/v2/lean-cli/initialization/authentication"><h3 class="sub-menu-item  has-subs" onclick="$('.menu-nav.list-of-initialization').toggle();$(this).toggleClass('open')" data-category-key="initialization"><div class="nav-drop-envelop" onclick="$('.menu-nav.list-of-initialization').toggle();$(this).parent().toggleClass('open'); event.preventDefault(); event.stopPropagation();" ><span class="nav-drop-toggle">&#9654;</span></div>Initialization</h3></a><ul class="menu-nav list-of-initialization" style="display: none"><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/initialization/authentication"><span class='menu-spacer' ></span>Authentication<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/initialization/organization-workspaces"><span class='menu-spacer' ></span>Organization Workspaces<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/initialization/configuration"><span class='menu-spacer' ></span>Configuration<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li></ul><a class="category-item" href="/docs/v2/lean-cli/datasets/format-and-storage"><h3 class="sub-menu-item  has-subs" onclick="$('.menu-nav.list-of-datasets').toggle();$(this).toggleClass('open')" data-category-key="datasets"><div class="nav-drop-envelop" onclick="$('.menu-nav.list-of-datasets').toggle();$(this).parent().toggleClass('open'); event.preventDefault(); event.stopPropagation();" ><span class="nav-drop-toggle">&#9654;</span></div>Datasets</h3></a><ul class="menu-nav list-of-datasets" style="display: none"><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/datasets/format-and-storage"><span class='menu-spacer' ></span>Format and Storage<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/datasets/generating-data"><span class='menu-spacer' ></span>Generating Data<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/datasets/custom-data"><span class='menu-spacer' ></span>Custom Data<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li><span class='menu-link level-0 has-subs  '><span class='nav-drop-toggle nav-drop-toggle-submenu clickable' onclick="$('.menu-nav.list-of-datasets-quantconnect').toggle();$(this).parent().toggleClass('open');">&#9654;</span><a class="link-part" style="display: inline" href="/docs/v2/lean-cli/datasets/quantconnect" >QuantConnect<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></span><ul class="menu-nav list-of-datasets-quantconnect" style="display: none"><li class=""><a class="menu-link level-1" href="/docs/v2/lean-cli/datasets/quantconnect/key-concepts"><span class='menu-spacer' ></span>Key Concepts<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-1" href="/docs/v2/lean-cli/datasets/quantconnect/us-equity"><span class='menu-spacer' ></span>US Equity<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-1" href="/docs/v2/lean-cli/datasets/quantconnect/equity-options"><span class='menu-spacer' ></span>Equity Options<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-1" href="/docs/v2/lean-cli/datasets/quantconnect/forex"><span class='menu-spacer' ></span>Forex<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-1" href="/docs/v2/lean-cli/datasets/quantconnect/futures"><span class='menu-spacer' ></span>Futures<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-1" href="/docs/v2/lean-cli/datasets/quantconnect/future-options"><span class='menu-spacer' ></span>Future Options<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-1" href="/docs/v2/lean-cli/datasets/quantconnect/index-options"><span class='menu-spacer' ></span>Index Options<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-1" href="/docs/v2/lean-cli/datasets/quantconnect/cfd"><span class='menu-spacer' ></span>CFD<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-1" href="/docs/v2/lean-cli/datasets/quantconnect/us-equity-coarse-fundamental"><span class='menu-spacer' ></span>US Equity Coarse Fundamental<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-1" href="/docs/v2/lean-cli/datasets/quantconnect/us-etf-constituents"><span class='menu-spacer' ></span>US ETF Constituents<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li></ul></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/datasets/brokerages"><span class='menu-spacer' ></span>Brokerages<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/datasets/alpha-vantage"><span class='menu-spacer' ></span>Alpha Vantage<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/datasets/databento"><span class='menu-spacer' ></span>Databento<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/datasets/factset"><span class='menu-spacer' ></span>FactSet<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/datasets/iqfeed"><span class='menu-spacer' ></span>IQFeed<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/datasets/polygon"><span class='menu-spacer' ></span>Polygon<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/datasets/terminal-link"><span class='menu-spacer' ></span>Terminal Link<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/datasets/theta-data"><span class='menu-spacer' ></span>Theta Data<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li></ul><a class="category-item" href="/docs/v2/lean-cli/projects/project-management"><h3 class="sub-menu-item  has-subs" onclick="$('.menu-nav.list-of-projects').toggle();$(this).toggleClass('open')" data-category-key="projects"><div class="nav-drop-envelop" onclick="$('.menu-nav.list-of-projects').toggle();$(this).parent().toggleClass('open'); event.preventDefault(); event.stopPropagation();" ><span class="nav-drop-toggle">&#9654;</span></div>Projects</h3></a><ul class="menu-nav list-of-projects" style="display: none"><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/projects/project-management"><span class='menu-spacer' ></span>Project Management<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/projects/cloud-synchronization"><span class='menu-spacer' ></span>Cloud Synchronization<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/projects/structure"><span class='menu-spacer' ></span>Structure<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/projects/workflows"><span class='menu-spacer' ></span>Workflows<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/projects/encryption"><span class='menu-spacer' ></span>Encryption<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/projects/configuration"><span class='menu-spacer' ></span>Configuration<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/projects/autocomplete"><span class='menu-spacer' ></span>Autocomplete<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li><span class="menu-link level-0 has-subs " onclick="$('.menu-nav.list-of-projects-libraries').toggle();$(this).toggleClass('open')" ><span class='nav-drop-toggle clickable'>&#9654;</span>Libraries</span><ul class="menu-nav list-of-projects-libraries" style="display: none"><li class=""><a class="menu-link level-1" href="/docs/v2/lean-cli/projects/libraries/third-party-libraries"><span class='menu-spacer' ></span>Third-Party Libraries<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-1" href="/docs/v2/lean-cli/projects/libraries/project-libraries"><span class='menu-spacer' ></span>Project Libraries<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li></ul></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/projects/custom-docker-images"><span class='menu-spacer' ></span>Custom Docker Images<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/projects/version-control"><span class='menu-spacer' ></span>Version Control<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li></ul><a class="category-item" href="/docs/v2/lean-cli/research"><h3 class="sub-menu-item  " onclick="$('.menu-nav.list-of-research').toggle();$(this).toggleClass('open')" data-category-key="research">Research</h3></a><a class="category-item" href="/docs/v2/lean-cli/backtesting/deployment"><h3 class="sub-menu-item  has-subs" onclick="$('.menu-nav.list-of-backtesting').toggle();$(this).toggleClass('open')" data-category-key="backtesting"><div class="nav-drop-envelop" onclick="$('.menu-nav.list-of-backtesting').toggle();$(this).parent().toggleClass('open'); event.preventDefault(); event.stopPropagation();" ><span class="nav-drop-toggle">&#9654;</span></div>Backtesting</h3></a><ul class="menu-nav list-of-backtesting" style=""><li class="open"><a class="menu-link level-0" href="/docs/v2/lean-cli/backtesting/deployment"><span class='menu-spacer' ></span>Deployment<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/backtesting/debugging"><span class='menu-spacer' ></span>Debugging<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li></ul><a class="category-item" href="/docs/v2/lean-cli/live-trading/brokerages"><h3 class="sub-menu-item  has-subs" onclick="$('.menu-nav.list-of-live-trading').toggle();$(this).toggleClass('open')" data-category-key="live-trading"><div class="nav-drop-envelop" onclick="$('.menu-nav.list-of-live-trading').toggle();$(this).parent().toggleClass('open'); event.preventDefault(); event.stopPropagation();" ><span class="nav-drop-toggle">&#9654;</span></div>Live Trading</h3></a><ul class="menu-nav list-of-live-trading" style="display: none"><li><span class='menu-link level-0 has-subs  '><span class='nav-drop-toggle nav-drop-toggle-submenu clickable' onclick="$('.menu-nav.list-of-live-trading-brokerages').toggle();$(this).parent().toggleClass('open');">&#9654;</span><a class="link-part" style="display: inline" href="/docs/v2/lean-cli/live-trading/brokerages" >Brokerages<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></span><ul class="menu-nav list-of-live-trading-brokerages" style="display: none"><li class=""><a class="menu-link level-1" href="/docs/v2/lean-cli/live-trading/brokerages/quantconnect-paper-trading"><span class='menu-spacer' ></span>QuantConnect Paper Trading<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-1" href="/docs/v2/lean-cli/live-trading/brokerages/interactive-brokers"><span class='menu-spacer' ></span>Interactive Brokers<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-1" href="/docs/v2/lean-cli/live-trading/brokerages/tradestation"><span class='menu-spacer' ></span>TradeStation<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-1" href="/docs/v2/lean-cli/live-trading/brokerages/tastytrade"><span class='menu-spacer' ></span>Tastytrade<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-1" href="/docs/v2/lean-cli/live-trading/brokerages/public"><span class='menu-spacer' ></span>Public<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-1" href="/docs/v2/lean-cli/live-trading/brokerages/alpaca"><span class='menu-spacer' ></span>Alpaca<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-1" href="/docs/v2/lean-cli/live-trading/brokerages/charles-schwab"><span class='menu-spacer' ></span>Charles Schwab<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-1" href="/docs/v2/lean-cli/live-trading/brokerages/clear-street"><span class='menu-spacer' ></span>Clear Street<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-1" href="/docs/v2/lean-cli/live-trading/brokerages/webull"><span class='menu-spacer' ></span>Webull<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-1" href="/docs/v2/lean-cli/live-trading/brokerages/binance"><span class='menu-spacer' ></span>Binance<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-1" href="/docs/v2/lean-cli/live-trading/brokerages/bybit"><span class='menu-spacer' ></span>Bybit<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-1" href="/docs/v2/lean-cli/live-trading/brokerages/tradier"><span class='menu-spacer' ></span>Tradier<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-1" href="/docs/v2/lean-cli/live-trading/brokerages/kraken"><span class='menu-spacer' ></span>Kraken<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-1" href="/docs/v2/lean-cli/live-trading/brokerages/coinbase"><span class='menu-spacer' ></span>Coinbase<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-1" href="/docs/v2/lean-cli/live-trading/brokerages/bitfinex"><span class='menu-spacer' ></span>Bitfinex<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-1" href="/docs/v2/lean-cli/live-trading/brokerages/dydx"><span class='menu-spacer' ></span>dYdX<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-1" href="/docs/v2/lean-cli/live-trading/brokerages/bloomberg-emsx"><span class='menu-spacer' ></span>Bloomberg EMSX<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-1" href="/docs/v2/lean-cli/live-trading/brokerages/ssc-eze"><span class='menu-spacer' ></span>SSC Eze<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-1" href="/docs/v2/lean-cli/live-trading/brokerages/trading-technologies"><span class='menu-spacer' ></span>Trading Technologies<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-1" href="/docs/v2/lean-cli/live-trading/brokerages/samco"><span class='menu-spacer' ></span>Samco<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-1" href="/docs/v2/lean-cli/live-trading/brokerages/zerodha"><span class='menu-spacer' ></span>Zerodha<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-1" href="/docs/v2/lean-cli/live-trading/brokerages/cfd-and-forex-brokerages"><span class='menu-spacer' ></span>CFD and FOREX Brokerages<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li></ul></li><li><span class='menu-link level-0 has-subs  '><span class='nav-drop-toggle nav-drop-toggle-submenu clickable' onclick="$('.menu-nav.list-of-live-trading-data-providers').toggle();$(this).parent().toggleClass('open');">&#9654;</span><a class="link-part" style="display: inline" href="/docs/v2/lean-cli/live-trading/data-providers" >Data Providers<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></span><ul class="menu-nav list-of-live-trading-data-providers" style="display: none"><li class=""><a class="menu-link level-1" href="/docs/v2/lean-cli/live-trading/data-providers/databento"><span class='menu-spacer' ></span>Databento<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-1" href="/docs/v2/lean-cli/live-trading/data-providers/iqfeed"><span class='menu-spacer' ></span>IQFeed<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-1" href="/docs/v2/lean-cli/live-trading/data-providers/polygon"><span class='menu-spacer' ></span>Polygon<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-1" href="/docs/v2/lean-cli/live-trading/data-providers/theta-data"><span class='menu-spacer' ></span>Theta Data<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li></ul></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/live-trading/algorithm-control"><span class='menu-spacer' ></span>Algorithm Control<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li></ul><a class="category-item" href="/docs/v2/lean-cli/reports"><h3 class="sub-menu-item  " onclick="$('.menu-nav.list-of-reports').toggle();$(this).toggleClass('open')" data-category-key="reports">Reports</h3></a><a class="category-item" href="/docs/v2/lean-cli/optimization/parameters"><h3 class="sub-menu-item  has-subs" onclick="$('.menu-nav.list-of-optimization').toggle();$(this).toggleClass('open')" data-category-key="optimization"><div class="nav-drop-envelop" onclick="$('.menu-nav.list-of-optimization').toggle();$(this).parent().toggleClass('open'); event.preventDefault(); event.stopPropagation();" ><span class="nav-drop-toggle">&#9654;</span></div>Optimization</h3></a><ul class="menu-nav list-of-optimization" style="display: none"><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/optimization/parameters"><span class='menu-spacer' ></span>Parameters<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/optimization/deployment"><span class='menu-spacer' ></span>Deployment<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li></ul><a class="category-item" href="/docs/v2/lean-cli/object-store"><h3 class="sub-menu-item  " onclick="$('.menu-nav.list-of-object-store').toggle();$(this).toggleClass('open')" data-category-key="object-store">Object Store</h3></a><a class="category-item" href="/docs/v2/lean-cli/api-reference"><h3 class="sub-menu-item  has-subs" onclick="$('.menu-nav.list-of-api-reference').toggle();$(this).toggleClass('open')" data-category-key="api-reference"><div class="nav-drop-envelop" onclick="$('.menu-nav.list-of-api-reference').toggle();$(this).parent().toggleClass('open'); event.preventDefault(); event.stopPropagation();" ><span class="nav-drop-toggle">&#9654;</span></div>API Reference</h3></a><ul class="menu-nav list-of-api-reference" style="display: none"><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-backtest"><span class='menu-spacer' ></span>lean backtest<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-build"><span class='menu-spacer' ></span>lean build<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-cloud-backtest"><span class='menu-spacer' ></span>lean cloud backtest<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-cloud-live"><span class='menu-spacer' ></span>lean cloud live<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-cloud-live-broadcast"><span class='menu-spacer' ></span>lean cloud live broadcast<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-cloud-live-command"><span class='menu-spacer' ></span>lean cloud live command<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-cloud-live-deploy"><span class='menu-spacer' ></span>lean cloud live deploy<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-cloud-live-liquidate"><span class='menu-spacer' ></span>lean cloud live liquidate<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-cloud-live-stop"><span class='menu-spacer' ></span>lean cloud live stop<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-cloud-object-store-delete"><span class='menu-spacer' ></span>lean cloud object-store delete<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-cloud-object-store-get"><span class='menu-spacer' ></span>lean cloud object-store get<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-cloud-object-store-list"><span class='menu-spacer' ></span>lean cloud object-store list<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-cloud-object-store-ls"><span class='menu-spacer' ></span>lean cloud object-store ls<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-cloud-object-store-properties"><span class='menu-spacer' ></span>lean cloud object-store properties<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-cloud-object-store-set"><span class='menu-spacer' ></span>lean cloud object-store set<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-cloud-optimize"><span class='menu-spacer' ></span>lean cloud optimize<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-cloud-pull"><span class='menu-spacer' ></span>lean cloud pull<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-cloud-push"><span class='menu-spacer' ></span>lean cloud push<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-cloud-status"><span class='menu-spacer' ></span>lean cloud status<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-config-get"><span class='menu-spacer' ></span>lean config get<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-config-list"><span class='menu-spacer' ></span>lean config list<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-config-set"><span class='menu-spacer' ></span>lean config set<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-config-unset"><span class='menu-spacer' ></span>lean config unset<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-create-project"><span class='menu-spacer' ></span>lean create-project<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-data-download"><span class='menu-spacer' ></span>lean data download<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-data-generate"><span class='menu-spacer' ></span>lean data generate<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-decrypt"><span class='menu-spacer' ></span>lean decrypt<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-delete-project"><span class='menu-spacer' ></span>lean delete-project<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-encrypt"><span class='menu-spacer' ></span>lean encrypt<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-init"><span class='menu-spacer' ></span>lean init<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-library-add"><span class='menu-spacer' ></span>lean library add<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-library-remove"><span class='menu-spacer' ></span>lean library remove<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-live"><span class='menu-spacer' ></span>lean live<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-live-add-security"><span class='menu-spacer' ></span>lean live add-security<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-live-cancel-order"><span class='menu-spacer' ></span>lean live cancel-order<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-live-command"><span class='menu-spacer' ></span>lean live command<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-live-deploy"><span class='menu-spacer' ></span>lean live deploy<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-live-liquidate"><span class='menu-spacer' ></span>lean live liquidate<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-live-stop"><span class='menu-spacer' ></span>lean live stop<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-live-submit-order"><span class='menu-spacer' ></span>lean live submit-order<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-live-update-order"><span class='menu-spacer' ></span>lean live update-order<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-login"><span class='menu-spacer' ></span>lean login<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-logout"><span class='menu-spacer' ></span>lean logout<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-logs"><span class='menu-spacer' ></span>lean logs<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-object-store-delete"><span class='menu-spacer' ></span>lean object-store delete<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-object-store-get"><span class='menu-spacer' ></span>lean object-store get<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-object-store-list"><span class='menu-spacer' ></span>lean object-store list<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-object-store-ls"><span class='menu-spacer' ></span>lean object-store ls<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-object-store-properties"><span class='menu-spacer' ></span>lean object-store properties<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-object-store-set"><span class='menu-spacer' ></span>lean object-store set<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-optimize"><span class='menu-spacer' ></span>lean optimize<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-private-cloud-add-compute"><span class='menu-spacer' ></span>lean private-cloud add-compute<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-private-cloud-start"><span class='menu-spacer' ></span>lean private-cloud start<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-private-cloud-stop"><span class='menu-spacer' ></span>lean private-cloud stop<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-project-create"><span class='menu-spacer' ></span>lean project-create<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-project-delete"><span class='menu-spacer' ></span>lean project-delete<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-report"><span class='menu-spacer' ></span>lean report<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-research"><span class='menu-spacer' ></span>lean research<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li><li class=""><a class="menu-link level-0" href="/docs/v2/lean-cli/api-reference/lean-whoami"><span class='menu-spacer' ></span>lean whoami<span class='carat'><svg xmlns='https://www.w3.org/2000/svg' width='6.914' height='11.828' viewBox='0 0 6.914 11.828'><path d='M9,15l4.5-4.5L9,6' transform='translate(-7.586 -4.586)' fill='none' stroke='#0072bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'></path></svg></span></a></li></ul><a class="category-item " href="/docs/v2/lean-engine"><svg xmlns="http://www.w3.org/2000/svg" width="26.619" height="11.989" viewBox="0 0 26.619 11.989"><path d="M88.221,212.408c1.647.528,2.138.579,2.87,0,1.419-1.115,2.112-.056,3.694.861l-.779.911A4.491,4.491,0,0,0,88.863,220l-1.581.554-.739.259,1.307.863,2.05-.718.681-.238-.333-.638a3.244,3.244,0,0,1,3.806-4.607l.387.116.262-.307,1.513-1.77.485-.568-.646-.374L92.9,210.744c-.642-.372-.686-.373-1.371.039-.724.436-1.163,1.177-2.813.482-4.093-1.779-5.871-1.194-8.806-.229-.577.19-1.2.4-1.991.622a9.392,9.392,0,0,1-4.39.018A4.587,4.587,0,0,1,70.7,210.1a4.647,4.647,0,0,0,3.774,2.992,10.18,10.18,0,0,0,3.793-.238c.7-.2,1.394-.43,2.031-.639,2.653-.872,4.26-1.4,7.924.191m-2.551,4.384c-3.385-1.188-4.143.344-6.951.7-1.285.164-3.635-.046-4.213-.93,1.4,3.283,6.509,1.368,8.214,1.112a5.239,5.239,0,0,1,2.7.352A4.086,4.086,0,0,1,85.67,216.792Zm-5.092-1.615c2.474-.813,4.039-1.328,7.212-.1A4.092,4.092,0,0,1,89,214.226c-4.093-1.778-5.871-1.194-8.806-.229-.577.19-1.2.4-1.991.622a9.392,9.392,0,0,1-4.39.018,4.609,4.609,0,0,1-2.823-1.456,4.758,4.758,0,0,0,3.856,2.883,10.123,10.123,0,0,0,3.7-.248C79.249,215.614,79.94,215.386,80.577,215.177Z" transform="translate(-70.466 -209.965)" fill="#f5ae29" stroke="#f5ae29" stroke-width="0.5" fill-rule="evenodd"/></svg><h3 class="category-name ">LEAN Engine<span></span></h3></a>                </div>
+                <a class="changelog-link" style="color:#8F9CA3;padding-left:15px;text-decoration:none;line-height:4rem;" href="/docs/v2/meta/change-log">Change Log</a>
+            </div>
+        </div>
+        <!-- Primary Documentation -->
+        <div class="doc-content-container">
+            
+<div class="ask-ai" style="display: none;">
+    <div class="ask-ai-input">
+        <input type="text" placeholder="Search documentation or get help from our trained AI agent">
+        <button class="ask-btn" data-bind="disable: MiaSearchBox.miaResponseOngoing()" onclick="MiaSearchBox.SendSearchBoxMessage()">Ask AI</button>
+    </div>
+
+    <div class="ai-response" style="display: none;">
+
+        <div class="ai-nav-wrapper">
+            <ul class="ai-nav">
+                <li class="ai-nav-link" id="ask-ai-nav" style="display: none;" onclick="MiaSearchBox.selectActiveNav('ask-ai-nav')">Ask AI</li>
+                <li class="ai-nav-link active" id="articles-nav" onclick="MiaSearchBox.selectActiveNav('articles-nav')">Articles</li>
+            </ul>
+            <span class="close-panel" onclick="MiaSearchBox.HideAISearchResponseContainer()"></span>
+        </div>
+
+        <div class="ask-ai-tab" data-bind="visible: MiaSearchBox.isAiNavSelected() === true">
+            <div class="ai-messages" data-bind="foreach:{ data: MiaSearchBox.messages, as: 'message' }">
+                <div class="ai-message" data-bind="css: { 'bot-message': message.isBot }">
+                    <img class="ai-profile-img" data-bind="attr: { src: message.profile }" alt="profile image" height="40" width="40">
+                    <div class="message-content" data-bind="html: message.content">
+                    </div>
+                </div>
+            </div>
+            <div class="message-input">
+                <input type="text">
+                <button class="send-btn" data-bind="disable: MiaSearchBox.miaResponseOngoing()" onclick="MiaSearchBox.SendChatBoxMessage()">SEND</button>
+            </div>
+        </div>
+
+        <div class="articles-tab" data-bind="visible: MiaSearchBox.isAiNavSelected() === false">
+            <div class="nav-instructions">
+                <p>↑ ↓ to select, press <strong>enter</strong> to go, use <strong>esc</strong> to exit.</p>
+            </div>
+            <div class="article-list" data-bind="foreach: MiaSearchBox.searchHits()">
+                <div class="article" data-bind="css: { 'active': isActive }">
+                    <a class="article-link" target="_blank" data-bind="html: title, attr: { href: url }"></a>
+                    <p class="article-preview" data-bind="html: content"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><div id="doc-content"  itemscope itemtype="http://schema.org/APIReference" >
+        <div class="content-header-row">
+
+        <div id="redirect-banner"></div>
+        <div id="competition-block" style="display: none">
+            <div class="col-xs-10 col-xs-offset-1 block-container">
+                <div class="competition-block-text visible-xs">
+                    <img class="trophy" src="#" alt="trophy">
+                    <h4>Hello</h4>
+                    <a class="link-button" href="#">
+                        <button type="button" class="btn btn-transparent btn-lg"></button>
+                    </a>
+                </div>
+                <div class="competition-block-text hidden-xs">
+                    <table>
+                        <tr>
+                            <td>
+                                <img class="trophy" src="#" alt="trophy">
+                            </td>
+                            <td>
+                                <h4></h4>
+                            </td>
+                            <td>
+                                <a class="link-button" href="#">
+                                    <button type="button" class="btn btn-transparent btn-lg"></button>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="pre-title-area">
+            <p class="pre-title-area-breadcrumb breadcrumb-documentation">
+                <span>Backtesting</span><span class="separator"></span><span>Deployment</span>            </p>
+                    </div>
+    </div>
+    <div class="content-body-row" id="">
+
+        <div id="side-table-contents" class="table-contents">
+                        <button id="contents-toggle" onclick="toggleContentsDisplay()">Contents</button>
+                        <div id="side-table-contents-container" class="ps">
+                        <p class="contents-heading">In This Page</p><div class="contents-item-container ">
+                                    <a class="contents-item" href="#01-Introduction">Introduction</a>
+                                </div><div class="contents-item-container not-template">
+                                    <a class="contents-item" href="#02-Run-Local-Backtests">Run Local Backtests</a>
+                                </div><div class="contents-item-container not-template">
+                                    <a class="contents-item" href="#03-Run-Cloud-Backtests">Run Cloud Backtests</a>
+                                </div><div class="contents-item-container not-template">
+                                    <a class="contents-item" href="#04-Download-Datasets-During-Backtests">Download Datasets During Backtests</a>
+                                </div><div class="contents-item-container not-template">
+                                    <a class="contents-item" href="#05-Get-Backtest-Id">Get Backtest Id</a>
+                                </div></div></div>
+        <div class="article-body"  itemprop="articleBody" >
+
+            <style>
+                #book-banner {
+                    border-radius: 3px;
+                    display: flex;
+                    align-items: center;
+                    padding: 20px;
+                    margin-top: 20px;
+                    background-color: #F3F5F8;
+                    background-image: url(https://cdn.quantconnect.com/i/tu/book-banner-stripes.svg);
+                    background-size: 80px;
+                    background-repeat: no-repeat;
+                    background-position: top 20px right 0;
+                }
+
+                @media (min-width: 1550px) {
+                    #book-banner {
+                        background-size: 124px;
+                    }
+                }
+
+                #book-banner .book-img {
+                    width: 74px;
+                    margin-right: 30px;
+                    margin-left: unset;
+                }
+
+                #book-banner .book-banner-content span {
+                    display: block;
+                }
+
+                #book-banner .book-banner-content .book-label {
+                    color: #798492;
+                    font-size: 15px;
+                    margin-bottom: 10px;
+                }
+
+                #book-banner .book-banner-content .book-title {
+                    color: #313131;
+                    font-size: 20px;
+                    font-weight: 500;
+                }
+
+                #book-banner .book-banner-content a {
+                    display: block;
+                    font-size: 15px;
+                    margin-top: 10px;
+                    font-weight: 300;
+                }
+
+                #book-banner .book-banner-content a:hover {
+                    color: #06c;
+                }
+
+                #book-banner .book-banner-content a span {
+                    display: inline-block;
+                    margin-left: 3px;
+                }
+            </style>
+            
+            <h1 class="automated">Backtesting</h1><div id="01-Deployment" class="floating-anchor-h2"></div><h2 class="page-sub-heading">
+                            <span>Deployment</span>
+                            <a href="https://github.com/QuantConnect/Documentation/tree/master/05 Lean CLI/08 Backtesting/01 Deployment" class="anchor-link" target="_blank"><i class="fa fa-github" aria-hidden="true" style="font-size:0.7em;"></i></a>
+                            <a href="#01-Deployment" class="anchor-link"><i class="fa fa-anchor" aria-hidden="true"></i></a>
+                        </h2><div class="sub-headings-area"><div class="row section ">
+                            <div class="col-xs-12 section-container">
+                                <div class="section-copy">
+                                    <div id="01-Introduction" class="floating-anchor-h3"></div>
+                                    <h3 class="" style="">
+                                        Introduction
+                                        <a href="https://github.com/QuantConnect/Documentation/tree/master/05%20Lean%20CLI/08%20Backtesting/01%20Deployment/01%20Introduction.html" class="anchor-link source-file-link" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+                                        <a href="#01-Introduction" class="anchor-link"><i class="fa fa-anchor" aria-hidden="true"></i></a>
+                                        <a class="anchor-link clickable edit-sub-heading not-editor" onclick="Documentation.EditSubHeading(this)"><i class="fa fa-pencil"></i></a>
+                            <a class="anchor-link clickable save-sub-heading" onclick="Documentation.SaveSubHeading(this)" style="display: none"><i class="fa fa-floppy-o"></i></a>
+                                    </h3>
+                                    <div class="sub-heading-content"><p>    Backtesting is a way to test your algorithm on historical data.
+    The CLI makes backtesting easier by providing simple commands to backtest your algorithms locally or in QuantConnect Cloud.
+</p> <p>To use the CLI, you must be a member in an <a href='https://www.quantconnect.com/docs/v2/cloud-platform/organizations/tier-features'>organization</a> on a paid tier.</p>
+</div>  <textarea class="sub-heading-content-editor" contenteditable="true" data-sub-heading-path="/05%20Lean%20CLI/08%20Backtesting/01%20Deployment/01%20Introduction.html"></textarea>
+                                </div>
+                            </div>
+                        </div><div class="row section not-template">
+                            <div class="col-xs-12 section-container">
+                                <div class="section-copy">
+                                    <div id="02-Run-Local-Backtests" class="floating-anchor-h3"></div>
+                                    <h3 class="" style="">
+                                        Run Local Backtests
+                                        <a href="https://github.com/QuantConnect/Documentation/tree/master/05%20Lean%20CLI/08%20Backtesting/01%20Deployment/02%20Run%20Local%20Backtests.php" class="anchor-link source-file-link" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+                                        <a href="#02-Run-Local-Backtests" class="anchor-link"><i class="fa fa-anchor" aria-hidden="true"></i></a>
+                                        <a class="anchor-link clickable edit-sub-heading not-editor" onclick="Documentation.EditSubHeading(this)"><i class="fa fa-pencil"></i></a>
+                            <a class="anchor-link clickable save-sub-heading" onclick="Documentation.SaveSubHeading(this)" style="display: none"><i class="fa fa-floppy-o"></i></a>
+                                    </h3>
+                                    <div class="sub-heading-content"><p>    By default, local backtests run in the LEAN engine in the <a href="https://hub.docker.com/r/quantconnect/lean" target="_blank">quantconnect/lean</a> Docker image.
+    This Docker image contains all the <a href="/docs/v2/lean-cli/projects/libraries/third-party-libraries">libraries available on QuantConnect</a>, meaning your algorithm also has access to those libraries.
+    If the specified project is a C# project, it is first compiled using the same Docker image.
+    See <a href="/docs/v2/lean-cli/projects/libraries/third-party-libraries">Third-Party Libraries</a> to learn how to use custom libraries and see <a href="/docs/v2/lean-cli/projects/custom-docker-images">Custom Docker Images</a> to learn how to build and use custom Docker images.
+</p> <p>    Because algorithms run in a Docker container, <code>localhost</code> does not point to your computer's <code>localhost</code>.
+    Substitute <code>localhost</code> with <code>host.docker.internal</code> if your algorithm needs to connect to other services running on your computer.
+    In other words, instead of connecting to <code>http://localhost:&lt;port&gt;/</code>, connect to <code>http://host.docker.internal:&lt;port&gt;/</code>.
+</p> <p>You can run local backtests with the regular version of the LEAN engine or a custom version.</p>
+
+<h4>Regular LEAN Engine</h4> <p>    Follow these steps to run a local backtest with the latest version of LEAN engine:
+</p>
+
+<ol><li>Get the data your project needs from one of the following sources:
+<ul><li><a href="/docs/v2/lean-cli/datasets/quantconnect">Purchase the data</a> from QuantConnect.</li><li>Get the data from another data provider, such as <a href="/docs/v2/lean-cli/datasets/polygon">Polygon</a>, <a href="/docs/v2/lean-cli/datasets/databento">Databento</a>, or <a href="/docs/v2/lean-cli/datasets/theta-data">Theta Data</a>.</li><li><a href="/docs/v2/lean-cli/datasets/custom-data">Import your own data</a>.</li>
+</ul>
+    </li><li>Open a terminal in the <a href="/docs/v2/lean-cli/initialization/organization-workspaces">organization workspace</a> that contains the project you want to backtest.</li><li>Run <code>lean backtest "&lt;projectName&gt;"</code> to run a local backtest for the project in <span class="public-directory-name">. / &lt;projectName&gt;</span>.
+<div class="cli section-example-container"> <pre>$ lean backtest "My Project"
+20210322 17:27:46.658 TRACE:: Engine.Main(): LEAN ALGORITHMIC TRADING ENGINE v2.5.0.0 Mode: DEBUG (64bit)
+20210322 17:27:46.664 TRACE:: Engine.Main(): Started 5:27 PM
+Successfully ran 'My Project' in the 'backtesting' environment and stored the output in 'My Project/backtests/2021-03-22_18-51-28'</pre>
+</div>
+    </li><li>
+        View the result in the <span class="public-file-name">&lt;projectName&gt; / backtests / &lt;timestamp&gt;</span> directory.
+        Results are stored in JSON files and can be analyzed in a <a href="/docs/v2/lean-cli/research#02-Start-the-Research-Environment">local research environment</a>.
+        You can save results to a different directory by providing the <code>--output &lt;path&gt;</code> option in step 3.
+<div class="cli section-example-container"> <pre>$ lean backtest "My Project" --output "My Project/custom-output"
+20210322 17:27:46.658 TRACE:: Engine.Main(): LEAN ALGORITHMIC TRADING ENGINE v2.5.0.0 Mode: DEBUG (64bit)
+20210322 17:27:46.664 TRACE:: Engine.Main(): Started 5:27 PM
+Successfully ran 'My Project' in the 'backtesting' environment and stored the output in 'My Project/custom-output'</pre>
+</div>
+    </li>
+</ol>
+
+<h4>Custom LEAN Engine</h4> <p>    Follow these steps to run a local backtest with a custom version of the LEAN engine:
+</p>
+
+<ol><li>Get the data your project needs from one of the following sources:
+<ul><li><a href="/docs/v2/lean-cli/datasets/quantconnect">Purchase the data</a> from QuantConnect.</li><li>Get the data from another data provider, such as <a href="/docs/v2/lean-cli/datasets/polygon">Polygon</a>, <a href="/docs/v2/lean-cli/datasets/databento">Databento</a>, or <a href="/docs/v2/lean-cli/datasets/theta-data">Theta Data</a>.</li><li><a href="/docs/v2/lean-cli/datasets/custom-data">Import your own data</a>.</li>
+</ul>
+    </li><li>View the available versions on the <a href="https://hub.docker.com/r/quantconnect/lean/tags" target="_blank">quantconnect/lean Docker Hub tags page</a>.</li><li>Copy the name of the tag that you want to run.</li><li>Run <code>lean backtest "&lt;projectName&gt; --image quantconnect/lean:&lt;tagFromStep2&gt;"</code> to run a local backtest for the project in <span class="public-directory-name">. / &lt;projectName&gt;</span>.
+<div class="cli section-example-container"> <pre>$ lean backtest "My Project" --image quantconnect/lean:11154
+Pulling quantconnect/lean:11154...
+20210322 17:27:46.658 TRACE:: Engine.Main(): LEAN ALGORITHMIC TRADING ENGINE v2.5.0.0 Mode: DEBUG (64bit)
+20210322 17:27:46.664 TRACE:: Engine.Main(): Started 5:27 PM</pre>
+</div>
+    </li>
+</ol>
+
+<h4>Parameters</h4> <p>To run a local backtest with specific <a href='https://www.quantconnect.com/docs/v2/writing-algorithms/optimization/parameters'>parameters</a>, use the <code>--parameter name value</code> option.</p>
+<div class="cli section-example-container"> <pre>$ lean backtest "My Project" --parameter ema_fast 100 --parameter ema_slow 50
+20210322 17:27:46.658 TRACE:: Engine.Main(): LEAN ALGORITHMIC TRADING ENGINE v2.5.0.0 Mode: DEBUG (64bit)
+20210322 17:27:46.664 TRACE:: Engine.Main(): Started 5:27 PM
+Successfully ran 'My Project' in the 'backtesting' environment and stored the output in 'My Project/backtests/2021-03-22_18-51-28'</pre>
+</div>
+
+<h4>Data Providers</h4> <p>    When you run a local backtest, the default data provider is your local machine. 
+    To use data from <a href='/docs/v2/lean-cli/backtesting/deployment#04-Download-Datasets-During-Backtests'>QuantConnect Cloud</a>, a brokerage, or a third-party data provider, include the <code>--data-provider-historical</code> option.
+    To view what brokerages and third-party data providers are available, see <a href='/docs/v2/lean-cli/api-reference/lean-backtest'>the reference page for this command</a>.
+</p>
+
+<h4>Required Datasets</h4> <p>To run backtests with Equity or Equity Option data, download the <a href='https://www.quantconnect.com/datasets/quantconnect-us-equity-security-master/cli'>download the US Equity Security Master</a>.</p> <p>To run backtests with Futures data, <a href='https://www.quantconnect.com/datasets/quantconnect-us-futures-security-master/cli'>download the US Futures Security Master</a>.</p>
+
+<h4>US Equity Options Algorithms</h4> <p>Follow these steps to run a local US Equity Options backtest:</p>
+<ol><li>
+        Download the <a href="https://www.quantconnect.com/datasets/quantconnect-us-equity-security-master/cli">US Equity Security Master</a> dataset.
+        <div class="cli section-example-container"> <pre>$ lean data download --dataset "US Equity Security Master"</pre>
+</div>
+    </li><li>
+        Download minute resolution trade data from the <a href="https://www.quantconnect.com/datasets/algoseek-us-equities/cli">US Equity</a> dataset.
+        <div class="cli section-example-container"> <pre>$ lean data download --dataset "US Equities" --data-type "Trade" --ticker "SPY" --resolution "Minute" --start "20210101" --end "20210720"</pre>
+</div>
+    </li><li>
+        Download minute resolution trade and quote data from the <a href="https://www.quantconnect.com/datasets/algoseek-us-equity-options/cli">US Equity Options</a> dataset.
+        <div class="cli section-example-container"> <pre>$ lean data download --dataset "US Equity Options" --data-type "Trade" --option-style "American" --ticker "SPY" --resolution "Minute" --start "20210101" --end "20210720"
+
+$ lean data download --dataset "US Equity Options" --data-type "Quote" --option-style "American" --ticker "SPY" --resolution "Minute" --start "20210101" --end "20210720"</pre>
+</div>
+    </li><li>
+        <a href="/docs/v2/lean-cli/projects/project-management#02-Create-Projects">Create a new local project</a>.
+        <div class="cli section-example-container"> <pre>$ lean project-create --language python "&lt;projectName&gt;"</pre>
+</div>
+
+          You can use the following example algorithm:
+<div class="section-example-container testable"> <pre class="python"># Buy a SPY call Option contract and hold it until expiry.
+class UsEquityOptionsDemoAlgorithm(QCAlgorithm):
+    def initialize(self) -&gt; None:
+        self.set_start_date(2024, 1, 1)
+        self.set_end_date(2024, 3, 1)
+        self.set_cash(100000)
+        equity = self.add_equity("SPY", Resolution.MINUTE)
+        option = self.add_option(equity.symbol, Resolution.MINUTE)
+        option.set_filter(-5, 5, 30, 60)
+        self._contract = None
+
+    def on_data(self, slice: Slice) -&gt; None:
+        if self._contract is not None:
+            return
+        for chain in slice.option_chains.values():
+            calls = [c for c in chain if c.right == OptionRight.CALL]
+            if not calls:
+                continue
+            contract = sorted(calls, key=lambda c: abs(c.strike - c.underlying_last_price))[0]
+            self.market_order(contract.symbol, 1)
+            self._contract = contract.symbol</pre> <pre class="csharp">// Buy a SPY call Option contract and hold it until expiry.
+public class UsEquityOptionsDemoAlgorithm : QCAlgorithm
+{
+    private Symbol _contract;
+
+    public override void Initialize()
+    {
+        SetStartDate(2024, 1, 1);
+        SetEndDate(2024, 3, 1);
+        SetCash(100000);
+        var equity = AddEquity("SPY", Resolution.Minute);
+        var option = AddOption(equity.Symbol, Resolution.Minute);
+        option.SetFilter(-5, 5, 30, 60);
+    }
+
+    public override void OnData(Slice slice)
+    {
+        if (_contract != null) return;
+        foreach (var chain in slice.OptionChains.Values)
+        {
+            var contract = chain
+                .Where(c =&gt; c.Right == OptionRight.Call)
+                .OrderBy(c =&gt; Math.Abs(c.Strike - c.UnderlyingLastPrice))
+                .FirstOrDefault();
+            if (contract == null) continue;
+            MarketOrder(contract.Symbol, 1);
+            _contract = contract.Symbol;
+        }
+    }
+}</pre>
+</div>
+    
+</ol> <p>If you have the latest version of LEAN and you get different <a href="https://www.quantconnect.com/docs/v2/cloud-platform/backtesting/results#09-Key-Statistics">overall statistics</a> when you run the algorithm on your local machine versus in the cloud, delete your <a href="/docs/v2/lean-cli/datasets/format-and-storage#02-Default-Location">local data files</a> and <a href="/docs/v2/lean-cli/datasets/quantconnect">re-download them</a>. Some of your local files may be outdated and the preceding download commands didn't update them.</p> <p>The following table shows a breakdown of the data costs for this example algorithm:</p>
+<table class="qc-table table"><thead><tr><th>Dataset</th><th>Initial Cost (USD)</th><th>Update Cost (USD)</th></tr></thead><tbody><tr><td>US Equity Security Master</td><td>$1,200/year</td><td>$1,200/year</td></tr><tr><td>US Equity</td><td>$7.05</td><td>$0.05/day</td></tr><tr><td>US Equity Options</td><td>$41.70</td><td>$0.30/day</td></tr>
+    </tbody>
+</table>
+
+
+
+</div>  <textarea class="sub-heading-content-editor" contenteditable="true" data-sub-heading-path="/05%20Lean%20CLI/08%20Backtesting/01%20Deployment/02%20Run%20Local%20Backtests.php"></textarea>
+                                </div>
+                            </div>
+                        </div><div class="row section not-template">
+                            <div class="col-xs-12 section-container">
+                                <div class="section-copy">
+                                    <div id="03-Run-Cloud-Backtests" class="floating-anchor-h3"></div>
+                                    <h3 class="" style="">
+                                        Run Cloud Backtests
+                                        <a href="https://github.com/QuantConnect/Documentation/tree/master/05%20Lean%20CLI/08%20Backtesting/01%20Deployment/03%20Run%20Cloud%20Backtests.html" class="anchor-link source-file-link" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+                                        <a href="#03-Run-Cloud-Backtests" class="anchor-link"><i class="fa fa-anchor" aria-hidden="true"></i></a>
+                                        <a class="anchor-link clickable edit-sub-heading not-editor" onclick="Documentation.EditSubHeading(this)"><i class="fa fa-pencil"></i></a>
+                            <a class="anchor-link clickable save-sub-heading" onclick="Documentation.SaveSubHeading(this)" style="display: none"><i class="fa fa-floppy-o"></i></a>
+                                    </h3>
+                                    <div class="sub-heading-content"><p>    When you run a backtest in QuantConnect Cloud, it uses the data from the <a href='/datasets/'>Dataset Market</a>.
+    Follow these steps to run a cloud backtest:
+</p>
+
+<ol><li><a href="/docs/v2/lean-cli/initialization/authentication#02-Log-In">Log in</a> to the CLI if you haven't done so already.</li><li>Open a terminal in the <a href="/docs/v2/lean-cli/initialization/organization-workspaces">organization workspace</a> that contains the project you want to backtest.</li><li>Run <code>lean cloud backtest "&lt;projectName&gt;" --push --open</code> to push <span class='public-directory-name'>. / &lt;projectName&gt;</span> to the cloud, run a cloud backtest for the project, and open the results in the browser.
+<div class="cli section-example-container"> <pre>$ lean cloud backtest "My Project" --push --open
+[1/1] Pushing 'My Project'
+Successfully updated cloud file 'My Project/main.py'
+Started compiling project 'My Project'
+Successfully compiled project 'My Project'
+Started backtest named 'Muscular Black Chinchilla' for project 'My Project'</pre>
+</div>
+    </li><li>Inspect the result in the browser, which opens automatically after the backtest finishes.</li>
+</ol> <p>To run a cloud backtest with specific <a href='https://www.quantconnect.com/docs/v2/writing-algorithms/optimization/parameters'>parameters</a>, use the <code>--parameter name value</code> option.</p>
+<div class="cli section-example-container"> <pre>$ lean cloud backtest "My Project" --push --open --parameter ema_fast 100 --parameter ema_slow 50
+[1/1] Pushing 'My Project'
+Successfully updated cloud file 'My Project/main.py'
+Started compiling project 'My Project'
+Successfully compiled project 'My Project'
+Started backtest named 'Muscular Black Chinchilla' for project 'My Project'</pre>
+</div></div>  <textarea class="sub-heading-content-editor" contenteditable="true" data-sub-heading-path="/05%20Lean%20CLI/08%20Backtesting/01%20Deployment/03%20Run%20Cloud%20Backtests.html"></textarea>
+                                </div>
+                            </div>
+                        </div><div class="row section not-template">
+                            <div class="col-xs-12 section-container">
+                                <div class="section-copy">
+                                    <div id="04-Download-Datasets-During-Backtests" class="floating-anchor-h3"></div>
+                                    <h3 class="" style="">
+                                        Download Datasets During Backtests
+                                        <a href="https://github.com/QuantConnect/Documentation/tree/master/05%20Lean%20CLI/08%20Backtesting/01%20Deployment/04%20Download%20Datasets%20During%20Backtests.html" class="anchor-link source-file-link" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+                                        <a href="#04-Download-Datasets-During-Backtests" class="anchor-link"><i class="fa fa-anchor" aria-hidden="true"></i></a>
+                                        <a class="anchor-link clickable edit-sub-heading not-editor" onclick="Documentation.EditSubHeading(this)"><i class="fa fa-pencil"></i></a>
+                            <a class="anchor-link clickable save-sub-heading" onclick="Documentation.SaveSubHeading(this)" style="display: none"><i class="fa fa-floppy-o"></i></a>
+                                    </h3>
+                                    <div class="sub-heading-content"><p>    An alternative to manually downloading all the data you need before you run a backtest is to use the <code>ApiDataProvider</code> in LEAN.
+    This data provider automatically downloads the required data files when your backtest requests them.
+    After it downloads a data file, it stores it in your local <span class='public-directory-name'>data</span> directory so that in future runs, it won't have to download it again.
+    If the files contain data for multiple days (for example, daily Equity price data files), the <code>ApiDataProvider</code> re-downloads the files if your local files are at least 7 days old.
+    To adjust this setting, update the <code>downloader-data-update-period</code> value in your <a href="/docs/v2/lean-cli/initialization/configuration#03-Lean-Configuration">Lean configuration</a> file.
+</p> <p>    Follow these steps to use the <code>ApiDataProvider</code> to automatically download the data you need:
+</p>
+
+<ol><li><a href="/docs/v2/lean-cli/initialization/authentication#02-Log-In">Log in</a> to the CLI if you haven't done so already.</li><li>Open a terminal in the <a href="/docs/v2/lean-cli/initialization/organization-workspaces">organization workspace</a> that contains the project you want to backtest.</li><li>Run <code>lean backtest "&lt;projectName&gt;" --download-data</code> to run a local backtest for the project in <span class='public-directory-name'>. / &lt;projectName&gt;</span> and update the Lean configuration to use the <code>ApiDataProvider</code>.
+<div class="cli section-example-container"> <pre>$ lean backtest "My Project" --download-data
+20210322 17:27:46.658 TRACE:: Engine.Main(): LEAN ALGORITHMIC TRADING ENGINE v2.5.0.0 Mode: DEBUG (64bit)
+20210322 17:27:46.664 TRACE:: Engine.Main(): Started 5:27 PM
+Successfully ran 'My Project' in the 'backtesting' environment and stored the output in 'My Project/backtests/2021-03-22_18-51-28'</pre>
+</div>
+        Setting the <code>--download-data</code> flag updates your Lean configuration.
+        This means that you only need to use the flag once, all future backtests will automatically use the <code>ApiDataProvider</code>.
+    </li>
+</ol> <p>    Follow these steps to revert the Lean configuration changes so that it uses only local data again:
+</p>
+
+<ol><li>Open a terminal in your <a href="/docs/v2/lean-cli/initialization/organization-workspaces">organization workspace</a>.</li><li>Run <code>lean backtest "&lt;projectName&gt;" --data-provider-historical Local</code> to run a local backtest for the project in <span class='public-directory-name'>. / &lt;projectName&gt;</span> and update the Lean configuration to only use local data.
+<div class="cli section-example-container"> <pre>$ lean backtest "My Project" --data-provider-historical Local
+20210322 17:27:46.658 TRACE:: Engine.Main(): LEAN ALGORITHMIC TRADING ENGINE v2.5.0.0 Mode: DEBUG (64bit)
+20210322 17:27:46.664 TRACE:: Engine.Main(): Started 5:27 PM
+Successfully ran 'My Project' in the 'backtesting' environment and stored the output in 'My Project/backtests/2021-03-22_18-51-28'</pre>
+</div>
+        The <code>--data-provider-historical</code> option updates your <a href='/docs/v2/lean-cli/initialization/configuration#03-Lean-Configuration'>Lean configuration</a>.
+        This means that you only need to use the option once, all future backtests will automatically use the newly configured data provider.
+    </li>
+</ol> <p>    By default the <code>ApiDataProvider</code> does not have a spending limit and will keep downloading files until your QuantConnect organization runs out of QuantConnect Credit (QCC).
+    You can use the <code>--data-purchase-limit &lt;value&gt;</code> option to set the QCC spending limit for the backtest.
+</p> <p>    All the options documented above are also available on the <code>lean research</code> command.
+</p>
+</div>  <textarea class="sub-heading-content-editor" contenteditable="true" data-sub-heading-path="/05%20Lean%20CLI/08%20Backtesting/01%20Deployment/04%20Download%20Datasets%20During%20Backtests.html"></textarea>
+                                </div>
+                            </div>
+                        </div><div class="row section not-template">
+                            <div class="col-xs-12 section-container">
+                                <div class="section-copy">
+                                    <div id="05-Get-Backtest-Id" class="floating-anchor-h3"></div>
+                                    <h3 class="" style="">
+                                        Get Backtest Id
+                                        <a href="https://github.com/QuantConnect/Documentation/tree/master/05%20Lean%20CLI/08%20Backtesting/01%20Deployment/05%20Get%20Backtest%20Id.html" class="anchor-link source-file-link" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+                                        <a href="#05-Get-Backtest-Id" class="anchor-link"><i class="fa fa-anchor" aria-hidden="true"></i></a>
+                                        <a class="anchor-link clickable edit-sub-heading not-editor" onclick="Documentation.EditSubHeading(this)"><i class="fa fa-pencil"></i></a>
+                            <a class="anchor-link clickable save-sub-heading" onclick="Documentation.SaveSubHeading(this)" style="display: none"><i class="fa fa-floppy-o"></i></a>
+                                    </h3>
+                                    <div class="sub-heading-content"><p>To get the Id of a local backtest, check the name of the <span class='public-file-name'><a href='/docs/v2/lean-cli/initialization/organization-workspaces'>&lt;organizationWorkspace&gt;</a> / &lt;projectName&gt; / &lt;deploymentTimestamp&gt; / &lt;backtestId&gt;.json</span> file. An example local backtest Id is 1710698424. 
+
+<p>To get the Id of a cloud backtest, check the output of the <code>lean cloud backtest</code> command in the terminal. If you no longer have the output, <a href='https://www.quantconnect.com/docs/v2/cloud-platform/backtesting/getting-started#07-Get-Backtest-Id'>get the backtest Id from the Algorithm Lab</a>. An example cloud backtest Id is 8b16cec0c44f75188d82f9eadb310e17.</p>
+</div>  <textarea class="sub-heading-content-editor" contenteditable="true" data-sub-heading-path="/05%20Lean%20CLI/08%20Backtesting/01%20Deployment/05%20Get%20Backtest%20Id.html"></textarea>
+                                </div>
+                            </div>
+                        </div><meta itemprop="image" content="https://cdn.quantconnect.com/web/i/docs/documentation_meta_image_rev0.png" /><div  itemprop="author"   itemscope itemtype="http://schema.org/Organization"  ><meta itemprop="name" content="QuantConnect Corporation" /></div></div>            <div class="bottom-content" style="border-top: solid 1px #e4e6ea;margin-top: 50px;">
+                <p class="bottom-content-text">
+                    You can also see our
+                    <a target="_BLANK" href="https://www.youtube.com/user/QuantConnect/videos" rel="nofollow">Videos</a>.
+                    You can also get in touch with us via <a target="_BLANK" href="https://www.quantconnect.com/discord">Discord</a>.
+                </p>
+                <div class="helpful-box">
+                    <p>Did you find this page helpful?</p>
+                    <button style="margin-left: 1em" onclick="Documentation.HelpFullFeedBack('lean-cli', '/lean-cli/backtesting/deployment', true );">Yes </button><button style="margin-left: 1em" onclick="Documentation.HelpFullFeedBack('lean-cli', '/lean-cli/backtesting/deployment', false );">No </button>                </div>
+            </div>
+            <div class="contribute-documentation" style=" margin-bottom: 60px; padding-top: 40px;">
+                <span style="margin-right: 10px;">Contribute to the documentation: </span>
+                <a href="https://github.com/QuantConnect/Documentation/tree/master/05 Lean CLI/08 Backtesting/01 Deployment"><img src="https://cdn.quantconnect.com/i/tu/docs_github_icon_rev0.png" width="30px" vertical-align=middle;></a>
+            </div>
+            <script type="application/json" id='user-preferred-language'>
+                python
+            </script>
+        </div>
+    </div>        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<script src="/js/build/profileBox/ProfileBox.js"></script>
+<script>
+    function ChangePhoto() {
+                    $.growl.error({
+                title: '',
+                message: "Please login to update profile image"
+            });
+            }
+</script><script>
+    (function(e, t, o, n, p, r, i) {
+        e.visitorGlobalObjectAlias = n;
+        e[e.visitorGlobalObjectAlias] = e[e.visitorGlobalObjectAlias] || function() {
+            (e[e.visitorGlobalObjectAlias].q = e[e.visitorGlobalObjectAlias].q || []).push(arguments)
+        };
+        e[e.visitorGlobalObjectAlias].l = (new Date).getTime();
+        r = t.createElement("script");
+        r.src = o;
+        r.async = true;
+        i = t.getElementsByTagName("script")[0];
+        i.parentNode.insertBefore(r, i)
+    })(window, document, "https://diffuser-cdn.app-us1.com/diffuser/diffuser.js", "vgo");
+    vgo('setAccount', '800313741');
+    vgo('setTrackByDefault', true);
+    vgo('process');
+</script>
+<script>
+    window.login = false;
+
+    window.intercomSettings = {"app_id":"9a05faa80b1df601897603e983f2c594391bd0a0"};
+    window.requiresEmailInteraction = true;
+
+    var lazyLoaded = false;
+
+    var lazyLoaderIntercom = function() {
+        if (lazyLoaded) return;
+        lazyLoaded = true;
+
+        window.removeEventListener('scroll', lazyLoaderIntercom);
+        window.removeEventListener('mouseover', lazyLoaderIntercom);
+
+        (function() {
+            var w = window;
+            var ic = w.Intercom;
+            if (typeof ic === "function") {
+                ic('reattach_activator');
+                ic('update', intercomSettings);
+            } else {
+                var d = document;
+                var i = function() {
+                    i.c(arguments)
+                };
+                i.q = [];
+                i.c = function(args) {
+                    i.q.push(args)
+                };
+                w.Intercom = i;
+
+                function l() {
+                    var s = d.createElement('script');
+                    s.type = 'text/javascript';
+                    s.async = true;
+                    s.src = 'https://static.intercomcdn.com/intercom.v1.js';
+                    var x = d.getElementsByTagName('script')[0];
+                    x.parentNode.insertBefore(s, x);
+
+
+                    var s = d.createElement('script');
+                    s.type = 'text/javascript';
+                    s.async = true;
+                    s.src = 'https://static.intercomcdn.com/intercom.v1.js';
+                    var x = d.getElementsByTagName('script')[0];
+                    x.parentNode.insertBefore(s, x);
+                }
+
+                if (w.attachEvent) {
+                    w.attachEvent('onload', l);
+                } else {
+                    w.addEventListener('load', l, false);
+                }
+            }
+        })();
+
+        // Performance tracking not initialized 
+    };
+
+    window.addEventListener('mouseover', lazyLoaderIntercom);
+    window.addEventListener('scroll', lazyLoaderIntercom);
+</script>
+
+<!-- End footer scripts --> <script  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML&delayStartupUntil=configured"  ></script>
+ <script  src="/js/build/docs/v2/Documentation.js?tm=1789575248"  ></script>
+ <script  src="https://cdn.jsdelivr.net/npm/algoliasearch@3/dist/algoliasearchLite.min.js"  ></script>
+ <script  src="https://www.quantconnect.com/js/Searchbox.js"  ></script>
+</body>
+
+</html>

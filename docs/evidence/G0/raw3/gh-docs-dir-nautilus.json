@@ -1,0 +1,130 @@
+[
+  {
+    "name": "api_reference",
+    "path": "docs/api_reference",
+    "sha": "8d72b84fd4c571a8a4f387a43d9e827969b8c3a9",
+    "size": 0,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/docs/api_reference?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/tree/develop/docs/api_reference",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/8d72b84fd4c571a8a4f387a43d9e827969b8c3a9",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/docs/api_reference?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/8d72b84fd4c571a8a4f387a43d9e827969b8c3a9",
+      "html": "https://github.com/nautechsystems/nautilus_trader/tree/develop/docs/api_reference"
+    }
+  },
+  {
+    "name": "concepts",
+    "path": "docs/concepts",
+    "sha": "69b8ee45427ac15ab7a0feb1a9f1f087d6dd082d",
+    "size": 0,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/docs/concepts?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/tree/develop/docs/concepts",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/69b8ee45427ac15ab7a0feb1a9f1f087d6dd082d",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/docs/concepts?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/69b8ee45427ac15ab7a0feb1a9f1f087d6dd082d",
+      "html": "https://github.com/nautechsystems/nautilus_trader/tree/develop/docs/concepts"
+    }
+  },
+  {
+    "name": "dev_templates",
+    "path": "docs/dev_templates",
+    "sha": "05ec6a9780704fd2cbf116ce7f292e00d00dca08",
+    "size": 0,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/docs/dev_templates?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/tree/develop/docs/dev_templates",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/05ec6a9780704fd2cbf116ce7f292e00d00dca08",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/docs/dev_templates?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/05ec6a9780704fd2cbf116ce7f292e00d00dca08",
+      "html": "https://github.com/nautechsystems/nautilus_trader/tree/develop/docs/dev_templates"
+    }
+  },
+  {
+    "name": "developer_guide",
+    "path": "docs/developer_guide",
+    "sha": "529de5071fa38eca7745488e3e3c53ac1a7eed09",
+    "size": 0,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/docs/developer_guide?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/tree/develop/docs/developer_guide",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/529de5071fa38eca7745488e3e3c53ac1a7eed09",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/docs/developer_guide?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/529de5071fa38eca7745488e3e3c53ac1a7eed09",
+      "html": "https://github.com/nautechsystems/nautilus_trader/tree/develop/docs/developer_guide"
+    }
+  },
+  {
+    "name": "getting_started",
+    "path": "docs/getting_started",
+    "sha": "d7e0976d87c58de1875b30758cca0efe4ea6679d",
+    "size": 0,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/docs/getting_started?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/tree/develop/docs/getting_started",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/d7e0976d87c58de1875b30758cca0efe4ea6679d",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/docs/getting_started?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/d7e0976d87c58de1875b30758cca0efe4ea6679d",
+      "html": "https://github.com/nautechsystems/nautilus_trader/tree/develop/docs/getting_started"
+    }
+  },
+  {
+    "name": "how_to",
+    "path": "docs/how_to",
+    "sha": "0ab4d52788826c6cea1c54192f2661c9d5de4ec1",
+    "size": 0,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/docs/how_to?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/tree/develop/docs/how_to",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/0ab4d52788826c6cea1c54192f2661c9d5de4ec1",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/docs/how_to?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/0ab4d52788826c6cea1c54192f2661c9d5de4ec1",
+      "html": "https://github.com/nautechsystems/nautilus_trader/tree/develop/docs/how_to"
+    }
+  },
+  {
+    "name": "integrations",
+    "path": "docs/integrations",
+    "sha": "8bf5e35b701a35f4f05e62aa9ea74b485583ea4c",
+    "size": 0,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/docs/integrations?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/tree/develop/docs/integrations",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/8bf5e35b701a35f4f05e62aa9ea74b485583ea4c",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/docs/integrations?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/8bf5e35b701a35f4f05e62aa9ea74b485583ea4c",
+      "html": "https://github.com/nautechsystems/nautilus_trader/tree/develop/docs/integrations"
+    }
+  },
+  {
+    "name": "tutorials",
+    "path": "docs/tutorials",
+    "sha": "2b45df11aad58fc62b78a55f60f625452d44f0ec",
+    "size": 0,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/docs/tutorials?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/tree/develop/docs/tutorials",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/2b45df11aad58fc62b78a55f60f625452d44f0ec",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/docs/tutorials?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/2b45df11aad58fc62b78a55f60f625452d44f0ec",
+      "html": "https://github.com/nautechsystems/nautilus_trader/tree/develop/docs/tutorials"
+    }
+  }
+]

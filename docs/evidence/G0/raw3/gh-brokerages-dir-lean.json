@@ -1,0 +1,434 @@
+[
+  {
+    "name": "Authentication",
+    "path": "Brokerages/Authentication",
+    "sha": "720004fa0f260f219849351e8d1c614ccbc7001a",
+    "size": 0,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/Authentication?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/tree/master/Brokerages/Authentication",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/trees/720004fa0f260f219849351e8d1c614ccbc7001a",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/Authentication?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/trees/720004fa0f260f219849351e8d1c614ccbc7001a",
+      "html": "https://github.com/QuantConnect/Lean/tree/master/Brokerages/Authentication"
+    }
+  },
+  {
+    "name": "Backtesting",
+    "path": "Brokerages/Backtesting",
+    "sha": "7b7c99f1a950f01fa50f5462bea1ced75464e8df",
+    "size": 0,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/Backtesting?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/tree/master/Brokerages/Backtesting",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/trees/7b7c99f1a950f01fa50f5462bea1ced75464e8df",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/Backtesting?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/trees/7b7c99f1a950f01fa50f5462bea1ced75464e8df",
+      "html": "https://github.com/QuantConnect/Lean/tree/master/Brokerages/Backtesting"
+    }
+  },
+  {
+    "name": "BaseWebsocketsBrokerage.cs",
+    "path": "Brokerages/BaseWebsocketsBrokerage.cs",
+    "sha": "12f932e7ed23d4209351cc8395bb055e9faabf86",
+    "size": 7685,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/BaseWebsocketsBrokerage.cs?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/BaseWebsocketsBrokerage.cs",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/12f932e7ed23d4209351cc8395bb055e9faabf86",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Brokerages/BaseWebsocketsBrokerage.cs",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/BaseWebsocketsBrokerage.cs?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/12f932e7ed23d4209351cc8395bb055e9faabf86",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/BaseWebsocketsBrokerage.cs"
+    }
+  },
+  {
+    "name": "BestBidAskUpdatedEventArgs.cs",
+    "path": "Brokerages/BestBidAskUpdatedEventArgs.cs",
+    "sha": "8a07ea84f335dbe0b9269ff5c9cebef18dd522fd",
+    "size": 2470,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/BestBidAskUpdatedEventArgs.cs?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/BestBidAskUpdatedEventArgs.cs",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/8a07ea84f335dbe0b9269ff5c9cebef18dd522fd",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Brokerages/BestBidAskUpdatedEventArgs.cs",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/BestBidAskUpdatedEventArgs.cs?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/8a07ea84f335dbe0b9269ff5c9cebef18dd522fd",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/BestBidAskUpdatedEventArgs.cs"
+    }
+  },
+  {
+    "name": "Brokerage.cs",
+    "path": "Brokerages/Brokerage.cs",
+    "sha": "cbc17a7caa0b4111050dd6f788150204584d9f58",
+    "size": 44996,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/Brokerage.cs?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/Brokerage.cs",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/cbc17a7caa0b4111050dd6f788150204584d9f58",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Brokerages/Brokerage.cs",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/Brokerage.cs?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/cbc17a7caa0b4111050dd6f788150204584d9f58",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/Brokerage.cs"
+    }
+  },
+  {
+    "name": "BrokerageConcurrentMessageHandler.cs",
+    "path": "Brokerages/BrokerageConcurrentMessageHandler.cs",
+    "sha": "d0b896f479969ca629dc8364463d1929ea0661e2",
+    "size": 9271,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/BrokerageConcurrentMessageHandler.cs?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/BrokerageConcurrentMessageHandler.cs",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/d0b896f479969ca629dc8364463d1929ea0661e2",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Brokerages/BrokerageConcurrentMessageHandler.cs",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/BrokerageConcurrentMessageHandler.cs?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/d0b896f479969ca629dc8364463d1929ea0661e2",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/BrokerageConcurrentMessageHandler.cs"
+    }
+  },
+  {
+    "name": "BrokerageException.cs",
+    "path": "Brokerages/BrokerageException.cs",
+    "sha": "8312da82587d881539e661fb1c4d73a63708cdfd",
+    "size": 1766,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/BrokerageException.cs?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/BrokerageException.cs",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/8312da82587d881539e661fb1c4d73a63708cdfd",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Brokerages/BrokerageException.cs",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/BrokerageException.cs?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/8312da82587d881539e661fb1c4d73a63708cdfd",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/BrokerageException.cs"
+    }
+  },
+  {
+    "name": "BrokerageFactory.cs",
+    "path": "Brokerages/BrokerageFactory.cs",
+    "sha": "ca26795ddffd7fc012f50285dea76e13ea83e8f1",
+    "size": 4344,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/BrokerageFactory.cs?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/BrokerageFactory.cs",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/ca26795ddffd7fc012f50285dea76e13ea83e8f1",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Brokerages/BrokerageFactory.cs",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/BrokerageFactory.cs?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/ca26795ddffd7fc012f50285dea76e13ea83e8f1",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/BrokerageFactory.cs"
+    }
+  },
+  {
+    "name": "BrokerageMultiWebSocketEntry.cs",
+    "path": "Brokerages/BrokerageMultiWebSocketEntry.cs",
+    "sha": "d6cec29b631f8592d8669a49e695c02c14e87d7f",
+    "size": 4241,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/BrokerageMultiWebSocketEntry.cs?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/BrokerageMultiWebSocketEntry.cs",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/d6cec29b631f8592d8669a49e695c02c14e87d7f",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Brokerages/BrokerageMultiWebSocketEntry.cs",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/BrokerageMultiWebSocketEntry.cs?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/d6cec29b631f8592d8669a49e695c02c14e87d7f",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/BrokerageMultiWebSocketEntry.cs"
+    }
+  },
+  {
+    "name": "BrokerageMultiWebSocketSubscriptionManager.cs",
+    "path": "Brokerages/BrokerageMultiWebSocketSubscriptionManager.cs",
+    "sha": "814cfeabf1c64e3804d1d1315f0d792c106a0fd7",
+    "size": 13774,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/BrokerageMultiWebSocketSubscriptionManager.cs?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/BrokerageMultiWebSocketSubscriptionManager.cs",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/814cfeabf1c64e3804d1d1315f0d792c106a0fd7",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Brokerages/BrokerageMultiWebSocketSubscriptionManager.cs",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/BrokerageMultiWebSocketSubscriptionManager.cs?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/814cfeabf1c64e3804d1d1315f0d792c106a0fd7",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/BrokerageMultiWebSocketSubscriptionManager.cs"
+    }
+  },
+  {
+    "name": "CrossZero",
+    "path": "Brokerages/CrossZero",
+    "sha": "bcc0456728f94208a22276268eb9d3b3d2916e89",
+    "size": 0,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/CrossZero?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/tree/master/Brokerages/CrossZero",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/trees/bcc0456728f94208a22276268eb9d3b3d2916e89",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/CrossZero?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/trees/bcc0456728f94208a22276268eb9d3b3d2916e89",
+      "html": "https://github.com/QuantConnect/Lean/tree/master/Brokerages/CrossZero"
+    }
+  },
+  {
+    "name": "DefaultConnectionHandler.cs",
+    "path": "Brokerages/DefaultConnectionHandler.cs",
+    "sha": "0803f1f943abfae36ffc3275959bb1ba0d14803d",
+    "size": 8778,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/DefaultConnectionHandler.cs?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/DefaultConnectionHandler.cs",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/0803f1f943abfae36ffc3275959bb1ba0d14803d",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Brokerages/DefaultConnectionHandler.cs",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/DefaultConnectionHandler.cs?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/0803f1f943abfae36ffc3275959bb1ba0d14803d",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/DefaultConnectionHandler.cs"
+    }
+  },
+  {
+    "name": "DefaultOrderBook.cs",
+    "path": "Brokerages/DefaultOrderBook.cs",
+    "sha": "12e6126c4ad796dbceff91b0a10a47a0bf570059",
+    "size": 7545,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/DefaultOrderBook.cs?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/DefaultOrderBook.cs",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/12e6126c4ad796dbceff91b0a10a47a0bf570059",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Brokerages/DefaultOrderBook.cs",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/DefaultOrderBook.cs?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/12e6126c4ad796dbceff91b0a10a47a0bf570059",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/DefaultOrderBook.cs"
+    }
+  },
+  {
+    "name": "IConnectionHandler.cs",
+    "path": "Brokerages/IConnectionHandler.cs",
+    "sha": "c246e57c7f647a9aa7fd0380614642e36b47ee35",
+    "size": 2262,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/IConnectionHandler.cs?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/IConnectionHandler.cs",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/c246e57c7f647a9aa7fd0380614642e36b47ee35",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Brokerages/IConnectionHandler.cs",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/IConnectionHandler.cs?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/c246e57c7f647a9aa7fd0380614642e36b47ee35",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/IConnectionHandler.cs"
+    }
+  },
+  {
+    "name": "IOrderBookUpdater.cs",
+    "path": "Brokerages/IOrderBookUpdater.cs",
+    "sha": "0efef735aa2858d70e36e47a4c0a7a5828732d82",
+    "size": 2455,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/IOrderBookUpdater.cs?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/IOrderBookUpdater.cs",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/0efef735aa2858d70e36e47a4c0a7a5828732d82",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Brokerages/IOrderBookUpdater.cs",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/IOrderBookUpdater.cs?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/0efef735aa2858d70e36e47a4c0a7a5828732d82",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/IOrderBookUpdater.cs"
+    }
+  },
+  {
+    "name": "ISymbolMapper.cs",
+    "path": "Brokerages/ISymbolMapper.cs",
+    "sha": "7d3030f9fdeb784d917a3d0d09f192dc87fbc980",
+    "size": 2028,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/ISymbolMapper.cs?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/ISymbolMapper.cs",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/7d3030f9fdeb784d917a3d0d09f192dc87fbc980",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Brokerages/ISymbolMapper.cs",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/ISymbolMapper.cs?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/7d3030f9fdeb784d917a3d0d09f192dc87fbc980",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/ISymbolMapper.cs"
+    }
+  },
+  {
+    "name": "IWebSocket.cs",
+    "path": "Brokerages/IWebSocket.cs",
+    "sha": "26c9fb036dd6a62dd50110098205f54e037b5966",
+    "size": 2110,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/IWebSocket.cs?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/IWebSocket.cs",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/26c9fb036dd6a62dd50110098205f54e037b5966",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Brokerages/IWebSocket.cs",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/IWebSocket.cs?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/26c9fb036dd6a62dd50110098205f54e037b5966",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/IWebSocket.cs"
+    }
+  },
+  {
+    "name": "LevelOneOrderBook",
+    "path": "Brokerages/LevelOneOrderBook",
+    "sha": "ee753c76af870662d5aefdbd08030cf0518f4455",
+    "size": 0,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/LevelOneOrderBook?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/tree/master/Brokerages/LevelOneOrderBook",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/trees/ee753c76af870662d5aefdbd08030cf0518f4455",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/LevelOneOrderBook?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/trees/ee753c76af870662d5aefdbd08030cf0518f4455",
+      "html": "https://github.com/QuantConnect/Lean/tree/master/Brokerages/LevelOneOrderBook"
+    }
+  },
+  {
+    "name": "Paper",
+    "path": "Brokerages/Paper",
+    "sha": "de2b3497805adb3c74b7c03f1071a623f6f65bcf",
+    "size": 0,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/Paper?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/tree/master/Brokerages/Paper",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/trees/de2b3497805adb3c74b7c03f1071a623f6f65bcf",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/Paper?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/trees/de2b3497805adb3c74b7c03f1071a623f6f65bcf",
+      "html": "https://github.com/QuantConnect/Lean/tree/master/Brokerages/Paper"
+    }
+  },
+  {
+    "name": "Properties",
+    "path": "Brokerages/Properties",
+    "sha": "158aded979f51e064bea08e07251576d6e30d960",
+    "size": 0,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/Properties?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/tree/master/Brokerages/Properties",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/trees/158aded979f51e064bea08e07251576d6e30d960",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/Properties?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/trees/158aded979f51e064bea08e07251576d6e30d960",
+      "html": "https://github.com/QuantConnect/Lean/tree/master/Brokerages/Properties"
+    }
+  },
+  {
+    "name": "QuantConnect.Brokerages.csproj",
+    "path": "Brokerages/QuantConnect.Brokerages.csproj",
+    "sha": "e44042df0a51e31fe490f0e982399e8df1dd0c4b",
+    "size": 2476,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/QuantConnect.Brokerages.csproj?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/QuantConnect.Brokerages.csproj",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/e44042df0a51e31fe490f0e982399e8df1dd0c4b",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Brokerages/QuantConnect.Brokerages.csproj",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/QuantConnect.Brokerages.csproj?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/e44042df0a51e31fe490f0e982399e8df1dd0c4b",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/QuantConnect.Brokerages.csproj"
+    }
+  },
+  {
+    "name": "QuantConnect.Brokerages.csproj.DotSettings",
+    "path": "Brokerages/QuantConnect.Brokerages.csproj.DotSettings",
+    "sha": "30354e84c5b8aaac7904776da45ce8621f628387",
+    "size": 919,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/QuantConnect.Brokerages.csproj.DotSettings?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/QuantConnect.Brokerages.csproj.DotSettings",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/30354e84c5b8aaac7904776da45ce8621f628387",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Brokerages/QuantConnect.Brokerages.csproj.DotSettings",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/QuantConnect.Brokerages.csproj.DotSettings?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/30354e84c5b8aaac7904776da45ce8621f628387",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/QuantConnect.Brokerages.csproj.DotSettings"
+    }
+  },
+  {
+    "name": "SymbolPropertiesDatabaseSymbolMapper.cs",
+    "path": "Brokerages/SymbolPropertiesDatabaseSymbolMapper.cs",
+    "sha": "d306f64f734678c786ff3b20bb758214beb0b9a1",
+    "size": 10039,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/SymbolPropertiesDatabaseSymbolMapper.cs?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/SymbolPropertiesDatabaseSymbolMapper.cs",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/d306f64f734678c786ff3b20bb758214beb0b9a1",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Brokerages/SymbolPropertiesDatabaseSymbolMapper.cs",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/SymbolPropertiesDatabaseSymbolMapper.cs?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/d306f64f734678c786ff3b20bb758214beb0b9a1",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/SymbolPropertiesDatabaseSymbolMapper.cs"
+    }
+  },
+  {
+    "name": "WebSocketClientWrapper.cs",
+    "path": "Brokerages/WebSocketClientWrapper.cs",
+    "sha": "a033a60c85c6033f719a8e249640c5f276aee6d7",
+    "size": 12933,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/WebSocketClientWrapper.cs?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/WebSocketClientWrapper.cs",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/a033a60c85c6033f719a8e249640c5f276aee6d7",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Brokerages/WebSocketClientWrapper.cs",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/WebSocketClientWrapper.cs?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/a033a60c85c6033f719a8e249640c5f276aee6d7",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/WebSocketClientWrapper.cs"
+    }
+  },
+  {
+    "name": "WebSocketCloseData.cs",
+    "path": "Brokerages/WebSocketCloseData.cs",
+    "sha": "a362141c6c569c534d58e70ace8edd65c3c3880e",
+    "size": 1913,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/WebSocketCloseData.cs?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/WebSocketCloseData.cs",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/a362141c6c569c534d58e70ace8edd65c3c3880e",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Brokerages/WebSocketCloseData.cs",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/WebSocketCloseData.cs?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/a362141c6c569c534d58e70ace8edd65c3c3880e",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/WebSocketCloseData.cs"
+    }
+  },
+  {
+    "name": "WebSocketError.cs",
+    "path": "Brokerages/WebSocketError.cs",
+    "sha": "3d3e25052004b8e897930b3fa42c760301e57145",
+    "size": 1522,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/WebSocketError.cs?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/WebSocketError.cs",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/3d3e25052004b8e897930b3fa42c760301e57145",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Brokerages/WebSocketError.cs",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/WebSocketError.cs?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/3d3e25052004b8e897930b3fa42c760301e57145",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/WebSocketError.cs"
+    }
+  },
+  {
+    "name": "WebSocketMessage.cs",
+    "path": "Brokerages/WebSocketMessage.cs",
+    "sha": "cd1e87651bc843a90f4d7f85fcbbead0ff1deff2",
+    "size": 1605,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/WebSocketMessage.cs?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/WebSocketMessage.cs",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/cd1e87651bc843a90f4d7f85fcbbead0ff1deff2",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Brokerages/WebSocketMessage.cs",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages/WebSocketMessage.cs?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/cd1e87651bc843a90f4d7f85fcbbead0ff1deff2",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/Brokerages/WebSocketMessage.cs"
+    }
+  }
+]

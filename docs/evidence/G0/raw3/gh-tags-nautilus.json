@@ -1,0 +1,102 @@
+[
+  {
+    "name": "v2.0.0rc5",
+    "zipball_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/zipball/refs/tags/v2.0.0rc5",
+    "tarball_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/tarball/refs/tags/v2.0.0rc5",
+    "commit": {
+      "sha": "1b0a49d2792a9432a3aca3fcb617ce7a630d905e",
+      "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/commits/1b0a49d2792a9432a3aca3fcb617ce7a630d905e"
+    },
+    "node_id": "MDM6UmVmMTM4NTUyMTk2OnJlZnMvdGFncy92Mi4wLjByYzU="
+  },
+  {
+    "name": "v2.0.0rc4",
+    "zipball_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/zipball/refs/tags/v2.0.0rc4",
+    "tarball_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/tarball/refs/tags/v2.0.0rc4",
+    "commit": {
+      "sha": "a0400251110653b6d8ae6a9b5b89c4543fa85a2d",
+      "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/commits/a0400251110653b6d8ae6a9b5b89c4543fa85a2d"
+    },
+    "node_id": "MDM6UmVmMTM4NTUyMTk2OnJlZnMvdGFncy92Mi4wLjByYzQ="
+  },
+  {
+    "name": "v2.0.0rc3",
+    "zipball_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/zipball/refs/tags/v2.0.0rc3",
+    "tarball_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/tarball/refs/tags/v2.0.0rc3",
+    "commit": {
+      "sha": "648970ce64a304d93da0a29320cb6e19b905fa39",
+      "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/commits/648970ce64a304d93da0a29320cb6e19b905fa39"
+    },
+    "node_id": "MDM6UmVmMTM4NTUyMTk2OnJlZnMvdGFncy92Mi4wLjByYzM="
+  },
+  {
+    "name": "v1.231.0",
+    "zipball_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/zipball/refs/tags/v1.231.0",
+    "tarball_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/tarball/refs/tags/v1.231.0",
+    "commit": {
+      "sha": "27a8e54e7ac3c57d6cbf8891f0283dfbaee97317",
+      "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/commits/27a8e54e7ac3c57d6cbf8891f0283dfbaee97317"
+    },
+    "node_id": "MDM6UmVmMTM4NTUyMTk2OnJlZnMvdGFncy92MS4yMzEuMA=="
+  },
+  {
+    "name": "v1.230.0",
+    "zipball_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/zipball/refs/tags/v1.230.0",
+    "tarball_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/tarball/refs/tags/v1.230.0",
+    "commit": {
+      "sha": "8160730c7c550480b0a439fb11086a4c4de15f0b",
+      "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/commits/8160730c7c550480b0a439fb11086a4c4de15f0b"
+    },
+    "node_id": "MDM6UmVmMTM4NTUyMTk2OnJlZnMvdGFncy92MS4yMzAuMA=="
+  },
+  {
+    "name": "v1.229.0",
+    "zipball_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/zipball/refs/tags/v1.229.0",
+    "tarball_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/tarball/refs/tags/v1.229.0",
+    "commit": {
+      "sha": "fed3955ad246eb47f893ee04d2e28e2d0aeef190",
+      "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/commits/fed3955ad246eb47f893ee04d2e28e2d0aeef190"
+    },
+    "node_id": "MDM6UmVmMTM4NTUyMTk2OnJlZnMvdGFncy92MS4yMjkuMA=="
+  },
+  {
+    "name": "v1.228.0",
+    "zipball_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/zipball/refs/tags/v1.228.0",
+    "tarball_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/tarball/refs/tags/v1.228.0",
+    "commit": {
+      "sha": "3aa1ddffdc4947d05f3cf1c011290e44fc99b9a5",
+      "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/commits/3aa1ddffdc4947d05f3cf1c011290e44fc99b9a5"
+    },
+    "node_id": "MDM6UmVmMTM4NTUyMTk2OnJlZnMvdGFncy92MS4yMjguMA=="
+  },
+  {
+    "name": "v1.227.0",
+    "zipball_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/zipball/refs/tags/v1.227.0",
+    "tarball_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/tarball/refs/tags/v1.227.0",
+    "commit": {
+      "sha": "280ae1762df51a492a4ce71506a40b5c8706def5",
+      "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/commits/280ae1762df51a492a4ce71506a40b5c8706def5"
+    },
+    "node_id": "MDM6UmVmMTM4NTUyMTk2OnJlZnMvdGFncy92MS4yMjcuMA=="
+  },
+  {
+    "name": "v1.226.0",
+    "zipball_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/zipball/refs/tags/v1.226.0",
+    "tarball_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/tarball/refs/tags/v1.226.0",
+    "commit": {
+      "sha": "38b912a8b0fe14e4046773973ff46a3b798b1e3e",
+      "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/commits/38b912a8b0fe14e4046773973ff46a3b798b1e3e"
+    },
+    "node_id": "MDM6UmVmMTM4NTUyMTk2OnJlZnMvdGFncy92MS4yMjYuMA=="
+  },
+  {
+    "name": "v1.225.0",
+    "zipball_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/zipball/refs/tags/v1.225.0",
+    "tarball_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/tarball/refs/tags/v1.225.0",
+    "commit": {
+      "sha": "48d1c126335b82812ba691c5661aeb2e912cde24",
+      "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/commits/48d1c126335b82812ba691c5661aeb2e912cde24"
+    },
+    "node_id": "MDM6UmVmMTM4NTUyMTk2OnJlZnMvdGFncy92MS4yMjUuMA=="
+  }
+]

@@ -1,0 +1,914 @@
+[
+  {
+    "name": ".cargo",
+    "path": ".cargo",
+    "sha": "69f386f10a12286f9e26aa7193c9650f409300db",
+    "size": 0,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.cargo?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/tree/develop/.cargo",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/69f386f10a12286f9e26aa7193c9650f409300db",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.cargo?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/69f386f10a12286f9e26aa7193c9650f409300db",
+      "html": "https://github.com/nautechsystems/nautilus_trader/tree/develop/.cargo"
+    }
+  },
+  {
+    "name": ".codespellrc",
+    "path": ".codespellrc",
+    "sha": "0051b38ca70df8f7f1c6379acb426d30e4caf2be",
+    "size": 393,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.codespellrc?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/.codespellrc",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/0051b38ca70df8f7f1c6379acb426d30e4caf2be",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/.codespellrc",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.codespellrc?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/0051b38ca70df8f7f1c6379acb426d30e4caf2be",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/.codespellrc"
+    }
+  },
+  {
+    "name": ".config",
+    "path": ".config",
+    "sha": "16ba0d6bba4ea5330d667048d7c83a9b97acac76",
+    "size": 0,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.config?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/tree/develop/.config",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/16ba0d6bba4ea5330d667048d7c83a9b97acac76",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.config?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/16ba0d6bba4ea5330d667048d7c83a9b97acac76",
+      "html": "https://github.com/nautechsystems/nautilus_trader/tree/develop/.config"
+    }
+  },
+  {
+    "name": ".docker",
+    "path": ".docker",
+    "sha": "7a9789548d74b36fc1b4d83bab194936c1954c69",
+    "size": 0,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.docker?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/tree/develop/.docker",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/7a9789548d74b36fc1b4d83bab194936c1954c69",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.docker?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/7a9789548d74b36fc1b4d83bab194936c1954c69",
+      "html": "https://github.com/nautechsystems/nautilus_trader/tree/develop/.docker"
+    }
+  },
+  {
+    "name": ".dockerignore",
+    "path": ".dockerignore",
+    "sha": "451711158f63a5a3503242f06b82ce4622003200",
+    "size": 3283,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.dockerignore?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/.dockerignore",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/451711158f63a5a3503242f06b82ce4622003200",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/.dockerignore",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.dockerignore?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/451711158f63a5a3503242f06b82ce4622003200",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/.dockerignore"
+    }
+  },
+  {
+    "name": ".env.example",
+    "path": ".env.example",
+    "sha": "e2ca2c0c633ba964a516a1a5a2540d61a24366e6",
+    "size": 304,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.env.example?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/.env.example",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/e2ca2c0c633ba964a516a1a5a2540d61a24366e6",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/.env.example",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.env.example?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/e2ca2c0c633ba964a516a1a5a2540d61a24366e6",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/.env.example"
+    }
+  },
+  {
+    "name": ".gitattributes",
+    "path": ".gitattributes",
+    "sha": "c3b9d52c6f0609ead481c21a3aab7e9fdea513dd",
+    "size": 188,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.gitattributes?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/.gitattributes",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/c3b9d52c6f0609ead481c21a3aab7e9fdea513dd",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/.gitattributes",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.gitattributes?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/c3b9d52c6f0609ead481c21a3aab7e9fdea513dd",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/.gitattributes"
+    }
+  },
+  {
+    "name": ".github",
+    "path": ".github",
+    "sha": "3a8062b4548594f8394bbb42a768bbd7b54330b5",
+    "size": 0,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.github?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/tree/develop/.github",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/3a8062b4548594f8394bbb42a768bbd7b54330b5",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.github?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/3a8062b4548594f8394bbb42a768bbd7b54330b5",
+      "html": "https://github.com/nautechsystems/nautilus_trader/tree/develop/.github"
+    }
+  },
+  {
+    "name": ".gitignore",
+    "path": ".gitignore",
+    "sha": "b2b7d19883ed2760771bc98e750872e2a786135a",
+    "size": 3875,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.gitignore?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/.gitignore",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/b2b7d19883ed2760771bc98e750872e2a786135a",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/.gitignore",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.gitignore?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/b2b7d19883ed2760771bc98e750872e2a786135a",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/.gitignore"
+    }
+  },
+  {
+    "name": ".gitleaks.toml",
+    "path": ".gitleaks.toml",
+    "sha": "870f462d18b1afd4d00bb7ad45f9e7f1c0a23acd",
+    "size": 1611,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.gitleaks.toml?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/.gitleaks.toml",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/870f462d18b1afd4d00bb7ad45f9e7f1c0a23acd",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/.gitleaks.toml",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.gitleaks.toml?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/870f462d18b1afd4d00bb7ad45f9e7f1c0a23acd",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/.gitleaks.toml"
+    }
+  },
+  {
+    "name": ".lycheeignore",
+    "path": ".lycheeignore",
+    "sha": "82c84ee133c92ac6e23fbd5a05c698fec73a3552",
+    "size": 1720,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.lycheeignore?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/.lycheeignore",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/82c84ee133c92ac6e23fbd5a05c698fec73a3552",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/.lycheeignore",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.lycheeignore?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/82c84ee133c92ac6e23fbd5a05c698fec73a3552",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/.lycheeignore"
+    }
+  },
+  {
+    "name": ".markdownlint.jsonc",
+    "path": ".markdownlint.jsonc",
+    "sha": "71924925dfa041fcb060d68a78eabb7e961877f8",
+    "size": 8230,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.markdownlint.jsonc?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/.markdownlint.jsonc",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/71924925dfa041fcb060d68a78eabb7e961877f8",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/.markdownlint.jsonc",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.markdownlint.jsonc?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/71924925dfa041fcb060d68a78eabb7e961877f8",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/.markdownlint.jsonc"
+    }
+  },
+  {
+    "name": ".nautilus-engineering.lock",
+    "path": ".nautilus-engineering.lock",
+    "sha": "67b477c8e7800eea030b094cf51f83068458b157",
+    "size": 4718,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.nautilus-engineering.lock?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/.nautilus-engineering.lock",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/67b477c8e7800eea030b094cf51f83068458b157",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/.nautilus-engineering.lock",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.nautilus-engineering.lock?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/67b477c8e7800eea030b094cf51f83068458b157",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/.nautilus-engineering.lock"
+    }
+  },
+  {
+    "name": ".nautilus-engineering",
+    "path": ".nautilus-engineering",
+    "sha": "59451883dba390cf945cb1f1c291d5e77cc7a8fe",
+    "size": 0,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.nautilus-engineering?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/tree/develop/.nautilus-engineering",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/59451883dba390cf945cb1f1c291d5e77cc7a8fe",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.nautilus-engineering?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/59451883dba390cf945cb1f1c291d5e77cc7a8fe",
+      "html": "https://github.com/nautechsystems/nautilus_trader/tree/develop/.nautilus-engineering"
+    }
+  },
+  {
+    "name": ".pre-commit-config.yaml",
+    "path": ".pre-commit-config.yaml",
+    "sha": "8ecb5c77b1ad79b71d48394f33926b0f1bb479ea",
+    "size": 19883,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.pre-commit-config.yaml?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/.pre-commit-config.yaml",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/8ecb5c77b1ad79b71d48394f33926b0f1bb479ea",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/.pre-commit-config.yaml",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.pre-commit-config.yaml?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/8ecb5c77b1ad79b71d48394f33926b0f1bb479ea",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/.pre-commit-config.yaml"
+    }
+  },
+  {
+    "name": ".pre-commit-hooks",
+    "path": ".pre-commit-hooks",
+    "sha": "e8725391b8bc872278056ec189057b82ffe1cfc8",
+    "size": 0,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.pre-commit-hooks?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/tree/develop/.pre-commit-hooks",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/e8725391b8bc872278056ec189057b82ffe1cfc8",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.pre-commit-hooks?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/e8725391b8bc872278056ec189057b82ffe1cfc8",
+      "html": "https://github.com/nautechsystems/nautilus_trader/tree/develop/.pre-commit-hooks"
+    }
+  },
+  {
+    "name": ".supply-chain",
+    "path": ".supply-chain",
+    "sha": "45e40ec17aa9de86397c63892e7cb30ab80b612a",
+    "size": 0,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.supply-chain?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/tree/develop/.supply-chain",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/45e40ec17aa9de86397c63892e7cb30ab80b612a",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.supply-chain?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/45e40ec17aa9de86397c63892e7cb30ab80b612a",
+      "html": "https://github.com/nautechsystems/nautilus_trader/tree/develop/.supply-chain"
+    }
+  },
+  {
+    "name": ".taplo.toml",
+    "path": ".taplo.toml",
+    "sha": "8320ed089176137345250a10ea8ed8cc2dbb66da",
+    "size": 583,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.taplo.toml?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/.taplo.toml",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/8320ed089176137345250a10ea8ed8cc2dbb66da",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/.taplo.toml",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.taplo.toml?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/8320ed089176137345250a10ea8ed8cc2dbb66da",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/.taplo.toml"
+    }
+  },
+  {
+    "name": ".typos.toml",
+    "path": ".typos.toml",
+    "sha": "3ed895eacb82b2e301d1245221d45b009418022f",
+    "size": 5927,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.typos.toml?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/.typos.toml",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/3ed895eacb82b2e301d1245221d45b009418022f",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/.typos.toml",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.typos.toml?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/3ed895eacb82b2e301d1245221d45b009418022f",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/.typos.toml"
+    }
+  },
+  {
+    "name": ".yamlfmt",
+    "path": ".yamlfmt",
+    "sha": "9a5d5d43504c2cb697aec29694293c2074b61350",
+    "size": 279,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.yamlfmt?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/.yamlfmt",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/9a5d5d43504c2cb697aec29694293c2074b61350",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/.yamlfmt",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.yamlfmt?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/9a5d5d43504c2cb697aec29694293c2074b61350",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/.yamlfmt"
+    }
+  },
+  {
+    "name": ".yamllint.yaml",
+    "path": ".yamllint.yaml",
+    "sha": "718fd7a694147423846f47d21cdcc002e087ac38",
+    "size": 201,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.yamllint.yaml?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/.yamllint.yaml",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/718fd7a694147423846f47d21cdcc002e087ac38",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/.yamllint.yaml",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/.yamllint.yaml?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/718fd7a694147423846f47d21cdcc002e087ac38",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/.yamllint.yaml"
+    }
+  },
+  {
+    "name": "ADAPTERS.md",
+    "path": "ADAPTERS.md",
+    "sha": "83209719f77abbdaa5b186c9aef10c9b63ef660a",
+    "size": 5694,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/ADAPTERS.md?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/ADAPTERS.md",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/83209719f77abbdaa5b186c9aef10c9b63ef660a",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/ADAPTERS.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/ADAPTERS.md?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/83209719f77abbdaa5b186c9aef10c9b63ef660a",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/ADAPTERS.md"
+    }
+  },
+  {
+    "name": "AGENTS.md",
+    "path": "AGENTS.md",
+    "sha": "e492127ba05d411a42d716126fb19c425502a0cc",
+    "size": 5350,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/AGENTS.md?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/AGENTS.md",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/e492127ba05d411a42d716126fb19c425502a0cc",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/AGENTS.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/AGENTS.md?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/e492127ba05d411a42d716126fb19c425502a0cc",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/AGENTS.md"
+    }
+  },
+  {
+    "name": "AI_POLICY.md",
+    "path": "AI_POLICY.md",
+    "sha": "1ae1e46d5a99490114bac6b0bf37fba76c6d4b5c",
+    "size": 5058,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/AI_POLICY.md?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/AI_POLICY.md",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/1ae1e46d5a99490114bac6b0bf37fba76c6d4b5c",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/AI_POLICY.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/AI_POLICY.md?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/1ae1e46d5a99490114bac6b0bf37fba76c6d4b5c",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/AI_POLICY.md"
+    }
+  },
+  {
+    "name": "BENCHMARKING.md",
+    "path": "BENCHMARKING.md",
+    "sha": "739d938e65a284261c8684f719c246f61ac594b9",
+    "size": 13010,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/BENCHMARKING.md?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/BENCHMARKING.md",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/739d938e65a284261c8684f719c246f61ac594b9",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/BENCHMARKING.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/BENCHMARKING.md?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/739d938e65a284261c8684f719c246f61ac594b9",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/BENCHMARKING.md"
+    }
+  },
+  {
+    "name": "CLA.md",
+    "path": "CLA.md",
+    "sha": "efde08171e5b79e1ff7bf6ead88bda7e674faa92",
+    "size": 4241,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/CLA.md?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/CLA.md",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/efde08171e5b79e1ff7bf6ead88bda7e674faa92",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/CLA.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/CLA.md?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/efde08171e5b79e1ff7bf6ead88bda7e674faa92",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/CLA.md"
+    }
+  },
+  {
+    "name": "CLAUDE.md",
+    "path": "CLAUDE.md",
+    "sha": "d42ad6be38e7c8483806c1904cb69f1fec2c5329",
+    "size": 29,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/CLAUDE.md?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/CLAUDE.md",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/d42ad6be38e7c8483806c1904cb69f1fec2c5329",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/CLAUDE.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/CLAUDE.md?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/d42ad6be38e7c8483806c1904cb69f1fec2c5329",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/CLAUDE.md"
+    }
+  },
+  {
+    "name": "CODE_OF_CONDUCT.md",
+    "path": "CODE_OF_CONDUCT.md",
+    "sha": "f69b12186e0cfeb81d8504a94e9f5a3bb912d929",
+    "size": 5232,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/CODE_OF_CONDUCT.md?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/CODE_OF_CONDUCT.md",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/f69b12186e0cfeb81d8504a94e9f5a3bb912d929",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/CODE_OF_CONDUCT.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/CODE_OF_CONDUCT.md?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/f69b12186e0cfeb81d8504a94e9f5a3bb912d929",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/CODE_OF_CONDUCT.md"
+    }
+  },
+  {
+    "name": "CONTRIBUTING.md",
+    "path": "CONTRIBUTING.md",
+    "sha": "6a528ead14a974230877bfff67ca2a64614c1b3e",
+    "size": 8780,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/CONTRIBUTING.md?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/CONTRIBUTING.md",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/6a528ead14a974230877bfff67ca2a64614c1b3e",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/CONTRIBUTING.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/CONTRIBUTING.md?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/6a528ead14a974230877bfff67ca2a64614c1b3e",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/CONTRIBUTING.md"
+    }
+  },
+  {
+    "name": "Cargo.lock",
+    "path": "Cargo.lock",
+    "sha": "797e5ea2c9300d7b00d09b784be1cc6083ba43d7",
+    "size": 254804,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/Cargo.lock?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/Cargo.lock",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/797e5ea2c9300d7b00d09b784be1cc6083ba43d7",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/Cargo.lock",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/Cargo.lock?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/797e5ea2c9300d7b00d09b784be1cc6083ba43d7",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/Cargo.lock"
+    }
+  },
+  {
+    "name": "Cargo.toml",
+    "path": "Cargo.toml",
+    "sha": "c4588f2993f7d4bb909cbf7ffd3fa46e9e814724",
+    "size": 23646,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/Cargo.toml?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/Cargo.toml",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/c4588f2993f7d4bb909cbf7ffd3fa46e9e814724",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/Cargo.toml",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/Cargo.toml?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/c4588f2993f7d4bb909cbf7ffd3fa46e9e814724",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/Cargo.toml"
+    }
+  },
+  {
+    "name": "LICENSE",
+    "path": "LICENSE",
+    "sha": "5550e2db15f239ea8d3cf54bfa3b035eab8d3174",
+    "size": 7651,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/LICENSE?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/LICENSE",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/5550e2db15f239ea8d3cf54bfa3b035eab8d3174",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/LICENSE",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/LICENSE?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/5550e2db15f239ea8d3cf54bfa3b035eab8d3174",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/LICENSE"
+    }
+  },
+  {
+    "name": "MIGRATION_V2.md",
+    "path": "MIGRATION_V2.md",
+    "sha": "931f82d6ec4b4a5dc40c50b33ffc0a6d30f6901d",
+    "size": 56807,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/MIGRATION_V2.md?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/MIGRATION_V2.md",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/931f82d6ec4b4a5dc40c50b33ffc0a6d30f6901d",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/MIGRATION_V2.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/MIGRATION_V2.md?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/931f82d6ec4b4a5dc40c50b33ffc0a6d30f6901d",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/MIGRATION_V2.md"
+    }
+  },
+  {
+    "name": "Makefile",
+    "path": "Makefile",
+    "sha": "73e32c4f624f88b864414783b5bc3628d2c1188d",
+    "size": 71980,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/Makefile?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/Makefile",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/73e32c4f624f88b864414783b5bc3628d2c1188d",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/Makefile",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/Makefile?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/73e32c4f624f88b864414783b5bc3628d2c1188d",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/Makefile"
+    }
+  },
+  {
+    "name": "README.md",
+    "path": "README.md",
+    "sha": "df09e8b2bff0049f073defe43fc9a7c1f963933a",
+    "size": 37852,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/README.md?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/README.md",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/df09e8b2bff0049f073defe43fc9a7c1f963933a",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/README.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/README.md?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/df09e8b2bff0049f073defe43fc9a7c1f963933a",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/README.md"
+    }
+  },
+  {
+    "name": "RELEASES.md",
+    "path": "RELEASES.md",
+    "sha": "aa0658c4970cbe5dbefc220f922131b83cd620f7",
+    "size": 586149,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/RELEASES.md?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/RELEASES.md",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/aa0658c4970cbe5dbefc220f922131b83cd620f7",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/RELEASES.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/RELEASES.md?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/aa0658c4970cbe5dbefc220f922131b83cd620f7",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/RELEASES.md"
+    }
+  },
+  {
+    "name": "ROADMAP.md",
+    "path": "ROADMAP.md",
+    "sha": "79112c9c8fecd4a7db477ab78bbdfe6243e4c44d",
+    "size": 7008,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/ROADMAP.md?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/ROADMAP.md",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/79112c9c8fecd4a7db477ab78bbdfe6243e4c44d",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/ROADMAP.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/ROADMAP.md?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/79112c9c8fecd4a7db477ab78bbdfe6243e4c44d",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/ROADMAP.md"
+    }
+  },
+  {
+    "name": "SECURITY.md",
+    "path": "SECURITY.md",
+    "sha": "6647a8e4b81719e864f437bc11b9459c73e9deb9",
+    "size": 15292,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/SECURITY.md?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/SECURITY.md",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/6647a8e4b81719e864f437bc11b9459c73e9deb9",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/SECURITY.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/SECURITY.md?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/6647a8e4b81719e864f437bc11b9459c73e9deb9",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/SECURITY.md"
+    }
+  },
+  {
+    "name": "TRADEMARK.md",
+    "path": "TRADEMARK.md",
+    "sha": "08930713f65f1a523d51ae3e913035ffd74dfc6c",
+    "size": 7085,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/TRADEMARK.md?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/TRADEMARK.md",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/08930713f65f1a523d51ae3e913035ffd74dfc6c",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/TRADEMARK.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/TRADEMARK.md?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/08930713f65f1a523d51ae3e913035ffd74dfc6c",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/TRADEMARK.md"
+    }
+  },
+  {
+    "name": "assets",
+    "path": "assets",
+    "sha": "33ea145156817695666a4db5af0cdb226143718a",
+    "size": 0,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/assets?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/tree/develop/assets",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/33ea145156817695666a4db5af0cdb226143718a",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/assets?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/33ea145156817695666a4db5af0cdb226143718a",
+      "html": "https://github.com/nautechsystems/nautilus_trader/tree/develop/assets"
+    }
+  },
+  {
+    "name": "clippy.toml",
+    "path": "clippy.toml",
+    "sha": "5cf70dfbc6c976415e9422065a9b11ea79ac08a2",
+    "size": 1010,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/clippy.toml?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/clippy.toml",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/5cf70dfbc6c976415e9422065a9b11ea79ac08a2",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/clippy.toml",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/clippy.toml?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/5cf70dfbc6c976415e9422065a9b11ea79ac08a2",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/clippy.toml"
+    }
+  },
+  {
+    "name": "crates",
+    "path": "crates",
+    "sha": "1026c21a77a8e23b5785ccf36e544ade4371a0e2",
+    "size": 0,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/crates?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/tree/develop/crates",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/1026c21a77a8e23b5785ccf36e544ade4371a0e2",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/crates?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/1026c21a77a8e23b5785ccf36e544ade4371a0e2",
+      "html": "https://github.com/nautechsystems/nautilus_trader/tree/develop/crates"
+    }
+  },
+  {
+    "name": "deny.toml",
+    "path": "deny.toml",
+    "sha": "8ffbd499db61de94826ca1160ea47202cc948caf",
+    "size": 8788,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/deny.toml?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/deny.toml",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/8ffbd499db61de94826ca1160ea47202cc948caf",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/deny.toml",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/deny.toml?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/8ffbd499db61de94826ca1160ea47202cc948caf",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/deny.toml"
+    }
+  },
+  {
+    "name": "docs",
+    "path": "docs",
+    "sha": "199bc22b90e596da8ba25ab311cfbb9ece0ab70c",
+    "size": 0,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/docs?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/tree/develop/docs",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/199bc22b90e596da8ba25ab311cfbb9ece0ab70c",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/docs?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/199bc22b90e596da8ba25ab311cfbb9ece0ab70c",
+      "html": "https://github.com/nautechsystems/nautilus_trader/tree/develop/docs"
+    }
+  },
+  {
+    "name": "examples",
+    "path": "examples",
+    "sha": "71484edbb883164ddaaca3c895afa53310d01852",
+    "size": 0,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/examples?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/tree/develop/examples",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/71484edbb883164ddaaca3c895afa53310d01852",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/examples?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/71484edbb883164ddaaca3c895afa53310d01852",
+      "html": "https://github.com/nautechsystems/nautilus_trader/tree/develop/examples"
+    }
+  },
+  {
+    "name": "hawk.toml",
+    "path": "hawk.toml",
+    "sha": "68e354063714beba94698a76095c7ad47aba536e",
+    "size": 567,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/hawk.toml?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/hawk.toml",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/68e354063714beba94698a76095c7ad47aba536e",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/hawk.toml",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/hawk.toml?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/68e354063714beba94698a76095c7ad47aba536e",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/hawk.toml"
+    }
+  },
+  {
+    "name": "osv-scanner.toml",
+    "path": "osv-scanner.toml",
+    "sha": "36097298bc090781e22ea5f50f9998b0a0449137",
+    "size": 2085,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/osv-scanner.toml?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/osv-scanner.toml",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/36097298bc090781e22ea5f50f9998b0a0449137",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/osv-scanner.toml",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/osv-scanner.toml?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/36097298bc090781e22ea5f50f9998b0a0449137",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/osv-scanner.toml"
+    }
+  },
+  {
+    "name": "patches",
+    "path": "patches",
+    "sha": "b55b2cec129eda185617fa86aa7f96813755496e",
+    "size": 0,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/patches?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/tree/develop/patches",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/b55b2cec129eda185617fa86aa7f96813755496e",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/patches?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/b55b2cec129eda185617fa86aa7f96813755496e",
+      "html": "https://github.com/nautechsystems/nautilus_trader/tree/develop/patches"
+    }
+  },
+  {
+    "name": "python",
+    "path": "python",
+    "sha": "5d08282f50c46429db0df3312e9b7247d5642101",
+    "size": 0,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/python?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/tree/develop/python",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/5d08282f50c46429db0df3312e9b7247d5642101",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/python?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/5d08282f50c46429db0df3312e9b7247d5642101",
+      "html": "https://github.com/nautechsystems/nautilus_trader/tree/develop/python"
+    }
+  },
+  {
+    "name": "rust-toolchain.toml",
+    "path": "rust-toolchain.toml",
+    "sha": "642220914d8a76aeeea19648fb26ce7bb12e33b6",
+    "size": 31,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/rust-toolchain.toml?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/rust-toolchain.toml",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/642220914d8a76aeeea19648fb26ce7bb12e33b6",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/rust-toolchain.toml",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/rust-toolchain.toml?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/642220914d8a76aeeea19648fb26ce7bb12e33b6",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/rust-toolchain.toml"
+    }
+  },
+  {
+    "name": "rustfmt.toml",
+    "path": "rustfmt.toml",
+    "sha": "b9a2bf69b2d3502458233a80164b7d7b773a1163",
+    "size": 345,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/rustfmt.toml?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/rustfmt.toml",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/b9a2bf69b2d3502458233a80164b7d7b773a1163",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/rustfmt.toml",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/rustfmt.toml?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/b9a2bf69b2d3502458233a80164b7d7b773a1163",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/rustfmt.toml"
+    }
+  },
+  {
+    "name": "schema",
+    "path": "schema",
+    "sha": "fea7b514413470942917978ea1842a085d94ba61",
+    "size": 0,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/schema?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/tree/develop/schema",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/fea7b514413470942917978ea1842a085d94ba61",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/schema?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/fea7b514413470942917978ea1842a085d94ba61",
+      "html": "https://github.com/nautechsystems/nautilus_trader/tree/develop/schema"
+    }
+  },
+  {
+    "name": "scripts",
+    "path": "scripts",
+    "sha": "ddf4dc389e888cc237e455132ef921d6feaec028",
+    "size": 0,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/scripts?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/tree/develop/scripts",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/ddf4dc389e888cc237e455132ef921d6feaec028",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/scripts?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/ddf4dc389e888cc237e455132ef921d6feaec028",
+      "html": "https://github.com/nautechsystems/nautilus_trader/tree/develop/scripts"
+    }
+  },
+  {
+    "name": "security-audit.toml",
+    "path": "security-audit.toml",
+    "sha": "235370d06308d7e70ceb4dbcb4a65a3ca4c26c8d",
+    "size": 803,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/security-audit.toml?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/security-audit.toml",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/235370d06308d7e70ceb4dbcb4a65a3ca4c26c8d",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/security-audit.toml",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/security-audit.toml?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/235370d06308d7e70ceb4dbcb4a65a3ca4c26c8d",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/security-audit.toml"
+    }
+  },
+  {
+    "name": "test_data",
+    "path": "test_data",
+    "sha": "d9edff1e5b86284079623e76e2e1fd3a40c64dac",
+    "size": 0,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/test_data?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/tree/develop/test_data",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/d9edff1e5b86284079623e76e2e1fd3a40c64dac",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/test_data?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/trees/d9edff1e5b86284079623e76e2e1fd3a40c64dac",
+      "html": "https://github.com/nautechsystems/nautilus_trader/tree/develop/test_data"
+    }
+  },
+  {
+    "name": "tools.toml",
+    "path": "tools.toml",
+    "sha": "2487596c2068f001ee1e4013052f73be17ae4eb7",
+    "size": 640,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/tools.toml?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/tools.toml",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/2487596c2068f001ee1e4013052f73be17ae4eb7",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/tools.toml",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/tools.toml?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/2487596c2068f001ee1e4013052f73be17ae4eb7",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/tools.toml"
+    }
+  },
+  {
+    "name": "version.json",
+    "path": "version.json",
+    "sha": "b8b4cd3d92005fe02caabba9eb0fc33ae96b5ce2",
+    "size": 87,
+    "url": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/version.json?ref=develop",
+    "html_url": "https://github.com/nautechsystems/nautilus_trader/blob/develop/version.json",
+    "git_url": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/b8b4cd3d92005fe02caabba9eb0fc33ae96b5ce2",
+    "download_url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/develop/version.json",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/nautechsystems/nautilus_trader/contents/version.json?ref=develop",
+      "git": "https://api.github.com/repos/nautechsystems/nautilus_trader/git/blobs/b8b4cd3d92005fe02caabba9eb0fc33ae96b5ce2",
+      "html": "https://github.com/nautechsystems/nautilus_trader/blob/develop/version.json"
+    }
+  }
+]

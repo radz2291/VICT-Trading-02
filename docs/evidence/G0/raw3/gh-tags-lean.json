@@ -1,0 +1,102 @@
+[
+  {
+    "name": "v2.4.0.1",
+    "zipball_url": "https://api.github.com/repos/QuantConnect/Lean/zipball/refs/tags/v2.4.0.1",
+    "tarball_url": "https://api.github.com/repos/QuantConnect/Lean/tarball/refs/tags/v2.4.0.1",
+    "commit": {
+      "sha": "64cf1ff870bd8670cb9a3c301258f597f51a9d8c",
+      "url": "https://api.github.com/repos/QuantConnect/Lean/commits/64cf1ff870bd8670cb9a3c301258f597f51a9d8c"
+    },
+    "node_id": "MDM6UmVmMjcyNTE0NjM6cmVmcy90YWdzL3YyLjQuMC4x"
+  },
+  {
+    "name": "v2.4.0.0",
+    "zipball_url": "https://api.github.com/repos/QuantConnect/Lean/zipball/refs/tags/v2.4.0.0",
+    "tarball_url": "https://api.github.com/repos/QuantConnect/Lean/tarball/refs/tags/v2.4.0.0",
+    "commit": {
+      "sha": "64f76fa73c6662636f38a881f423a30b605c935b",
+      "url": "https://api.github.com/repos/QuantConnect/Lean/commits/64f76fa73c6662636f38a881f423a30b605c935b"
+    },
+    "node_id": "MDM6UmVmMjcyNTE0NjM6cmVmcy90YWdzL3YyLjQuMC4w"
+  },
+  {
+    "name": "v2.3.0.3",
+    "zipball_url": "https://api.github.com/repos/QuantConnect/Lean/zipball/refs/tags/v2.3.0.3",
+    "tarball_url": "https://api.github.com/repos/QuantConnect/Lean/tarball/refs/tags/v2.3.0.3",
+    "commit": {
+      "sha": "21a0eebd4a03f8d92e043e3e6c52e4c031332609",
+      "url": "https://api.github.com/repos/QuantConnect/Lean/commits/21a0eebd4a03f8d92e043e3e6c52e4c031332609"
+    },
+    "node_id": "MDM6UmVmMjcyNTE0NjM6cmVmcy90YWdzL3YyLjMuMC4z"
+  },
+  {
+    "name": "v2.3.0.2",
+    "zipball_url": "https://api.github.com/repos/QuantConnect/Lean/zipball/refs/tags/v2.3.0.2",
+    "tarball_url": "https://api.github.com/repos/QuantConnect/Lean/tarball/refs/tags/v2.3.0.2",
+    "commit": {
+      "sha": "607ea02319f1f549a7eac85f9fd07f2be87393b4",
+      "url": "https://api.github.com/repos/QuantConnect/Lean/commits/607ea02319f1f549a7eac85f9fd07f2be87393b4"
+    },
+    "node_id": "MDM6UmVmMjcyNTE0NjM6cmVmcy90YWdzL3YyLjMuMC4y"
+  },
+  {
+    "name": "v2.3.0.0",
+    "zipball_url": "https://api.github.com/repos/QuantConnect/Lean/zipball/refs/tags/v2.3.0.0",
+    "tarball_url": "https://api.github.com/repos/QuantConnect/Lean/tarball/refs/tags/v2.3.0.0",
+    "commit": {
+      "sha": "629d71a3eb20112d4a4bcbd37ba2bf715c64c202",
+      "url": "https://api.github.com/repos/QuantConnect/Lean/commits/629d71a3eb20112d4a4bcbd37ba2bf715c64c202"
+    },
+    "node_id": "MDM6UmVmMjcyNTE0NjM6cmVmcy90YWdzL3YyLjMuMC4w"
+  },
+  {
+    "name": "v2.2.0.2",
+    "zipball_url": "https://api.github.com/repos/QuantConnect/Lean/zipball/refs/tags/v2.2.0.2",
+    "tarball_url": "https://api.github.com/repos/QuantConnect/Lean/tarball/refs/tags/v2.2.0.2",
+    "commit": {
+      "sha": "39f570fddecb2023a1b77a29b613736d7ac8bacb",
+      "url": "https://api.github.com/repos/QuantConnect/Lean/commits/39f570fddecb2023a1b77a29b613736d7ac8bacb"
+    },
+    "node_id": "MDM6UmVmMjcyNTE0NjM6cmVmcy90YWdzL3YyLjIuMC4y"
+  },
+  {
+    "name": "v2.2.0.1",
+    "zipball_url": "https://api.github.com/repos/QuantConnect/Lean/zipball/refs/tags/v2.2.0.1",
+    "tarball_url": "https://api.github.com/repos/QuantConnect/Lean/tarball/refs/tags/v2.2.0.1",
+    "commit": {
+      "sha": "7c6c6e6f1a8020dcedf7bba001022de7c56f8a39",
+      "url": "https://api.github.com/repos/QuantConnect/Lean/commits/7c6c6e6f1a8020dcedf7bba001022de7c56f8a39"
+    },
+    "node_id": "MDM6UmVmMjcyNTE0NjM6cmVmcy90YWdzL3YyLjIuMC4x"
+  },
+  {
+    "name": "v2.2.0.0",
+    "zipball_url": "https://api.github.com/repos/QuantConnect/Lean/zipball/refs/tags/v2.2.0.0",
+    "tarball_url": "https://api.github.com/repos/QuantConnect/Lean/tarball/refs/tags/v2.2.0.0",
+    "commit": {
+      "sha": "02030608fc61533b35034923891328022a69bdab",
+      "url": "https://api.github.com/repos/QuantConnect/Lean/commits/02030608fc61533b35034923891328022a69bdab"
+    },
+    "node_id": "MDM6UmVmMjcyNTE0NjM6cmVmcy90YWdzL3YyLjIuMC4w"
+  },
+  {
+    "name": "v2.1.6.4",
+    "zipball_url": "https://api.github.com/repos/QuantConnect/Lean/zipball/refs/tags/v2.1.6.4",
+    "tarball_url": "https://api.github.com/repos/QuantConnect/Lean/tarball/refs/tags/v2.1.6.4",
+    "commit": {
+      "sha": "1226a697486778d84774e1ef2a2fcfc544910587",
+      "url": "https://api.github.com/repos/QuantConnect/Lean/commits/1226a697486778d84774e1ef2a2fcfc544910587"
+    },
+    "node_id": "MDM6UmVmMjcyNTE0NjM6cmVmcy90YWdzL3YyLjEuNi40"
+  },
+  {
+    "name": "v2.1.6.3",
+    "zipball_url": "https://api.github.com/repos/QuantConnect/Lean/zipball/refs/tags/v2.1.6.3",
+    "tarball_url": "https://api.github.com/repos/QuantConnect/Lean/tarball/refs/tags/v2.1.6.3",
+    "commit": {
+      "sha": "94957567e40426d55818f6b14368b9210418797b",
+      "url": "https://api.github.com/repos/QuantConnect/Lean/commits/94957567e40426d55818f6b14368b9210418797b"
+    },
+    "node_id": "MDM6UmVmMjcyNTE0NjM6cmVmcy90YWdzL3YyLjEuNi4z"
+  }
+]

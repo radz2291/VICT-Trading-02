@@ -1,0 +1,866 @@
+[
+  {
+    "name": ".devcontainer",
+    "path": ".devcontainer",
+    "sha": "0605b3e7972adb3dcc4bad0499928e63b4640107",
+    "size": 0,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/.devcontainer?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/tree/master/.devcontainer",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/trees/0605b3e7972adb3dcc4bad0499928e63b4640107",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/.devcontainer?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/trees/0605b3e7972adb3dcc4bad0499928e63b4640107",
+      "html": "https://github.com/QuantConnect/Lean/tree/master/.devcontainer"
+    }
+  },
+  {
+    "name": ".dockerignore",
+    "path": ".dockerignore",
+    "sha": "931d80e4e42ddd19ab3547591edbdecc045ca630",
+    "size": 50,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/.dockerignore?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/.dockerignore",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/931d80e4e42ddd19ab3547591edbdecc045ca630",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/.dockerignore",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/.dockerignore?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/931d80e4e42ddd19ab3547591edbdecc045ca630",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/.dockerignore"
+    }
+  },
+  {
+    "name": ".editorconfig",
+    "path": ".editorconfig",
+    "sha": "bcac1793a4cff7148298733a922a9faaa48b3f26",
+    "size": 171,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/.editorconfig?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/.editorconfig",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/bcac1793a4cff7148298733a922a9faaa48b3f26",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/.editorconfig",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/.editorconfig?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/bcac1793a4cff7148298733a922a9faaa48b3f26",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/.editorconfig"
+    }
+  },
+  {
+    "name": ".gitattributes",
+    "path": ".gitattributes",
+    "sha": "f372f7f3edc33ba9942519e9419587fa7252beae",
+    "size": 2573,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/.gitattributes?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/.gitattributes",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/f372f7f3edc33ba9942519e9419587fa7252beae",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/.gitattributes",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/.gitattributes?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/f372f7f3edc33ba9942519e9419587fa7252beae",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/.gitattributes"
+    }
+  },
+  {
+    "name": ".github",
+    "path": ".github",
+    "sha": "1044b945ace2a7633fa32b7ec08f7552e9b2c119",
+    "size": 0,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/.github?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/tree/master/.github",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/trees/1044b945ace2a7633fa32b7ec08f7552e9b2c119",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/.github?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/trees/1044b945ace2a7633fa32b7ec08f7552e9b2c119",
+      "html": "https://github.com/QuantConnect/Lean/tree/master/.github"
+    }
+  },
+  {
+    "name": ".gitignore",
+    "path": ".gitignore",
+    "sha": "4bd3ecdb1720fc3ec869211ec9c91c3eca8f81c2",
+    "size": 3889,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/.gitignore?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/.gitignore",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/4bd3ecdb1720fc3ec869211ec9c91c3eca8f81c2",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/.gitignore",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/.gitignore?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/4bd3ecdb1720fc3ec869211ec9c91c3eca8f81c2",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/.gitignore"
+    }
+  },
+  {
+    "name": ".nuget",
+    "path": ".nuget",
+    "sha": "16d61e20540e8c575aab3901f2953d855e567ea2",
+    "size": 0,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/.nuget?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/tree/master/.nuget",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/trees/16d61e20540e8c575aab3901f2953d855e567ea2",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/.nuget?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/trees/16d61e20540e8c575aab3901f2953d855e567ea2",
+      "html": "https://github.com/QuantConnect/Lean/tree/master/.nuget"
+    }
+  },
+  {
+    "name": ".travis.yml",
+    "path": ".travis.yml",
+    "sha": "09607fb95f8a84c7cfcd692ad6e5576eddaf0839",
+    "size": 1031,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/.travis.yml?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/.travis.yml",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/09607fb95f8a84c7cfcd692ad6e5576eddaf0839",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/.travis.yml",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/.travis.yml?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/09607fb95f8a84c7cfcd692ad6e5576eddaf0839",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/.travis.yml"
+    }
+  },
+  {
+    "name": ".vs",
+    "path": ".vs",
+    "sha": "944a02a8ee571332a1e4ac95ed5d01fba574d81f",
+    "size": 0,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/.vs?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/tree/master/.vs",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/trees/944a02a8ee571332a1e4ac95ed5d01fba574d81f",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/.vs?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/trees/944a02a8ee571332a1e4ac95ed5d01fba574d81f",
+      "html": "https://github.com/QuantConnect/Lean/tree/master/.vs"
+    }
+  },
+  {
+    "name": ".vscode",
+    "path": ".vscode",
+    "sha": "05cbed47080e145825de8c04e8b344c07c8386f9",
+    "size": 0,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/.vscode?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/tree/master/.vscode",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/trees/05cbed47080e145825de8c04e8b344c07c8386f9",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/.vscode?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/trees/05cbed47080e145825de8c04e8b344c07c8386f9",
+      "html": "https://github.com/QuantConnect/Lean/tree/master/.vscode"
+    }
+  },
+  {
+    "name": "Algorithm.CSharp",
+    "path": "Algorithm.CSharp",
+    "sha": "f7185fe252231c4ed6a6fc0f26057ff9d98ab935",
+    "size": 0,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Algorithm.CSharp?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/tree/master/Algorithm.CSharp",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/trees/f7185fe252231c4ed6a6fc0f26057ff9d98ab935",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Algorithm.CSharp?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/trees/f7185fe252231c4ed6a6fc0f26057ff9d98ab935",
+      "html": "https://github.com/QuantConnect/Lean/tree/master/Algorithm.CSharp"
+    }
+  },
+  {
+    "name": "Algorithm.Framework",
+    "path": "Algorithm.Framework",
+    "sha": "9024093de9e13b6452098b41c372b521d4d13f5a",
+    "size": 0,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Algorithm.Framework?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/tree/master/Algorithm.Framework",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/trees/9024093de9e13b6452098b41c372b521d4d13f5a",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Algorithm.Framework?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/trees/9024093de9e13b6452098b41c372b521d4d13f5a",
+      "html": "https://github.com/QuantConnect/Lean/tree/master/Algorithm.Framework"
+    }
+  },
+  {
+    "name": "Algorithm.Python",
+    "path": "Algorithm.Python",
+    "sha": "210963eb1b23c1164b8e50a850db8e9e4618c7e6",
+    "size": 0,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Algorithm.Python?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/tree/master/Algorithm.Python",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/trees/210963eb1b23c1164b8e50a850db8e9e4618c7e6",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Algorithm.Python?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/trees/210963eb1b23c1164b8e50a850db8e9e4618c7e6",
+      "html": "https://github.com/QuantConnect/Lean/tree/master/Algorithm.Python"
+    }
+  },
+  {
+    "name": "Algorithm",
+    "path": "Algorithm",
+    "sha": "ff7b237ea00c839cf7399d589c98dc7925cfc878",
+    "size": 0,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Algorithm?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/tree/master/Algorithm",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/trees/ff7b237ea00c839cf7399d589c98dc7925cfc878",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Algorithm?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/trees/ff7b237ea00c839cf7399d589c98dc7925cfc878",
+      "html": "https://github.com/QuantConnect/Lean/tree/master/Algorithm"
+    }
+  },
+  {
+    "name": "AlgorithmFactory",
+    "path": "AlgorithmFactory",
+    "sha": "dc6c87c8cea19d7899d51a3435506c903e3406ce",
+    "size": 0,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/AlgorithmFactory?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/tree/master/AlgorithmFactory",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/trees/dc6c87c8cea19d7899d51a3435506c903e3406ce",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/AlgorithmFactory?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/trees/dc6c87c8cea19d7899d51a3435506c903e3406ce",
+      "html": "https://github.com/QuantConnect/Lean/tree/master/AlgorithmFactory"
+    }
+  },
+  {
+    "name": "Api",
+    "path": "Api",
+    "sha": "88c73cf0650d63cfbdf638c4d9c02480ff55fd03",
+    "size": 0,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Api?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/tree/master/Api",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/trees/88c73cf0650d63cfbdf638c4d9c02480ff55fd03",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Api?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/trees/88c73cf0650d63cfbdf638c4d9c02480ff55fd03",
+      "html": "https://github.com/QuantConnect/Lean/tree/master/Api"
+    }
+  },
+  {
+    "name": "Brokerages",
+    "path": "Brokerages",
+    "sha": "59ab14bed124ed892e814e5f22bdb01fab96c337",
+    "size": 0,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/tree/master/Brokerages",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/trees/59ab14bed124ed892e814e5f22bdb01fab96c337",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Brokerages?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/trees/59ab14bed124ed892e814e5f22bdb01fab96c337",
+      "html": "https://github.com/QuantConnect/Lean/tree/master/Brokerages"
+    }
+  },
+  {
+    "name": "CONTRIBUTING.md",
+    "path": "CONTRIBUTING.md",
+    "sha": "58d7b6ce1acc631e778ba28e0814ed1a55290585",
+    "size": 7712,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/CONTRIBUTING.md?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/CONTRIBUTING.md",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/58d7b6ce1acc631e778ba28e0814ed1a55290585",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/CONTRIBUTING.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/CONTRIBUTING.md?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/58d7b6ce1acc631e778ba28e0814ed1a55290585",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/CONTRIBUTING.md"
+    }
+  },
+  {
+    "name": "Common",
+    "path": "Common",
+    "sha": "b66ed58ee1de80752d1c91ff630d581b6156c0ca",
+    "size": 0,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Common?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/tree/master/Common",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/trees/b66ed58ee1de80752d1c91ff630d581b6156c0ca",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Common?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/trees/b66ed58ee1de80752d1c91ff630d581b6156c0ca",
+      "html": "https://github.com/QuantConnect/Lean/tree/master/Common"
+    }
+  },
+  {
+    "name": "Compression",
+    "path": "Compression",
+    "sha": "36a0df5b0ea008ee2eb5c1db476cfae28270f5f9",
+    "size": 0,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Compression?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/tree/master/Compression",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/trees/36a0df5b0ea008ee2eb5c1db476cfae28270f5f9",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Compression?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/trees/36a0df5b0ea008ee2eb5c1db476cfae28270f5f9",
+      "html": "https://github.com/QuantConnect/Lean/tree/master/Compression"
+    }
+  },
+  {
+    "name": "Configuration",
+    "path": "Configuration",
+    "sha": "1ff02f2389370d272c5e552a3f1e0690b2c08acb",
+    "size": 0,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Configuration?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/tree/master/Configuration",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/trees/1ff02f2389370d272c5e552a3f1e0690b2c08acb",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Configuration?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/trees/1ff02f2389370d272c5e552a3f1e0690b2c08acb",
+      "html": "https://github.com/QuantConnect/Lean/tree/master/Configuration"
+    }
+  },
+  {
+    "name": "Data",
+    "path": "Data",
+    "sha": "b8b61d11ba7359d0f57351ef4c90ef4307f6cbd7",
+    "size": 0,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Data?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/tree/master/Data",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/trees/b8b61d11ba7359d0f57351ef4c90ef4307f6cbd7",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Data?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/trees/b8b61d11ba7359d0f57351ef4c90ef4307f6cbd7",
+      "html": "https://github.com/QuantConnect/Lean/tree/master/Data"
+    }
+  },
+  {
+    "name": "Dockerfile",
+    "path": "Dockerfile",
+    "sha": "8ebd317176e66c76475794285733fd8c8abb5dba",
+    "size": 1000,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Dockerfile?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/Dockerfile",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/8ebd317176e66c76475794285733fd8c8abb5dba",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Dockerfile",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Dockerfile?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/8ebd317176e66c76475794285733fd8c8abb5dba",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/Dockerfile"
+    }
+  },
+  {
+    "name": "DockerfileJupyter",
+    "path": "DockerfileJupyter",
+    "sha": "cf35a12f8a2e83cc53ccb134af12458ce56bd13f",
+    "size": 2999,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/DockerfileJupyter?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/DockerfileJupyter",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/cf35a12f8a2e83cc53ccb134af12458ce56bd13f",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/DockerfileJupyter",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/DockerfileJupyter?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/cf35a12f8a2e83cc53ccb134af12458ce56bd13f",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/DockerfileJupyter"
+    }
+  },
+  {
+    "name": "DockerfileLeanFoundation",
+    "path": "DockerfileLeanFoundation",
+    "sha": "64c6209db3cf78b4f2dfc8e5c23d47d836ea0bed",
+    "size": 17961,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/DockerfileLeanFoundation?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/DockerfileLeanFoundation",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/64c6209db3cf78b4f2dfc8e5c23d47d836ea0bed",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/DockerfileLeanFoundation",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/DockerfileLeanFoundation?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/64c6209db3cf78b4f2dfc8e5c23d47d836ea0bed",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/DockerfileLeanFoundation"
+    }
+  },
+  {
+    "name": "DockerfileLeanFoundationARM",
+    "path": "DockerfileLeanFoundationARM",
+    "sha": "2ed78793e2dcc26579516dbd90fd81b213d2ff76",
+    "size": 11412,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/DockerfileLeanFoundationARM?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/DockerfileLeanFoundationARM",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/2ed78793e2dcc26579516dbd90fd81b213d2ff76",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/DockerfileLeanFoundationARM",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/DockerfileLeanFoundationARM?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/2ed78793e2dcc26579516dbd90fd81b213d2ff76",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/DockerfileLeanFoundationARM"
+    }
+  },
+  {
+    "name": "Documentation",
+    "path": "Documentation",
+    "sha": "e125bbad92507464a7797cf99fa852f7768605b4",
+    "size": 0,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Documentation?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/tree/master/Documentation",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/trees/e125bbad92507464a7797cf99fa852f7768605b4",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Documentation?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/trees/e125bbad92507464a7797cf99fa852f7768605b4",
+      "html": "https://github.com/QuantConnect/Lean/tree/master/Documentation"
+    }
+  },
+  {
+    "name": "DownloaderDataProvider",
+    "path": "DownloaderDataProvider",
+    "sha": "a8232e90ff4daa6357d4e22a401f79c4670b7159",
+    "size": 0,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/DownloaderDataProvider?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/tree/master/DownloaderDataProvider",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/trees/a8232e90ff4daa6357d4e22a401f79c4670b7159",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/DownloaderDataProvider?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/trees/a8232e90ff4daa6357d4e22a401f79c4670b7159",
+      "html": "https://github.com/QuantConnect/Lean/tree/master/DownloaderDataProvider"
+    }
+  },
+  {
+    "name": "Engine",
+    "path": "Engine",
+    "sha": "4c161c60c147631b8e443a75e62d6e1e81fff29c",
+    "size": 0,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Engine?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/tree/master/Engine",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/trees/4c161c60c147631b8e443a75e62d6e1e81fff29c",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Engine?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/trees/4c161c60c147631b8e443a75e62d6e1e81fff29c",
+      "html": "https://github.com/QuantConnect/Lean/tree/master/Engine"
+    }
+  },
+  {
+    "name": "Indicators",
+    "path": "Indicators",
+    "sha": "babb730f3313b24b5ab501a3faad304ea7f72141",
+    "size": 0,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Indicators?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/tree/master/Indicators",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/trees/babb730f3313b24b5ab501a3faad304ea7f72141",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Indicators?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/trees/babb730f3313b24b5ab501a3faad304ea7f72141",
+      "html": "https://github.com/QuantConnect/Lean/tree/master/Indicators"
+    }
+  },
+  {
+    "name": "LICENSE",
+    "path": "LICENSE",
+    "sha": "6faed93d21a1a9551b11434e87c9000a393d73f2",
+    "size": 10737,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/LICENSE?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/LICENSE",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/6faed93d21a1a9551b11434e87c9000a393d73f2",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/LICENSE",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/LICENSE?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/6faed93d21a1a9551b11434e87c9000a393d73f2",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/LICENSE"
+    }
+  },
+  {
+    "name": "Launcher",
+    "path": "Launcher",
+    "sha": "cc592556b8d4957cfbf65062db67dab264a37cb2",
+    "size": 0,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Launcher?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/tree/master/Launcher",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/trees/cc592556b8d4957cfbf65062db67dab264a37cb2",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Launcher?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/trees/cc592556b8d4957cfbf65062db67dab264a37cb2",
+      "html": "https://github.com/QuantConnect/Lean/tree/master/Launcher"
+    }
+  },
+  {
+    "name": "LocalPackages",
+    "path": "LocalPackages",
+    "sha": "3f41429fa0eacbdb4f19a529c7726af7ca457f79",
+    "size": 0,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/LocalPackages?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/tree/master/LocalPackages",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/trees/3f41429fa0eacbdb4f19a529c7726af7ca457f79",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/LocalPackages?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/trees/3f41429fa0eacbdb4f19a529c7726af7ca457f79",
+      "html": "https://github.com/QuantConnect/Lean/tree/master/LocalPackages"
+    }
+  },
+  {
+    "name": "Logging",
+    "path": "Logging",
+    "sha": "7d1497f81263c598adbc194908dae1cba9518dad",
+    "size": 0,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Logging?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/tree/master/Logging",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/trees/7d1497f81263c598adbc194908dae1cba9518dad",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Logging?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/trees/7d1497f81263c598adbc194908dae1cba9518dad",
+      "html": "https://github.com/QuantConnect/Lean/tree/master/Logging"
+    }
+  },
+  {
+    "name": "Messaging",
+    "path": "Messaging",
+    "sha": "e8865095e8bca1cec459ca8e0adbaa81d60cba11",
+    "size": 0,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Messaging?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/tree/master/Messaging",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/trees/e8865095e8bca1cec459ca8e0adbaa81d60cba11",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Messaging?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/trees/e8865095e8bca1cec459ca8e0adbaa81d60cba11",
+      "html": "https://github.com/QuantConnect/Lean/tree/master/Messaging"
+    }
+  },
+  {
+    "name": "Optimizer.Launcher",
+    "path": "Optimizer.Launcher",
+    "sha": "7b5480f2af539daa0f6f35cbc0ecb9c3e953d3e6",
+    "size": 0,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Optimizer.Launcher?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/tree/master/Optimizer.Launcher",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/trees/7b5480f2af539daa0f6f35cbc0ecb9c3e953d3e6",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Optimizer.Launcher?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/trees/7b5480f2af539daa0f6f35cbc0ecb9c3e953d3e6",
+      "html": "https://github.com/QuantConnect/Lean/tree/master/Optimizer.Launcher"
+    }
+  },
+  {
+    "name": "Optimizer",
+    "path": "Optimizer",
+    "sha": "e84907278104e4f4f174d662b99a90e9c0115750",
+    "size": 0,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Optimizer?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/tree/master/Optimizer",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/trees/e84907278104e4f4f174d662b99a90e9c0115750",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Optimizer?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/trees/e84907278104e4f4f174d662b99a90e9c0115750",
+      "html": "https://github.com/QuantConnect/Lean/tree/master/Optimizer"
+    }
+  },
+  {
+    "name": "QuantConnect.Lean.sln",
+    "path": "QuantConnect.Lean.sln",
+    "sha": "ed4f58898c3aabe3d4c2588cb93218c11248f932",
+    "size": 12593,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/QuantConnect.Lean.sln?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/QuantConnect.Lean.sln",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/ed4f58898c3aabe3d4c2588cb93218c11248f932",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/QuantConnect.Lean.sln",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/QuantConnect.Lean.sln?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/ed4f58898c3aabe3d4c2588cb93218c11248f932",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/QuantConnect.Lean.sln"
+    }
+  },
+  {
+    "name": "QuantConnect.Lean.sln.DotSettings",
+    "path": "QuantConnect.Lean.sln.DotSettings",
+    "sha": "91b92db606dff2d5ec97f97b00dc1d388213c4c0",
+    "size": 5844,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/QuantConnect.Lean.sln.DotSettings?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/QuantConnect.Lean.sln.DotSettings",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/91b92db606dff2d5ec97f97b00dc1d388213c4c0",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/QuantConnect.Lean.sln.DotSettings",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/QuantConnect.Lean.sln.DotSettings?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/91b92db606dff2d5ec97f97b00dc1d388213c4c0",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/QuantConnect.Lean.sln.DotSettings"
+    }
+  },
+  {
+    "name": "Queues",
+    "path": "Queues",
+    "sha": "0852b9de74285cbd226e86cb7b27e2f559606aeb",
+    "size": 0,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Queues?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/tree/master/Queues",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/trees/0852b9de74285cbd226e86cb7b27e2f559606aeb",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Queues?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/trees/0852b9de74285cbd226e86cb7b27e2f559606aeb",
+      "html": "https://github.com/QuantConnect/Lean/tree/master/Queues"
+    }
+  },
+  {
+    "name": "Report",
+    "path": "Report",
+    "sha": "cf0fbea5d9634db80a8f91f692ce1b18e737fd7e",
+    "size": 0,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Report?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/tree/master/Report",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/trees/cf0fbea5d9634db80a8f91f692ce1b18e737fd7e",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Report?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/trees/cf0fbea5d9634db80a8f91f692ce1b18e737fd7e",
+      "html": "https://github.com/QuantConnect/Lean/tree/master/Report"
+    }
+  },
+  {
+    "name": "Research",
+    "path": "Research",
+    "sha": "4e3350f12782aea6d621535fe6787f8788cb1e85",
+    "size": 0,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Research?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/tree/master/Research",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/trees/4e3350f12782aea6d621535fe6787f8788cb1e85",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Research?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/trees/4e3350f12782aea6d621535fe6787f8788cb1e85",
+      "html": "https://github.com/QuantConnect/Lean/tree/master/Research"
+    }
+  },
+  {
+    "name": "Tests",
+    "path": "Tests",
+    "sha": "f3d199eb4edd7a05ef6c413fe7ede6447dfd3ec3",
+    "size": 0,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/Tests?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/tree/master/Tests",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/trees/f3d199eb4edd7a05ef6c413fe7ede6447dfd3ec3",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/Tests?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/trees/f3d199eb4edd7a05ef6c413fe7ede6447dfd3ec3",
+      "html": "https://github.com/QuantConnect/Lean/tree/master/Tests"
+    }
+  },
+  {
+    "name": "ToolBox",
+    "path": "ToolBox",
+    "sha": "3ca05dd696ccd8eb7f4d4c2441d0eb2ae0ec1c62",
+    "size": 0,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/ToolBox?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/tree/master/ToolBox",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/trees/3ca05dd696ccd8eb7f4d4c2441d0eb2ae0ec1c62",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/ToolBox?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/trees/3ca05dd696ccd8eb7f4d4c2441d0eb2ae0ec1c62",
+      "html": "https://github.com/QuantConnect/Lean/tree/master/ToolBox"
+    }
+  },
+  {
+    "name": "ci_build_stubs.sh",
+    "path": "ci_build_stubs.sh",
+    "sha": "6531521a01715e29b5976ae489492c3ff0295400",
+    "size": 3095,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/ci_build_stubs.sh?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/ci_build_stubs.sh",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/6531521a01715e29b5976ae489492c3ff0295400",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/ci_build_stubs.sh",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/ci_build_stubs.sh?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/6531521a01715e29b5976ae489492c3ff0295400",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/ci_build_stubs.sh"
+    }
+  },
+  {
+    "name": "compare_benchmarks.py",
+    "path": "compare_benchmarks.py",
+    "sha": "fcc0156e25e5a96b74f74b7f9d56d8a208544607",
+    "size": 996,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/compare_benchmarks.py?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/compare_benchmarks.py",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/fcc0156e25e5a96b74f74b7f9d56d8a208544607",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/compare_benchmarks.py",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/compare_benchmarks.py?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/fcc0156e25e5a96b74f74b7f9d56d8a208544607",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/compare_benchmarks.py"
+    }
+  },
+  {
+    "name": "find_datasource_repos.py",
+    "path": "find_datasource_repos.py",
+    "sha": "1fa2956b75d7cf40e3617a90f8eddccadd0a2e56",
+    "size": 9194,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/find_datasource_repos.py?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/find_datasource_repos.py",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/1fa2956b75d7cf40e3617a90f8eddccadd0a2e56",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/find_datasource_repos.py",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/find_datasource_repos.py?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/1fa2956b75d7cf40e3617a90f8eddccadd0a2e56",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/find_datasource_repos.py"
+    }
+  },
+  {
+    "name": "google9161359af9633398.html",
+    "path": "google9161359af9633398.html",
+    "sha": "915dfcbe5667322a70c1a7457b21a109da552b77",
+    "size": 53,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/google9161359af9633398.html?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/google9161359af9633398.html",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/915dfcbe5667322a70c1a7457b21a109da552b77",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/google9161359af9633398.html",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/google9161359af9633398.html?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/915dfcbe5667322a70c1a7457b21a109da552b77",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/google9161359af9633398.html"
+    }
+  },
+  {
+    "name": "lean.ico",
+    "path": "lean.ico",
+    "sha": "796d3d8e113a318d2de4236b819680b975221cec",
+    "size": 1150,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/lean.ico?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/lean.ico",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/796d3d8e113a318d2de4236b819680b975221cec",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/lean.ico",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/lean.ico?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/796d3d8e113a318d2de4236b819680b975221cec",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/lean.ico"
+    }
+  },
+  {
+    "name": "mypy.ini",
+    "path": "mypy.ini",
+    "sha": "a241bb4ae2d8dda1a17698e9dcc5c5be6cf447cc",
+    "size": 179,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/mypy.ini?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/mypy.ini",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/a241bb4ae2d8dda1a17698e9dcc5c5be6cf447cc",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/mypy.ini",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/mypy.ini?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/a241bb4ae2d8dda1a17698e9dcc5c5be6cf447cc",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/mypy.ini"
+    }
+  },
+  {
+    "name": "readme.md",
+    "path": "readme.md",
+    "sha": "b352780b83e4da76837cdac623d3d36597639852",
+    "size": 11001,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/readme.md?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/readme.md",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/b352780b83e4da76837cdac623d3d36597639852",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/readme.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/readme.md?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/b352780b83e4da76837cdac623d3d36597639852",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/readme.md"
+    }
+  },
+  {
+    "name": "rebase_organization_branches.sh",
+    "path": "rebase_organization_branches.sh",
+    "sha": "6530470921126a4e96284a3263a19b741ce4b27e",
+    "size": 727,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/rebase_organization_branches.sh?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/rebase_organization_branches.sh",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/6530470921126a4e96284a3263a19b741ce4b27e",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/rebase_organization_branches.sh",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/rebase_organization_branches.sh?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/6530470921126a4e96284a3263a19b741ce4b27e",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/rebase_organization_branches.sh"
+    }
+  },
+  {
+    "name": "run_benchmarks.py",
+    "path": "run_benchmarks.py",
+    "sha": "a029d0e7f36389c2d07f1b08912632a75945ae83",
+    "size": 2336,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/run_benchmarks.py?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/run_benchmarks.py",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/a029d0e7f36389c2d07f1b08912632a75945ae83",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/run_benchmarks.py",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/run_benchmarks.py?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/a029d0e7f36389c2d07f1b08912632a75945ae83",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/run_benchmarks.py"
+    }
+  },
+  {
+    "name": "run_syntax_check.py",
+    "path": "run_syntax_check.py",
+    "sha": "645e72214bc2f95d3522e48e8eae57197730a646",
+    "size": 7399,
+    "url": "https://api.github.com/repos/QuantConnect/Lean/contents/run_syntax_check.py?ref=master",
+    "html_url": "https://github.com/QuantConnect/Lean/blob/master/run_syntax_check.py",
+    "git_url": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/645e72214bc2f95d3522e48e8eae57197730a646",
+    "download_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/run_syntax_check.py",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/QuantConnect/Lean/contents/run_syntax_check.py?ref=master",
+      "git": "https://api.github.com/repos/QuantConnect/Lean/git/blobs/645e72214bc2f95d3522e48e8eae57197730a646",
+      "html": "https://github.com/QuantConnect/Lean/blob/master/run_syntax_check.py"
+    }
+  }
+]
