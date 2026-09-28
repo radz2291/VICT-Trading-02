@@ -1,0 +1,16 @@
+HTTP/1.1 200 OK
+Date: Mon, 28 Sep 2026 14:18:41 GMT
+Content-Type: application/octet-stream
+Content-Length: 91732
+Connection: keep-alive
+set-cookie: __cf_bm=Vc73aiSdNl48I05PFJsLQLltFJPTVOBwZ.RXtaJmm6w-1790605120.9248066-1.0.1.1-_.xEfZnuLaVOBrnbXvSGLhhGYCQxsolsuj0DuUTMWWvEXlIRJ50PZKCt46fNpGVfS6GwI_aJedVjDujoKLx_wg8h1GHDim24n3fegw2W4zi00DdkrBg1pwQtnbPG7xAx; HttpOnly; SameSite=None; Secure; Path=/; Domain=npmjs.org; Expires=Mon, 28 Sep 2026 14:48:41 GMT
+set-cookie: _cfuvid=RHL62iMPzbgIldjvrIbbPcxhXA4rElFWgmlceHPWPZg-1790605120.9248066-1.0.1.1-RYVkPs.o7BwVQiIgn8IXWUTVIH68m6gl8kQroNijlV0; HttpOnly; SameSite=None; Secure; Path=/; Domain=npmjs.org
+CF-Ray: a42360f5cff7d964-KUL
+CF-Cache-Status: HIT
+Accept-Ranges: bytes
+Access-Control-Allow-Origin: *
+Cache-Control: public, must-revalidate, max-age=31557600
+ETag: "e2ce0715f616d893572e825239158510"
+Last-Modified: Mon, 28 Sep 2026 13:28:00 GMT
+Server: cloudflare
+

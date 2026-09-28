@@ -1,0 +1,101 @@
+{
+  "sha": "e92c8b73832144a886550618423dbc2fe50673c7",
+  "node_id": "C_kwDOUKNy69oAKGU5MmM4YjczODMyMTQ0YTg4NjU1MDYxODQyM2RiYzJmZTUwNjczYzc",
+  "commit": {
+    "author": {
+      "name": "radz2291",
+      "email": "radziamin91@gmail.com",
+      "date": "2026-09-28T14:07:11Z"
+    },
+    "committer": {
+      "name": "radz2291",
+      "email": "radziamin91@gmail.com",
+      "date": "2026-09-28T14:07:11Z"
+    },
+    "message": "docs: record published 0.4.0-rc.1 candidate and verification caveat",
+    "tree": {
+      "sha": "9946b26727733840b2b6b8fd1cccf6e9960f9b59",
+      "url": "https://api.github.com/repos/radz2291/vict-02/git/trees/9946b26727733840b2b6b8fd1cccf6e9960f9b59"
+    },
+    "url": "https://api.github.com/repos/radz2291/vict-02/git/commits/e92c8b73832144a886550618423dbc2fe50673c7",
+    "comment_count": 0,
+    "verification": {
+      "verified": false,
+      "reason": "unsigned",
+      "signature": null,
+      "payload": null,
+      "verified_at": null
+    }
+  },
+  "url": "https://api.github.com/repos/radz2291/vict-02/commits/e92c8b73832144a886550618423dbc2fe50673c7",
+  "html_url": "https://github.com/radz2291/vict-02/commit/e92c8b73832144a886550618423dbc2fe50673c7",
+  "comments_url": "https://api.github.com/repos/radz2291/vict-02/commits/e92c8b73832144a886550618423dbc2fe50673c7/comments",
+  "author": {
+    "login": "radz2291",
+    "id": 185976150,
+    "node_id": "U_kgDOCxXFVg",
+    "avatar_url": "https://avatars.githubusercontent.com/u/185976150?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/radz2291",
+    "html_url": "https://github.com/radz2291",
+    "followers_url": "https://api.github.com/users/radz2291/followers",
+    "following_url": "https://api.github.com/users/radz2291/following{/other_user}",
+    "gists_url": "https://api.github.com/users/radz2291/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/radz2291/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/radz2291/subscriptions",
+    "organizations_url": "https://api.github.com/users/radz2291/orgs",
+    "repos_url": "https://api.github.com/users/radz2291/repos",
+    "events_url": "https://api.github.com/users/radz2291/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/radz2291/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "committer": {
+    "login": "radz2291",
+    "id": 185976150,
+    "node_id": "U_kgDOCxXFVg",
+    "avatar_url": "https://avatars.githubusercontent.com/u/185976150?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/radz2291",
+    "html_url": "https://github.com/radz2291",
+    "followers_url": "https://api.github.com/users/radz2291/followers",
+    "following_url": "https://api.github.com/users/radz2291/following{/other_user}",
+    "gists_url": "https://api.github.com/users/radz2291/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/radz2291/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/radz2291/subscriptions",
+    "organizations_url": "https://api.github.com/users/radz2291/orgs",
+    "repos_url": "https://api.github.com/users/radz2291/repos",
+    "events_url": "https://api.github.com/users/radz2291/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/radz2291/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "parents": [
+    {
+      "sha": "c3678e30e737dd2ef292ea32c388aa8a5712b9b8",
+      "url": "https://api.github.com/repos/radz2291/vict-02/commits/c3678e30e737dd2ef292ea32c388aa8a5712b9b8",
+      "html_url": "https://github.com/radz2291/vict-02/commit/c3678e30e737dd2ef292ea32c388aa8a5712b9b8"
+    }
+  ],
+  "stats": {
+    "total": 68,
+    "additions": 31,
+    "deletions": 37
+  },
+  "files": [
+    {
+      "sha": "26cc52ca2254e71009afcd7ee22386016ac11e69",
+      "filename": "docs/RELEASE-COMPATIBILITY.md",
+      "status": "modified",
+      "additions": 31,
+      "deletions": 37,
+      "changes": 68,
+      "blob_url": "https://github.com/radz2291/vict-02/blob/e92c8b73832144a886550618423dbc2fe50673c7/docs%2FRELEASE-COMPATIBILITY.md",
+      "raw_url": "https://github.com/radz2291/vict-02/raw/e92c8b73832144a886550618423dbc2fe50673c7/docs%2FRELEASE-COMPATIBILITY.md",
+      "contents_url": "https://api.github.com/repos/radz2291/vict-02/contents/docs%2FRELEASE-COMPATIBILITY.md?ref=e92c8b73832144a886550618423dbc2fe50673c7",
+      "patch": "@@ -175,30 +175,26 @@\n > publication, trust extension for the two new members) is a separate\n > later step under the amended contract.\n \n-> **Coordinated candidate release set 0.4.0-rc.1 (2026-09-27, 14 members\n-> — PREPARED; NOT PUBLISHED):** the current compatible release-set record\n-> in §2 below is the facade-retirement candidate re-versioned per the\n-> repository's release rules: the 14-member set (consolidated amendment\n-> draft §16, awaiting owner ratification) at the NEW coherent candidate\n-> version `0.4.0-rc.1` (identity `vict-release-set@1/0.4.0-rc.1`,\n-> contentId `v1_2a70a29a…`). The version moves off `0.3.1`, which is\n-> PUBLISHED and immutable (`latest = 0.3.1` for all 13 historical\n-> members since 2026-09-22; ui/ui-svelte have no registry presence), so\n-> the 14-member set can never publish at `0.3.1` — the prior r1\n-> prepared record naming that version was already un-publishable at\n-> filing. Per the frozen §7 rule the line's first publication would be\n-> this candidate under the non-latest tag `vict-0.4.0-rc`, with stable\n-> `0.4.0` under `latest` only after independent verification. The\n-> 14-member `0.3.1` prepared identity (contentId `v1_e31858f1…`, below)\n-> was superseded BEFORE any publication and is not the identity of this\n-> candidate. Nothing is published; publication additionally requires the\n-> owner-ratified final release contract.\n+> **Coordinated candidate release set 0.4.0-rc.1 (published\n+> 2026-09-28; 14 members):** §2 records the exact-pinned, published\n+> facade-retirement candidate under `vict-0.4.0-rc`. Its identity is\n+> `vict-release-set@1/0.4.0-rc.1` /\n+> `v1_2a70a29af12fa887d18e7099b027a11f86bd2f6a70a756446fb43844e41d9399`.\n+> The owner ratified §16 and recorded D-AUTHORIZE before publication.\n+> GitHub Actions [run 36427806906](https://github.com/radz2291/vict-02/actions/runs/36427806906)\n+> published all 14 from source `d7bd003047a648738a4d1d824b0c4e4a442c0da3`.\n+> Its final read-only registry check timed out during CDN propagation,\n+> leaving the run marked failure; the subsequent release record reports\n+> 14/14 registry integrity matches and a passing public-registry consumer\n+> check. See [RELEASE-EXEC-R3](./RELEASE-EXEC-R3-2026-09-28.md) for the\n+> evidence and caveat. `latest` remains `0.3.1` for the 12 historical\n+> members and npm's `0.0.0-bootstrap.1` marker for `ui` and\n+> `ui-svelte`; the candidate is selected with `vict-0.4.0-rc` or\n+> exact `0.4.0-rc.1` pins. Stable `0.4.0` is a later decision.\n >\n > **Coordinated release set 0.3.1 (re-amended 2026-09-27, 14 members —\n-> PREPARED; NOT PUBLISHED):** the current compatible release-set record in\n-> §2 below carries the facade retirement of 2026-09-27 (consolidated\n-> trusted-publishing contract amendment draft §16, awaiting owner\n-> ratification): the workspace REMOVED the\n+> PREPARED; NEVER PUBLISHED):** this historical prepared record carried\n+> the facade retirement before the owner ratified §16: the workspace REMOVED the\n > `@victframework/renderer-svelte` compatibility-facade package and\n > migrated every current consumer to direct `@victframework/ui-svelte`\n > imports — the permanent Svelte `ApplicationRenderer` implementation has\n@@ -284,8 +280,9 @@ retired member (`renderer-svelte`), plus the whole P1–P5 UI foundation\n and authoring surface — a minor-version step in the repository's 0.x\n convention; (c) §7 publishes every new line as a candidate FIRST\n (`X.Y.Z-rc.N` under the non-latest tag `vict-0.4.0-rc`), stable `0.4.0`\n-under `latest` only after independent verification — so the live\n-prepared record is the CANDIDATE `0.4.0-rc.1`. The contentId was\n+under `latest` only after independent verification — so the candidate\n+version selected at preparation was `0.4.0-rc.1` (published on\n+2026-09-28). The contentId was\n derived from the actual 14 manifests at `0.4.0-rc.1` with the frozen\n algorithm; the version change is itself a NEW set identity (sha256 over\n `name@version` pairs) — the former 14-member `0.3.1` identity\n@@ -294,7 +291,7 @@ superseded-unpublished.\n \n Amendment provenance (2026-09-27, facade retirement): the member set\n above is the re-derived 14-package candidate set (consolidated amendment\n-draft §16, awaiting owner ratification). The immediately preceding\n+draft §16 at preparation, ratified before the 2026-09-28 publication). The immediately preceding\n prepared record of the `0.3.1` version line carried the 15-member\n §14 set (contentId `v1_3a82c065…`) with `renderer-svelte` retained as a\n pure compatibility facade; that prepared identity was never published and\n@@ -530,18 +527,15 @@ Integrity mechanism: the consumer's lockfile records the SHA-512\n `integrity` hash of every installed tarball; npm verifies every install\n against it. `npm ci` reproduces the exact recorded graph.\n \n-The amended set (from the first publication of the post-retirement\n-candidate line `0.4.0-rc.1` onward, contract §14; 14 members since the\n-2026-09-27 facade retirement, draft §16) adds `@victframework/ui` and\n-`@victframework/ui-svelte` to this install list at the set's exact\n-version — same exact-pin discipline, with `renderer-svelte` NO LONGER a\n-candidate member (imports migrate to `ui-svelte`; see\n-`docs/UI-FACADE-RETIREMENT-2026-09-27.md`). The command above shows the\n-latest PUBLISHED stable set (`0.3.0`, the 13-member predecessor) for\n-consumers pinning published versions today; ui and ui-svelte enter the\n-installable set with the first publication of the amended line, and\n-published `renderer-svelte@0.3.0` remains installable by exact pin for\n-consumers who have not yet migrated.\n+The published `0.4.0-rc.1` candidate adds `@victframework/ui` and\n+`@victframework/ui-svelte` at the exact version in §2 and omits\n+`renderer-svelte` from its 14-member inventory (imports migrate to\n+`ui-svelte`; see `docs/UI-FACADE-RETIREMENT-2026-09-27.md`). The\n+`0.3.0` command above is a historical install example; the latest\n+published stable set is `0.3.1` for its 13 members, whereas this\n+candidate requires explicit `0.4.0-rc.1` pins or `vict-0.4.0-rc`.\n+Published `renderer-svelte@0.3.1` remains installable by exact pin\n+for consumers who have not migrated.\n \n Rollback: pin the prior release-set identity (all prior published\n versions remain in the registry; nothing is unpublished or mutated)."
+    }
+  ]
+}
