@@ -92,6 +92,20 @@ export function workspaceState(props: IslandProps) {
 		}
 	});
 
+	// F-V1 fix: keep the toolbar edit fields in lockstep with the selected
+	// level's STORED values. After a drag-move, undo/redo, or any successful
+	// mutation, the fields re-sync from the store — a later label-only edit
+	// therefore always carries the dragged/current price, never a stale one.
+	// A field the user is actively typing in (document.activeElement) is left
+	// alone until blur/change submits it, so typing is never clobbered.
+	$effect(() => {
+		const cur = selectedId !== null ? myLevels.find((l) => l.id === selectedId) : undefined;
+		if (!cur) return;
+		const ae = typeof document !== 'undefined' ? (document.activeElement as HTMLElement | null) : null;
+		if (ae?.dataset?.field !== 'edit-price') editPrice = String(cur.price);
+		if (ae?.dataset?.field !== 'edit-note') editNote = cur.note ?? '';
+	});
+
 	// bars: deterministic fixture per symbol, honestly aggregated per timeframe
 	const bars = $derived(buildSeries(symbol, timeframe));
 

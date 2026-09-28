@@ -35,18 +35,26 @@
 		>
 			Delete
 		</button>
-		<span class="sep"></span>
+	</div>
+
+	<!-- F-V2 fix: both bands ALWAYS exist with fixed min-heights — selection
+		 fields appear inside a reserved row, the hint inside another. The chart
+		 never shifts vertically on create/select/deselect. -->
+	<div class="fieldsrow">
 		{#if st.selectedId !== null}
 			<label class="field">
 				price
-				<input data-testid="edit-price" type="number" step="any" bind:value={st.editPrice} onchange={applyEdit} aria-label="Selected level price" />
+				<input data-testid="edit-price" data-field="edit-price" type="number" step="any" bind:value={st.editPrice} onchange={applyEdit} aria-label="Selected level price" />
 			</label>
 			<label class="field">
 				label
-				<input data-testid="edit-note" type="text" bind:value={st.editNote} onchange={applyEdit} aria-label="Selected level label" />
+				<input data-testid="edit-note" data-field="edit-note" type="text" bind:value={st.editNote} onchange={applyEdit} aria-label="Selected level label" />
 			</label>
 			<span class="sel-id">selected {st.selectedId}</span>
-		{:else}
+		{/if}
+	</div>
+	<div class="hintline">
+		{#if st.selectedId === null}
 			<span class="hint">click chart = add level · click a line = select · drag a line = move · Del removes · Ctrl+Z / Ctrl+Shift+Z</span>
 		{/if}
 	</div>
@@ -83,7 +91,19 @@
 		align-items: center;
 		gap: 6px;
 		flex-wrap: wrap;
-		margin-bottom: 6px;
+		margin-bottom: 0;
+		min-height: 30px;
+	}
+	.fieldsrow {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		flex-wrap: wrap;
+		min-height: 30px;
+	}
+	.hintline {
+		min-height: 15px;
+		margin: 0 0 4px;
 	}
 	.toolbar button {
 		background: #16202b;
@@ -102,7 +122,7 @@
 		cursor: default;
 	}
 	.toolbar button:focus-visible,
-	.toolbar input:focus-visible {
+	.fieldsrow input:focus-visible {
 		outline: 2px solid #ffd54a;
 		outline-offset: 1px;
 	}
@@ -132,7 +152,14 @@
 		color: #ffd54a;
 		font: 11px ui-monospace, Consolas, monospace;
 	}
+	.hintline {
+		min-height: 17px;
+		margin: 0 0 4px;
+	}
 	.hint {
+		display: block;
+		line-height: 17px;
+		height: 17px;
 		color: #7d8b99;
 		font-size: 11px;
 	}

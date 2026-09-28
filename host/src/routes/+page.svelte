@@ -33,12 +33,19 @@
 
 	let dataVersion = $state(0);
 
-	function loadLevels(): Level[] {
+	// Pure read — throws on failure. Callers decide how to be honest about it.
+	function readLevels(): Level[] {
 		if (typeof window === 'undefined') return [];
+		const raw = window.localStorage.getItem(LEVELS_KEY);
+		const parsed = raw ? (JSON.parse(raw) as unknown) : [];
+		return Array.isArray(parsed) ? (parsed as Level[]) : [];
+	}
+
+	// Non-throwing variant for dispatch paths (failure surfaces via the
+	// action result contract there, not via the panel).
+	function loadLevels(): Level[] {
 		try {
-			const raw = window.localStorage.getItem(LEVELS_KEY);
-			const parsed = raw ? (JSON.parse(raw) as unknown) : [];
-			return Array.isArray(parsed) ? (parsed as Level[]) : [];
+			return readLevels();
 		} catch {
 			return [];
 		}
@@ -84,7 +91,16 @@
 		} catch (e) {
 			panelStatus = 'failed';
 			panelDetail = e instanceof Error && e.name === 'QuotaExceededError' ? 'quota' : 'storage';
+			revertToApplied(); // F-V4 fix: select shows the APPLIED value, not the rejected one
 		}
+	}
+
+	// F-V4 fix: after a rejected/failed workspace persist, restore the panel
+	// controls to the last APPLIED (persisted or default) workspace row, so
+	// the selects never display a value the chart did not adopt.
+	function revertToApplied(): void {
+		const applied = loadWorkspace();
+		ws = applied;
 	}
 
 	function schedulePersist(row: WorkspaceRow): void {
@@ -165,6 +181,7 @@
 				if (r.ok === false) {
 					panelStatus = 'failed';
 					panelDetail = r.code ?? 'rejected';
+					revertToApplied(); // F-V4 fix
 				}
 			}
 		);
@@ -179,6 +196,7 @@
 				if (r.ok === false) {
 					panelStatus = 'failed';
 					panelDetail = r.code ?? 'rejected';
+					revertToApplied(); // F-V4 fix
 				}
 			}
 		);
@@ -221,12 +239,20 @@
 		};
 	});
 
-	const panelLevels = $derived.by(() => {
-		void dataVersion;
-		return loadLevels()
-			.filter((l) => !l.symbol || l.symbol === ws.symbol)
-			.sort((a, b) => (a.createdAt ?? 0) - (b.createdAt ?? 0));
-	});
+	// F-V3 fix: the panel drawings read is honest — a storage READ failure
+		// renders as an explicit read-failed note, never as "None yet".
+		// (Try/catch inside the derived; no state mutation during derivation.)
+		const panelRead = $derived.by(() => {
+			void dataVersion;
+			try {
+				const levels = readLevels()
+					.filter((l) => !l.symbol || l.symbol === ws.symbol)
+					.sort((a, b) => (a.createdAt ?? 0) - (b.createdAt ?? 0));
+				return { failed: false, levels };
+			} catch {
+				return { failed: true, levels: [] as Level[] };
+			}
+		});
 
 	function fmtCreated(t?: number): string {
 		if (!t) return '—';
@@ -274,11 +300,15 @@
 
 				<div class="group">
 					<h3>Drawings — {ws.symbol}</h3>
-					{#if panelLevels.length === 0}
+					{#if panelRead.failed}
+						<p class="empty read-failed" data-testid="panel-read-failed">
+							Drawings list unavailable: storage read failed. Existing levels may still be visible on the chart.
+						</p>
+					{:else if panelRead.levels.length === 0}
 						<p class="empty" data-testid="panel-empty">None yet. Click the chart to draw a level.</p>
 					{:else}
 						<ul class="drawings" data-testid="panel-drawings">
-							{#each panelLevels as l (l.id)}
+							{#each panelRead.levels as l (l.id)}
 								<li>
 									<span class="d-price">{l.price}</span>
 									<span class="d-note">{l.note ?? ''}</span>
@@ -436,6 +466,9 @@
 		color: #586a7a;
 		font-size: 12px;
 		margin: 0;
+	}
+	.empty.read-failed {
+		color: #ff7b72;
 	}
 	.data-note,
 	.hint {
