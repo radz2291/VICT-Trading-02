@@ -162,7 +162,7 @@ One line: **Repository bootstrapped and governed; handoff accepted; G0 platform 
 - F-C2-2 (WRITE_REFUSED display has no live production refuser yet), F-1, F-3; unproven: full per-op browser sweep of 17 rows, 375-width replay sweep; G3 record; LGPL decision; publication.
 
 ### 5. Progress
-- Current G2 verdict: PASS WITH NON-BLOCKING FINDINGS at db66475 (counterexamples fixed, verified fresh incl. live browser).
+- Current G2 verdict: PASS WITH NON-BLOCKING FINDINGS at db66475 (counterexamples fixed, verified fresh incl. live browser). [Superseded 2026-09-30: current G2 verdict is 91d1df7 — see STATE.md.]
 
 ### 6. Summary
 **Both new counterexamples were real and both are now fixed, reproduced-then-verified under the same independent standard — and the record error (the never-recorded D-004) was caught and corrected honestly.**
@@ -192,3 +192,27 @@ One line: **Repository bootstrapped and governed; handoff accepted; G0 platform 
 
 ### 6. Summary
 **The owner's async challenge was right: pending writes exposed uncommitted frames and overlapping writes silently lost ops. Both were reproduced independently at the pinned prior candidate before any repair, the smallest kit-level repair now provably commits live state only after its own write with call-order FIFO, and a fresh verifier could not falsify it — G2 verdict updated to 91d1df7 per evidence, nothing more.**
+
+## Session 2026-09-30 — G3 draft handoff prepared (owner-directed planning; NO implementation)
+
+### 1. Autonomous decisions
+| Decision | Why | Why no founding intent |
+|---|---|---|
+| Live-status corrections only: HANDOFF opening names 91d1df7 as current; "current→then-current" qualifiers in historical verdict lines; STAGES carry list corrected (F-RV-2 closed) | Owner-directed discrepancy fix; older verdicts preserved verbatim below the corrections | Owner-direct |
+| Engine adoption modeled as an in-stage owner gate; LGPL question asked at acceptance time | RUNBOOK pause rules (unresolved external license); keeps post-acceptance execution autonomous except defined stops | Derived from pack rules |
+| Script-runtime candidates named with verified identities (npm registry / GitHub API, read-only 2026-09-30) | Draft must be reviewable without fabrication | Evidence-first discipline |
+
+### 2. Reliability notes
+- Provenance verified read-only today: NautilusTrader LGPL-3.0 (GitHub API, pushed 2026-09-29); LEAN Apache-2.0, latest GitHub release v2.4.0.1 dated 2017-08-08; quickjs-emscripten 0.32.0 MIT; @sebastianwessel/quickjs 3.1.0 MIT. Recorded with sources in the draft record; unverified claims labeled as such.
+
+### 3. Owner decisions recorded
+- None. This session PREPARES decisions (G3 scope; LGPL answer; later engine adoption); the acceptance block is intentionally empty.
+
+### 4. Deferred to owner/next
+- G3 draft acceptance/amendment; LGPL YES/NO; after acceptance the single stage manager executes the slice (builder → fresh verifier → repair iterations → verdict) with stops at engine adoption and any HELD/FAIL/BLOCKED.
+
+### 5. Progress
+- Status discrepancy fixed (db66475 → 91d1df7 on live-status lines; history preserved). Draft G3 record appended to HANDOFF.md, marked DRAFT — NOT ACCEPTED — NO G3 IMPLEMENTATION AUTHORITY. No code, no dependencies, no G3 work performed.
+
+### 6. Summary
+**G3 is now reviewable before it exists: measurable pass/stop criteria, a kit-first delivery boundary with the D-001 packaging proof, evidence-gated runtime/engine selection with explicit owner gates, carried-findings dispositions, and single stage-manager ownership — zero implementation performed.**

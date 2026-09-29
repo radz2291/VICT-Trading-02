@@ -1,6 +1,6 @@
 # Repository-specific autonomous handoff — VICT Trading Workspace
 
-**STATUS: ACCEPTED.** Owner acceptance recorded 2026-09-27 for this file as committed at `5ed125aa222c4b2f17832e5a5dbad8140b3638e4` (owner instruction: "Ok then please proceed", given after review of the draft). This handoff's stage records have since progressed: **G0, G1, and G1-PKG were each accepted, executed, and closed (verdicts PASS WITH NON-BLOCKING FINDINGS); the D-001 and D-002 decisions are owner-accepted.** The G2 record below is **ACCEPTED** (owner acceptance 2026-09-29 against pinned `c9b780d…`, amendments in D-003) and has been **executed through two owner-contested correction cycles; the current G2 verdict is PASS WITH NON-BLOCKING FINDINGS at `db66475a66186f0f1c5dd5f52a18b834fc94ae43`** — full lineage and verdict history in the G2 record below and `docs/STATE.md`; decision D-004 (recorded 2026-09-30 with erratum after two message-only record failures) is normative for availability and persistence semantics. Each stage record carries its own acceptance note and baseline SHA.
+**STATUS: ACCEPTED.** Owner acceptance recorded 2026-09-27 for this file as committed at `5ed125aa222c4b2f17832e5a5dbad8140b3638e4` (owner instruction: "Ok then please proceed", given after review of the draft). This handoff's stage records have since progressed: **G0, G1, and G1-PKG were each accepted, executed, and closed (verdicts PASS WITH NON-BLOCKING FINDINGS); the D-001 and D-002 decisions are owner-accepted.** The G2 record below is **ACCEPTED** (owner acceptance 2026-09-29 against pinned `c9b780d…`, amendments in D-003) and has been **executed through two owner-contested correction cycles plus an owner-directed async-persistence follow-up; the current G2 verdict is PASS WITH NON-BLOCKING FINDINGS at `91d1df71234d52017ad0e9e7a50d0b23e2514780` (verified 2026-09-30; it supersedes the cycle-2 candidate `db66475…`, whose verdict is preserved below as history)** — full lineage and verdict history in the G2 record below and `docs/STATE.md`; decision D-004 (recorded 2026-09-30 with erratum after two message-only record failures) is normative for availability and persistence semantics. Each stage record carries its own acceptance note and baseline SHA.
 
 ## Target and provenance
 
@@ -22,6 +22,95 @@ Implement the accepted G0–G7 program defined in `docs/STAGES.md` to the extent
 - **G1–G7 — each requires its own stage handoff record accepted by the owner before work begins.** G1 (2026-09-28) and G1-PKG (2026-09-29) were subsequently accepted and closed; **G2 was accepted on 2026-09-29 against pinned SHA `c9b780d…` (see its record below; amendments in D-003)**. A new or changed scope requires its own acceptance; the builder must not self-extend.
 
 **Authority boundaries (all stages):** no live account connection, no real orders, no publishing of packages, no edits outside the authorized remote, no secrets in source/fixtures/logs/screenshots. Where the verified Builder Kit requires accepted-scope records tied to exact handoff bytes, obtain and preserve them; never self-accept.
+
+## Stage handoff record — G3 (DRAFT — NOT ACCEPTED — NO G3 IMPLEMENTATION AUTHORITY)
+
+> **STATUS: DRAFT, prepared 2026-09-30 for owner review at baseline `14f6c3793f6ee58a29f3c6b25bd3fd5adfdac663` (local HEAD == `origin/main`, clean tree). This record confers NO authority. Until the owner accepts (or amends and accepts) this record: no G3 implementation, no script-runtime dependency, no engine dependency, no G4+ work. The acceptance block at the end is intentionally empty; no agent may fill it on the owner's behalf.**
+
+**Outcome (product):** a script draft starts directly from the chart — no Method, Program, or formal object prerequisite — plots or signals on the chart against clock-capped data, survives hide/reopen and reload, receives useful feedback on invalid edits, and runs bounded backtests whose assumptions, trades, and identities are inspectable and comparable. Walkthroughs **W2 and W5** (docs/EXPERIENCE.md) become executable; **W1 and W3 must not regress**.
+
+### Delivery boundary (D-001/D-002/R4 normative)
+
+- **`packages/trading-kit` (reusable contracts):** script host/sandbox port and its capability surface; run-identity and pinned-input rules (proposed determinism rules below — owner may amend at acceptance); bounded backtest runner contract consuming only clock-capped (R1) data under the availability semantics (R2, D-004); fill/cost assumption records; simulated-order records; run/evidence hooks. Run identity, backtest loop, and fill math must NOT live solely in `host/` — anything a second consumer needs is kit surface.
+- **`host/` (composition only):** script editor surface (create/edit/hide/reopen); chart rendering of script series/signals through `@vict-trading/chart-workspace` public exports; draft and run persistence through the app storage port with **D-004 async semantics normative** (per-session FIFO, commit strictly after own write, execution-time re-base, truthful refusals rendered); run list + two-run comparison surface; honest states throughout.
+- **Dependency direction R4 unchanged:** neither package imports the other or the app; the app imports both through public exports.
+- **Packaging proof (D-001 standard) is part of acceptance:** standalone kit build; `npm pack` artifact with recorded sha512, independently reproduced by the verifier; **independent consumer OUTSIDE the monorepo** (own data, own adapter) demonstrating deterministic two-run identity, a one-input-change identity flip, capped queries during a run, and one sandbox refusal. Import audit clean both directions.
+
+### Part A — selection proofs (evidence-gated; adoption never from reputation)
+
+**A1 — scripting runtime (stage manager selects on evidence; criteria below).** Research snapshot (read-only, verified 2026-09-30; sources: npm registry, GitHub API): `quickjs-emscripten@0.32.0` (MIT) — QuickJS compiled to WASM, hard sandbox, synchronous; `@sebastianwessel/quickjs@3.1.0` (MIT) — newer TypeScript wrapper over a QuickJS WASM sandbox (its boundary claims must be probed independently, not trusted); **Web Worker + restricted message API** — browser-native isolation, no bundle weight, but no hard CPU/memory limit; **kit-native minimal DSL** — smallest footprint, weakest syntax; fallback only if sandboxed-JS candidates fail the probes. Authoring: TypeScript/JS source is transpiled before execution; the runtime executes JS. Selection criteria (measurable): every enumerated escape probe refused or terminated; hard resource limits enforced (CPU time, memory, output size) with truthful errors; deterministic same-input results; documented syntax subset and error behavior; recorded bundle delta; zero guest reachability to network, DOM, storage, or host globals.
+
+**A2 — simulation engine (proof runs autonomously; adoption is an OWNER decision).** Pack-named candidates, refreshed 2026-09-30 (read-only):
+- **NautilusTrader** — **LGPL-3.0** (verified via GitHub API 2026-09-30); Rust core + Python bindings; upstream describes a deterministic event-driven engine; actively developed (repo push 2026-09-29). Requires a **local Python sidecar process** — this browser-first app's first external-process dependency; the integration weight (process model, data plumbing, startup, resource cost) is itself a proof object.
+- **LEAN (QuantConnect)** — **Apache-2.0** (verified 2026-09-30); latest GitHub release `v2.4.0.1` published **2017-08-08** (verified 2026-09-30 — confirms the pack's weak-release-provenance finding; development continues on master/Docker tags, so Part A must pin an exact verifiable image/commit identity). .NET/Docker local engine — heavy footprint.
+
+**A2 runnable proof obligations** (on the pinned fixtures, per ARCHITECTURE.md): deterministic bar ordering and closed-bar timing; identical inputs → bit-identical results and identical run identity; gap semantics on the pinned gap fixture (never bridged); future-data isolation on the poison fixture (potency + isolation, both directions, every supported timeframe, derived output included); fill/cost assumptions configurable and matching the hand-calculated fixture exactly; compatibility with human-paced step/pause/resume via the kit replay clock (or an explicit statement that G3 delivers backtest-only and replay-integrated execution lands at G4); restart/reconstruction of an interrupted run; license, exact artifact identity, and footprint recorded.
+
+**Owner gates inside G3:** (i) **LGPL question (O-05)** — asked at acceptance time (block below): NautilusTrader may be evaluated in the dev environment and adopted only if the owner accepts the LGPL-3.0 dependency; a "NO" removes NT from Part A. (ii) **Engine adoption** — once A2 evidence exists, the stage manager STOPS and presents it; the owner decides adoption (LEAN, NT, or neither). If neither candidate passes the bounded proof, record FAIL/BLOCKED evidence and stop; a kit-native minimal deterministic backtest fallback requires a superseding owner decision (ARCHITECTURE.md already contemplates defining the minimum custom behavior before implementing it).
+
+### Fixtures
+
+- **Reuse:** the pinned G2 poison-future fixture (seed 20260927, XAUUSD 15m; generator + SHA-256 in `docs/evidence/G2/fixture/`) and the pinned gap fixture.
+- **New — hand-calculated strategy fixture:** small (order 30–60 bars), a simple threshold/SMA-cross strategy with **hand-computed expected trades, next-bar-open fills, spread/cost, and position math**, committed with a human-readable derivation; the exactness oracle for fill/cost math, determinism, and any engine comparison.
+- **Script probe pack:** known-output plotting script, signal script, deliberately invalid script, resource-abuse script, and ≥6 sandbox escape probes, identity-pinned under `docs/evidence/G3/fixtures/` (or `fixtures/`).
+
+### Pass criteria (all measurable)
+
+1. **Free entry + draft lifecycle:** a draft starts from the chart with no Method/Program/session prerequisite; hide/reopen preserves content byte-exact; reload AND a fresh browser session restore the draft byte-exact (draft bytes present in app storage).
+2. **Plot/signal through capped data:** script series/signals render on the chart via public kit + chart-workspace exports; every script data access goes through R1-capped queries, proven by requested/served evidence records.
+3. **Invalid edit:** actionable local error naming the fault (syntax + location where the runtime provides it); the saved draft is byte-unchanged; the app and the previous good version remain runnable.
+4. **Sandbox boundary:** guest code cannot reach network, DOM, storage, or host globals — every probe in the pack refused or terminated with a truthful error; a runaway script is terminated within a documented CPU bound; memory/output caps enforced; supported syntax subset, limits, and error behavior documented with committed tests.
+5. **Run identity + pinning:** each run records an identity hash over canonical {script revision, data revision (fixture SHA), timeframe, range, input values, fill/cost assumptions, engine/runtime + version, clock policy}. Two runs with identical inputs produce **identical identity and bit-identical results** across reload and fresh session; changing exactly one input produces a **different identity** and demonstrably different results where that input matters.
+6. **Draft-mutation isolation:** after a completed run, editing (and saving) the draft leaves the completed run's stored record byte-identical; both runs remain listed; no rewrite path exists (negative test attempted and refused).
+7. **Future isolation, all timeframes + derived output:** on the poison fixture, a script's naive full-history calculation equals the kit-capped value; **potency** (post-horizon mutation flips the naive full-history value) and **isolation** (every script/indicator result on the visible slice identical across poison variants) both proven at EVERY supported timeframe, including unfinished-HTF absence (R2: never returned) and gap handling (explicit unavailability surfaced to scripts, never silently bridged).
+8. **Simulated-only authority:** all backtest/replay orders carry simulated identity and are labelled simulated; runtime negative tests show no network egress from the script host; import audit finds no account/order/live pathway; a backtest cannot route to any current-market endpoint (W6 boundary intact).
+9. **Honest run states:** running / succeeded / failed distinct; a failed run preserves inputs, error, and identity; unavailable data appears explicitly in run results.
+10. **Packaging:** standalone kit build; `npm pack` sha512 recorded AND independently reproduced by the verifier; external consumer outside the monorepo (own data, own adapter) reproduces two-run determinism, the one-input-change flip, capped-query behavior, and one sandbox refusal; import audit clean both directions.
+11. **Shared checks:** `npm run check` + build clean; console clean; real-browser **W2 + W5** at desktop ≥1280 and narrow 375 + 768; keyboard access for editor and run controls; **W1 + W3 regression passes** recorded.
+12. **Carried-findings dispositions executed** per the table below.
+
+### Stop conditions (candidate fails / stage stops if seen)
+
+Non-reproducible identical-input runs; any sandbox escape or silently bypassed limit; a script reads future data through any channel; a draft edit rewrites a completed run; mandatory formal versioning before a script can be tried; a runtime/engine adopted without Part A evidence; NautilusTrader evaluated or adopted without recorded owner LGPL acceptance; engine adoption without the owner decision; any simulated order reaching a current-market/live endpoint; unsupported timeframe silently substituted; secrets anywhere; any prohibited work. → record HELD/FAIL/BLOCKED with evidence and stop for the owner.
+
+### Carried findings — proposed dispositions (owner-reviewable)
+
+| ID | Summary | Proposed G3 disposition |
+|---|---|---|
+| F-AVC-1 | Stale refusal message persists after recovery (async-persistence carry, "to G3") | **Repair in G3** — G3 adds draft/run persistence through the same port semantics; fix recovery messaging there; verifier regression-checks it. |
+| F-1 | Fixture regenerator pretty-print mismatch (one-file spurious diff, semantically identical) | **Normalize in G3** — new fixture material flows through the same pipeline; make regeneration diff-free (or unify generator/regenerator); if genuinely out of scope, document the divergence and carry explicitly. |
+| F-3 | Stale G1 gap-bridging wording (panel/footer) | **Repair in G3** — truthful gap wording on the same surfaces G3 reworks; verifier re-checks the text. |
+| F-C2-2 | WRITE_REFUSED rendering has no live production path (kit-path only) | **Resolve in G3** — draft/run persistence creates a production write path on the app storage port; bind refusal rendering there and prove one live WRITE_REFUSED case in-browser; if the design yields no production path, record why and carry. |
+| F-AVC-2/3 | Informational async boundary notes | No action; remain recorded. |
+| F-R1, RF4, N-1, N-3, stable-0.4.0 recheck, bundle-delta unverified | Historical minor carries (G1/G1-PKG) | **Unchanged, visible, not expanded** — G3 claims none of them; incidental re-observations recorded only if touched. |
+
+### Stage management — single local owner for the whole accepted slice
+
+One local **stage manager** owns accepted-G3 end to end: implementation plan tied to criterion IDs → builder work (direct or forked-context subagents per STATE.md conventions) → candidate + evidence bundle → **fresh-context verifier** challenge at the exact candidate SHA → in-scope repair + re-verification iterations → STATE.md verdict + full SHA → owner report. The verifier is fresh-context, falsification-first, and never silently repairs; the builder never self-certifies. The stage manager makes routine technical choices inside these criteria and **stops for the owner** at: engine adoption, LGPL, material product forks, HELD/FAIL/BLOCKED, and anything outside this scope.
+
+### In-scope paths
+
+`packages/trading-kit/**` (script/run/simulation contracts + selected runtime integration), `host/**`, `fixtures/**` (new strategy fixture), `docs/evidence/G3/**`, this record, `STATE.md` (status updates), `STAGES.md` (status note), `DECISIONS.md` (runtime/engine selection entries when made on evidence).
+
+### Prohibited
+
+npm publish; live feeds; any broker/account/real-order pathway (simulated records only); VICT / Trading OS repository edits; secrets in source, fixtures, logs, or screenshots; G4+ scope (risk models, current-market paper trading, live authority, AI assistance); modifying accepted pack product documents without a superseding decision; runtime/engine adoption without Part A evidence and the owner gates; starting any dependent stage before the G3 verdict exists.
+
+### Verification (fresh agent, exact candidate SHA, falsification-first)
+
+Direct attacks on every pass criterion: run the full escape-probe pack; attempt resource-limit bypasses; force identical-input runs across reload and fresh session; mutate one input and prove the identity flip; attempt a draft-edit rewrite of a completed run; run the poison potency/isolation sweep across all timeframes including derived output; force gaps and prove explicit unavailability to scripts; search for any live/network/account pathway; reproduce the kit `npm pack` sha512 and run the external consumer independently; browser W2/W5 at 1280/768/375 with console + keyboard checks; W1/W3 regressions; scope audit of the candidate diff. Verdict + report to `docs/evidence/G3/verifier-report-G3.md` in EVALUATION.md vocabulary.
+
+### Exit
+
+Candidate commit + push; fresh verifier verdict; STATE.md verdict + full SHA; report to owner; **stop for review**.
+
+### Owner acceptance block (agent must not fill)
+
+- Scope: **ACCEPT AS DRAFTED / AMEND** (amendments: __________)
+- **NautilusTrader (LGPL-3.0): permitted as a Part A candidate and possible adoption? YES / NO** (NO removes NT from G3; LEAN + the no-engine fallback assessment remain)
+- Accepted by: __________ (owner, date, instruction reference). **NOT RECORDED — this draft confers no authority.**
+
+---
 
 ## Stage handoff record — G1-PKG (ACCEPTED 2026-09-29, owner-directed) — CAPABILITY PACKAGING PROOF, G2 depends on this
 
