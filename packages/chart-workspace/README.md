@@ -11,9 +11,13 @@ Headless chart-workspace capability: a [lightweight-charts](https://github.com/t
 
 ## Install
 
+This package is **NOT published to npm**. It is distributed as a locally packed artifact (`npm pack`); install from the artifact path only:
+
 ```sh
-npm install @vict-trading/chart-workspace
+npm install ./vict-trading-chart-workspace-0.1.0.tgz
 ```
+
+**Publish status:** packed locally (npm pack artifact); **NOT published to npm**; install from the artifact path only.
 
 ## API example
 
@@ -60,6 +64,8 @@ const myStorage: WorkspacePersistence = {
 
 // 3. Headless workspace: create/select/edit/move/remove/undo/redo.
 const workspace = new DrawingWorkspace(myStorage);
+// NOTE: until you acknowledge a successful read (step 5), every mutation
+// is refused with ok:false / code READ_NOT_ACKNOWLEDGED.
 
 // 4. Chart surface (headless controller — render it wherever you want).
 const controller = createChart(
@@ -75,9 +81,12 @@ const controller = createChart(
 controller.setData(bars);
 
 // 5. Keep the chart in sync with your own persisted truth (read stays yours).
+// acknowledgeRead both feeds the workspace your read AND opens its intrinsic
+// read gate — call it after YOUR adapter's read succeeded (initial load and
+// every recovery read).
 function refresh(): void {
 	const levels = myStorage.readLevels();
-	workspace.setSource(levels); // feed the workspace your read
+	workspace.acknowledgeRead(levels); // feed + acknowledge the successful read
 	controller.setLevels(levels); // and the chart
 }
 refresh();
@@ -89,7 +98,17 @@ const price = y === null ? null : controller.coordinateToPrice(y);
 
 // Lifecycle:
 // workspace.create({ price, symbol: 'XAUUSD', note: 'resistance' })
-// workspace.edit(id, { price, note: 'support' })
+
+// NOTE SEMANTICS on edit — three distinct cases:
+// (a) price-only edit: omit `note` (undefined) → the existing note is
+//     PRESERVED in workspace state, the persisted update op, and undo/redo:
+await workspace.edit(id, { price: 2655 }); // note stays 'resistance'
+// (b) explicit note clear: `note: ''` (empty string) → the note is CLEARED
+//     (persisted as ''); undo restores the prior note with the prior price:
+await workspace.edit(id, { price: 2655, note: '' });
+// (c) set: any other string replaces the note:
+await workspace.edit(id, { price: 2655, note: 'support' });
+
 // workspace.remove(id)
 // await workspace.undo(); await workspace.redo();
 controller.destroy();
@@ -105,12 +124,16 @@ Anchoring note: a level anchors to a **price-axis coordinate** of the instrument
 | `DrawingWorkspace` | class | headless drawing lifecycle over your `WorkspacePersistence` |
 | `Bar`, `PriceLevel`, `CrosshairRead`, `ChartCallbacks`, `ChartController`, `ChartHost` | types | chart/data contracts |
 | `WorkspacePersistence`, `PersistenceOp`, `PortResult` | types | persistence port (your storage adapter) |
+| `DrawingWorkspace.acknowledgeRead(levels, symbol?)` | method | acknowledge a SUCCESSFUL consumer read; opens the intrinsic mutation gate |
 | `DrawingWorkspace` option/result types (`CreateLevelInput`, `MutationResult`, `WorkspaceOptions`) | types | workspace calls |
 | `isBar`, `isPriceLevel`, `isFiniteNumber`, `isNonEmptyString`, `validateCreateInput`, `validateUpdateInput` | functions | minimal input validation owned by the package |
 
-## Read-gate expectation
+## Read-gate: responsibility split (two layers, defense-in-depth)
 
-`WorkspacePersistence.readLevels()` should **throw on failure**. A consumer adapter that refuses writes after a failed read (as the VICT host app does) guarantees stored drawings are never overwritten blind; the workspace additionally re-pushes an undo/redo step whose port op fails, so stacks stay honest.
+1. **Your adapter (byte protection — required).** If the stored collection cannot be read (corrupt JSON, throwing storage), your adapter must refuse every write, so stored drawings are never overwritten blind. The package cannot do this for you — it never sees your storage. The VICT host app implements this (its read-gate + write-verify logic stayed app-side).
+2. **Workspace intrinsic gate (defense-in-depth).** The workspace refuses every persistence mutation (`create`/`edit`/`move`/`remove`/`undo`/`redo`) until you call `acknowledgeRead(levels)` with the result of a SUCCESSFUL read — before that it returns `ok:false` with code `READ_NOT_ACKNOWLEDGED`. So no consumer gets silent blind-write behavior against data the workspace never saw. The workspace still never touches storage; the gate enforces ordering over data it was fed.
+
+Additionally every undo/redo step whose port op fails is re-pushed, so stacks stay honest.
 
 ## License
 

@@ -47,7 +47,14 @@ export function validateCreateInput(input: { id: string; price: number; note?: s
 	return null;
 }
 
-/** Validate a level-update input; returns an error string or null. */
+/**
+ * Validate a level-update input; returns an error string or null.
+ *
+ * Note semantics (matching `DrawingWorkspace.edit`): `undefined` means
+ * "preserve the existing note" and is resolved by the workspace before
+ * validation; `''` (empty string) is a valid EXPLICIT CLEAR; any other
+ * string sets the note.
+ */
 export function validateUpdateInput(input: { id: string; price: number; note?: string }): string | null {
 	if (!isNonEmptyString(input.id)) return 'id must be a non-empty string';
 	if (!isFiniteNumber(input.price)) return 'price must be a finite number';

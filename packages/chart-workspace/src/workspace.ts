@@ -7,10 +7,21 @@
  *  - The package NEVER touches storage. All reads arrive via
  *    `setSource(levels)` (consumer-fed, e.g. from its own views) and all
  *    writes go through the port. The package owns no storage keys.
- *  - READ-GATE invariant: the consumer must not feed mutations after a
- *    failed read; when the port's `readLevels` throws, the consumer's
- *    adapter is expected to refuse writes. Additionally every port op that
- *    returns ok:false makes the failed undo/redo step re-push (stay honest).
+ *  - READ-ACKNOWLEDGMENT gate (intrinsic, defense-in-depth): the workspace
+ *    refuses ALL persistence mutations until the consumer acknowledges a
+ *    SUCCESSFUL read via `acknowledgeRead(levels, symbol?)`. Before any
+ *    acknowledgment, create/edit/move/remove/undo/redo return ok:false with
+ *    code READ_NOT_ACKNOWLEDGED — a consumer can never blind-write data the
+ *    workspace never saw. The package still never touches storage: this
+ *    gate enforces ordering over data the workspace was FED. The consumer's
+ *    adapter remains responsible for the storage-side read-gate (byte
+ *    protection against failed reads).
+ *  - Note semantics on edit(): `undefined` PRESERVES the existing note,
+ *    `''` is an explicit CLEAR, any other string SETS the note. The
+ *    effective note rides in the persisted update op and both undo/redo
+ *    ops, so a price-only edit + undo restores the exact pre-edit state.
+ *  - Additionally every port op that returns ok:false makes the failed
+ *    undo/redo step re-push (stay honest).
  *  - Undo/redo is a symmetric stack of prebuilt {undo, redo} op pairs; an
  *    undo across an instrument switch restores the level on its ORIGINAL
  *    instrument (symbol/createdAt ride in the save op).
@@ -58,6 +69,7 @@ export class DrawingWorkspace {
 	private source: PriceLevel[] = [];
 	private symbol: string | undefined = undefined;
 	private selected: string | null = null;
+	private readAcknowledged = false;
 	private readonly undoStack: ActionPair[] = [];
 	private readonly redoStack: ActionPair[] = [];
 	private listeners: Array<() => void> = [];
@@ -79,6 +91,19 @@ export class DrawingWorkspace {
 	setSource(levels: PriceLevel[], symbol?: string): void {
 		this.source = levels;
 		this.symbol = symbol;
+	}
+
+	/**
+	 * Acknowledge a SUCCESSFUL consumer-side read of the persisted collection
+	 * (and set the active instrument). Required before the first mutation:
+	 * until called at least once, every persistence mutation is refused with
+	 * code READ_NOT_ACKNOWLEDGED. Call this after your adapter's read
+	 * succeeded (initial load and every recovery read); it also feeds the
+	 * workspace source (same effect as `setSource`).
+	 */
+	acknowledgeRead(levels: PriceLevel[], symbol?: string): void {
+		this.readAcknowledged = true;
+		this.setSource(levels, symbol);
 	}
 
 	/** Levels for the active instrument (or all when no symbol), oldest first. */
@@ -121,7 +146,20 @@ export class DrawingWorkspace {
 		this.notify();
 	}
 
+	/**
+	 * Refuse every persistence mutation until the consumer acknowledged a
+	 * successful read (`acknowledgeRead`). Intrinsic defense-in-depth so no
+	 * consumer can blind-write data the workspace never saw. The adapter
+	 * remains responsible for the storage-side read-gate.
+	 */
+	private checkReadAcknowledged(): MutationResult | null {
+		if (this.readAcknowledged) return null;
+		return { ok: false, code: 'READ_NOT_ACKNOWLEDGED', message: 'no successful read acknowledged yet — call acknowledgeRead(levels) after your storage read succeeds' };
+	}
+
 	async create(input: CreateLevelInput): Promise<MutationResult> {
+		const gated = this.checkReadAcknowledged();
+		if (gated) return gated;
 		const candidate: Required<Pick<CreateLevelInput, 'id'>> & CreateLevelInput = {
 			id: input.id ?? this.genId(),
 			price: input.price,
@@ -145,20 +183,38 @@ export class DrawingWorkspace {
 	}
 
 	async move(id: string, price: number): Promise<MutationResult> {
+		const gated = this.checkReadAcknowledged();
+		if (gated) return gated;
 		const cur = this.source.find((l) => l.id === id);
 		if (!cur) return { ok: false, code: 'NOT_FOUND', message: 'no level ' + id, id };
 		return this.edit(id, { price, note: cur.note });
 	}
 
+	/**
+	 * Edit a level's price and/or note.
+	 *
+	 * Note semantics for `patch.note`:
+	 *  - `undefined` (absent)  → PRESERVE the level's existing note (a
+	 *    price-only edit never touches the note);
+	 *  - `''` (empty string)   → explicit CLEAR — the persisted update op
+	 *    and the redo op carry `note: ''`; undo restores the prior note;
+	 *  - any other string      → SET the note to that value.
+	 *
+	 * The effective note (existing note when the patch omits it) rides in
+	 * both persisted ops, so undo/redo replay the exact pre-/post-edit state.
+	 */
 	async edit(id: string, patch: { price: number; note?: string }): Promise<MutationResult> {
+		const gated = this.checkReadAcknowledged();
+		if (gated) return gated;
 		const cur = this.source.find((l) => l.id === id);
 		if (!cur) return { ok: false, code: 'NOT_FOUND', message: 'no level ' + id, id };
 		const before = { price: cur.price, note: cur.note };
-		const after = { price: patch.price, note: patch.note };
+		const effectiveNote = patch.note === undefined ? cur.note : patch.note; // undefined = preserve, '' = clear
+		const after = { price: patch.price, note: effectiveNote };
 		if (after.price === before.price && after.note === before.note) return { ok: true, id };
-		const err = validateUpdateInput({ id, price: patch.price, note: patch.note });
+		const err = validateUpdateInput({ id, price: patch.price, note: effectiveNote });
 		if (err) return { ok: false, code: 'INVALID_INPUT', message: err, id };
-		const r = await this.apply({ type: 'update', id, price: patch.price, note: patch.note });
+		const r = await this.apply({ type: 'update', id, price: patch.price, note: effectiveNote });
 		if (!r.ok) return { ok: false, code: r.code, message: r.message, id };
 		this.undoStack.push({
 			undo: { type: 'update', id, price: before.price, note: before.note },
@@ -170,6 +226,8 @@ export class DrawingWorkspace {
 	}
 
 	async remove(id: string): Promise<MutationResult> {
+		const gated = this.checkReadAcknowledged();
+		if (gated) return gated;
 		const cur = this.source.find((l) => l.id === id);
 		if (!cur) return { ok: false, code: 'NOT_FOUND', message: 'no level ' + id, id };
 		const snapshot: PriceLevel = { ...cur };
@@ -186,6 +244,8 @@ export class DrawingWorkspace {
 	}
 
 	async undo(): Promise<MutationResult> {
+		const gated = this.checkReadAcknowledged();
+		if (gated) return gated;
 		const op = this.undoStack.pop();
 		if (!op) return { ok: false, code: 'EMPTY_STACK', message: 'nothing to undo' };
 		const r = await this.apply(op.undo);
@@ -200,6 +260,8 @@ export class DrawingWorkspace {
 	}
 
 	async redo(): Promise<MutationResult> {
+		const gated = this.checkReadAcknowledged();
+		if (gated) return gated;
 		const op = this.redoStack.pop();
 		if (!op) return { ok: false, code: 'EMPTY_STACK', message: 'nothing to redo' };
 		const r = await this.apply(op.redo);

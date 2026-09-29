@@ -52,4 +52,4 @@ Before stopping, complete the current candidate to a reviewable state where poss
 
 ## 6. Current status
 
-B0 (bootstrap) complete at `101668c03e53b3fb6822b3283c9490ff9355fee3`. Handoff draft at `docs/HANDOFF.md` — **pending owner acceptance; grants no authority until accepted at a pinned SHA.** G0–G7 have not begun. Check `docs/STATE.md` for the live status — this section is a snapshot and STATE.md always wins.
+Snapshot (2026-09-29): **G0, G1, and G1-PKG complete — latest gate verdict PASS WITH NON-BLOCKING FINDINGS** (G1-PKG packaging gate; candidate `f0fdcd4…`, HEAD `964038b…` at correction time). **G2 is NOT authorized** — it awaits the owner's D-001 review. `@vict-trading/chart-workspace@0.1.0` is packed locally (npm pack artifact); **NOT published to npm**; install from the artifact path only. This section is a snapshot only — `docs/STATE.md` is the live status and always wins.

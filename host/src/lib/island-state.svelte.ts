@@ -38,10 +38,11 @@ export type MutationStatus = 'idle' | 'saving' | 'saved' | 'deleting' | 'failed'
  */
 function makePort(run: (actionId: string, input: Record<string, unknown>) => Promise<boolean>): WorkspacePersistence {
 	return {
-		// reads are consumer-fed (host views); the port only carries writes
-		readLevels: () => {
-			throw new Error('reads are consumer-owned; use setSource');
-		},
+		// reads are consumer-fed (host views); the port only carries writes.
+		// The package's intrinsic READ_NOT_ACKNOWLEDGED gate is additionally
+		// satisfied by the host acknowledging every successful view read via
+		// acknowledgeRead() below. The adapter-side read-gate (gateLevelsRead
+		// in +page.svelte) is KEPT — defense in depth, not weakened.
 		apply: async (op) => {
 			if (op.type === 'save') {
 				const ok = await run('act.level.save', { ...op.level });
@@ -152,10 +153,12 @@ export function workspaceState(props: IslandProps) {
 	// bars: deterministic fixture per symbol, honestly aggregated per timeframe
 	const bars = $derived(buildSeries(symbol, timeframe));
 
-	// G1-PKG: feed the package workspace the consumer-owned read (host views)
+	// G1-PKG correction: acknowledge every successful consumer-owned read
+	// (initial load and every recovery read — host views only update after a
+	// successful read) so the package's intrinsic read gate opens.
 	$effect(() => {
 		void myLevels;
-		store.setSource(incoming, symbol);
+		store.acknowledgeRead(incoming, symbol);
 	});
 
 	const callbacks: ChartCallbacks = {
@@ -236,7 +239,11 @@ export function workspaceState(props: IslandProps) {
 
 	async function editSelected(price: number, note: string): Promise<void> {
 		if (selectedId === null) return;
-		await store.edit(selectedId, { price, note: note === '' ? undefined : note });
+		// Note semantics (package contract): '' is an EXPLICIT CLEAR of the
+		// note; the field is never emptied accidentally (clearing requires
+		// submitting an emptied field). The package preserves the note only
+		// when a patch omits it entirely (undefined).
+		await store.edit(selectedId, { price, note });
 	}
 
 	async function removeSelected(): Promise<void> {

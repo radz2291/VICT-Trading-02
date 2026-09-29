@@ -86,14 +86,27 @@ export type PersistenceOp =
  * touches storage, never owns storage keys, and never persists anything by
  * itself. The consumer supplies an adapter implementing this interface
  * (browser localStorage, IndexedDB, a file, a test double …).
+ *
+ * Read-gate responsibility split (two layers, defense-in-depth):
+ *  1. ADAPTER (byte protection): your adapter must refuse every write after
+ *     a failed read of the stored collection, so corrupt/unreadable storage
+ *     is never overwritten blind. The package cannot do this — it never
+ *     sees your storage.
+ *  2. WORKSPACE (intrinsic ordering gate): the workspace refuses every
+ *     mutation until you call `acknowledgeRead(levels)` with the result of
+ *     a SUCCESSFUL read, returning ok:false with code READ_NOT_ACKNOWLEDGED
+ *     before that. This is an additional layer over data the workspace was
+ *     fed — it does not replace your adapter's duty.
  */
 export interface WorkspacePersistence {
 	/**
-	 * Read the persisted level collection. Throws on failure — the workspace
-	 * refuses mutations after a failed read (read-gate), so a corrupt or
-	 * unreadable store is never overwritten blind.
+	 * Optional consumer read hook — READS ARE THE CONSUMER'S CONCERN and the
+	 * package never calls it. The consumer reads storage itself and reports a
+	 * SUCCESSFUL read to the workspace via `DrawingWorkspace.acknowledgeRead(levels)`.
+	 * May be omitted entirely; if present it should still throw on failure so
+	 * a consumer reusing it internally keeps honest failure semantics.
 	 */
-	readLevels(): PriceLevel[];
+	readLevels?(): PriceLevel[];
 	/** Apply one mutation. Reject (throw or return ok:false) to refuse. */
 	apply(op: PersistenceOp): Promise<PortResult>;
 }
