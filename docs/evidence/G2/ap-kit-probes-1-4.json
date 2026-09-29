@@ -1,0 +1,906 @@
+{
+	"p1": [
+		{
+			"row": "P1-1 step(): live exposure while write pending",
+			"pre": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"playing": false,
+				"returnedToCurrent": false,
+				"levels": [],
+				"now": 1767571200,
+				"barsLastTime": null,
+				"barsCount": 0
+			},
+			"syncSample": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"playing": false,
+				"returnedToCurrent": false,
+				"levels": [],
+				"now": 1767574800,
+				"barsLastTime": 1767573900,
+				"barsCount": 4,
+				"storedInstant": 1767571200,
+				"storedStep": 1,
+				"eventCount": 1
+			},
+			"microSample": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"storedInstant": 1767571200
+			},
+			"eventCountDuringPending": 2,
+			"postResolve": {
+				"ok": true,
+				"instant": 1767574800,
+				"stepIndex": 2
+			},
+			"storedFinal": {
+				"instant": 1767574800,
+				"stepIndex": 2
+			}
+		},
+		{
+			"row": "P1-2 createLevel(): drawing exposure while write pending",
+			"pre": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"playing": false,
+				"returnedToCurrent": false,
+				"levels": [],
+				"now": 1767571200,
+				"barsLastTime": null,
+				"barsCount": 0
+			},
+			"syncSample": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"playing": false,
+				"returnedToCurrent": false,
+				"levels": [
+					{
+						"id": "rlvl-zlo1senu",
+						"price": 2700,
+						"note": "n1",
+						"creationInstant": 1767571200,
+						"creationStep": 1
+					}
+				],
+				"now": 1767571200,
+				"barsLastTime": null,
+				"barsCount": 0,
+				"storedLevelCount": 0
+			},
+			"eventCountDuringPending": 2,
+			"postResolve": {
+				"ok": true,
+				"levels": 1
+			},
+			"storedFinal": {
+				"levelCount": 1
+			}
+		},
+		{
+			"row": "P1-2b createLevel(): drawing visible pre-commit, then write refused",
+			"pre": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"playing": false,
+				"returnedToCurrent": false,
+				"levels": [],
+				"now": 1767571200,
+				"barsLastTime": null,
+				"barsCount": 0
+			},
+			"levelsVisibleDuringPending": 1,
+			"outcome": {
+				"ok": false,
+				"code": "WRITE_REFUSED"
+			},
+			"visibleAfterRefusal": 0,
+			"liveEqualsPre": true,
+			"storedFinal": {
+				"levelCount": 0,
+				"instant": 1767571200
+			}
+		},
+		{
+			"row": "P1-3 play(): transport flag exposure while write pending",
+			"pre": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"playing": false,
+				"returnedToCurrent": false,
+				"levels": [],
+				"now": 1767571200,
+				"barsLastTime": null,
+				"barsCount": 0
+			},
+			"syncSample": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"playing": true,
+				"returnedToCurrent": false,
+				"levels": [],
+				"now": 1767571200,
+				"barsLastTime": null,
+				"barsCount": 0,
+				"storedPlaying": false
+			},
+			"postResolve": {
+				"ok": true,
+				"playing": true
+			},
+			"storedFinal": {
+				"playing": true,
+				"instant": 1767571200
+			}
+		}
+	],
+	"p2": [
+		{
+			"row": "P2-1 step() write refused after pending",
+			"before": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"playing": false,
+				"returnedToCurrent": false,
+				"levels": [],
+				"now": 1767571200,
+				"barsLastTime": null,
+				"barsCount": 0
+			},
+			"duringPending": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"playing": false,
+				"returnedToCurrent": false,
+				"levels": [],
+				"now": 1767574800,
+				"barsLastTime": 1767573900,
+				"barsCount": 4
+			},
+			"outcome": {
+				"ok": false,
+				"code": "WRITE_REFUSED",
+				"message": "persistence port refused the write: STORAGE_DOWN: refused — no state change"
+			},
+			"afterFailure": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"playing": false,
+				"returnedToCurrent": false,
+				"levels": [],
+				"now": 1767571200,
+				"barsLastTime": null,
+				"barsCount": 0
+			},
+			"liveEqualsBefore": true,
+			"storedBytesEqualBefore": true,
+			"storedBytesFinal": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"levels": 0,
+				"returnedToCurrent": false
+			},
+			"freshAdoption": {
+				"restoreOk": true,
+				"code": null,
+				"record": {
+					"instant": 1767571200,
+					"stepIndex": 1
+				}
+			}
+		},
+		{
+			"row": "P2-2 step() write rejected after pending",
+			"before": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"playing": false,
+				"returnedToCurrent": false,
+				"levels": [],
+				"now": 1767571200,
+				"barsLastTime": null,
+				"barsCount": 0
+			},
+			"duringPending": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"playing": false,
+				"returnedToCurrent": false,
+				"levels": [],
+				"now": 1767574800,
+				"barsLastTime": 1767573900,
+				"barsCount": 4
+			},
+			"outcome": {
+				"ok": false,
+				"code": "PORT_ERROR",
+				"message": "port write rejected by test"
+			},
+			"afterFailure": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"playing": false,
+				"returnedToCurrent": false,
+				"levels": [],
+				"now": 1767571200,
+				"barsLastTime": null,
+				"barsCount": 0
+			},
+			"liveEqualsBefore": true,
+			"storedBytesEqualBefore": true,
+			"storedBytesFinal": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"levels": 0,
+				"returnedToCurrent": false
+			},
+			"freshAdoption": {
+				"restoreOk": true,
+				"code": null,
+				"record": {
+					"instant": 1767571200,
+					"stepIndex": 1
+				}
+			}
+		},
+		{
+			"row": "P2-3 createLevel() write refused after pending",
+			"before": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"playing": false,
+				"returnedToCurrent": false,
+				"levels": [],
+				"now": 1767571200,
+				"barsLastTime": null,
+				"barsCount": 0
+			},
+			"duringPending": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"playing": false,
+				"returnedToCurrent": false,
+				"levels": [
+					{
+						"id": "rlvl-90xiqhza",
+						"price": 2700,
+						"note": "n1",
+						"creationInstant": 1767571200,
+						"creationStep": 1
+					}
+				],
+				"now": 1767571200,
+				"barsLastTime": null,
+				"barsCount": 0
+			},
+			"outcome": {
+				"ok": false,
+				"code": "WRITE_REFUSED",
+				"message": "persistence port refused the write: STORAGE_DOWN: refused — no state change"
+			},
+			"afterFailure": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"playing": false,
+				"returnedToCurrent": false,
+				"levels": [],
+				"now": 1767571200,
+				"barsLastTime": null,
+				"barsCount": 0
+			},
+			"liveEqualsBefore": true,
+			"storedBytesEqualBefore": true,
+			"storedBytesFinal": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"levels": 0,
+				"returnedToCurrent": false
+			},
+			"freshAdoption": {
+				"restoreOk": true,
+				"code": null,
+				"record": {
+					"instant": 1767571200,
+					"stepIndex": 1
+				}
+			}
+		},
+		{
+			"row": "P2-4 returnToCurrent() write refused after pending",
+			"before": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"playing": false,
+				"returnedToCurrent": false,
+				"levels": [],
+				"now": 1767571200,
+				"barsLastTime": null,
+				"barsCount": 0
+			},
+			"duringPending": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"playing": false,
+				"returnedToCurrent": true,
+				"levels": [],
+				"now": 1767571200,
+				"barsLastTime": null,
+				"barsCount": 0
+			},
+			"outcome": {
+				"ok": false,
+				"code": "WRITE_REFUSED",
+				"message": "persistence port refused the write: STORAGE_DOWN: refused — no state change"
+			},
+			"afterFailure": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"playing": false,
+				"returnedToCurrent": false,
+				"levels": [],
+				"now": 1767571200,
+				"barsLastTime": null,
+				"barsCount": 0
+			},
+			"liveEqualsBefore": true,
+			"storedBytesEqualBefore": true,
+			"storedBytesFinal": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"levels": 0,
+				"returnedToCurrent": false
+			},
+			"freshAdoption": {
+				"restoreOk": true,
+				"code": null,
+				"record": {
+					"instant": 1767571200,
+					"stepIndex": 1
+				}
+			}
+		},
+		{
+			"row": "P2-5 removeLevel() write refused after pending",
+			"before": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"playing": false,
+				"returnedToCurrent": false,
+				"levels": [
+					{
+						"id": "rlvl-ck1578pm",
+						"price": 2700,
+						"note": "keeper",
+						"creationInstant": 1767571200,
+						"creationStep": 1
+					}
+				],
+				"now": 1767571200,
+				"barsLastTime": null,
+				"barsCount": 0
+			},
+			"duringPending": {
+				"levels": 0
+			},
+			"outcome": {
+				"ok": false,
+				"code": "WRITE_REFUSED",
+				"message": "persistence port refused the write: STORAGE_DOWN: refused — no state change"
+			},
+			"afterFailure": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"playing": false,
+				"returnedToCurrent": false,
+				"levels": [
+					{
+						"id": "rlvl-ck1578pm",
+						"price": 2700,
+						"note": "keeper",
+						"creationInstant": 1767571200,
+						"creationStep": 1
+					}
+				],
+				"now": 1767571200,
+				"barsLastTime": null,
+				"barsCount": 0
+			},
+			"liveEqualsBefore": true,
+			"storedBytesEqualBefore": true,
+			"freshAdoption": "n/a (same record remains)"
+		},
+		{
+			"row": "P2-6 reset() removal failed after pending",
+			"before": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"playing": false,
+				"returnedToCurrent": false,
+				"levels": [],
+				"now": 1767571200,
+				"barsLastTime": null,
+				"barsCount": 0
+			},
+			"duringPending": {
+				"levels": 0,
+				"instant": 1767571200
+			},
+			"outcome": {
+				"ok": false,
+				"code": "PORT_ERROR",
+				"message": "persistence port failed to remove the session record — no state change: port remove rejected by test"
+			},
+			"afterFailure": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"playing": false,
+				"returnedToCurrent": false,
+				"levels": [],
+				"now": 1767571200,
+				"barsLastTime": null,
+				"barsCount": 0
+			},
+			"liveEqualsBefore": true,
+			"storedBytes": {
+				"instant": 1767571200
+			},
+			"reloadsAfterStoreNull": "n/a if failure kept bytes"
+		}
+	],
+	"p3": [
+		{
+			"kind": "step-step",
+			"resolveOrder": "A-first",
+			"combo": "ss",
+			"outcomes": {
+				"A": {
+					"ok": true,
+					"code": null
+				},
+				"B": {
+					"ok": true,
+					"code": null
+				}
+			},
+			"liveFinal": {
+				"instant": 1767572400,
+				"stepIndex": 3,
+				"levelCount": 0
+			},
+			"storedFinal": {
+				"instant": 1767572400,
+				"stepIndex": 3,
+				"levelCount": 0
+			},
+			"reloaded": {
+				"instant": 1767572400,
+				"stepIndex": 3
+			},
+			"stepAgreementExpected": {
+				"instant": 1767572400,
+				"stepIndex": 3
+			},
+			"disagreement": null
+		},
+		{
+			"kind": "step-step",
+			"resolveOrder": "A-first",
+			"combo": "sf",
+			"outcomes": {
+				"A": {
+					"ok": true,
+					"code": null
+				},
+				"B": {
+					"ok": false,
+					"code": "WRITE_REFUSED"
+				}
+			},
+			"liveFinal": {
+				"instant": 1767571800,
+				"stepIndex": 2,
+				"levelCount": 0
+			},
+			"storedFinal": {
+				"instant": 1767571800,
+				"stepIndex": 2,
+				"levelCount": 0
+			},
+			"reloaded": {
+				"instant": 1767571800,
+				"stepIndex": 2
+			},
+			"stepAgreementExpected": {
+				"instant": 1767572400,
+				"stepIndex": 3
+			},
+			"disagreement": null
+		},
+		{
+			"kind": "step-step",
+			"resolveOrder": "A-first",
+			"combo": "fs",
+			"outcomes": {
+				"A": {
+					"ok": false,
+					"code": "WRITE_REFUSED"
+				},
+				"B": {
+					"ok": true,
+					"code": null
+				}
+			},
+			"liveFinal": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"levelCount": 0
+			},
+			"storedFinal": {
+				"instant": 1767572400,
+				"stepIndex": 3,
+				"levelCount": 0
+			},
+			"reloaded": {
+				"instant": 1767572400,
+				"stepIndex": 3
+			},
+			"stepAgreementExpected": {
+				"instant": 1767572400,
+				"stepIndex": 3
+			},
+			"disagreement": "live (instant 1767571200, step 1, levels 0) vs storage (instant 1767572400, step 3, levels 0) vs reload ({\"instant\":1767572400,\"stepIndex\":3})"
+		},
+		{
+			"kind": "step-step",
+			"resolveOrder": "B-first",
+			"combo": "ss",
+			"outcomes": {
+				"A": {
+					"ok": true,
+					"code": null
+				},
+				"B": {
+					"ok": true,
+					"code": null
+				}
+			},
+			"liveFinal": {
+				"instant": 1767572400,
+				"stepIndex": 3,
+				"levelCount": 0
+			},
+			"storedFinal": {
+				"instant": 1767571800,
+				"stepIndex": 2,
+				"levelCount": 0
+			},
+			"reloaded": {
+				"instant": 1767571800,
+				"stepIndex": 2
+			},
+			"stepAgreementExpected": {
+				"instant": 1767572400,
+				"stepIndex": 3
+			},
+			"disagreement": "live (instant 1767572400, step 3, levels 0) vs storage (instant 1767571800, step 2, levels 0) vs reload ({\"instant\":1767571800,\"stepIndex\":2})"
+		},
+		{
+			"kind": "step-step",
+			"resolveOrder": "B-first",
+			"combo": "sf",
+			"outcomes": {
+				"A": {
+					"ok": true,
+					"code": null
+				},
+				"B": {
+					"ok": false,
+					"code": "WRITE_REFUSED"
+				}
+			},
+			"liveFinal": {
+				"instant": 1767571800,
+				"stepIndex": 2,
+				"levelCount": 0
+			},
+			"storedFinal": {
+				"instant": 1767571800,
+				"stepIndex": 2,
+				"levelCount": 0
+			},
+			"reloaded": {
+				"instant": 1767571800,
+				"stepIndex": 2
+			},
+			"stepAgreementExpected": {
+				"instant": 1767572400,
+				"stepIndex": 3
+			},
+			"disagreement": null
+		},
+		{
+			"kind": "step-step",
+			"resolveOrder": "B-first",
+			"combo": "fs",
+			"outcomes": {
+				"A": {
+					"ok": false,
+					"code": "WRITE_REFUSED"
+				},
+				"B": {
+					"ok": true,
+					"code": null
+				}
+			},
+			"liveFinal": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"levelCount": 0
+			},
+			"storedFinal": {
+				"instant": 1767572400,
+				"stepIndex": 3,
+				"levelCount": 0
+			},
+			"reloaded": {
+				"instant": 1767572400,
+				"stepIndex": 3
+			},
+			"stepAgreementExpected": {
+				"instant": 1767572400,
+				"stepIndex": 3
+			},
+			"disagreement": "live (instant 1767571200, step 1, levels 0) vs storage (instant 1767572400, step 3, levels 0) vs reload ({\"instant\":1767572400,\"stepIndex\":3})"
+		},
+		{
+			"kind": "step-create",
+			"resolveOrder": "A-first",
+			"combo": "ss",
+			"outcomes": {
+				"A": {
+					"ok": true,
+					"code": null
+				},
+				"B": {
+					"ok": true,
+					"code": null
+				}
+			},
+			"liveFinal": {
+				"instant": 1767571800,
+				"stepIndex": 2,
+				"levelCount": 1
+			},
+			"storedFinal": {
+				"instant": 1767571800,
+				"stepIndex": 2,
+				"levelCount": 1
+			},
+			"reloaded": {
+				"instant": 1767571800,
+				"stepIndex": 2
+			},
+			"stepAgreementExpected": {
+				"instant": 1767571800,
+				"stepIndex": 3
+			},
+			"disagreement": null
+		},
+		{
+			"kind": "step-create",
+			"resolveOrder": "A-first",
+			"combo": "sf",
+			"outcomes": {
+				"A": {
+					"ok": true,
+					"code": null
+				},
+				"B": {
+					"ok": false,
+					"code": "WRITE_REFUSED"
+				}
+			},
+			"liveFinal": {
+				"instant": 1767571800,
+				"stepIndex": 2,
+				"levelCount": 0
+			},
+			"storedFinal": {
+				"instant": 1767571800,
+				"stepIndex": 2,
+				"levelCount": 0
+			},
+			"reloaded": {
+				"instant": 1767571800,
+				"stepIndex": 2
+			},
+			"stepAgreementExpected": {
+				"instant": 1767571800,
+				"stepIndex": 3
+			},
+			"disagreement": null
+		},
+		{
+			"kind": "step-create",
+			"resolveOrder": "A-first",
+			"combo": "fs",
+			"outcomes": {
+				"A": {
+					"ok": false,
+					"code": "WRITE_REFUSED"
+				},
+				"B": {
+					"ok": true,
+					"code": null
+				}
+			},
+			"liveFinal": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"levelCount": 0
+			},
+			"storedFinal": {
+				"instant": 1767571800,
+				"stepIndex": 2,
+				"levelCount": 1
+			},
+			"reloaded": {
+				"instant": 1767571800,
+				"stepIndex": 2
+			},
+			"stepAgreementExpected": {
+				"instant": 1767571800,
+				"stepIndex": 3
+			},
+			"disagreement": "live (instant 1767571200, step 1, levels 0) vs storage (instant 1767571800, step 2, levels 1) vs reload ({\"instant\":1767571800,\"stepIndex\":2})"
+		},
+		{
+			"kind": "step-create",
+			"resolveOrder": "B-first",
+			"combo": "ss",
+			"outcomes": {
+				"A": {
+					"ok": true,
+					"code": null
+				},
+				"B": {
+					"ok": true,
+					"code": null
+				}
+			},
+			"liveFinal": {
+				"instant": 1767571800,
+				"stepIndex": 2,
+				"levelCount": 1
+			},
+			"storedFinal": {
+				"instant": 1767571800,
+				"stepIndex": 2,
+				"levelCount": 0
+			},
+			"reloaded": {
+				"instant": 1767571800,
+				"stepIndex": 2
+			},
+			"stepAgreementExpected": {
+				"instant": 1767571800,
+				"stepIndex": 3
+			},
+			"disagreement": null
+		},
+		{
+			"kind": "step-create",
+			"resolveOrder": "B-first",
+			"combo": "sf",
+			"outcomes": {
+				"A": {
+					"ok": true,
+					"code": null
+				},
+				"B": {
+					"ok": false,
+					"code": "WRITE_REFUSED"
+				}
+			},
+			"liveFinal": {
+				"instant": 1767571800,
+				"stepIndex": 2,
+				"levelCount": 0
+			},
+			"storedFinal": {
+				"instant": 1767571800,
+				"stepIndex": 2,
+				"levelCount": 0
+			},
+			"reloaded": {
+				"instant": 1767571800,
+				"stepIndex": 2
+			},
+			"stepAgreementExpected": {
+				"instant": 1767571800,
+				"stepIndex": 3
+			},
+			"disagreement": null
+		},
+		{
+			"kind": "step-create",
+			"resolveOrder": "B-first",
+			"combo": "fs",
+			"outcomes": {
+				"A": {
+					"ok": false,
+					"code": "WRITE_REFUSED"
+				},
+				"B": {
+					"ok": true,
+					"code": null
+				}
+			},
+			"liveFinal": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"levelCount": 0
+			},
+			"storedFinal": {
+				"instant": 1767571800,
+				"stepIndex": 2,
+				"levelCount": 1
+			},
+			"reloaded": {
+				"instant": 1767571800,
+				"stepIndex": 2
+			},
+			"stepAgreementExpected": {
+				"instant": 1767571800,
+				"stepIndex": 3
+			},
+			"disagreement": "live (instant 1767571200, step 1, levels 0) vs storage (instant 1767571800, step 2, levels 1) vs reload ({\"instant\":1767571800,\"stepIndex\":2})"
+		}
+	],
+	"p4": [
+		{
+			"row": "P4-1 restore() write refused after pending",
+			"before": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"playing": false,
+				"returnedToCurrent": false,
+				"levels": [],
+				"now": 1767571200,
+				"barsLastTime": null,
+				"barsCount": 0
+			},
+			"duringPending": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"playing": false,
+				"returnedToCurrent": false,
+				"levels": [],
+				"now": 1767571200,
+				"barsLastTime": null,
+				"barsCount": 0
+			},
+			"outcome": {
+				"ok": false,
+				"code": "WRITE_REFUSED"
+			},
+			"afterFailure": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"playing": false,
+				"returnedToCurrent": false,
+				"levels": [],
+				"now": 1767571200,
+				"barsLastTime": null,
+				"barsCount": 0
+			},
+			"liveEqualsPre": true,
+			"storedInstant": 1767571200
+		}
+	],
+	"notes": []
+}

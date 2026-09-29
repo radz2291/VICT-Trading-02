@@ -1,0 +1,187 @@
+{
+  "started": 1790688954453,
+  "steps": {
+    "load": {
+      "ok": true,
+      "hasSelect": true,
+      "pre": {
+        "position": null,
+        "status": null,
+        "banner": "CURRENT",
+        "stored": null
+      }
+    },
+    "enter-replay": {
+      "ok": true,
+      "position": "step 2 · instant 2026-01-05 00:15Z · horizon 2026-02-02 21:45Z",
+      "status": null,
+      "banner": "REPLAY — historical fixture data as of 2026-01-05 00:15Z · horizon 2026-02-02 21:45Z · NOT current",
+      "stored": {
+        "instant": 1767572100,
+        "stepIndex": 2,
+        "levels": 0,
+        "playing": false,
+        "returnedToCurrent": false
+      }
+    },
+    "rapid-double-step": {
+      "ok": true,
+      "before": {
+        "instant": 1767572100,
+        "stepIndex": 2
+      },
+      "syncPhase": {
+        "stored": {
+          "instant": 1767573000,
+          "stepIndex": 3
+        },
+        "position": "step 2 · instant 2026-01-05 00:15Z · horizon 2026-02-02 21:45Z"
+      },
+      "mid30ms": {
+        "stored": {
+          "instant": 1767573900,
+          "stepIndex": 4
+        },
+        "position": "step 4 · instant 2026-01-05 00:45Z · horizon 2026-02-02 21:45Z",
+        "status": null
+      },
+      "settled": {
+        "stored": {
+          "instant": 1767573900,
+          "stepIndex": 4
+        },
+        "position": "step 4 · instant 2026-01-05 00:45Z · horizon 2026-02-02 21:45Z",
+        "status": null
+      },
+      "consistentAtRest": true
+    },
+    "play-fast-ticks": {
+      "ok": true,
+      "info": "back to current after reload; re-entering"
+    },
+    "play-fast-ticks2": {
+      "ok": true,
+      "samples": [
+        {
+          "i": 0,
+          "screenStep": 1,
+          "scrInstant": "2026-01-05",
+          "stored": {
+            "instant": 1767571200,
+            "stepIndex": 1,
+            "playing": true
+          },
+          "storedBehindScreen": false
+        },
+        {
+          "i": 1,
+          "screenStep": 1,
+          "scrInstant": "2026-01-05",
+          "stored": {
+            "instant": 1767571200,
+            "stepIndex": 1,
+            "playing": true
+          },
+          "storedBehindScreen": false
+        },
+        {
+          "i": 2,
+          "screenStep": 1,
+          "scrInstant": "2026-01-05",
+          "stored": {
+            "instant": 1767571200,
+            "stepIndex": 1,
+            "playing": true
+          },
+          "storedBehindScreen": false
+        },
+        {
+          "i": 3,
+          "screenStep": 2,
+          "scrInstant": "2026-01-05",
+          "stored": {
+            "instant": 1767572100,
+            "stepIndex": 2,
+            "playing": true
+          },
+          "storedBehindScreen": false
+        },
+        {
+          "i": 4,
+          "screenStep": 2,
+          "scrInstant": "2026-01-05",
+          "stored": {
+            "instant": 1767572100,
+            "stepIndex": 2,
+            "playing": true
+          },
+          "storedBehindScreen": false
+        },
+        {
+          "i": 5,
+          "screenStep": 3,
+          "scrInstant": "2026-01-05",
+          "stored": {
+            "instant": 1767573000,
+            "stepIndex": 3,
+            "playing": true
+          },
+          "storedBehindScreen": false
+        },
+        {
+          "i": 6,
+          "screenStep": 3,
+          "scrInstant": "2026-01-05",
+          "stored": {
+            "instant": 1767573000,
+            "stepIndex": 3,
+            "playing": true
+          },
+          "storedBehindScreen": false
+        },
+        {
+          "i": 7,
+          "screenStep": 3,
+          "scrInstant": "2026-01-05",
+          "stored": {
+            "instant": 1767573000,
+            "stepIndex": 3,
+            "playing": true
+          },
+          "storedBehindScreen": false
+        }
+      ],
+      "settled": {
+        "position": "step 3 · instant 2026-01-05 00:30Z · horizon 2026-02-02 21:45Z",
+        "status": null,
+        "banner": "REPLAY — historical fixture data as of 2026-01-05 00:30Z · horizon 2026-02-02 21:45Z · NOT current",
+        "stored": {
+          "instant": 1767573000,
+          "stepIndex": 3,
+          "levels": 0,
+          "playing": false,
+          "returnedToCurrent": false
+        }
+      }
+    },
+    "console-check": {
+      "0": {
+        "level": "error",
+        "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      },
+      "ok": true
+    }
+  },
+  "console": [
+    {
+      "level": "error",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    }
+  ],
+  "screenshots": [
+    "ap-browser-01-entered.png",
+    "ap-browser-02-double-step.png",
+    "ap-browser-03-play.png"
+  ],
+  "finished": 1790688980236
+}
