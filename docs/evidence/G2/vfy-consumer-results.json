@@ -1,0 +1,172 @@
+{
+ "allOk": true,
+ "results": [
+  {
+   "name": "beyond-horizon request is capped (served = clock.now() < requested, no error)",
+   "ok": true,
+   "detail": {
+    "requestedUntil": 1799143200,
+    "servedUntil": 1767604500,
+    "capped": true
+   }
+  },
+  {
+   "name": "cap record present with requested vs served",
+   "ok": true,
+   "detail": {
+    "kind": "bars",
+    "granularity": "15m",
+    "requestedUntil": 1799143200,
+    "servedUntil": 1767604500,
+    "capped": true,
+    "count": 34,
+    "seq": 1
+   }
+  },
+  {
+   "name": "clock hard guard: 1y advance applied = horizon, capped",
+   "ok": true,
+   "detail": {
+    "op": "setFrame",
+    "requested": 1799143200,
+    "applied": 1767607200,
+    "capped": true
+   }
+  },
+  {
+   "name": "1h at mid-bucket ends at last COMPLETED bucket (no forming bar)",
+   "ok": true,
+   "detail": {
+    "lastBucket": 1767585600,
+    "midBucketStart": 1767589200
+   }
+  },
+  {
+   "name": "missing intervals explicit (gap of 3 base bars found)",
+   "ok": true,
+   "detail": [
+    {
+     "status": "missing",
+     "from": 1767580200,
+     "to": 1767582900
+    }
+   ]
+  },
+  {
+   "name": "1h bucket count matches honest aggregation (incomplete/gapped buckets dropped)",
+   "ok": true,
+   "detail": {
+    "served": 5,
+    "expectedBuckets": 5
+   }
+  },
+  {
+   "name": "provenance-unknown HIDDEN in replay",
+   "ok": true
+  },
+  {
+   "name": "provenance-unknown VISIBLE in current mode",
+   "ok": true
+  },
+  {
+   "name": "replay-stamped INVISIBLE at step < creationStep",
+   "ok": true
+  },
+  {
+   "name": "replay-stamped VISIBLE at step == creationStep",
+   "ok": true
+  },
+  {
+   "name": "start refused with READ_NOT_ACKNOWLEDGED before first successful read",
+   "ok": true,
+   "detail": {
+    "ok": false,
+    "code": "READ_NOT_ACKNOWLEDGED",
+    "message": "no successful read acknowledged yet — call acknowledgeState(await persistence.read()) after your read succeeds"
+   }
+  },
+  {
+   "name": "start succeeds after acknowledged read",
+   "ok": true,
+   "detail": {
+    "ok": true
+   }
+  },
+  {
+   "name": "lifecycle start/step/createLevel ok",
+   "ok": true,
+   "detail": {
+    "steps": 3,
+    "levels": [
+     {
+      "id": "rlvl-47ul9zr9",
+      "symbol": "",
+      "price": 101.5,
+      "note": "consumer level",
+      "creationInstant": 1767576600,
+      "creationStep": 2
+     }
+    ]
+   }
+  },
+  {
+   "name": "restore returns exact persisted instant/step/level",
+   "ok": true,
+   "detail": {
+    "record": {
+     "version": 1,
+     "symbol": "",
+     "instant": 1767577500,
+     "stepIndex": 3,
+     "playing": false,
+     "levels": [
+      {
+       "id": "rlvl-47ul9zr9",
+       "symbol": "",
+       "price": 101.5,
+       "note": "consumer level",
+       "creationInstant": 1767576600,
+       "creationStep": 2
+      }
+     ],
+     "returnedToCurrent": false
+    }
+   }
+  },
+  {
+   "name": "restore with failing store -> READ_FAILED (no silent overwrite)",
+   "ok": true,
+   "detail": {
+    "ok": false,
+    "code": "READ_FAILED",
+    "message": "injected read failure"
+   }
+  },
+  {
+   "name": "fresh session with failing store -> start refused READ_NOT_ACKNOWLEDGED",
+   "ok": true,
+   "detail": {
+    "ok": false,
+    "code": "READ_NOT_ACKNOWLEDGED",
+    "message": "no successful read acknowledged yet — call acknowledgeState(await persistence.read()) after your read succeeds"
+   }
+  },
+  {
+   "name": "original stored bytes survived all refusals",
+   "ok": true,
+   "detail": {
+    "bytesBefore": "1e548f544d839f2af7db8ac659c2ac0e42869ab333521cf703864518aeb3bccd",
+    "unchanged": true
+   }
+  },
+  {
+   "name": "write refusal -> ok:false with port code (not silent success)",
+   "ok": true,
+   "detail": {
+    "ok": false,
+    "code": "QUOTA",
+    "message": "injected write refusal"
+   }
+  }
+ ]
+}
