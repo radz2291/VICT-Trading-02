@@ -1,0 +1,25 @@
+{
+  "verifier": "fresh verifier session (avc-* set), independent of the builder",
+  "testedAt": "2026-09-29",
+  "candidateSHA": "91d1df71234d52017ad0e9e7a50d0b23e2514780",
+  "gitState": "HEAD == candidate SHA; working tree clean at start (only avc-* evidence files added afterwards, untracked, no commits)",
+  "pack": {
+    "claimedSha256": "975e5a5b0b8c8f6f8994d6d9b1c9db952a5d5152c44e878cb84d549f8d1876de",
+    "freshPackSha256": "975e5a5b0b8c8f6f8994d6d9b1c9db952a5d5152c44e878cb84d549f8d1876de",
+    "freshPackCommand": "cd packages/trading-kit && npm pack --pack-destination C:/Users/RZ1/Desktop/RZ/avc-g2-consumer/pkgs (prepare script rebuilt dist; dist is gitignored, tree stayed clean)",
+    "committedTarballsBothMatch": true,
+    "committedTarballPaths": [
+      "packages/trading-kit/vict-trading-trading-kit-0.1.0.tgz",
+      "docs/evidence/G2/consumer/vict-trading-trading-kit-0.1.0.tgz"
+    ]
+  },
+  "consumer": {
+    "path": "C:/Users/RZ1/Desktop/RZ/avc-g2-consumer (OUTSIDE the monorepo, distinct from builder's ar-g2-consumer and prior avr-g2-consumer)",
+    "dependency": "@vict-trading/trading-kit@0.1.0 file:./pkgs/vict-trading-trading-kit-0.1.0.tgz (single direct dep, npm ls clean)",
+    "imports": ["ReplaySession", "TF_SECONDS", "createDataSession", "createReplayClock", "stampReplayCreation", "visibilityAt", "visibilityInReplay"],
+    "noAppImports": true,
+    "noWorkspaceAliases": true
+  },
+  "node": "v22.13.1",
+  "npm": "11.19.1"
+}

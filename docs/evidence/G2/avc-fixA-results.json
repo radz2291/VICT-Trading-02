@@ -1,0 +1,361 @@
+{
+  "probe": "avc-fixA",
+  "clocks": [
+    {
+      "clock": "mid-gap 04:15Z",
+      "instant": 1767587700,
+      "bars15": true,
+      "bars1h": true,
+      "bars4h": true,
+      "availabilityAt": true,
+      "availabilityAtT": true,
+      "queryRecords": true,
+      "stats": true,
+      "matchesOracle": true,
+      "ok": true,
+      "altBars15": true,
+      "altBars1h": true,
+      "altAvailability": true
+    },
+    {
+      "clock": "equality edge ==close(T0+3600)",
+      "instant": 1767574800,
+      "bars15": true,
+      "bars1h": true,
+      "bars4h": true,
+      "availabilityAt": true,
+      "availabilityAtT": true,
+      "queryRecords": true,
+      "stats": true,
+      "matchesOracle": true,
+      "ok": true,
+      "altBars15": true,
+      "altBars1h": true,
+      "altAvailability": true
+    },
+    {
+      "clock": "one tick below that close",
+      "instant": 1767574799,
+      "bars15": true,
+      "bars1h": true,
+      "bars4h": true,
+      "availabilityAt": true,
+      "availabilityAtT": true,
+      "queryRecords": true,
+      "stats": true,
+      "matchesOracle": true,
+      "ok": true,
+      "altBars15": true,
+      "altBars1h": true,
+      "altAvailability": true
+    },
+    {
+      "clock": "mid-session 06:00Z",
+      "instant": 1767592800,
+      "bars15": true,
+      "bars1h": true,
+      "bars4h": true,
+      "availabilityAt": true,
+      "availabilityAtT": true,
+      "queryRecords": true,
+      "stats": true,
+      "matchesOracle": true,
+      "ok": true,
+      "altBars15": true,
+      "altBars1h": true,
+      "altAvailability": true
+    },
+    {
+      "clock": "horizon",
+      "instant": 1770068700,
+      "bars15": true,
+      "bars1h": true,
+      "bars4h": true,
+      "availabilityAt": true,
+      "availabilityAtT": true,
+      "queryRecords": true,
+      "stats": true,
+      "matchesOracle": true,
+      "ok": true,
+      "altBars15": true,
+      "altBars1h": true,
+      "altAvailability": true
+    }
+  ],
+  "identity": true,
+  "oracleOk": true,
+  "equalityEdge": {
+    "clockEqualsLastClose": "2026-01-05T01:00:00Z",
+    "entryAtClose": [],
+    "noOpenEndedAtClose": true,
+    "openEndedJustBelow": true,
+    "justBelowEntry": [
+      {
+        "status": "missing",
+        "from": 1767573900,
+        "to": null
+      }
+    ],
+    "ok": true
+  },
+  "potency": {
+    "note": "naive full-history max-high / SMA20 across each compared pair — they must DIFFER or the identity test is a null test",
+    "max_fullBaseline": 3112.5,
+    "max_prefixAtHorizon": 2657.81,
+    "max_fullVsPrefix_differ": true,
+    "sma_fullBaseline": 3107.25,
+    "sma_prefixAtHorizon": 2647.537,
+    "sma_fullVsPrefix_differ": true,
+    "max_fullBaselineVsPoisonAlt": {
+      "baseline": 3112.5,
+      "alternate": 6112.5,
+      "differ": true
+    },
+    "sma_fullBaselineVsPoisonAlt": {
+      "baseline": 3107.25,
+      "alternate": 6107.25,
+      "differ": true
+    },
+    "max_fullVsPrefixAt0600": {
+      "full": 3112.5,
+      "prefix": 2650.34,
+      "differ": true
+    },
+    "ok": true
+  },
+  "sweep": [
+    {
+      "name": "remove resumption bar 04:30Z",
+      "clock": "mid-gap 04:15Z",
+      "bars15": true,
+      "bars1h": true,
+      "bars4h": true,
+      "availabilityAt": true,
+      "stats": true,
+      "ok": true
+    },
+    {
+      "name": "remove resumption bar 04:30Z",
+      "clock": "equality edge ==close(T0+3600)",
+      "bars15": true,
+      "bars1h": true,
+      "bars4h": true,
+      "availabilityAt": true,
+      "stats": true,
+      "ok": true
+    },
+    {
+      "name": "remove resumption bar 04:30Z",
+      "clock": "one tick below that close",
+      "bars15": true,
+      "bars1h": true,
+      "bars4h": true,
+      "availabilityAt": true,
+      "stats": true,
+      "ok": true
+    },
+    {
+      "name": "remove resumption bar 04:30Z",
+      "clock": "mid-session 06:00Z",
+      "notApplicable": true,
+      "note": "mutation reaches clock-visible region at this clock — excluded from future-only sweep"
+    },
+    {
+      "name": "remove resumption bar 04:30Z",
+      "clock": "horizon",
+      "notApplicable": true,
+      "note": "mutation reaches clock-visible region at this clock — excluded from future-only sweep"
+    },
+    {
+      "name": "add bar inside gap @04:15Z",
+      "clock": "mid-gap 04:15Z",
+      "bars15": true,
+      "bars1h": true,
+      "bars4h": true,
+      "availabilityAt": true,
+      "stats": true,
+      "ok": true
+    },
+    {
+      "name": "add bar inside gap @04:15Z",
+      "clock": "equality edge ==close(T0+3600)",
+      "bars15": true,
+      "bars1h": true,
+      "bars4h": true,
+      "availabilityAt": true,
+      "stats": true,
+      "ok": true
+    },
+    {
+      "name": "add bar inside gap @04:15Z",
+      "clock": "one tick below that close",
+      "bars15": true,
+      "bars1h": true,
+      "bars4h": true,
+      "availabilityAt": true,
+      "stats": true,
+      "ok": true
+    },
+    {
+      "name": "add bar inside gap @04:15Z",
+      "clock": "mid-session 06:00Z",
+      "notApplicable": true,
+      "note": "mutation reaches clock-visible region at this clock — excluded from future-only sweep"
+    },
+    {
+      "name": "add bar inside gap @04:15Z",
+      "clock": "horizon",
+      "notApplicable": true,
+      "note": "mutation reaches clock-visible region at this clock — excluded from future-only sweep"
+    },
+    {
+      "name": "values +500 for bars closing after clock",
+      "clock": "mid-gap 04:15Z",
+      "bars15": true,
+      "bars1h": true,
+      "bars4h": true,
+      "availabilityAt": true,
+      "stats": true,
+      "ok": true
+    },
+    {
+      "name": "values +500 for bars closing after clock",
+      "clock": "equality edge ==close(T0+3600)",
+      "bars15": true,
+      "bars1h": true,
+      "bars4h": true,
+      "availabilityAt": true,
+      "stats": true,
+      "ok": true
+    },
+    {
+      "name": "values +500 for bars closing after clock",
+      "clock": "one tick below that close",
+      "bars15": true,
+      "bars1h": true,
+      "bars4h": true,
+      "availabilityAt": true,
+      "stats": true,
+      "ok": true
+    },
+    {
+      "name": "values +500 for bars closing after clock",
+      "clock": "mid-session 06:00Z",
+      "bars15": true,
+      "bars1h": true,
+      "bars4h": true,
+      "availabilityAt": true,
+      "stats": true,
+      "ok": true
+    },
+    {
+      "name": "values +500 for bars closing after clock",
+      "clock": "horizon",
+      "bars15": true,
+      "bars1h": true,
+      "bars4h": true,
+      "availabilityAt": true,
+      "stats": true,
+      "ok": true
+    },
+    {
+      "name": "remove far-future 07:00Z+07:15Z",
+      "clock": "mid-gap 04:15Z",
+      "bars15": true,
+      "bars1h": true,
+      "bars4h": true,
+      "availabilityAt": true,
+      "stats": true,
+      "ok": true
+    },
+    {
+      "name": "remove far-future 07:00Z+07:15Z",
+      "clock": "equality edge ==close(T0+3600)",
+      "bars15": true,
+      "bars1h": true,
+      "bars4h": true,
+      "availabilityAt": true,
+      "stats": true,
+      "ok": true
+    },
+    {
+      "name": "remove far-future 07:00Z+07:15Z",
+      "clock": "one tick below that close",
+      "bars15": true,
+      "bars1h": true,
+      "bars4h": true,
+      "availabilityAt": true,
+      "stats": true,
+      "ok": true
+    },
+    {
+      "name": "remove far-future 07:00Z+07:15Z",
+      "clock": "mid-session 06:00Z",
+      "bars15": true,
+      "bars1h": true,
+      "bars4h": true,
+      "availabilityAt": true,
+      "stats": true,
+      "ok": true
+    },
+    {
+      "name": "remove far-future 07:00Z+07:15Z",
+      "clock": "horizon",
+      "notApplicable": true,
+      "note": "mutation reaches clock-visible region at this clock — excluded from future-only sweep"
+    },
+    {
+      "name": "committed poison alternate source",
+      "clock": "mid-gap 04:15Z",
+      "bars15": true,
+      "bars1h": true,
+      "bars4h": true,
+      "availabilityAt": true,
+      "stats": true,
+      "ok": true
+    },
+    {
+      "name": "committed poison alternate source",
+      "clock": "equality edge ==close(T0+3600)",
+      "bars15": true,
+      "bars1h": true,
+      "bars4h": true,
+      "availabilityAt": true,
+      "stats": true,
+      "ok": true
+    },
+    {
+      "name": "committed poison alternate source",
+      "clock": "one tick below that close",
+      "bars15": true,
+      "bars1h": true,
+      "bars4h": true,
+      "availabilityAt": true,
+      "stats": true,
+      "ok": true
+    },
+    {
+      "name": "committed poison alternate source",
+      "clock": "mid-session 06:00Z",
+      "bars15": true,
+      "bars1h": true,
+      "bars4h": true,
+      "availabilityAt": true,
+      "stats": true,
+      "ok": true
+    },
+    {
+      "name": "committed poison alternate source",
+      "clock": "horizon",
+      "bars15": true,
+      "bars1h": true,
+      "bars4h": true,
+      "availabilityAt": true,
+      "stats": true,
+      "ok": true
+    }
+  ],
+  "sweepAllOk": true,
+  "unhandledRejections": [],
+  "ok": true
+}

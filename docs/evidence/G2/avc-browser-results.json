@@ -1,0 +1,186 @@
+{
+  "steps": {
+    "load": {
+      "ok": true,
+      "hasSelect": true,
+      "title": "VICT Trading Workspace"
+    },
+    "enter-replay-consistent": {
+      "ok": true,
+      "screen": {
+        "position": "step 2 · instant 2026-01-05 00:15Z · horizon 2026-02-02 21:45Z",
+        "banner": "REPLAY — historical fixture data as of 2026-01-05 00:15Z · horizon 2026-02-02 21:45Z · NOT current",
+        "status": null,
+        "statusFailed": false,
+        "alertRole": null
+      },
+      "stored": {
+        "version": 1,
+        "symbol": "",
+        "instant": 1767572100,
+        "stepIndex": 2,
+        "playing": false,
+        "levels": [],
+        "returnedToCurrent": false
+      }
+    },
+    "rapid-double-step": {
+      "ok": true,
+      "before": {
+        "screen": {
+          "position": "step 2 · instant 2026-01-05 00:15Z · horizon 2026-02-02 21:45Z",
+          "banner": "REPLAY — historical fixture data as of 2026-01-05 00:15Z · horizon 2026-02-02 21:45Z · NOT current",
+          "status": null,
+          "statusFailed": false,
+          "alertRole": null
+        },
+        "storedStep": 2
+      },
+      "mid": [
+        {
+          "screen": {
+            "position": "step 4 · instant 2026-01-05 00:45Z · horizon 2026-02-02 21:45Z",
+            "banner": "REPLAY — historical fixture data as of 2026-01-05 00:45Z · horizon 2026-02-02 21:45Z · NOT current",
+            "status": null,
+            "statusFailed": false,
+            "alertRole": null
+          },
+          "stored": {
+            "version": 1,
+            "symbol": "",
+            "instant": 1767573900,
+            "stepIndex": 4,
+            "playing": false,
+            "levels": [],
+            "returnedToCurrent": false
+          },
+          "t": 1790694060955
+        },
+        {
+          "screen": {
+            "position": "step 4 · instant 2026-01-05 00:45Z · horizon 2026-02-02 21:45Z",
+            "banner": "REPLAY — historical fixture data as of 2026-01-05 00:45Z · horizon 2026-02-02 21:45Z · NOT current",
+            "status": null,
+            "statusFailed": false,
+            "alertRole": null
+          },
+          "stored": {
+            "version": 1,
+            "symbol": "",
+            "instant": 1767573900,
+            "stepIndex": 4,
+            "playing": false,
+            "levels": [],
+            "returnedToCurrent": false
+          },
+          "t": 1790694061081
+        }
+      ],
+      "settled": {
+        "screen": {
+          "position": "step 4 · instant 2026-01-05 00:45Z · horizon 2026-02-02 21:45Z",
+          "banner": "REPLAY — historical fixture data as of 2026-01-05 00:45Z · horizon 2026-02-02 21:45Z · NOT current",
+          "status": null,
+          "statusFailed": false,
+          "alertRole": null
+        },
+        "stored": {
+          "stepIndex": 4,
+          "instantISO": "2026-01-05T00:45:00.000Z"
+        }
+      },
+      "settledConsistent": true,
+      "noFlash": true,
+      "noLostStep": true
+    },
+    "play-ticks-no-uncommitted": {
+      "ok": true,
+      "samplesCount": 8,
+      "gapless": true,
+      "equalRowsExact": true,
+      "lastSample": {
+        "step": 6,
+        "instant": "2026-01-05 01:15Z",
+        "storedStep": 6,
+        "storedInstant": "2026-01-05 01:15Z"
+      },
+      "settledConsistent": true
+    },
+    "refuse-corrupt-key": {
+      "ok": true,
+      "statusRendered": "step unavailable: storage read failed",
+      "alertRolePresent": true,
+      "stateUnchanged": true,
+      "bytesNotOverwritten": true
+    },
+    "recovery-after-heal": {
+      "ok": true,
+      "screen": {
+        "step": 7,
+        "status": "step unavailable: storage read failed",
+        "statusFailed": true
+      },
+      "storedStep": 7,
+      "preHealStep": 6,
+      "staleStatusAfterRecovery": true
+    },
+    "return-to-current-exact": {
+      "ok": true,
+      "banner": "CURRENT",
+      "storedReturnedToCurrent": true
+    },
+    "w1-create-edit-undo-redo": {
+      "ok": true,
+      "created": [
+        {
+          "price": 2647.77,
+          "note": "level"
+        }
+      ],
+      "edited": [
+        {
+          "price": 2647.77,
+          "note": "edited"
+        }
+      ],
+      "afterUndo": [
+        {
+          "price": 2647.77,
+          "note": "level"
+        }
+      ],
+      "afterRedo": [
+        {
+          "price": 2647.77,
+          "note": "edited"
+        }
+      ],
+      "createOk": true,
+      "editOk": true,
+      "undoOk": true,
+      "redoOk": true
+    },
+    "reload-adopts-last-write": {
+      "ok": true,
+      "levelsAfterReload": [
+        "edited"
+      ],
+      "storedNotes": [
+        {
+          "note": "edited"
+        }
+      ],
+      "banner": "CURRENT",
+      "replayRtc": true
+    },
+    "console-clean": {
+      "ok": true,
+      "totalNonFavicon": 0,
+      "items": []
+    }
+  },
+  "console": [],
+  "durMs": 8319,
+  "allPass": true,
+  "inPageConsole": []
+}

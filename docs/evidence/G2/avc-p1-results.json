@@ -1,0 +1,369 @@
+{
+  "probe": "avc-p1 pending-exposure",
+  "rows": [
+    {
+      "op": "step",
+      "settle": "ok",
+      "midFindings": [],
+      "pendingDuringWindow": 1,
+      "maxConcurrentOps": 1,
+      "resolvedOrderOk": true,
+      "rejected": null,
+      "finalLiveMatchesExpected": true,
+      "finalBarsMatch": true,
+      "storagePost": {
+        "instant": 1767574800,
+        "stepIndex": 2,
+        "playing": false,
+        "levelCount": 0,
+        "returnedToCurrent": false
+      },
+      "eventDelta": 1,
+      "eventsOk": true,
+      "unhandledRejections": 0,
+      "pass": true
+    },
+    {
+      "op": "step",
+      "settle": "refuse",
+      "midFindings": [],
+      "pendingDuringWindow": 1,
+      "maxConcurrentOps": 1,
+      "resolvedOrderOk": true,
+      "rejected": null,
+      "finalLiveMatchesExpected": true,
+      "finalBarsMatch": true,
+      "storagePost": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "levelCount": 0,
+        "returnedToCurrent": false
+      },
+      "eventDelta": 0,
+      "eventsOk": true,
+      "unhandledRejections": 0,
+      "pass": true
+    },
+    {
+      "op": "step",
+      "settle": "throw",
+      "midFindings": [],
+      "pendingDuringWindow": 1,
+      "maxConcurrentOps": 1,
+      "resolvedOrderOk": true,
+      "rejected": null,
+      "finalLiveMatchesExpected": true,
+      "finalBarsMatch": true,
+      "storagePost": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "levelCount": 0,
+        "returnedToCurrent": false
+      },
+      "eventDelta": 0,
+      "eventsOk": true,
+      "unhandledRejections": 0,
+      "pass": true
+    },
+    {
+      "op": "createLevel",
+      "settle": "ok",
+      "midFindings": [],
+      "pendingDuringWindow": 1,
+      "maxConcurrentOps": 1,
+      "resolvedOrderOk": true,
+      "rejected": null,
+      "finalLiveMatchesExpected": true,
+      "finalBarsMatch": true,
+      "storagePost": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "levelCount": 1,
+        "returnedToCurrent": false
+      },
+      "eventDelta": 1,
+      "eventsOk": true,
+      "unhandledRejections": 0,
+      "pass": true
+    },
+    {
+      "op": "createLevel",
+      "settle": "refuse",
+      "midFindings": [],
+      "pendingDuringWindow": 1,
+      "maxConcurrentOps": 1,
+      "resolvedOrderOk": true,
+      "rejected": null,
+      "finalLiveMatchesExpected": true,
+      "finalBarsMatch": true,
+      "storagePost": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "levelCount": 0,
+        "returnedToCurrent": false
+      },
+      "eventDelta": 0,
+      "eventsOk": true,
+      "unhandledRejections": 0,
+      "pass": true
+    },
+    {
+      "op": "createLevel",
+      "settle": "throw",
+      "midFindings": [],
+      "pendingDuringWindow": 1,
+      "maxConcurrentOps": 1,
+      "resolvedOrderOk": true,
+      "rejected": null,
+      "finalLiveMatchesExpected": true,
+      "finalBarsMatch": true,
+      "storagePost": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "levelCount": 0,
+        "returnedToCurrent": false
+      },
+      "eventDelta": 0,
+      "eventsOk": true,
+      "unhandledRejections": 0,
+      "pass": true
+    },
+    {
+      "op": "removeLevel",
+      "settle": "ok",
+      "midFindings": [],
+      "pendingDuringWindow": 1,
+      "maxConcurrentOps": 1,
+      "resolvedOrderOk": true,
+      "rejected": null,
+      "finalLiveMatchesExpected": true,
+      "finalBarsMatch": true,
+      "storagePost": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "levelCount": 0,
+        "returnedToCurrent": false
+      },
+      "eventDelta": 1,
+      "eventsOk": true,
+      "unhandledRejections": 0,
+      "pass": true
+    },
+    {
+      "op": "removeLevel",
+      "settle": "refuse",
+      "midFindings": [],
+      "pendingDuringWindow": 1,
+      "maxConcurrentOps": 1,
+      "resolvedOrderOk": true,
+      "rejected": null,
+      "finalLiveMatchesExpected": true,
+      "finalBarsMatch": true,
+      "storagePost": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "levelCount": 1,
+        "returnedToCurrent": false
+      },
+      "eventDelta": 0,
+      "eventsOk": true,
+      "unhandledRejections": 0,
+      "pass": true
+    },
+    {
+      "op": "removeLevel",
+      "settle": "throw",
+      "midFindings": [],
+      "pendingDuringWindow": 1,
+      "maxConcurrentOps": 1,
+      "resolvedOrderOk": true,
+      "rejected": null,
+      "finalLiveMatchesExpected": true,
+      "finalBarsMatch": true,
+      "storagePost": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "levelCount": 1,
+        "returnedToCurrent": false
+      },
+      "eventDelta": 0,
+      "eventsOk": true,
+      "unhandledRejections": 0,
+      "pass": true
+    },
+    {
+      "op": "play",
+      "settle": "ok",
+      "midFindings": [],
+      "pendingDuringWindow": 1,
+      "maxConcurrentOps": 1,
+      "resolvedOrderOk": true,
+      "rejected": null,
+      "finalLiveMatchesExpected": true,
+      "finalBarsMatch": true,
+      "storagePost": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": true,
+        "levelCount": 0,
+        "returnedToCurrent": false
+      },
+      "eventDelta": 1,
+      "eventsOk": true,
+      "unhandledRejections": 0,
+      "pass": true
+    },
+    {
+      "op": "play",
+      "settle": "refuse",
+      "midFindings": [],
+      "pendingDuringWindow": 1,
+      "maxConcurrentOps": 1,
+      "resolvedOrderOk": true,
+      "rejected": null,
+      "finalLiveMatchesExpected": true,
+      "finalBarsMatch": true,
+      "storagePost": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "levelCount": 0,
+        "returnedToCurrent": false
+      },
+      "eventDelta": 0,
+      "eventsOk": true,
+      "unhandledRejections": 0,
+      "pass": true
+    },
+    {
+      "op": "play",
+      "settle": "throw",
+      "midFindings": [],
+      "pendingDuringWindow": 1,
+      "maxConcurrentOps": 1,
+      "resolvedOrderOk": true,
+      "rejected": null,
+      "finalLiveMatchesExpected": true,
+      "finalBarsMatch": true,
+      "storagePost": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "levelCount": 0,
+        "returnedToCurrent": false
+      },
+      "eventDelta": 0,
+      "eventsOk": true,
+      "unhandledRejections": 0,
+      "pass": true
+    },
+    {
+      "op": "returnToCurrent",
+      "settle": "ok",
+      "midFindings": [],
+      "pendingDuringWindow": 1,
+      "maxConcurrentOps": 1,
+      "resolvedOrderOk": true,
+      "rejected": null,
+      "finalLiveMatchesExpected": true,
+      "finalBarsMatch": true,
+      "storagePost": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "levelCount": 0,
+        "returnedToCurrent": true
+      },
+      "eventDelta": 1,
+      "eventsOk": true,
+      "unhandledRejections": 0,
+      "pass": true
+    },
+    {
+      "op": "returnToCurrent",
+      "settle": "refuse",
+      "midFindings": [],
+      "pendingDuringWindow": 1,
+      "maxConcurrentOps": 1,
+      "resolvedOrderOk": true,
+      "rejected": null,
+      "finalLiveMatchesExpected": true,
+      "finalBarsMatch": true,
+      "storagePost": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "levelCount": 0,
+        "returnedToCurrent": false
+      },
+      "eventDelta": 0,
+      "eventsOk": true,
+      "unhandledRejections": 0,
+      "pass": true
+    },
+    {
+      "op": "returnToCurrent",
+      "settle": "throw",
+      "midFindings": [],
+      "pendingDuringWindow": 1,
+      "maxConcurrentOps": 1,
+      "resolvedOrderOk": true,
+      "rejected": null,
+      "finalLiveMatchesExpected": true,
+      "finalBarsMatch": true,
+      "storagePost": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "levelCount": 0,
+        "returnedToCurrent": false
+      },
+      "eventDelta": 0,
+      "eventsOk": true,
+      "unhandledRejections": 0,
+      "pass": true
+    },
+    {
+      "op": "step (re-entrant observer at write-call time)",
+      "observedCount": 2,
+      "observed": [
+        {
+          "clockNow": 1767571200,
+          "stepIndex": 1,
+          "playing": false,
+          "levels": 0,
+          "barsCount": 0,
+          "opCount": 1
+        },
+        {
+          "clockNow": 1767571200,
+          "stepIndex": 1,
+          "playing": false,
+          "levels": 0,
+          "barsCount": 0,
+          "opCount": 1
+        }
+      ],
+      "reentrantOk": true,
+      "committedOk": true,
+      "pass": true
+    }
+  ],
+  "allPass": true,
+  "unhandledRejections": [],
+  "summary": {
+    "rows": 16,
+    "pass": 16,
+    "fail": 0,
+    "allPass": true,
+    "unhandledRejections": []
+  }
+}

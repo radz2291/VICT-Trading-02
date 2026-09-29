@@ -1,0 +1,103 @@
+{
+  "probe": "avc-p3 read-path",
+  "rows": [
+    {
+      "name": "mid-pending bars/availability serve COMMITTED instant",
+      "committedNow": 1767574800,
+      "phasesSampled": [
+        "sync",
+        "micro1",
+        "micro2",
+        "macro1"
+      ],
+      "mismatches": [],
+      "postCommitMatchesNewFrame": true,
+      "pass": true
+    },
+    {
+      "name": "corrupt-during-pending: queued op refuses READ_FAILED (no silent success)",
+      "outcomeA": {
+        "ok": true
+      },
+      "outcomeB": {
+        "ok": false,
+        "code": "READ_FAILED",
+        "message": "stored session record is unreadable — operation refused, stored bytes untouched"
+      },
+      "bCode": "READ_FAILED",
+      "storageIsARecord": true,
+      "liveMatchesA": true,
+      "events": [
+        "start",
+        "step",
+        "step"
+      ],
+      "exactWriteCalls": true,
+      "pass": true
+    },
+    {
+      "name": "recovery after heal",
+      "outcomeC": {
+        "ok": true
+      },
+      "live": {
+        "instant": 1767582000,
+        "stepIndex": 4
+      },
+      "pass": true
+    },
+    {
+      "name": "healed-before-execution: queued op succeeds (execution-time reverify)",
+      "outcomeB": {
+        "ok": true
+      },
+      "live": {
+        "instant": 1767582000,
+        "stepIndex": 4
+      },
+      "storage": {
+        "instant": 1767582000,
+        "stepIndex": 4
+      },
+      "pass": true
+    },
+    {
+      "name": "corrupt during OWN pending write, write ok -> commit (documented order; bytes replaced by own record)",
+      "outcome": {
+        "ok": true
+      },
+      "live": {
+        "instant": 1767574800,
+        "stepIndex": 2
+      },
+      "storageStepIndex": 2,
+      "observedSemantics": "commit-after-own-successful-write (reverify is pre-write, per documented order)",
+      "pass": true
+    },
+    {
+      "name": "corrupt during pending + refuse: live unchanged, corrupt bytes NOT overwritten, next op READ_FAILED",
+      "outcome": {
+        "ok": false,
+        "code": "WRITE_REFUSED",
+        "message": "persistence port refused the write: AVC_REFUSED: refused by avc test port — no state change"
+      },
+      "outcomeB": {
+        "ok": false,
+        "code": "READ_FAILED",
+        "message": "stored session record is unreadable — operation refused, stored bytes untouched"
+      },
+      "liveStayedCommitted": true,
+      "bCode": "READ_FAILED",
+      "pass": true
+    }
+  ],
+  "allPass": true,
+  "unhandledRejections": [],
+  "summary": {
+    "rows": 6,
+    "pass": 6,
+    "fail": 0,
+    "allPass": true,
+    "unhandledRejections": []
+  }
+}

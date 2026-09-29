@@ -1,0 +1,20 @@
+{
+  "probe": "avc-p5 acknowledgeState mid-pending (informational)",
+  "scenario": "consumer calls acknowledgeState(STALE record, levels:[]) while a step() write is pending, then the write succeeds",
+  "outcome": {
+    "ok": true
+  },
+  "live": {
+    "instant": 1767574800,
+    "stepIndex": 2,
+    "levelCount": 0
+  },
+  "stored": {
+    "instant": 1767574800,
+    "stepIndex": 2,
+    "levelCount": 1
+  },
+  "liveStorageDivergence": true,
+  "note": "acknowledgeState is documented as consumer-side acknowledgment of a successful read (call it after your read succeeds); it is NOT part of the FIFO queue. Misuse can desynchronize live drawings from the committed record until the next commit — recorded as the evidence-backed boundary of the per-session FIFO guarantee.",
+  "pass": true
+}

@@ -1,0 +1,1251 @@
+{
+  "probe": "avc-p2 overlap",
+  "rows": [
+    {
+      "pair": "step+step",
+      "combo": "s,s",
+      "duringA": {
+        "pendingIds": 1,
+        "writeCalls": 2,
+        "removeCalls": 0,
+        "totalOps": 2,
+        "maxConcurrentOps": 1
+      },
+      "duringB": {
+        "pendingIds": 1,
+        "writeCalls": 3,
+        "removeCalls": 0
+      },
+      "outcomeA": {
+        "ok": true
+      },
+      "outcomeB": {
+        "ok": true
+      },
+      "finalLive": {
+        "instant": 1767578400,
+        "stepIndex": 3,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 0
+      },
+      "expectedFinal": {
+        "instant": 1767578400,
+        "stepIndex": 3,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 0,
+        "storedNull": false
+      },
+      "liveMatches": true,
+      "storedMatches": true,
+      "adoptMatches": true,
+      "maxConcurrentOps": 1,
+      "finalEvents": [
+        "step",
+        "step"
+      ],
+      "expectedEvents": [
+        "step",
+        "step"
+      ],
+      "eventsMatch": true,
+      "pass": true
+    },
+    {
+      "pair": "step+step",
+      "combo": "s,f",
+      "duringA": {
+        "pendingIds": 1,
+        "writeCalls": 2,
+        "removeCalls": 0,
+        "totalOps": 2,
+        "maxConcurrentOps": 1
+      },
+      "duringB": {
+        "pendingIds": 1,
+        "writeCalls": 3,
+        "removeCalls": 0
+      },
+      "outcomeA": {
+        "ok": true
+      },
+      "outcomeB": {
+        "ok": false,
+        "code": "WRITE_REFUSED",
+        "message": "persistence port refused the write: AVC_REFUSED: refused by avc test port — no state change"
+      },
+      "finalLive": {
+        "instant": 1767574800,
+        "stepIndex": 2,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 0
+      },
+      "expectedFinal": {
+        "instant": 1767574800,
+        "stepIndex": 2,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 0,
+        "storedNull": false
+      },
+      "liveMatches": true,
+      "storedMatches": true,
+      "adoptMatches": true,
+      "maxConcurrentOps": 1,
+      "finalEvents": [
+        "step"
+      ],
+      "expectedEvents": [
+        "step"
+      ],
+      "eventsMatch": true,
+      "pass": true
+    },
+    {
+      "pair": "step+step",
+      "combo": "f,s",
+      "duringA": {
+        "pendingIds": 1,
+        "writeCalls": 2,
+        "removeCalls": 0,
+        "totalOps": 2,
+        "maxConcurrentOps": 1
+      },
+      "duringB": {
+        "pendingIds": 1,
+        "writeCalls": 3,
+        "removeCalls": 0
+      },
+      "outcomeA": {
+        "ok": false,
+        "code": "WRITE_REFUSED",
+        "message": "persistence port refused the write: AVC_REFUSED: refused by avc test port — no state change"
+      },
+      "outcomeB": {
+        "ok": true
+      },
+      "finalLive": {
+        "instant": 1767574800,
+        "stepIndex": 2,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 0
+      },
+      "expectedFinal": {
+        "instant": 1767574800,
+        "stepIndex": 2,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 0,
+        "storedNull": false
+      },
+      "liveMatches": true,
+      "storedMatches": true,
+      "adoptMatches": true,
+      "maxConcurrentOps": 1,
+      "finalEvents": [
+        "step"
+      ],
+      "expectedEvents": [
+        "step"
+      ],
+      "eventsMatch": true,
+      "pass": true
+    },
+    {
+      "pair": "step+step",
+      "combo": "f,f",
+      "duringA": {
+        "pendingIds": 1,
+        "writeCalls": 2,
+        "removeCalls": 0,
+        "totalOps": 2,
+        "maxConcurrentOps": 1
+      },
+      "duringB": {
+        "pendingIds": 1,
+        "writeCalls": 3,
+        "removeCalls": 0
+      },
+      "outcomeA": {
+        "ok": false,
+        "code": "WRITE_REFUSED",
+        "message": "persistence port refused the write: AVC_REFUSED: refused by avc test port — no state change"
+      },
+      "outcomeB": {
+        "ok": false,
+        "code": "WRITE_REFUSED",
+        "message": "persistence port refused the write: AVC_REFUSED: refused by avc test port — no state change"
+      },
+      "finalLive": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 0
+      },
+      "expectedFinal": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 0,
+        "storedNull": false
+      },
+      "liveMatches": true,
+      "storedMatches": true,
+      "adoptMatches": true,
+      "maxConcurrentOps": 1,
+      "finalEvents": [],
+      "expectedEvents": [],
+      "eventsMatch": true,
+      "pass": true
+    },
+    {
+      "pair": "step+create",
+      "combo": "s,s",
+      "duringA": {
+        "pendingIds": 1,
+        "writeCalls": 2,
+        "removeCalls": 0,
+        "totalOps": 2,
+        "maxConcurrentOps": 1
+      },
+      "duringB": {
+        "pendingIds": 1,
+        "writeCalls": 3,
+        "removeCalls": 0
+      },
+      "outcomeA": {
+        "ok": true
+      },
+      "outcomeB": {
+        "ok": true,
+        "id": "avc-lvl-001"
+      },
+      "finalLive": {
+        "instant": 1767574800,
+        "stepIndex": 2,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 1
+      },
+      "expectedFinal": {
+        "instant": 1767574800,
+        "stepIndex": 2,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 1,
+        "storedNull": false
+      },
+      "liveMatches": true,
+      "storedMatches": true,
+      "adoptMatches": true,
+      "maxConcurrentOps": 1,
+      "finalEvents": [
+        "step",
+        "level-created"
+      ],
+      "expectedEvents": [
+        "step",
+        "level-created"
+      ],
+      "eventsMatch": true,
+      "pass": true
+    },
+    {
+      "pair": "step+create",
+      "combo": "s,f",
+      "duringA": {
+        "pendingIds": 1,
+        "writeCalls": 2,
+        "removeCalls": 0,
+        "totalOps": 2,
+        "maxConcurrentOps": 1
+      },
+      "duringB": {
+        "pendingIds": 1,
+        "writeCalls": 3,
+        "removeCalls": 0
+      },
+      "outcomeA": {
+        "ok": true
+      },
+      "outcomeB": {
+        "ok": false,
+        "code": "WRITE_REFUSED",
+        "message": "persistence port refused the write: AVC_REFUSED: refused by avc test port — no state change"
+      },
+      "finalLive": {
+        "instant": 1767574800,
+        "stepIndex": 2,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 0
+      },
+      "expectedFinal": {
+        "instant": 1767574800,
+        "stepIndex": 2,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 0,
+        "storedNull": false
+      },
+      "liveMatches": true,
+      "storedMatches": true,
+      "adoptMatches": true,
+      "maxConcurrentOps": 1,
+      "finalEvents": [
+        "step"
+      ],
+      "expectedEvents": [
+        "step"
+      ],
+      "eventsMatch": true,
+      "pass": true
+    },
+    {
+      "pair": "step+create",
+      "combo": "f,s",
+      "duringA": {
+        "pendingIds": 1,
+        "writeCalls": 2,
+        "removeCalls": 0,
+        "totalOps": 2,
+        "maxConcurrentOps": 1
+      },
+      "duringB": {
+        "pendingIds": 1,
+        "writeCalls": 3,
+        "removeCalls": 0
+      },
+      "outcomeA": {
+        "ok": false,
+        "code": "WRITE_REFUSED",
+        "message": "persistence port refused the write: AVC_REFUSED: refused by avc test port — no state change"
+      },
+      "outcomeB": {
+        "ok": true,
+        "id": "avc-lvl-001"
+      },
+      "finalLive": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 1
+      },
+      "expectedFinal": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 1,
+        "storedNull": false
+      },
+      "liveMatches": true,
+      "storedMatches": true,
+      "adoptMatches": true,
+      "maxConcurrentOps": 1,
+      "finalEvents": [
+        "level-created"
+      ],
+      "expectedEvents": [
+        "level-created"
+      ],
+      "eventsMatch": true,
+      "pass": true
+    },
+    {
+      "pair": "step+create",
+      "combo": "f,f",
+      "duringA": {
+        "pendingIds": 1,
+        "writeCalls": 2,
+        "removeCalls": 0,
+        "totalOps": 2,
+        "maxConcurrentOps": 1
+      },
+      "duringB": {
+        "pendingIds": 1,
+        "writeCalls": 3,
+        "removeCalls": 0
+      },
+      "outcomeA": {
+        "ok": false,
+        "code": "WRITE_REFUSED",
+        "message": "persistence port refused the write: AVC_REFUSED: refused by avc test port — no state change"
+      },
+      "outcomeB": {
+        "ok": false,
+        "code": "WRITE_REFUSED",
+        "message": "persistence port refused the write: AVC_REFUSED: refused by avc test port — no state change"
+      },
+      "finalLive": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 0
+      },
+      "expectedFinal": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 0,
+        "storedNull": false
+      },
+      "liveMatches": true,
+      "storedMatches": true,
+      "adoptMatches": true,
+      "maxConcurrentOps": 1,
+      "finalEvents": [],
+      "expectedEvents": [],
+      "eventsMatch": true,
+      "pass": true
+    },
+    {
+      "pair": "create+remove",
+      "combo": "s,s",
+      "duringA": {
+        "pendingIds": 1,
+        "writeCalls": 2,
+        "removeCalls": 0,
+        "totalOps": 2,
+        "maxConcurrentOps": 1
+      },
+      "duringB": {
+        "pendingIds": 1,
+        "writeCalls": 3,
+        "removeCalls": 0
+      },
+      "outcomeA": {
+        "ok": true,
+        "id": "avc-lvl-001"
+      },
+      "outcomeB": {
+        "ok": true
+      },
+      "finalLive": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 0
+      },
+      "expectedFinal": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 0,
+        "storedNull": false
+      },
+      "liveMatches": true,
+      "storedMatches": true,
+      "adoptMatches": true,
+      "maxConcurrentOps": 1,
+      "finalEvents": [
+        "level-created",
+        "level-removed"
+      ],
+      "expectedEvents": [
+        "level-created",
+        "level-removed"
+      ],
+      "eventsMatch": true,
+      "pass": true
+    },
+    {
+      "pair": "create+remove",
+      "combo": "s,f",
+      "duringA": {
+        "pendingIds": 1,
+        "writeCalls": 2,
+        "removeCalls": 0,
+        "totalOps": 2,
+        "maxConcurrentOps": 1
+      },
+      "duringB": {
+        "pendingIds": 1,
+        "writeCalls": 3,
+        "removeCalls": 0
+      },
+      "outcomeA": {
+        "ok": true,
+        "id": "avc-lvl-001"
+      },
+      "outcomeB": {
+        "ok": false,
+        "code": "WRITE_REFUSED",
+        "message": "persistence port refused the write: AVC_REFUSED: refused by avc test port — no state change"
+      },
+      "finalLive": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 1
+      },
+      "expectedFinal": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 1,
+        "storedNull": false
+      },
+      "liveMatches": true,
+      "storedMatches": true,
+      "adoptMatches": true,
+      "maxConcurrentOps": 1,
+      "finalEvents": [
+        "level-created"
+      ],
+      "expectedEvents": [
+        "level-created"
+      ],
+      "eventsMatch": true,
+      "pass": true
+    },
+    {
+      "pair": "create+remove",
+      "combo": "f,s",
+      "duringA": {
+        "pendingIds": 1,
+        "writeCalls": 2,
+        "removeCalls": 0,
+        "totalOps": 2,
+        "maxConcurrentOps": 1
+      },
+      "duringB": {
+        "pendingIds": 0,
+        "writeCalls": 2,
+        "removeCalls": 0
+      },
+      "outcomeA": {
+        "ok": false,
+        "code": "WRITE_REFUSED",
+        "message": "persistence port refused the write: AVC_REFUSED: refused by avc test port — no state change"
+      },
+      "outcomeB": {
+        "ok": false,
+        "code": "NOT_FOUND",
+        "message": "no level avc-lvl-001"
+      },
+      "finalLive": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 0
+      },
+      "expectedFinal": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 0,
+        "storedNull": false
+      },
+      "liveMatches": true,
+      "storedMatches": true,
+      "adoptMatches": true,
+      "maxConcurrentOps": 1,
+      "finalEvents": [],
+      "expectedEvents": [],
+      "eventsMatch": true,
+      "pass": true
+    },
+    {
+      "pair": "create+remove",
+      "combo": "f,f",
+      "duringA": {
+        "pendingIds": 1,
+        "writeCalls": 2,
+        "removeCalls": 0,
+        "totalOps": 2,
+        "maxConcurrentOps": 1
+      },
+      "duringB": {
+        "pendingIds": 0,
+        "writeCalls": 2,
+        "removeCalls": 0
+      },
+      "outcomeA": {
+        "ok": false,
+        "code": "WRITE_REFUSED",
+        "message": "persistence port refused the write: AVC_REFUSED: refused by avc test port — no state change"
+      },
+      "outcomeB": {
+        "ok": false,
+        "code": "NOT_FOUND",
+        "message": "no level avc-lvl-001"
+      },
+      "finalLive": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 0
+      },
+      "expectedFinal": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 0,
+        "storedNull": false
+      },
+      "liveMatches": true,
+      "storedMatches": true,
+      "adoptMatches": true,
+      "maxConcurrentOps": 1,
+      "finalEvents": [],
+      "expectedEvents": [],
+      "eventsMatch": true,
+      "pass": true
+    },
+    {
+      "pair": "step+returnToCurrent",
+      "combo": "s,s",
+      "duringA": {
+        "pendingIds": 1,
+        "writeCalls": 2,
+        "removeCalls": 0,
+        "totalOps": 2,
+        "maxConcurrentOps": 1
+      },
+      "duringB": {
+        "pendingIds": 1,
+        "writeCalls": 3,
+        "removeCalls": 0
+      },
+      "outcomeA": {
+        "ok": true
+      },
+      "outcomeB": {
+        "ok": true
+      },
+      "finalLive": {
+        "instant": 1767574800,
+        "stepIndex": 2,
+        "playing": false,
+        "rtc": true,
+        "levelCount": 0
+      },
+      "expectedFinal": {
+        "instant": 1767574800,
+        "stepIndex": 2,
+        "playing": false,
+        "rtc": true,
+        "levelCount": 0,
+        "storedNull": false
+      },
+      "liveMatches": true,
+      "storedMatches": true,
+      "adoptMatches": true,
+      "maxConcurrentOps": 1,
+      "finalEvents": [
+        "step",
+        "returnToCurrent"
+      ],
+      "expectedEvents": [
+        "step",
+        "returnToCurrent"
+      ],
+      "eventsMatch": true,
+      "pass": true
+    },
+    {
+      "pair": "step+returnToCurrent",
+      "combo": "s,f",
+      "duringA": {
+        "pendingIds": 1,
+        "writeCalls": 2,
+        "removeCalls": 0,
+        "totalOps": 2,
+        "maxConcurrentOps": 1
+      },
+      "duringB": {
+        "pendingIds": 1,
+        "writeCalls": 3,
+        "removeCalls": 0
+      },
+      "outcomeA": {
+        "ok": true
+      },
+      "outcomeB": {
+        "ok": false,
+        "code": "WRITE_REFUSED",
+        "message": "persistence port refused the write: AVC_REFUSED: refused by avc test port — no state change"
+      },
+      "finalLive": {
+        "instant": 1767574800,
+        "stepIndex": 2,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 0
+      },
+      "expectedFinal": {
+        "instant": 1767574800,
+        "stepIndex": 2,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 0,
+        "storedNull": false
+      },
+      "liveMatches": true,
+      "storedMatches": true,
+      "adoptMatches": true,
+      "maxConcurrentOps": 1,
+      "finalEvents": [
+        "step"
+      ],
+      "expectedEvents": [
+        "step"
+      ],
+      "eventsMatch": true,
+      "pass": true
+    },
+    {
+      "pair": "step+returnToCurrent",
+      "combo": "f,s",
+      "duringA": {
+        "pendingIds": 1,
+        "writeCalls": 2,
+        "removeCalls": 0,
+        "totalOps": 2,
+        "maxConcurrentOps": 1
+      },
+      "duringB": {
+        "pendingIds": 1,
+        "writeCalls": 3,
+        "removeCalls": 0
+      },
+      "outcomeA": {
+        "ok": false,
+        "code": "WRITE_REFUSED",
+        "message": "persistence port refused the write: AVC_REFUSED: refused by avc test port — no state change"
+      },
+      "outcomeB": {
+        "ok": true
+      },
+      "finalLive": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "rtc": true,
+        "levelCount": 0
+      },
+      "expectedFinal": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "rtc": true,
+        "levelCount": 0,
+        "storedNull": false
+      },
+      "liveMatches": true,
+      "storedMatches": true,
+      "adoptMatches": true,
+      "maxConcurrentOps": 1,
+      "finalEvents": [
+        "returnToCurrent"
+      ],
+      "expectedEvents": [
+        "returnToCurrent"
+      ],
+      "eventsMatch": true,
+      "pass": true
+    },
+    {
+      "pair": "step+returnToCurrent",
+      "combo": "f,f",
+      "duringA": {
+        "pendingIds": 1,
+        "writeCalls": 2,
+        "removeCalls": 0,
+        "totalOps": 2,
+        "maxConcurrentOps": 1
+      },
+      "duringB": {
+        "pendingIds": 1,
+        "writeCalls": 3,
+        "removeCalls": 0
+      },
+      "outcomeA": {
+        "ok": false,
+        "code": "WRITE_REFUSED",
+        "message": "persistence port refused the write: AVC_REFUSED: refused by avc test port — no state change"
+      },
+      "outcomeB": {
+        "ok": false,
+        "code": "WRITE_REFUSED",
+        "message": "persistence port refused the write: AVC_REFUSED: refused by avc test port — no state change"
+      },
+      "finalLive": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 0
+      },
+      "expectedFinal": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 0,
+        "storedNull": false
+      },
+      "liveMatches": true,
+      "storedMatches": true,
+      "adoptMatches": true,
+      "maxConcurrentOps": 1,
+      "finalEvents": [],
+      "expectedEvents": [],
+      "eventsMatch": true,
+      "pass": true
+    },
+    {
+      "pair": "play+pause",
+      "combo": "s,s",
+      "duringA": {
+        "pendingIds": 1,
+        "writeCalls": 2,
+        "removeCalls": 0,
+        "totalOps": 2,
+        "maxConcurrentOps": 1
+      },
+      "duringB": {
+        "pendingIds": 1,
+        "writeCalls": 3,
+        "removeCalls": 0
+      },
+      "outcomeA": {
+        "ok": true
+      },
+      "outcomeB": {
+        "ok": true
+      },
+      "finalLive": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 0
+      },
+      "expectedFinal": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 0,
+        "storedNull": false
+      },
+      "liveMatches": true,
+      "storedMatches": true,
+      "adoptMatches": true,
+      "maxConcurrentOps": 1,
+      "finalEvents": [
+        "play",
+        "pause"
+      ],
+      "expectedEvents": [
+        "play",
+        "pause"
+      ],
+      "eventsMatch": true,
+      "pass": true
+    },
+    {
+      "pair": "play+pause",
+      "combo": "s,f",
+      "duringA": {
+        "pendingIds": 1,
+        "writeCalls": 2,
+        "removeCalls": 0,
+        "totalOps": 2,
+        "maxConcurrentOps": 1
+      },
+      "duringB": {
+        "pendingIds": 1,
+        "writeCalls": 3,
+        "removeCalls": 0
+      },
+      "outcomeA": {
+        "ok": true
+      },
+      "outcomeB": {
+        "ok": false,
+        "code": "WRITE_REFUSED",
+        "message": "persistence port refused the write: AVC_REFUSED: refused by avc test port — no state change"
+      },
+      "finalLive": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": true,
+        "rtc": false,
+        "levelCount": 0
+      },
+      "expectedFinal": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": true,
+        "rtc": false,
+        "levelCount": 0,
+        "storedNull": false
+      },
+      "liveMatches": true,
+      "storedMatches": true,
+      "adoptMatches": true,
+      "maxConcurrentOps": 1,
+      "finalEvents": [
+        "play"
+      ],
+      "expectedEvents": [
+        "play"
+      ],
+      "eventsMatch": true,
+      "pass": true
+    },
+    {
+      "pair": "play+pause",
+      "combo": "f,s",
+      "duringA": {
+        "pendingIds": 1,
+        "writeCalls": 2,
+        "removeCalls": 0,
+        "totalOps": 2,
+        "maxConcurrentOps": 1
+      },
+      "duringB": {
+        "pendingIds": 1,
+        "writeCalls": 3,
+        "removeCalls": 0
+      },
+      "outcomeA": {
+        "ok": false,
+        "code": "WRITE_REFUSED",
+        "message": "persistence port refused the write: AVC_REFUSED: refused by avc test port — no state change"
+      },
+      "outcomeB": {
+        "ok": true
+      },
+      "finalLive": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 0
+      },
+      "expectedFinal": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 0,
+        "storedNull": false
+      },
+      "liveMatches": true,
+      "storedMatches": true,
+      "adoptMatches": true,
+      "maxConcurrentOps": 1,
+      "finalEvents": [
+        "pause"
+      ],
+      "expectedEvents": [
+        "pause"
+      ],
+      "eventsMatch": true,
+      "pass": true
+    },
+    {
+      "pair": "play+pause",
+      "combo": "f,f",
+      "duringA": {
+        "pendingIds": 1,
+        "writeCalls": 2,
+        "removeCalls": 0,
+        "totalOps": 2,
+        "maxConcurrentOps": 1
+      },
+      "duringB": {
+        "pendingIds": 1,
+        "writeCalls": 3,
+        "removeCalls": 0
+      },
+      "outcomeA": {
+        "ok": false,
+        "code": "WRITE_REFUSED",
+        "message": "persistence port refused the write: AVC_REFUSED: refused by avc test port — no state change"
+      },
+      "outcomeB": {
+        "ok": false,
+        "code": "WRITE_REFUSED",
+        "message": "persistence port refused the write: AVC_REFUSED: refused by avc test port — no state change"
+      },
+      "finalLive": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 0
+      },
+      "expectedFinal": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 0,
+        "storedNull": false
+      },
+      "liveMatches": true,
+      "storedMatches": true,
+      "adoptMatches": true,
+      "maxConcurrentOps": 1,
+      "finalEvents": [],
+      "expectedEvents": [],
+      "eventsMatch": true,
+      "pass": true
+    },
+    {
+      "pair": "reset+step",
+      "combo": "s,s",
+      "duringA": {
+        "pendingIds": 1,
+        "writeCalls": 1,
+        "removeCalls": 1,
+        "totalOps": 2,
+        "maxConcurrentOps": 1
+      },
+      "duringB": {
+        "pendingIds": 1,
+        "writeCalls": 2,
+        "removeCalls": 1
+      },
+      "outcomeA": {
+        "ok": true
+      },
+      "outcomeB": {
+        "ok": true
+      },
+      "finalLive": {
+        "instant": 1767574800,
+        "stepIndex": 1,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 0
+      },
+      "expectedFinal": {
+        "instant": 1767574800,
+        "stepIndex": 1,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 0,
+        "storedNull": false
+      },
+      "liveMatches": true,
+      "storedMatches": true,
+      "adoptMatches": true,
+      "maxConcurrentOps": 1,
+      "finalEvents": [
+        "reset",
+        "step"
+      ],
+      "expectedEvents": [
+        "reset",
+        "step"
+      ],
+      "eventsMatch": true,
+      "pass": true
+    },
+    {
+      "pair": "reset+step",
+      "combo": "s,f",
+      "duringA": {
+        "pendingIds": 1,
+        "writeCalls": 1,
+        "removeCalls": 1,
+        "totalOps": 2,
+        "maxConcurrentOps": 1
+      },
+      "duringB": {
+        "pendingIds": 1,
+        "writeCalls": 2,
+        "removeCalls": 1
+      },
+      "outcomeA": {
+        "ok": true
+      },
+      "outcomeB": {
+        "ok": false,
+        "code": "WRITE_REFUSED",
+        "message": "persistence port refused the write: AVC_REFUSED: refused by avc test port — no state change"
+      },
+      "finalLive": {
+        "instant": 1767571200,
+        "stepIndex": 0,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 0
+      },
+      "expectedFinal": {
+        "instant": 1767571200,
+        "stepIndex": 0,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 0,
+        "storedNull": true
+      },
+      "liveMatches": true,
+      "storedMatches": true,
+      "adoptMatches": true,
+      "maxConcurrentOps": 1,
+      "finalEvents": [
+        "reset"
+      ],
+      "expectedEvents": [
+        "reset"
+      ],
+      "eventsMatch": true,
+      "pass": true
+    },
+    {
+      "pair": "reset+step",
+      "combo": "f,s",
+      "duringA": {
+        "pendingIds": 1,
+        "writeCalls": 1,
+        "removeCalls": 1,
+        "totalOps": 2,
+        "maxConcurrentOps": 1
+      },
+      "duringB": {
+        "pendingIds": 1,
+        "writeCalls": 2,
+        "removeCalls": 1
+      },
+      "outcomeA": {
+        "ok": false,
+        "code": "PORT_ERROR",
+        "message": "persistence port failed to remove the session record — no state change: avc-port: induced removal failure"
+      },
+      "outcomeB": {
+        "ok": true
+      },
+      "finalLive": {
+        "instant": 1767574800,
+        "stepIndex": 2,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 0
+      },
+      "expectedFinal": {
+        "instant": 1767574800,
+        "stepIndex": 2,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 0,
+        "storedNull": false
+      },
+      "liveMatches": true,
+      "storedMatches": true,
+      "adoptMatches": true,
+      "maxConcurrentOps": 1,
+      "finalEvents": [
+        "step"
+      ],
+      "expectedEvents": [
+        "step"
+      ],
+      "eventsMatch": true,
+      "pass": true
+    },
+    {
+      "pair": "reset+step",
+      "combo": "f,f",
+      "duringA": {
+        "pendingIds": 1,
+        "writeCalls": 1,
+        "removeCalls": 1,
+        "totalOps": 2,
+        "maxConcurrentOps": 1
+      },
+      "duringB": {
+        "pendingIds": 1,
+        "writeCalls": 2,
+        "removeCalls": 1
+      },
+      "outcomeA": {
+        "ok": false,
+        "code": "PORT_ERROR",
+        "message": "persistence port failed to remove the session record — no state change: avc-port: induced removal failure"
+      },
+      "outcomeB": {
+        "ok": false,
+        "code": "WRITE_REFUSED",
+        "message": "persistence port refused the write: AVC_REFUSED: refused by avc test port — no state change"
+      },
+      "finalLive": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 0
+      },
+      "expectedFinal": {
+        "instant": 1767571200,
+        "stepIndex": 1,
+        "playing": false,
+        "rtc": false,
+        "levelCount": 0,
+        "storedNull": false
+      },
+      "liveMatches": true,
+      "storedMatches": true,
+      "adoptMatches": true,
+      "maxConcurrentOps": 1,
+      "finalEvents": [],
+      "expectedEvents": [],
+      "eventsMatch": true,
+      "pass": true
+    },
+    {
+      "pair": "3x step queued",
+      "combo": "s,s,s",
+      "pendingTrace": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "maxConcurrentOps": 1,
+      "finalLive": {
+        "instant": 1767582000,
+        "stepIndex": 4
+      },
+      "events": [
+        "step",
+        "step",
+        "step"
+      ],
+      "pass": true
+    }
+  ],
+  "allPass": true,
+  "unhandledRejections": [],
+  "summary": {
+    "rows": 25,
+    "pass": 25,
+    "fail": 0,
+    "allPass": true,
+    "unhandledRejections": []
+  }
+}

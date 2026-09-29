@@ -1,0 +1,229 @@
+{
+  "probe": "avc-p4 failed-write table",
+  "rows": [
+    {
+      "failMode": "refuse",
+      "op": "start",
+      "refused": true,
+      "code": "WRITE_REFUSED",
+      "codeTruthful": true,
+      "stateBeforeEqualsAfter": true,
+      "bytesBeforeEqualsAfter": true,
+      "opLogUnchanged": true,
+      "noEventEmitted": true,
+      "pass": true
+    },
+    {
+      "failMode": "refuse",
+      "op": "step",
+      "refused": true,
+      "code": "WRITE_REFUSED",
+      "codeTruthful": true,
+      "stateBeforeEqualsAfter": true,
+      "bytesBeforeEqualsAfter": true,
+      "opLogUnchanged": true,
+      "noEventEmitted": true,
+      "pass": true
+    },
+    {
+      "failMode": "refuse",
+      "op": "createLevel",
+      "refused": true,
+      "code": "WRITE_REFUSED",
+      "codeTruthful": true,
+      "stateBeforeEqualsAfter": true,
+      "bytesBeforeEqualsAfter": true,
+      "opLogUnchanged": true,
+      "noEventEmitted": true,
+      "pass": true
+    },
+    {
+      "failMode": "refuse",
+      "op": "removeLevel",
+      "refused": true,
+      "code": "WRITE_REFUSED",
+      "codeTruthful": true,
+      "stateBeforeEqualsAfter": true,
+      "bytesBeforeEqualsAfter": true,
+      "opLogUnchanged": true,
+      "noEventEmitted": true,
+      "pass": true
+    },
+    {
+      "failMode": "refuse",
+      "op": "play",
+      "refused": true,
+      "code": "WRITE_REFUSED",
+      "codeTruthful": true,
+      "stateBeforeEqualsAfter": true,
+      "bytesBeforeEqualsAfter": true,
+      "opLogUnchanged": true,
+      "noEventEmitted": true,
+      "pass": true
+    },
+    {
+      "failMode": "refuse",
+      "op": "pause",
+      "refused": true,
+      "code": "WRITE_REFUSED",
+      "codeTruthful": true,
+      "stateBeforeEqualsAfter": true,
+      "bytesBeforeEqualsAfter": true,
+      "opLogUnchanged": true,
+      "noEventEmitted": true,
+      "pass": true
+    },
+    {
+      "failMode": "refuse",
+      "op": "returnToCurrent",
+      "refused": true,
+      "code": "WRITE_REFUSED",
+      "codeTruthful": true,
+      "stateBeforeEqualsAfter": true,
+      "bytesBeforeEqualsAfter": true,
+      "opLogUnchanged": true,
+      "noEventEmitted": true,
+      "pass": true
+    },
+    {
+      "failMode": "throw",
+      "op": "start",
+      "refused": true,
+      "code": "PORT_ERROR",
+      "codeTruthful": true,
+      "stateBeforeEqualsAfter": true,
+      "bytesBeforeEqualsAfter": true,
+      "opLogUnchanged": true,
+      "noEventEmitted": true,
+      "pass": true
+    },
+    {
+      "failMode": "throw",
+      "op": "step",
+      "refused": true,
+      "code": "PORT_ERROR",
+      "codeTruthful": true,
+      "stateBeforeEqualsAfter": true,
+      "bytesBeforeEqualsAfter": true,
+      "opLogUnchanged": true,
+      "noEventEmitted": true,
+      "pass": true
+    },
+    {
+      "failMode": "throw",
+      "op": "createLevel",
+      "refused": true,
+      "code": "PORT_ERROR",
+      "codeTruthful": true,
+      "stateBeforeEqualsAfter": true,
+      "bytesBeforeEqualsAfter": true,
+      "opLogUnchanged": true,
+      "noEventEmitted": true,
+      "pass": true
+    },
+    {
+      "failMode": "throw",
+      "op": "removeLevel",
+      "refused": true,
+      "code": "PORT_ERROR",
+      "codeTruthful": true,
+      "stateBeforeEqualsAfter": true,
+      "bytesBeforeEqualsAfter": true,
+      "opLogUnchanged": true,
+      "noEventEmitted": true,
+      "pass": true
+    },
+    {
+      "failMode": "throw",
+      "op": "play",
+      "refused": true,
+      "code": "PORT_ERROR",
+      "codeTruthful": true,
+      "stateBeforeEqualsAfter": true,
+      "bytesBeforeEqualsAfter": true,
+      "opLogUnchanged": true,
+      "noEventEmitted": true,
+      "pass": true
+    },
+    {
+      "failMode": "throw",
+      "op": "pause",
+      "refused": true,
+      "code": "PORT_ERROR",
+      "codeTruthful": true,
+      "stateBeforeEqualsAfter": true,
+      "bytesBeforeEqualsAfter": true,
+      "opLogUnchanged": true,
+      "noEventEmitted": true,
+      "pass": true
+    },
+    {
+      "failMode": "throw",
+      "op": "returnToCurrent",
+      "refused": true,
+      "code": "PORT_ERROR",
+      "codeTruthful": true,
+      "stateBeforeEqualsAfter": true,
+      "bytesBeforeEqualsAfter": true,
+      "opLogUnchanged": true,
+      "noEventEmitted": true,
+      "pass": true
+    },
+    {
+      "failMode": "throw(remove)",
+      "op": "reset",
+      "refused": true,
+      "code": "PORT_ERROR",
+      "codeTruthful": true,
+      "stateBeforeEqualsAfter": true,
+      "bytesBeforeEqualsAfter": true,
+      "opLogUnchanged": true,
+      "noEventEmitted": true,
+      "pass": true
+    },
+    {
+      "failMode": "refuse",
+      "op": "restore",
+      "refused": true,
+      "code": "WRITE_REFUSED",
+      "codeTruthful": true,
+      "stateBeforeEqualsAfter": true,
+      "bytesBeforeEqualsAfter": true,
+      "opLogUnchanged": true,
+      "noEventEmitted": true,
+      "pass": true
+    },
+    {
+      "failMode": "throw",
+      "op": "restore",
+      "refused": true,
+      "code": "PORT_ERROR",
+      "codeTruthful": true,
+      "stateBeforeEqualsAfter": true,
+      "bytesBeforeEqualsAfter": true,
+      "opLogUnchanged": true,
+      "noEventEmitted": true,
+      "pass": true
+    },
+    {
+      "op": "recovery",
+      "ghostLevelAbsent": true,
+      "realLevelPresent": true,
+      "recordStepMatchesLive": true,
+      "recordInstantMatchesLive": true,
+      "reloadLevelsExact": true,
+      "reloadStepExact": true,
+      "pass": true
+    }
+  ],
+  "allPass": true,
+  "notApplicable": [
+    "reset(removal) under ok:false — the remove() contract has no ok:false channel; throw is the only removal failure shape"
+  ],
+  "summary": {
+    "rows": 18,
+    "pass": 18,
+    "fail": 0,
+    "allPass": true
+  }
+}
