@@ -1,0 +1,339 @@
+{
+  "fix": "B (availabilityAt future-honesty)",
+  "sections": {
+    "midGap": {
+      "clock": "2026-01-05 04:15Z",
+      "variants": [
+        {
+          "variant": "baseline",
+          "availabilityAt": [
+            {
+              "status": "missing",
+              "from": 1767586500,
+              "to": null
+            }
+          ],
+          "openEnded_to_null": true
+        },
+        {
+          "variant": "resumption removed",
+          "availabilityAt": [
+            {
+              "status": "missing",
+              "from": 1767586500,
+              "to": null
+            }
+          ],
+          "openEnded_to_null": true
+        },
+        {
+          "variant": "gap bar added",
+          "availabilityAt": [
+            {
+              "status": "missing",
+              "from": 1767586500,
+              "to": null
+            }
+          ],
+          "openEnded_to_null": true
+        }
+      ],
+      "PASS": true
+    },
+    "sweep": [
+      {
+        "clock": "2026-01-05 04:00Z",
+        "baseAvailabilityAt": [
+          {
+            "status": "missing",
+            "from": 1767585600,
+            "to": null
+          }
+        ],
+        "variants": [
+          {
+            "variant": "A: remove 2 earliest post-clock bars",
+            "identicalToBase": true
+          },
+          {
+            "variant": "A: remove 2 earliest post-clock bars",
+            "identicalToBase": true
+          },
+          {
+            "variant": "A3: remove last post-clock bar",
+            "identicalToBase": true
+          },
+          {
+            "variant": "B: add bar inside gap @04:15",
+            "identicalToBase": true
+          },
+          {
+            "variant": "A1: remove 04:30Z resumption bar",
+            "identicalToBase": true
+          },
+          {
+            "variant": "C: change values of all post-clock bars",
+            "identicalToBase": true
+          }
+        ]
+      },
+      {
+        "clock": "2026-01-05 04:14Z",
+        "baseAvailabilityAt": [
+          {
+            "status": "missing",
+            "from": 1767585600,
+            "to": null
+          }
+        ],
+        "variants": [
+          {
+            "variant": "A: remove 2 earliest post-clock bars",
+            "identicalToBase": true
+          },
+          {
+            "variant": "A: remove 2 earliest post-clock bars",
+            "identicalToBase": true
+          },
+          {
+            "variant": "A3: remove last post-clock bar",
+            "identicalToBase": true
+          },
+          {
+            "variant": "B: add bar inside gap @04:15",
+            "identicalToBase": true
+          },
+          {
+            "variant": "A1: remove 04:30Z resumption bar",
+            "identicalToBase": true
+          },
+          {
+            "variant": "C: change values of all post-clock bars",
+            "identicalToBase": true
+          }
+        ]
+      },
+      {
+        "clock": "2026-01-05 04:15Z",
+        "baseAvailabilityAt": [
+          {
+            "status": "missing",
+            "from": 1767586500,
+            "to": null
+          }
+        ],
+        "variants": [
+          {
+            "variant": "A: remove 2 earliest post-clock bars",
+            "identicalToBase": true
+          },
+          {
+            "variant": "A: remove 2 earliest post-clock bars",
+            "identicalToBase": true
+          },
+          {
+            "variant": "A3: remove last post-clock bar",
+            "identicalToBase": true
+          },
+          {
+            "variant": "B: add bar inside gap @04:15",
+            "identicalToBase": true
+          },
+          {
+            "variant": "A1: remove 04:30Z resumption bar",
+            "identicalToBase": true
+          },
+          {
+            "variant": "C: change values of all post-clock bars",
+            "identicalToBase": true
+          }
+        ]
+      },
+      {
+        "clock": "2026-01-05 05:00Z",
+        "baseAvailabilityAt": [
+          {
+            "status": "missing",
+            "from": 1767586500,
+            "to": 1767587400
+          },
+          {
+            "status": "missing",
+            "from": 1767589200,
+            "to": null
+          }
+        ],
+        "variants": [
+          {
+            "variant": "A: remove 2 earliest post-clock bars",
+            "identicalToBase": true
+          },
+          {
+            "variant": "A: remove 2 earliest post-clock bars",
+            "identicalToBase": true
+          },
+          {
+            "variant": "A3: remove last post-clock bar",
+            "identicalToBase": true
+          },
+          {
+            "variant": "C: change values of all post-clock bars",
+            "identicalToBase": true
+          }
+        ]
+      },
+      {
+        "clock": "2026-01-05 07:00Z",
+        "baseAvailabilityAt": [
+          {
+            "status": "missing",
+            "from": 1767586500,
+            "to": 1767587400
+          },
+          {
+            "status": "missing",
+            "from": 1767596400,
+            "to": null
+          }
+        ],
+        "variants": [
+          {
+            "variant": "A: remove 2 earliest post-clock bars",
+            "identicalToBase": true
+          },
+          {
+            "variant": "A: remove 2 earliest post-clock bars",
+            "identicalToBase": true
+          },
+          {
+            "variant": "A3: remove last post-clock bar",
+            "identicalToBase": true
+          },
+          {
+            "variant": "C: change values of all post-clock bars",
+            "identicalToBase": true
+          }
+        ]
+      },
+      {
+        "clock": "2026-02-02 21:45Z",
+        "baseAvailabilityAt": [
+          {
+            "status": "missing",
+            "from": 1767586500,
+            "to": 1767587400
+          },
+          {
+            "status": "missing",
+            "from": 1767841200,
+            "to": 1767848400
+          },
+          {
+            "status": "missing",
+            "from": 1768003200,
+            "to": 1768176000
+          },
+          {
+            "status": "missing",
+            "from": 1768608000,
+            "to": 1768780800
+          },
+          {
+            "status": "missing",
+            "from": 1769212800,
+            "to": 1769385600
+          },
+          {
+            "status": "missing",
+            "from": 1769817600,
+            "to": 1769990400
+          },
+          {
+            "status": "missing",
+            "from": 1770068700,
+            "to": null
+          }
+        ],
+        "variants": [
+          {
+            "variant": "A: remove 2 earliest post-clock bars",
+            "identicalToBase": true
+          },
+          {
+            "variant": "A: remove 2 earliest post-clock bars",
+            "identicalToBase": true
+          },
+          {
+            "variant": "A3: remove last post-clock bar",
+            "identicalToBase": true
+          },
+          {
+            "variant": "C: change values of all post-clock bars",
+            "identicalToBase": true
+          }
+        ]
+      }
+    ],
+    "sweepIdentical": true,
+    "resumptionWithinClock": {
+      "clock": "2026-01-05 04:45Z",
+      "availabilityAt": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        },
+        {
+          "status": "missing",
+          "from": 1767588300,
+          "to": null
+        }
+      ],
+      "to_is_number_and_equals_resumption_open": true,
+      "PASS": true
+    },
+    "horizon": {
+      "availabilityAt": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        },
+        {
+          "status": "missing",
+          "from": 1767841200,
+          "to": 1767848400
+        },
+        {
+          "status": "missing",
+          "from": 1768003200,
+          "to": 1768176000
+        },
+        {
+          "status": "missing",
+          "from": 1768608000,
+          "to": 1768780800
+        },
+        {
+          "status": "missing",
+          "from": 1769212800,
+          "to": 1769385600
+        },
+        {
+          "status": "missing",
+          "from": 1769817600,
+          "to": 1769990400
+        },
+        {
+          "status": "missing",
+          "from": 1770068700,
+          "to": null
+        }
+      ],
+      "namedGaps": 6,
+      "trailingOpenEnded": true,
+      "PASS": true
+    }
+  },
+  "PASS": true
+}

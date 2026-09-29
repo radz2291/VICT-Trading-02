@@ -12,7 +12,7 @@ Headless **replay capability** for a market-data workspace: a market-time replay
 ## Precision rules implemented
 
 - **R1 — capped queries.** `dataSession.bars()` is the ONLY bar-returning API. A slice always ends at `min(requestedUntil, clock.now())`; the clock itself can never exceed the configured horizon (`now()` caps, records `requested` vs `applied`). Every query records `{requestedUntil, servedUntil, capped, count}` so evidence can prove capping programmatically.
-- **R2 — availability.** A base bar is available iff its close time ≤ clock now. An aggregated larger-timeframe bar is returned only when **every** constituent base bar is available — no unfinished-bar preview. Missing intervals are reported explicitly by `availabilityAt()` as `{status:'missing', from, to}` and are **never bridged**.
+- **R2 — availability (amended: contested-case ruling, normative).** A base bar is available iff its close time ≤ clock now. An aggregated larger-timeframe bar is returned ONLY when EVERY **required constituent slot** of its bucket (`bucketStart + k·baseSeconds`, `k = 0..factor-1`) is present in the source AND available — read as all REQUIRED slots present-and-available. A bucket missing any slot (unfinished **or** a source gap) is never returned and never fabricated from partials. Gaps are computed ONLY over source bars with close ≤ the clock instant; a gap whose resumption is not yet within the clock's availability is reported **open-ended** (`to: null`) — a public replay query never reveals a future resumption time. `to` is a number only when the resumption bar is already within the clock's availability. Gaps are **never bridged**, and none are invented beyond known source extent. The **availability edge** is reported uniformly as a trailing open-ended interval (`from` = last available close, `to: null`): from the clock's viewpoint there is no available data beyond it, and whether it is a source gap or ordinary unfinished future must not be revealed before the clock reaches it (that uniformity is what makes public outputs identical under post-clock source mutations).
 - **R3 — provenance (as amended by D-003).** `provenance-unknown` drawings are **HIDDEN in replay**; `replay-stamped` drawings are visible iff `creationStep ≤ currentStep` (and `creationInstant ≤ now`); `market-time-anchored` drawings are visible. The kit defines the rules; the consumer decides display.
 - **R4 — dependency direction.** The kit depends on nothing; persistence is an app-supplied `SessionPersistence` port with a **read-before-write acknowledgment gate** (`READ_NOT_ACKNOWLEDGED` until a successful `read()` result is acknowledged).
 
@@ -24,12 +24,12 @@ Market-time tick counter (unix seconds). `now()` (≤ horizon, always), `advance
 ### `createDataSession({ clock, source, rules })`
 `source` = `{ bars }` (consumer-provided base-granularity series, ascending). `rules` = `{ symbol, baseTimeframe }`.
 - `bars({ until, granularity })` → `{ symbol, granularity, bars, requestedUntil, servedUntil, capped }` — capped + recorded.
-- `availabilityAt(t)` → `MissingInterval[]` (`{status:'missing', from, to}`).
+- `availabilityAt(t)` → `MissingInterval[]` (`{status:'missing', from, to}` — `to` is `number | null`; `null` = open-ended, resumption not yet within the clock's availability).
 - `queryRecords()` / `clockRecords()` — the evidence channels.
 - `clock()`, `rules()`.
 
 ### `ReplaySession`
-`new ReplaySession({ clock, persistence }, { onEvent })` — `start(fromInstant)`, `step(stepSeconds)`, `play()`, `pause()`, `restore()`, `reset()`, `returnToCurrent()`, `createLevel(price, note?)` (replay-stamped with `clock.now()` + step), `removeLevel(id)`, `levelsAll()`. Every transition is emitted as a `SessionEvent` (evidence channel) and persisted via the port. Persistence mutations are refused with `READ_NOT_ACKNOWLEDGED` until `acknowledgeState(await persistence.read())` follows a successful read.
+`new ReplaySession({ clock, persistence }, { onEvent })` — `start(fromInstant)`, `step(stepSeconds)`, `play()`, `pause()`, `restore()`, `reset()`, `returnToCurrent()`, `createLevel(price, note?)` (replay-stamped with `clock.now()` + step), `removeLevel(id)`, `levelsAll()`. Every transition is emitted as a `SessionEvent` (evidence channel) and persisted via the port. Persistence mutations are refused with `READ_NOT_ACKNOWLEDGED` until `acknowledgeState(await persistence.read())` follows a successful read. Additionally, EVERY persisted mutation (start/step/play/pause/restore/createLevel/removeLevel/returnToCurrent/reset) **re-reads the stored record first** (per-operation re-verification): on read failure the operation is REFUSED with `READ_FAILED`, nothing is written, the stored bytes are untouched, and the live session state stays consistent. Recovery: once a successful read completes (the next operation's re-verification, or an explicit `acknowledgeState` after a successful consumer read), subsequent operations work again — `acknowledgeState` itself is only required once, at construction.
 
 ### `visibilityAt(drawing, ctx)` / `visibilityInReplay(drawing, clock)`
 Returns `{ visible, reason }` per the provenance rules above.
@@ -59,8 +59,14 @@ const persistence = {
 	remove: () => localStorage.removeItem('my.replay.v1')
 };
 const session = new ReplaySession({ clock, persistence });
-session.acknowledgeState(persistence.read()); // opens the write gate
+session.acknowledgeState(persistence.read()); // opens the write gate (required once)
 await session.start(1_760_000_000);
+// Every persisted mutation re-reads the record first. If the stored bytes
+// become unreadable mid-session, the op is REFUSED with READ_FAILED
+// (ok:false), stored bytes stay untouched, and the session keeps working
+// once reads succeed again:
+//   const r = await session.step(900);
+//   if (!r.ok && r.code === 'READ_FAILED') showUser('step unavailable: storage read failed');
 
 const capped = data.bars({ until: null, granularity: '1h' }); // ends at clock.now(), recorded
 console.log(capped.servedUntil, capped.capped);

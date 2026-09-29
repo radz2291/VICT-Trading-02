@@ -1,0 +1,141 @@
+{
+  "fix": "A (slot-completeness)",
+  "fixtureDigest": "e6b0b749bc09f9a0",
+  "sections": {
+    "audit": {
+      "affected1h": [
+        {
+          "bucket": "2026-01-05 04:00Z",
+          "existing": 3,
+          "required": 4
+        }
+      ],
+      "affected4h": [
+        {
+          "bucket": "2026-01-05 04:00Z",
+          "existing": 15,
+          "required": 16
+        },
+        {
+          "bucket": "2026-01-08 00:00Z",
+          "existing": 12,
+          "required": 16
+        },
+        {
+          "bucket": "2026-01-08 04:00Z",
+          "existing": 12,
+          "required": 16
+        }
+      ]
+    },
+    "checks": [
+      {
+        "name": "CASE1 1h 04:00–05:00Z bucket at clock 06:00Z",
+        "clock": "2026-01-05 06:00Z",
+        "granularity": "1h",
+        "badBuckets": [
+          "2026-01-05 04:00Z"
+        ],
+        "leaked": [],
+        "PASS": true
+      },
+      {
+        "name": "CASE1 3 incomplete 4h buckets at horizon",
+        "clock": "2026-02-02 21:45Z",
+        "granularity": "4h",
+        "badBuckets": [
+          "2026-01-05 04:00Z",
+          "2026-01-07 13:20Z",
+          "2026-01-07 17:20Z"
+        ],
+        "leaked": [],
+        "PASS": true
+      },
+      {
+        "name": "engine == oracle",
+        "clock": "2026-01-05 00:00Z",
+        "granularity": "1h",
+        "engineBars": 0,
+        "oracleBars": 0,
+        "PASS": true
+      },
+      {
+        "name": "engine == oracle",
+        "clock": "2026-01-05 00:00Z",
+        "granularity": "4h",
+        "engineBars": 0,
+        "oracleBars": 0,
+        "PASS": true
+      },
+      {
+        "name": "engine == oracle",
+        "clock": "2026-01-05 04:15Z",
+        "granularity": "1h",
+        "engineBars": 4,
+        "oracleBars": 4,
+        "PASS": true
+      },
+      {
+        "name": "engine == oracle",
+        "clock": "2026-01-05 04:15Z",
+        "granularity": "4h",
+        "engineBars": 1,
+        "oracleBars": 1,
+        "PASS": true
+      },
+      {
+        "name": "engine == oracle",
+        "clock": "2026-01-05 06:00Z",
+        "granularity": "1h",
+        "engineBars": 5,
+        "oracleBars": 5,
+        "PASS": true
+      },
+      {
+        "name": "engine == oracle",
+        "clock": "2026-01-05 06:00Z",
+        "granularity": "4h",
+        "engineBars": 1,
+        "oracleBars": 1,
+        "PASS": true
+      },
+      {
+        "name": "engine == oracle",
+        "clock": "2026-01-07 13:20Z",
+        "granularity": "1h",
+        "engineBars": 60,
+        "oracleBars": 60,
+        "PASS": true
+      },
+      {
+        "name": "engine == oracle",
+        "clock": "2026-01-07 13:20Z",
+        "granularity": "4h",
+        "engineBars": 14,
+        "oracleBars": 14,
+        "PASS": true
+      },
+      {
+        "name": "engine == oracle",
+        "clock": "2026-02-02 21:45Z",
+        "granularity": "1h",
+        "engineBars": 498,
+        "oracleBars": 498,
+        "PASS": true
+      },
+      {
+        "name": "engine == oracle",
+        "clock": "2026-02-02 21:45Z",
+        "granularity": "4h",
+        "engineBars": 122,
+        "oracleBars": 122,
+        "PASS": true
+      },
+      {
+        "name": "base 15m output unchanged at all tested clocks",
+        "PASS": true
+      }
+    ]
+  },
+  "PASS": true
+}

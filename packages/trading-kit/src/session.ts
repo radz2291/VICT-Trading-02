@@ -6,6 +6,10 @@
  * Read-before-write acknowledgment (chart-workspace pattern): every
  * persistence mutation is refused with READ_NOT_ACKNOWLEDGED until the
  * consumer acknowledges a SUCCESSFUL port read via acknowledgeState().
+ * Additionally (contested-case remediation) EVERY persisted mutation
+ * re-verifies readability of the stored record before applying: on read
+ * failure it is refused with READ_FAILED, stored bytes untouched, live
+ * state unchanged — recovery is automatic once a read succeeds again.
  * Every transition is emitted on the evidence channel with the recorded
  * rules. The kit never touches storage itself.
  */
@@ -87,6 +91,35 @@ export class ReplaySession {
 		};
 	}
 
+	/**
+	 * Per-operation re-verification (contested-case remediation): the
+	 * one-shot construction-time acknowledgment is NOT enough — EVERY
+	 * persisted mutation first re-reads (re-verifies readability of) the
+	 * stored record. On read failure the operation is REFUSED with
+	 * READ_FAILED, no in-memory state changes, no write occurs, and the
+	 * stored bytes are untouched. Recovery: once a successful read
+	 * completes (via this check or an explicit acknowledgeState after a
+	 * successful consumer read), subsequent operations work again —
+	 * acknowledgeState() itself is only required once, at construction.
+	 * Returns the fresh record on success, null is never a failure here.
+	 */
+	private reverify(): { outcome: MutationOutcome | null; record: SessionRecord | null } {
+		try {
+			const record = this.persistence.read();
+			this.lastRead = record;
+			return { outcome: null, record };
+		} catch (e) {
+			return {
+				outcome: {
+					ok: false,
+					code: 'READ_FAILED',
+					message: 'stored session record is unreadable — operation refused, stored bytes untouched'
+				},
+				record: null
+			};
+		}
+	}
+
 	// ---- evidence ----------------------------------------------------------
 
 	private emit(type: SessionEvent['type'], detail?: Record<string, unknown>): void {
@@ -125,6 +158,8 @@ export class ReplaySession {
 	async start(fromInstant: number): Promise<MutationOutcome> {
 		const gated = this.gate();
 		if (gated) return gated;
+		const rv = this.reverify();
+		if (rv.outcome) return rv.outcome;
 		if (fromInstant > this.clock.horizon()) {
 			return { ok: false, code: 'PAST_HORIZON', message: 'start instant is beyond the configured horizon' };
 		}
@@ -140,6 +175,8 @@ export class ReplaySession {
 	async step(stepSeconds: number): Promise<MutationOutcome> {
 		const gated = this.gate();
 		if (gated) return gated;
+		const rv = this.reverify();
+		if (rv.outcome) return rv.outcome;
 		this.clock.advance(stepSeconds);
 		this.stepCounter += 1;
 		this.emit('step', { stepSeconds, capped: this.clock.now() >= this.clock.horizon() });
@@ -149,6 +186,8 @@ export class ReplaySession {
 	async play(): Promise<MutationOutcome> {
 		const gated = this.gate();
 		if (gated) return gated;
+		const rv = this.reverify();
+		if (rv.outcome) return rv.outcome;
 		this.playing = true;
 		this.emit('play');
 		return this.persist();
@@ -157,6 +196,8 @@ export class ReplaySession {
 	async pause(): Promise<MutationOutcome> {
 		const gated = this.gate();
 		if (gated) return gated;
+		const rv = this.reverify();
+		if (rv.outcome) return rv.outcome;
 		this.playing = false;
 		this.emit('pause');
 		return this.persist();
@@ -180,6 +221,7 @@ export class ReplaySession {
 		if (record.returnedToCurrent) {
 			return { ok: false, code: 'SESSION_ENDED', message: 'the persisted session already returned to current' };
 		}
+		this.lastRead = record;
 		this.clock.setFrame(record.instant);
 		this.levels = (record.levels ?? []).map((l) => ({ ...l }));
 		this.stepCounter = record.stepIndex ?? this.stepCounter;
@@ -193,6 +235,8 @@ export class ReplaySession {
 	async reset(): Promise<MutationOutcome> {
 		const gated = this.gate();
 		if (gated) return gated;
+		const rv = this.reverify();
+		if (rv.outcome) return rv.outcome;
 		this.levels = [];
 		this.playing = false;
 		this.stepCounter = 0;
@@ -215,6 +259,8 @@ export class ReplaySession {
 	async returnToCurrent(): Promise<MutationOutcome> {
 		const gated = this.gate();
 		if (gated) return gated;
+		const rv = this.reverify();
+		if (rv.outcome) return rv.outcome;
 		this.playing = false;
 		this.returnedToCurrent = true;
 		this.emit('returnToCurrent');
@@ -227,6 +273,8 @@ export class ReplaySession {
 	async createLevel(price: number, note?: string): Promise<MutationOutcome & { id?: string }> {
 		const gated = this.gate();
 		if (gated) return gated;
+		const rv = this.reverify();
+		if (rv.outcome) return rv.outcome;
 		if (!Number.isFinite(price)) return { ok: false, code: 'INVALID_INPUT', message: 'price must be finite' };
 		const level: ReplayLevel = {
 			id: this.genId(),
@@ -245,6 +293,8 @@ export class ReplaySession {
 	async removeLevel(id: string): Promise<MutationOutcome> {
 		const gated = this.gate();
 		if (gated) return gated;
+		const rv = this.reverify();
+		if (rv.outcome) return rv.outcome;
 		const before = this.levels.length;
 		this.levels = this.levels.filter((l) => l.id !== id);
 		if (this.levels.length === before) return { ok: false, code: 'NOT_FOUND', message: 'no level ' + id };

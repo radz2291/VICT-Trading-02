@@ -1,0 +1,76 @@
+{
+  "fix": "C (per-op re-read-verify)",
+  "sections": {
+    "setup": {
+      "start": true,
+      "step": true,
+      "createLevel": true,
+      "bytesLen": 114
+    },
+    "corruptMidSession": {
+      "attempts": {
+        "step": {
+          "ok": false,
+          "code": "READ_FAILED"
+        },
+        "save": {
+          "ok": false,
+          "code": "READ_FAILED"
+        },
+        "play": {
+          "ok": false,
+          "code": "READ_FAILED"
+        },
+        "pause": {
+          "ok": false,
+          "code": "READ_FAILED"
+        },
+        "restore": {
+          "ok": false,
+          "code": "READ_FAILED"
+        },
+        "returnToCurrent": {
+          "ok": false,
+          "code": "READ_FAILED"
+        },
+        "reset": {
+          "ok": false,
+          "code": "READ_FAILED"
+        }
+      },
+      "allRefusedWithREAD_FAILED": true,
+      "storedBytesByteIdentical": true,
+      "liveStateConsistent": true,
+      "clockUnmovedByRefusedStep": true,
+      "recovery_step_ok": true,
+      "recovery_level_ok": true,
+      "recovery_levels": 2,
+      "recovery_stepIndex": 3,
+      "PASS": true
+    },
+    "resetRefusal": {
+      "ok": false,
+      "code": "READ_FAILED",
+      "bytesPreserved": true,
+      "PASS": true
+    },
+    "restoreRefusal": {
+      "ok": false,
+      "code": "READ_FAILED",
+      "PASS": true
+    },
+    "getterThrow": {
+      "ackReadThrew": true,
+      "gated": true,
+      "code": "READ_NOT_ACKNOWLEDGED",
+      "PASS": true
+    },
+    "corruptAtStart": {
+      "consumerReadFailed": true,
+      "startRefused": true,
+      "code": "READ_NOT_ACKNOWLEDGED",
+      "PASS": true
+    }
+  },
+  "PASS": true
+}

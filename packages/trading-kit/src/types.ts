@@ -66,13 +66,19 @@ export interface QueryRecord {
 	seq: number;
 }
 
-/** An explicit unavailability interval (R2 — gaps are NEVER bridged). */
+/**
+ * An explicit unavailability interval (R2 — gaps are NEVER bridged).
+ * Future-honesty: gaps are computed only over source bars with close ≤ the
+ * clock instant. `to` is a number ONLY when the resumption bar is already
+ * within the clock's availability; otherwise the gap is OPEN-ENDED
+ * (`to: null`) — a public replay query never reveals a future resumption time.
+ */
 export interface MissingInterval {
 	status: 'missing';
 	/** interval start (exclusive of the previous bar's close), unix seconds */
 	from: number;
-	/** interval end (next available bar open), unix seconds */
-	to: number;
+	/** interval end (next available bar open), unix seconds — null while the resumption is not yet within the clock's availability */
+	to: number | null;
 }
 
 /** Provenance classes (R3 / D-002 as amended by D-003). */

@@ -97,35 +97,41 @@ export function createDataSession(config: DataSessionConfig): DataSession {
 		const factor = TF_SECONDS[g] / baseSeconds;
 		if (factor === 1) return available;
 		const bucketSeconds = TF_SECONDS[g];
+		const sourceSlot = new Set(base.map((b) => b.time));
+		const availableSlot = new Map<number, Bar>(available.map((b) => [b.time, b]));
 		const out: Bar[] = [];
-		let i = 0;
-		while (i < available.length) {
-			const bucketStart = Math.floor(available[i].time / bucketSeconds) * bucketSeconds;
+		const seenBucket = new Set<number>();
+		for (const b of available) {
+			const bucketStart = Math.floor(b.time / bucketSeconds) * bucketSeconds;
+			if (seenBucket.has(bucketStart)) continue;
+			seenBucket.add(bucketStart);
+			// R2 (contested-case ruling, now normative): an aggregated bar is
+			// returned ONLY when EVERY required constituent slot in the bucket
+			// [bucketStart + k*baseSeconds, k = 0..factor-1] is present in the
+			// SOURCE and available (close ≤ now). A bucket missing any slot —
+			// because it is unfinished OR because the source has a gap there —
+			// is NEVER returned and NEVER fabricated from partials; the interval
+			// is named by availabilityAt() instead.
+			let complete = true;
 			const group: Bar[] = [];
-			while (i < available.length && available[i].time < bucketStart + bucketSeconds) {
-				group.push(available[i]);
-				i++;
-			}
-			// R2: an aggregate is returned ONLY when EVERY source bar that
-			// falls inside the bucket is available. A bucket missing even one
-			// constituent — because it is unfinished (close > now) or because
-			// the source itself has a gap there — is NOT returned and NOT
-			// bridged; the interval is named by availabilityAt() instead.
-			const slots = new Set(group.map((b) => b.time));
-			const allSourcePresent = base
-				.filter((b) => b.time >= bucketStart && b.time < bucketStart + bucketSeconds)
-				.every((b) => slots.has(b.time));
-			if (allSourcePresent) {
-				let open = group[0].open;
-				let close = group[group.length - 1].close;
-				let high = -Infinity;
-				let low = Infinity;
-				for (const b of group) {
-					high = Math.max(high, b.high);
-					low = Math.min(low, b.low);
+			for (let k = 0; k < factor; k++) {
+				const slot = bucketStart + k * baseSeconds;
+				if (!sourceSlot.has(slot) || !availableSlot.has(slot)) {
+					complete = false;
+					break;
 				}
-				out.push({ time: bucketStart, open, high, low, close });
+				group.push(availableSlot.get(slot) as Bar);
 			}
+			if (!complete) continue;
+			let open = group[0].open;
+			let close = group[group.length - 1].close;
+			let high = -Infinity;
+			let low = Infinity;
+			for (const b of group) {
+				high = Math.max(high, b.high);
+				low = Math.min(low, b.low);
+			}
+			out.push({ time: bucketStart, open, high, low, close });
 		}
 		return out;
 	}
@@ -162,14 +168,42 @@ export function createDataSession(config: DataSessionConfig): DataSession {
 		availabilityAt(t) {
 			const at = Math.min(t ?? clock.now(), clock.now());
 			const missing: MissingInterval[] = [];
-			// gaps between consecutive SOURCE bars (never bridged), reported
-			// only up to the served instant `at`
-			for (let i = 1; i < base.length; i++) {
-				const prev = base[i - 1];
-				const cur = base[i];
+			// Gaps are computed ONLY over source bars whose close ≤ `at` (the
+			// historical-visible slice). A public replay query must never reveal
+			// a FUTURE resumption instant (contested-case ruling, normative):
+			// a gap whose resumption bar is not yet within the clock's
+			// availability is reported OPEN-ENDED (`to: null`). `to` is a number
+			// only when the resumption bar's close is already ≤ `at`. Gaps are
+			// detected between consecutive AVAILABLE bars; a gap extending past
+			// the clock's end / horizon stays open-ended — no gaps are invented
+			// beyond known source extent.
+			const avail = availableBase(at);
+			for (let i = 1; i < avail.length; i++) {
+				const prev = avail[i - 1];
+				const cur = avail[i];
 				const gapFrom = prev.time + baseSeconds;
-				if (cur.time > gapFrom && gapFrom <= at) {
+				if (cur.time > gapFrom) {
 					missing.push({ status: 'missing', from: gapFrom, to: cur.time });
+				}
+			}
+			// Trailing open-ended gap: the last AVAILABLE bar is followed by a
+			// further SOURCE bar that is not yet available (its close lies
+			// beyond the clock). The resumption is not within the clock's
+			// availability → report OPEN-ENDED; never name the future instant.
+			if (avail.length > 0) {
+				const last = avail[avail.length - 1];
+				let nextSource: Bar | null = null;
+				for (const b of base) {
+					if (b.time > last.time) {
+						nextSource = b;
+						break;
+					}
+				}
+				if (nextSource) {
+					const gapFrom = last.time + baseSeconds;
+					if (nextSource.time > gapFrom || nextSource.time + baseSeconds > at) {
+						missing.push({ status: 'missing', from: gapFrom, to: null });
+					}
 				}
 			}
 			return missing;

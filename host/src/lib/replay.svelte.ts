@@ -96,6 +96,7 @@ export function createReplayState() {
 	let stepIdx = $state(0);
 	let playing = $state(false);
 	let status = $state('idle');
+	let statusFailed = $state(false);
 	let bars: typeof G2.bars = $state([]);
 	let missing: MissingInterval[] = $state([]);
 	let levels: ReplayLevel[] = $state([]);
@@ -103,13 +104,28 @@ export function createReplayState() {
 	let queryCount = $state(0);
 	let timer: ReturnType<typeof setInterval> | undefined;
 
+	// Honest refusal display (EXPERIENCE.md): every refused replay action gets
+	// a truthful, action-specific explanation rendered in the replay panel.
+	function refused(action: string, r: { code?: string; message?: string }): void {
+		if (r.code === 'READ_FAILED') status = action + ' unavailable: storage read failed';
+		else if (r.code === 'READ_NOT_ACKNOWLEDGED') status = action + ' unavailable: stored session has not been read successfully';
+		else if (r.code === 'STORAGE_VERIFY_FAILED' || r.code === 'PORT_ERROR') status = action + ' failed: storage write could not be verified — stored bytes restored';
+		else status = action + ' refused: ' + r.code + ': ' + r.message;
+		statusFailed = true;
+	}
+	function okStatus(text: string): void {
+		status = text;
+		statusFailed = false;
+	}
+
 	// acknowledge ONLY after a successful read (opens the kit's write gate)
 	if (typeof window !== 'undefined') {
 		try {
 			session.acknowledgeState(readReplayRecord());
-			status = 'ready';
+			okStatus('ready');
 		} catch {
 			status = 'unavailable: storage read failed — replay persistence refused';
+			statusFailed = true;
 		}
 	}
 
@@ -144,24 +160,24 @@ export function createReplayState() {
 	async function start(index: number): Promise<void> {
 		const instant = G2.bars[index].time;
 		const r = await session.start(instant);
-		if (!r.ok) { status = r.code + ': ' + r.message; return; }
+		if (!r.ok) { refused('start', r); return; }
 		active = true;
 		mode = 'replay';
 		timeframe = '15m';
 		playing = false;
-		status = 'replaying';
+		okStatus('replaying');
 		refresh();
 	}
 
 	async function step(): Promise<void> {
 		const r = await session.step(BASE_SECONDS);
-		if (!r.ok) { status = r.code + ': ' + r.message; return; }
+		if (!r.ok) { refused('step', r); return; }
 		refresh();
 	}
 
 	async function play(): Promise<void> {
 		const r = await session.play();
-		if (!r.ok) { status = r.code + ': ' + r.message; return; }
+		if (!r.ok) { refused('play', r); return; }
 		playing = true;
 		if (timer) clearInterval(timer);
 		timer = setInterval(() => {
@@ -177,7 +193,7 @@ export function createReplayState() {
 		if (timer) clearInterval(timer);
 		timer = undefined;
 		const r = await session.pause();
-		if (!r.ok) { status = r.code + ': ' + r.message; return; }
+		if (!r.ok) { refused('pause', r); return; }
 		playing = false;
 	}
 
@@ -191,25 +207,26 @@ export function createReplayState() {
 		try {
 			session.acknowledgeState(readReplayRecord());
 			const r = await session.restore();
-			if (!r.ok) { status = r.code + ': ' + r.message; return; }
+			if (!r.ok) { refused('restore', r); return; }
 			active = true;
 			mode = 'replay';
 			refresh();
-			status = 'restored';
+			okStatus('restored');
 		} catch {
-			status = 'unavailable: stored session unreadable';
+			status = 'restore unavailable: storage read failed';
+			statusFailed = true;
 		}
 	}
 
 	async function resetSession(): Promise<void> {
 		if (!window.confirm('Deliberately reset the replay session? The stored replay session record will be removed.')) return;
 		const r = await session.reset();
-		if (!r.ok) { status = r.code + ': ' + r.message; return; }
+		if (!r.ok) { refused('reset', r); return; }
 		active = false;
 		mode = 'current';
 		playing = false;
 		if (timer) clearInterval(timer);
-		status = 'session reset';
+		okStatus('session reset');
 		// reset the clock to the beginning of history for a clean next start
 		clock.setFrame(G2.bars[0].time);
 		now = clock.now();
@@ -221,23 +238,23 @@ export function createReplayState() {
 	async function returnToCurrent(): Promise<void> {
 		if (timer) clearInterval(timer);
 		const r = await session.returnToCurrent();
-		if (!r.ok) { status = r.code + ': ' + r.message; return; }
+		if (!r.ok) { refused('return to current', r); return; }
 		active = false;
 		mode = 'current';
 		playing = false;
-		status = 'returned to current';
+		okStatus('returned to current');
 	}
 
 	async function createLevel(price: number): Promise<void> {
 		// replay-stamped with clock.now() + current step (R3 class b)
 		const r = await session.createLevel(price, 'replay level');
-		if (!r.ok) { status = r.code + ': ' + r.message; return; }
+		if (!r.ok) { refused('save', r); return; }
 		refresh();
 	}
 
 	async function removeLevel(id: string): Promise<void> {
 		const r = await session.removeLevel(id);
-		if (!r.ok) { status = r.code + ': ' + r.message; return; }
+		if (!r.ok) { refused('save', r); return; }
 		refresh();
 	}
 
@@ -249,6 +266,7 @@ export function createReplayState() {
 		get stepIndex() { return stepIdx; },
 		get playing() { return playing; },
 		get status() { return status; },
+		get statusFailed() { return statusFailed; },
 		get bars() { return bars; },
 		get missing() { return missing; },
 		get levels() { return levels; },

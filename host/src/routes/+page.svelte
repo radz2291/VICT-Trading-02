@@ -422,7 +422,15 @@
 						</label>
 						<p class="hint" data-testid="replay-position">step {replay.stepIndex} · instant {fmtInstant(replay.now)} · horizon {fmtInstant(replay.horizon)}</p>
 						{#if replay.missing.length > 0}
-							<p class="hint gapnote" data-testid="replay-gaps">{replay.missing.length} missing interval(s) — shown, never bridged</p>
+							<p class="hint gapnote" data-testid="replay-gaps">
+								{replay.missing.length} missing interval(s) — shown, never bridged:
+								{#each replay.missing as m, i (i)}
+									<span class="gap-interval">missing from {fmtInstant(m.from)}{m.to === null ? ' — still missing' : ' to ' + fmtInstant(m.to)}</span>{i < replay.missing.length - 1 ? '; ' : ''}
+								{/each}
+							</p>
+						{/if}
+						{#if replay.status !== 'replaying' && replay.status !== 'idle' && replay.status !== 'ready'}
+							<p class="hint replay-status" class:failed={replay.statusFailed} data-testid="replay-status" role="alert">{replay.status}</p>
 						{/if}
 					{/if}
 					<p class="hint">Replay sessions persist under g2.replay.v1. Fixture variant: {replay.fixtureVariant}. No live data.</p>
@@ -683,6 +691,10 @@
 	}
 	.gapnote {
 		color: #e0c96b;
+	}
+	.replay-status.failed {
+		color: #ff9b8a;
+		font-weight: 600;
 	}
 	.drawings button.mini {
 		background: transparent;
