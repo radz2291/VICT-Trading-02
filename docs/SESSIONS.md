@@ -120,3 +120,23 @@ One line: **Repository bootstrapped and governed; handoff accepted; G0 platform 
 
 ### 5. Summary
 **G2 delivered blind replay under the amended criteria with an independently reproduced verdict. Replay never lets the trader see what they could not have known — and the fixture proves it would be caught if it tried.**
+
+## Session 2026-09-29 (b) — G2 contested → HELD → remediated → amended verdict
+
+### 1. Autonomous decisions
+| Decision | Why | Why no founding intent |
+|---|---|---|
+| D-004 availability-edge semantics recorded | Verifier explicitly recommended formal recording; derived from owner's contested-case ruling | Steward recording, not new behavior |
+| Three repair-fix scope (FIX A–D) | Ruling-derived; owner authorized autonomous cycles | Bounded to ruling |
+
+### 2. Owner decisions recorded
+- G2 verdict contested (three cases); owner rule readings: HTF aggregates require all slots; no future resumption revelation; mid-session persistence must refuse+preserve+explain.
+
+### 3. Deferred to owner/next
+- F-RV-2 (render refusals when replay never active), F-1/F-3 minors; G3 stage record; LGPL engine decision; publication timing.
+
+### 4. Progress
+- Lineage: 5ebe4ee (orig PASS) → e7eae65/e7e…+319bd9a (contested addendum, HELD) → 8cb55d6 (remediation candidate) → f23b886 (D-004) → 201cd25 (verifier evidence) → status refresh. All three contested cases RESOLVED; amended verdict PASS WITH NON-BLOCKING FINDINGS at 8cb55d6.
+
+### 5. Summary
+**The time-honesty rules the kit exists to enforce survived their first real attack — they were wrong in two places and silent in one, and now they aren't.**
