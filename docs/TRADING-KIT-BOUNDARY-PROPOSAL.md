@@ -1,76 +1,89 @@
-# Trading Kit — proposed boundary (design proposal for owner review)
+# Trading Kit boundary — ACCEPTED DIRECTION (D-002); implementation pending G2 acceptance
 
-**Status: PROPOSAL — not authority. Not implementation of replay. Nothing here authorizes G2.**
-**Written:** 2026-09-29, after G1-PKG closure (`964038b…` lineage; correction run on that head).
-**Authority chain it serves:** DECISIONS.md **D-001** (delivery = composed app + installable capabilities; Trading Kit boundary must be established before replay code) → STAGES.md owner-directed insertion (G2 depends on G1-PKG and on this boundary) → this proposal is the boundary design for the owner to accept, amend, or reject.
+**Status: direction ACCEPTED by the owner on 2026-09-29 as decision D-002 (DECISIONS.md). The architectural choices and the four precision rules below are normative for G2 once a G2 handoff is accepted. This document is a boundary design, NOT a G2 authorization: no replay code may be written until the G2 stage handoff is accepted. Nothing is published.**
+
+**Authority chain:** D-001 (delivery = composed app + installable capabilities) → D-002 (Trading Kit choices + precision rules) → draft G2 stage handoff (HANDOFF.md, DRAFT — not accepted) → G2 work only after owner acceptance.
 
 ---
 
 ## 1. Why a Trading Kit, in one paragraph
 
-The app's credibility rests on *honesty of time*: replay is a simulation of the past that must never lie about what the trader could have known (G2's poison-future criterion). That discipline — one clock, no future leakage, named unavailable states, recorded sessions — is not an app feature; it is a *contract* that every consumer of the data (chart, scripts, eventual simulation, eventual risk) must obey. D-001 says capabilities a future app installs, not `host/` source. So the clock, the data rules, and the evidence of "what was known when" belong in a separate capability package whose guarantees are testable without the app. That is the Trading Kit.
+The app's credibility rests on *honesty of time*: replay is a simulation of the past that must never lie about what the trader could have known (G2's poison-future criterion). That discipline — one clock, no future leakage, named unavailable states, recorded sessions — is not an app feature; it is a *contract* that every consumer of the data (chart, derived calculations, later scripts/simulation) must obey. D-001 says capabilities a future app installs, not `host/` source. So the clock, the data rules, and the evidence of "what was known when" belong in a separate capability package whose guarantees are testable without the app. That is the Trading Kit.
 
-## 2. Responsibility split
+## 2. Accepted decisions (D-002)
 
-### The Trading Kit owns (in-package, proven by stages)
+1. **Name:** `@vict-trading/trading-kit`.
+2. **Independence:** trading-kit is independent of `@vict-trading/chart-workspace` — neither package imports the other or the app.
+3. **Composition:** the app consumes both packages through public exports.
+4. **Session persistence:** replay sessions use an **app-supplied persistence port** (kit owns session *rules*, app owns *storage*) — the pattern proven by `WorkspacePersistence` in chart-workspace.
+5. **G2 scope:** smallest useful **clock**, **data**, **replay**, and **evidence** contracts. Scripts, simulation engines, risk, and orders remain later work — the kit reserves ports but designs nothing about them now.
 
-| Responsibility | What it means | Where it first bites |
-|---|---|---|
-| **H.1 Clock** | A single time authority the kit hands to every capability: the only source of "now". In replay it is the historical clock; live clock is a separate mode. No capability may read wall-clock for market-time decisions. | G2: one historical clock for data, drawings, tooltips |
-| **H.2 Data rules** | Instrument/timeframe model, bar-interval integrity, **missing-interval semantics** (explicit unavailable states — never bridged into implied continuity), **future-data isolation** (any slice handed out contains only bars ≤ clock-instant). Served from **consumer-provided sources** (the package owns no data, no feeds, no secrets — it *validates and slices*). | G2: poison-future fixture; G1 findings: gap bridging honesty |
-| **H.3 Session** | A replay session: chosen start, restore/deliberate-reset, and an explicit transition back to "current". Session state is **serialisable and replayable** by documented rules. A session never issues orders or touches accounts — it is a data-timeframe construct. | G2: restore/reset; G5+ order pathway must go through a different, explicit route |
-| **H.4 Replay contract** | Step/play/pause over H.2 data under H.1 clock, with recorded step/reload rules ("Play rules" record). Consumables (data, drawings, readouts) receive only the historical slice. | G2 acceptance |
-| **H.5 Evidence hooks** | Deterministic recording points: which slice of data was visible at each step, so verification can assert no-leak programmatically (feeds G2's "recorded rules" and later stage verdicts). | G2 verification; evidence protocol EVALUATION.md |
+## 3. The four precision rules (D-002, normative)
 
-Explicitly **later directions, named in D-001 but outside this proposal's scope:** scripts (G3), simulation engines and risk models (G3–G5). The boundary reserves ports for them but designs nothing about them now.
+### R1 — Every public data query is capped by the replay clock
 
-### Stays app-side (never enters the Kit)
+- Any query against a replay data session returns data ending at **`min(requested instant, clock.now())`** — regardless of the time the caller requests. The replay clock is the *only* source of "now"; no capability may read wall-clock for market-time decisions.
+- There is **no public API that bypasses the cap**. Requesting beyond the clock is not an error — it is observably capped: results carry `requestedUntil` and `servedUntil` so tests and evidence can prove capping actually happened.
+- **The chart receives bar data only through capped queries.** A hidden chart mask over full future data is explicitly insufficient and prohibited: the chart's series must not *contain* future bars during replay, not merely fail to show them.
+- Every derived calculation (indicators, readouts, statistics) must consume the same capped slices. Calculating over data obtained outside the capped API during replay is a recorded violation.
 
-- **Instrument catalogue, fixtures, product wording** (XAUUSD/EURUSD seeds, panel labels) — product identity.
-- **Storage keys and persistence adapters** — same pattern the Chart Workspace proved (package owns a port; app owns storage).
-- **Chart rendering, islands, VICT seam composition** — the Chart Workspace package owns chart interaction; the app composes Chart Workspace + Trading Kit via public exports.
-- **Anything account/order/broker** — prohibited by standing rule; a Kit session cannot express an order.
+### R2 — Availability semantics
 
-### Dependency direction (the load-bearing rule)
+- **Base bars:** a base-granularity bar is available at clock instant `t` iff its close time ≤ `t` (a bar covering [a,b) becomes available exactly at `t = b`).
+- **Unfinished larger-timeframe bars:** an aggregated bar (1h, 4h…) becomes available only when **all** its constituent base bars are available. An unfinished larger-timeframe bar at the clock instant is **not returned and never previewed** — the resulting absence appears as data time (series simply ends at the last fully-formed bar), never as a partial or provisional bar.
+- **Missing intervals:** gaps are **never bridged** — not by the kit, and not by chart rendering. Each gap is reported as explicit unavailability (`{ status: 'missing', from, to }`), and the display shows an explicit unavailable state. Nothing anywhere implies continuous data. (Carries the G0/G1 recorded finding forward.)
+
+### R3 — Historical visibility for drawings and annotations
+
+- Provenance classes:
+  - **(a) `market-time-anchored`** — holds a market-time coordinate. *None exists today* for horizontal levels.
+  - **(b) `replay-stamped`** — a drawing created during replay is stamped with the **replay-clock instant at creation**; that stamp is a market-time coordinate by construction, and it is the only provable basis for historical visibility.
+  - **(c) `provenance-unknown`** — carries only wall-clock metadata. **All currently persisted levels are class (c)**: `createdAt` is wall-clock and cannot prove a drawing existed at any market time.
+- Honest treatment: a class-(c) drawing displayed during replay must carry an explicit present-day marker (e.g. "added today — not timestamped to market time") and never present itself as historical; every such display is recorded on the evidence channel. The kit exposes `visibilityAt(marketInstant)` predicates per class; consumers invent no provenance of their own.
+- Back-leak rule: a class-(b) drawing created at step N must not be visible at steps < N.
+
+### R4 — Dependency direction (shown, not implied)
 
 ```
-trading-kit (kit core: clock, data rules, session, replay contract, evidence hooks)
-   │ may import only: types/stdlib + the pinned published VICT contract packages
-   │     where a contract is genuinely required (same recorded-decision pattern
-   │   as @vict-trading/chart-workspace shipping with no VICT dep by default)
-   ▼
-chart-workspace (@vict-trading/chart-workspace)  ←— consumes kit time via a
-   │   TIME PORT injected by the app (kit never imports chart-workspace)
-   ▼
-host app — composes: kit data slices → chart workspace rendering → panels
+        ┌─────────────────────────────────────────────┐
+        │                  host app                   │
+        │  fixtures · wording · storage · composition │
+        └──────┬──────────────────────────────┬───────┘
+               │ imports                      │ imports
+               │ public exports               │ public exports
+               ▼                              ▼
+   @vict-trading/trading-kit     @vict-trading/chart-workspace
+   (clock, data rules, session,  (chart surface, drawings,
+    replay contract, evidence)    anchors, undo/redo)
+               │                              ▲
+               │      ✗ NO imports either way  │
+               └──────────── time PORT ────────┘
+                       (app-injected value)
 ```
 
-- **Kit → Chart Workspace: zero imports.** The chart stays time-agnostic: every timestamp it needs arrives as data, so the same Chart Workspace serves replay (historical clock) and current (live) without knowing which. When chart-workspace later needs time, the app injects a small time port (package-consumed, not package-dependency).
-- **Kit does not import the app.** App owns adapters; kit owns rules. Same import audit standard as G1-PKG.
-- **The app composes both packages via public exports** — no capability imports the app.
+- The app imports both packages through their public exports; **neither package imports the other or the app** (import audit is a standard gate check).
+- The chart stays time-agnostic: any time it needs arrives as an app-injected port value (same injection pattern as the persistence port), so one Chart Workspace serves replay (historical clock) and current (live) contexts without knowing which.
+- Both packages may depend on pinned published VICT contract packages only where genuinely required — decided per package with a recorded decision (chart-workspace currently ships with none; default for trading-kit is none unless a capability truly requires one).
 
-## 3. Public interfaces (proposed shape, not implemented)
+## 4. Public interfaces (proposed shape, smallest useful set — designed at G2, not now)
 
-The kit exposes a small surface mirroring the Chart Workspace's proven pattern (`createX` + headless object + injected ports):
+Mirroring the Chart Workspace's proven pattern (`createX` + headless object + injected ports):
 
-- `createReplayClock(config)` → historical clock with explicit `now()`, `advance(step)`, `setFrame(t)`, and a **hard future-guard**: requests beyond the current instant resolve as "unavailable at replay time" (this is what makes the poison-future criterion passable by construction).
-- `createDataSession({ clock, source, rules })` → slices the consumer-supplied source: `bars(untilInclusive)`, `availabilityAt(t)` (explicit gap states), instrument/timeframe identity checks. Source and rules are consumer-provided; the kit never fetches.
-- `ReplaySession` — start/restore/reset/to-current with recorded, versioned rules; every transition is emitted on the evidence channel.
-- `EvidenceRecorder` interface — consumer supplies the sink (the app may route it to `docs/evidence` conventions or a session file; the kit only defines the shape).
+- `createReplayClock(config)` — historical clock with `now()`, `advance(step)`, `setFrame(t)`, and a **hard future-guard** (requests beyond the current instant cap per R1).
+- `createDataSession({ clock, source, rules })` — slices consumer-provided data per R1+R2 (`bars(until)`, `availabilityAt(t)`, instrument/timeframe identity checks). The kit never fetches.
+- `ReplaySession` — start/restore/reset/return-to-current with versioned, recorded rules; every transition emitted on the evidence channel.
+- `visibilityAt` predicates + evidence recorder interface (R3; consumer supplies the recorder sink).
 
-Ports over which the app retains ownership (same philosophy as `WorkspacePersistence`): **data source, storage, evidence transport, and — via injection — time for the chart layer.**
+## 5. How G2 blind replay would consume the kit (for the draft handoff)
 
-## 4. How G2 blind replay would consume the kit
+Wire `createDataSession` + `createReplayClock` into the existing Chart Workspace composition, with the app providing origin fixtures (including a pinned poison-future fixture) and the session-persistence adapter per D-002 choice 3. The historical-clock injection replaces the app's implicit "now = last bar" in the replay context only; current mode is untouched; the two contexts are unmistakably labelled (G2 pass criterion). Because the boundary precedes replay code, replay lands in the capability package — not inside `host/`.
 
-G2 would then be, in capability terms: *wire `createDataSession` + `createReplayClock` into the existing Chart Workspace composition*, with the app providing the origin fixture set and the session restore/reset persistence. The historical-clock injection replaces the app's current implicit "now is whatever the data's last bar is" for the replay context only — current mode is untouched, and the two contexts are unmistakably labelled (a G2 pass criterion). This is why the boundary precedes replay: replay code written before the kit exists would put the clock inside `host/`, and D-001's reuse promise would be gone on day one.
+## 6. Explicitly later (named in D-001, out of every current authorization)
 
-## 5. What I am NOT doing
+Scripts and the scripting runtime choice (G3), simulation engines and risk models (G3–G5), order pathways and account anything (G5+; kit sessions cannot express an order, ever).
 
-This document is a proposal. It implements nothing, starts no G2 stage, touches no simulation-engine selection (O-05 remains open, LGPL question pending for G3), and publishes nothing. If the owner accepts/amends it, the G2 stage record in HANDOFF.md must then encode: G2 scope, the kit package(s) it authorises, the poison-future fixture provenance, and the fresh-verifier requirement — per the standing acceptance discipline.
+## 7. Open items (non-blocking; owner guidance optional)
 
-## 6. Open items the owner should weigh in on
-
-1. **Package naming:** `@vict-trading/trading-kit` (mirrors chart-workspace) vs a VICT-prefixed name. My recommendation: `@vict-trading/*` until publication decisions land.
-2. **Session restore/reset persistence:** a kit port (consumer storage) like the chart's, versus app-managed session state for now. Recommendation: port, so the app keeps its storage rules.
-3. **Scope of "first bite":** should G2 deliver *all five kit responsibilities* from day one, or clock+data+replay first (H.4 evidence hooks minimal, H.5 fuller at G3)? Recommendation: the boundary names all five, but the G2 stage record may slice H.5 minimally — evidence hooks are cheap to stub wrongly, so their contract should be reviewed at G2 planning rather than hardcoded now.
-4. Whether the Trading Kit proposal should be recorded as a decision (D-002) upon acceptance, mirroring D-001's treatment of the packaging gate.
+- **Package naming for VICT contract deps of the kit** — default "none" (see R4 note) unless a recorded need arises at G2.
+- **Evidence-hook completeness at G2** — the boundary names hooks minimally; their full contract is reviewed at G2 planning, not hardcoded here.
+- Whether the kit's clock also serves the *current* (live later) context — deferred with the engine/live decisions; replay-only for now.
