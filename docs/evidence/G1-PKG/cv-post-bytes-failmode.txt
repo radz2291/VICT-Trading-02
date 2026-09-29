@@ -1,0 +1,1 @@
+"[{\"id\":\"lvl-a95a94vi\",\"price\":2703.75,\"note\":\"vx-new-note\",\"symbol\":\"XAUUSD\",\"createdAt\":1790652521},{\"id\":\"lvl-qu8ix2fc\",\"price\":2700.5,\"note\":\"resistance\",\"symbol\":\"XAUUSD\",\"createdAt\":1790652565}]"

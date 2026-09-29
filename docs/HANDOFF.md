@@ -39,6 +39,7 @@ Owner instruction (2026-09-29, baseline `1596c4c`): superseding decision D-001. 
 **In-scope paths:** `packages/**` (new), `host/**`, `docs/evidence/G1-PKG/**`, plus this record, STATE.md, and the doc updates in DECISIONS.md D-001. **Prohibited:** G2 work, replay, simulation engine, npm publish, VICT edits, accounts, secrets. **Verifier:** fresh agent vs exact candidate SHA — especially the independent-consumer proof and storage-failure behavior. **Exit:** commit + push corrections and packaging proof, report SHA + verdict, stop for owner review.
 
 **Correction in progress (owner-directed, 2026-09-29, baseline `964038b…`):** bounded G1-PKG correction — (1) note preservation on price-only edits + documented explicit clear (`note: ''`); (2) persistence-contract resolution: intrinsic read-acknowledgment gate (`acknowledgeRead`, code `READ_NOT_ACKNOWLEDGED`) on top of the unchanged adapter-side read-gate; (3) status/npm-availability wording fixes. No commit/push/publish by the correcting builder; final gate-record update belongs to the fresh verifier + orchestrator.
+> **Correction verified (fresh verifier, 2026-09-29):** all claims proven at `f148fff…` per `docs/evidence/G1-PKG/verifier-report-correction.md`; gate verdict unchanged (PASS WITH NON-BLOCKING FINDINGS).
 
 ## Stage handoff record — G1 (ACCEPTED 2026-09-28, COMPLETED 2026-09-29)
 

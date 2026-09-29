@@ -52,4 +52,4 @@ Before stopping, complete the current candidate to a reviewable state where poss
 
 ## 6. Current status
 
-Snapshot (2026-09-29): **G0, G1, and G1-PKG complete — latest gate verdict PASS WITH NON-BLOCKING FINDINGS** (G1-PKG packaging gate; candidate `f0fdcd4…`, HEAD `964038b…` at correction time). **G2 is NOT authorized** — it awaits the owner's D-001 review. `@vict-trading/chart-workspace@0.1.0` is packed locally (npm pack artifact); **NOT published to npm**; install from the artifact path only. This section is a snapshot only — `docs/STATE.md` is the live status and always wins.
+Snapshot (2026-09-29): **G0, G1, G1-PKG, and the owner-directed G1-PKG correction complete — gate verdict PASS WITH NON-BLOCKING FINDINGS** (gate candidate `f0fdcd4…`; correction integrated and verified at `f148fff…`). **G2 is NOT authorized** — it awaits the owner's D-001 review. `@vict-trading/chart-workspace@0.1.0` is packed locally (npm pack artifact); **NOT published to npm**; install from the artifact path only. This section is a snapshot only — `docs/STATE.md` is the live status and always wins.
