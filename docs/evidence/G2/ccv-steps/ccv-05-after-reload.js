@@ -1,0 +1,10 @@
+const $ = (s) => document.querySelector(s);
+const txt = (s) => ($(s) ? $(s).textContent.replace(/\s+/g,' ').trim() : null);
+await new Promise((r) => setTimeout(r, 1500));
+const out = {};
+out.pill = txt('[data-testid="panel-status"]');
+out.banner = txt('[data-testid="mode-banner"]');
+out.levels = document.querySelectorAll('[data-testid="panel-drawings"] li').length;
+out.levelPrices = [...document.querySelectorAll('[data-testid="panel-drawings"] li')].map(l => l.textContent.replace(/\s+/g,' ').slice(0,60));
+out.g1 = (localStorage.getItem('g1.levels.v1')||'').slice(0,160);
+return JSON.stringify(out);

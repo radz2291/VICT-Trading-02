@@ -1,0 +1,792 @@
+{
+  "rows": [
+    {
+      "op": "start",
+      "behavior": "okfalse",
+      "result": {
+        "ok": false,
+        "code": "WRITE_REFUSED"
+      },
+      "stateUnchanged": true,
+      "before": {
+        "instant": 0,
+        "stepIndex": 3,
+        "levels": [
+          {
+            "id": "rlvl-5nou6bdq",
+            "symbol": "",
+            "price": 2649.5,
+            "note": "seed-level",
+            "creationInstant": 1767574800,
+            "creationStep": 3
+          }
+        ],
+        "playing": false,
+        "returnedToCurrent": false,
+        "clockOps": 0
+      },
+      "after": {
+        "instant": 0,
+        "stepIndex": 3,
+        "levels": [
+          {
+            "id": "rlvl-5nou6bdq",
+            "symbol": "",
+            "price": 2649.5,
+            "note": "seed-level",
+            "creationInstant": 1767574800,
+            "creationStep": 3
+          }
+        ],
+        "playing": false,
+        "returnedToCurrent": false,
+        "clockOps": 0
+      },
+      "bytesUnchanged": true,
+      "truthfulCode": true
+    },
+    {
+      "op": "start",
+      "behavior": "throw",
+      "result": {
+        "ok": false,
+        "code": "PORT_ERROR"
+      },
+      "stateUnchanged": true,
+      "before": {
+        "instant": 0,
+        "stepIndex": 3,
+        "levels": [
+          {
+            "id": "rlvl-30xcs59b",
+            "symbol": "",
+            "price": 2649.5,
+            "note": "seed-level",
+            "creationInstant": 1767574800,
+            "creationStep": 3
+          }
+        ],
+        "playing": false,
+        "returnedToCurrent": false,
+        "clockOps": 0
+      },
+      "after": {
+        "instant": 0,
+        "stepIndex": 3,
+        "levels": [
+          {
+            "id": "rlvl-30xcs59b",
+            "symbol": "",
+            "price": 2649.5,
+            "note": "seed-level",
+            "creationInstant": 1767574800,
+            "creationStep": 3
+          }
+        ],
+        "playing": false,
+        "returnedToCurrent": false,
+        "clockOps": 0
+      },
+      "bytesUnchanged": true,
+      "truthfulCode": true
+    },
+    {
+      "op": "step",
+      "behavior": "okfalse",
+      "result": {
+        "ok": false,
+        "code": "WRITE_REFUSED"
+      },
+      "stateUnchanged": true,
+      "before": {
+        "instant": 0,
+        "stepIndex": 3,
+        "levels": [
+          {
+            "id": "rlvl-u07a56zz",
+            "symbol": "",
+            "price": 2649.5,
+            "note": "seed-level",
+            "creationInstant": 1767574800,
+            "creationStep": 3
+          }
+        ],
+        "playing": false,
+        "returnedToCurrent": false,
+        "clockOps": 0
+      },
+      "after": {
+        "instant": 0,
+        "stepIndex": 3,
+        "levels": [
+          {
+            "id": "rlvl-u07a56zz",
+            "symbol": "",
+            "price": 2649.5,
+            "note": "seed-level",
+            "creationInstant": 1767574800,
+            "creationStep": 3
+          }
+        ],
+        "playing": false,
+        "returnedToCurrent": false,
+        "clockOps": 0
+      },
+      "bytesUnchanged": true,
+      "truthfulCode": true
+    },
+    {
+      "op": "step",
+      "behavior": "throw",
+      "result": {
+        "ok": false,
+        "code": "PORT_ERROR"
+      },
+      "stateUnchanged": true,
+      "before": {
+        "instant": 0,
+        "stepIndex": 3,
+        "levels": [
+          {
+            "id": "rlvl-1lmregtb",
+            "symbol": "",
+            "price": 2649.5,
+            "note": "seed-level",
+            "creationInstant": 1767574800,
+            "creationStep": 3
+          }
+        ],
+        "playing": false,
+        "returnedToCurrent": false,
+        "clockOps": 0
+      },
+      "after": {
+        "instant": 0,
+        "stepIndex": 3,
+        "levels": [
+          {
+            "id": "rlvl-1lmregtb",
+            "symbol": "",
+            "price": 2649.5,
+            "note": "seed-level",
+            "creationInstant": 1767574800,
+            "creationStep": 3
+          }
+        ],
+        "playing": false,
+        "returnedToCurrent": false,
+        "clockOps": 0
+      },
+      "bytesUnchanged": true,
+      "truthfulCode": true
+    },
+    {
+      "op": "createLevel",
+      "behavior": "okfalse",
+      "result": {
+        "ok": false,
+        "code": "WRITE_REFUSED"
+      },
+      "stateUnchanged": true,
+      "before": {
+        "instant": 0,
+        "stepIndex": 3,
+        "levels": [
+          {
+            "id": "rlvl-yyc3z59e",
+            "symbol": "",
+            "price": 2649.5,
+            "note": "seed-level",
+            "creationInstant": 1767574800,
+            "creationStep": 3
+          }
+        ],
+        "playing": false,
+        "returnedToCurrent": false,
+        "clockOps": 0
+      },
+      "after": {
+        "instant": 0,
+        "stepIndex": 3,
+        "levels": [
+          {
+            "id": "rlvl-yyc3z59e",
+            "symbol": "",
+            "price": 2649.5,
+            "note": "seed-level",
+            "creationInstant": 1767574800,
+            "creationStep": 3
+          }
+        ],
+        "playing": false,
+        "returnedToCurrent": false,
+        "clockOps": 0
+      },
+      "bytesUnchanged": true,
+      "truthfulCode": true
+    },
+    {
+      "op": "createLevel",
+      "behavior": "throw",
+      "result": {
+        "ok": false,
+        "code": "PORT_ERROR"
+      },
+      "stateUnchanged": true,
+      "before": {
+        "instant": 0,
+        "stepIndex": 3,
+        "levels": [
+          {
+            "id": "rlvl-eidghm11",
+            "symbol": "",
+            "price": 2649.5,
+            "note": "seed-level",
+            "creationInstant": 1767574800,
+            "creationStep": 3
+          }
+        ],
+        "playing": false,
+        "returnedToCurrent": false,
+        "clockOps": 0
+      },
+      "after": {
+        "instant": 0,
+        "stepIndex": 3,
+        "levels": [
+          {
+            "id": "rlvl-eidghm11",
+            "symbol": "",
+            "price": 2649.5,
+            "note": "seed-level",
+            "creationInstant": 1767574800,
+            "creationStep": 3
+          }
+        ],
+        "playing": false,
+        "returnedToCurrent": false,
+        "clockOps": 0
+      },
+      "bytesUnchanged": true,
+      "truthfulCode": true
+    },
+    {
+      "op": "removeLevel",
+      "behavior": "okfalse",
+      "result": {
+        "ok": false,
+        "code": "WRITE_REFUSED"
+      },
+      "stateUnchanged": true,
+      "before": {
+        "instant": 0,
+        "stepIndex": 3,
+        "levels": [
+          {
+            "id": "rlvl-7tnpn3lq",
+            "symbol": "",
+            "price": 2649.5,
+            "note": "seed-level",
+            "creationInstant": 1767574800,
+            "creationStep": 3
+          }
+        ],
+        "playing": false,
+        "returnedToCurrent": false,
+        "clockOps": 0
+      },
+      "after": {
+        "instant": 0,
+        "stepIndex": 3,
+        "levels": [
+          {
+            "id": "rlvl-7tnpn3lq",
+            "symbol": "",
+            "price": 2649.5,
+            "note": "seed-level",
+            "creationInstant": 1767574800,
+            "creationStep": 3
+          }
+        ],
+        "playing": false,
+        "returnedToCurrent": false,
+        "clockOps": 0
+      },
+      "bytesUnchanged": true,
+      "truthfulCode": true
+    },
+    {
+      "op": "removeLevel",
+      "behavior": "throw",
+      "result": {
+        "ok": false,
+        "code": "PORT_ERROR"
+      },
+      "stateUnchanged": true,
+      "before": {
+        "instant": 0,
+        "stepIndex": 3,
+        "levels": [
+          {
+            "id": "rlvl-eebbyw3i",
+            "symbol": "",
+            "price": 2649.5,
+            "note": "seed-level",
+            "creationInstant": 1767574800,
+            "creationStep": 3
+          }
+        ],
+        "playing": false,
+        "returnedToCurrent": false,
+        "clockOps": 0
+      },
+      "after": {
+        "instant": 0,
+        "stepIndex": 3,
+        "levels": [
+          {
+            "id": "rlvl-eebbyw3i",
+            "symbol": "",
+            "price": 2649.5,
+            "note": "seed-level",
+            "creationInstant": 1767574800,
+            "creationStep": 3
+          }
+        ],
+        "playing": false,
+        "returnedToCurrent": false,
+        "clockOps": 0
+      },
+      "bytesUnchanged": true,
+      "truthfulCode": true
+    },
+    {
+      "op": "play",
+      "behavior": "okfalse",
+      "result": {
+        "ok": false,
+        "code": "WRITE_REFUSED"
+      },
+      "stateUnchanged": true,
+      "before": {
+        "instant": 0,
+        "stepIndex": 3,
+        "levels": [
+          {
+            "id": "rlvl-8vlsnv89",
+            "symbol": "",
+            "price": 2649.5,
+            "note": "seed-level",
+            "creationInstant": 1767574800,
+            "creationStep": 3
+          }
+        ],
+        "playing": false,
+        "returnedToCurrent": false,
+        "clockOps": 0
+      },
+      "after": {
+        "instant": 0,
+        "stepIndex": 3,
+        "levels": [
+          {
+            "id": "rlvl-8vlsnv89",
+            "symbol": "",
+            "price": 2649.5,
+            "note": "seed-level",
+            "creationInstant": 1767574800,
+            "creationStep": 3
+          }
+        ],
+        "playing": false,
+        "returnedToCurrent": false,
+        "clockOps": 0
+      },
+      "bytesUnchanged": true,
+      "truthfulCode": true
+    },
+    {
+      "op": "play",
+      "behavior": "throw",
+      "result": {
+        "ok": false,
+        "code": "PORT_ERROR"
+      },
+      "stateUnchanged": true,
+      "before": {
+        "instant": 0,
+        "stepIndex": 3,
+        "levels": [
+          {
+            "id": "rlvl-srpm1nhn",
+            "symbol": "",
+            "price": 2649.5,
+            "note": "seed-level",
+            "creationInstant": 1767574800,
+            "creationStep": 3
+          }
+        ],
+        "playing": false,
+        "returnedToCurrent": false,
+        "clockOps": 0
+      },
+      "after": {
+        "instant": 0,
+        "stepIndex": 3,
+        "levels": [
+          {
+            "id": "rlvl-srpm1nhn",
+            "symbol": "",
+            "price": 2649.5,
+            "note": "seed-level",
+            "creationInstant": 1767574800,
+            "creationStep": 3
+          }
+        ],
+        "playing": false,
+        "returnedToCurrent": false,
+        "clockOps": 0
+      },
+      "bytesUnchanged": true,
+      "truthfulCode": true
+    },
+    {
+      "op": "pause",
+      "behavior": "okfalse",
+      "result": {
+        "ok": false,
+        "code": "WRITE_REFUSED"
+      },
+      "stateUnchanged": true,
+      "before": {
+        "instant": 0,
+        "stepIndex": 3,
+        "levels": [
+          {
+            "id": "rlvl-2vqt876s",
+            "symbol": "",
+            "price": 2649.5,
+            "note": "seed-level",
+            "creationInstant": 1767574800,
+            "creationStep": 3
+          }
+        ],
+        "playing": false,
+        "returnedToCurrent": false,
+        "clockOps": 0
+      },
+      "after": {
+        "instant": 0,
+        "stepIndex": 3,
+        "levels": [
+          {
+            "id": "rlvl-2vqt876s",
+            "symbol": "",
+            "price": 2649.5,
+            "note": "seed-level",
+            "creationInstant": 1767574800,
+            "creationStep": 3
+          }
+        ],
+        "playing": false,
+        "returnedToCurrent": false,
+        "clockOps": 0
+      },
+      "bytesUnchanged": true,
+      "truthfulCode": true
+    },
+    {
+      "op": "pause",
+      "behavior": "throw",
+      "result": {
+        "ok": false,
+        "code": "PORT_ERROR"
+      },
+      "stateUnchanged": true,
+      "before": {
+        "instant": 0,
+        "stepIndex": 3,
+        "levels": [
+          {
+            "id": "rlvl-m49frud2",
+            "symbol": "",
+            "price": 2649.5,
+            "note": "seed-level",
+            "creationInstant": 1767574800,
+            "creationStep": 3
+          }
+        ],
+        "playing": false,
+        "returnedToCurrent": false,
+        "clockOps": 0
+      },
+      "after": {
+        "instant": 0,
+        "stepIndex": 3,
+        "levels": [
+          {
+            "id": "rlvl-m49frud2",
+            "symbol": "",
+            "price": 2649.5,
+            "note": "seed-level",
+            "creationInstant": 1767574800,
+            "creationStep": 3
+          }
+        ],
+        "playing": false,
+        "returnedToCurrent": false,
+        "clockOps": 0
+      },
+      "bytesUnchanged": true,
+      "truthfulCode": true
+    },
+    {
+      "op": "returnToCurrent",
+      "behavior": "okfalse",
+      "result": {
+        "ok": false,
+        "code": "WRITE_REFUSED"
+      },
+      "stateUnchanged": true,
+      "before": {
+        "instant": 0,
+        "stepIndex": 3,
+        "levels": [
+          {
+            "id": "rlvl-gyioegdi",
+            "symbol": "",
+            "price": 2649.5,
+            "note": "seed-level",
+            "creationInstant": 1767574800,
+            "creationStep": 3
+          }
+        ],
+        "playing": false,
+        "returnedToCurrent": false,
+        "clockOps": 0
+      },
+      "after": {
+        "instant": 0,
+        "stepIndex": 3,
+        "levels": [
+          {
+            "id": "rlvl-gyioegdi",
+            "symbol": "",
+            "price": 2649.5,
+            "note": "seed-level",
+            "creationInstant": 1767574800,
+            "creationStep": 3
+          }
+        ],
+        "playing": false,
+        "returnedToCurrent": false,
+        "clockOps": 0
+      },
+      "bytesUnchanged": true,
+      "truthfulCode": true
+    },
+    {
+      "op": "returnToCurrent",
+      "behavior": "throw",
+      "result": {
+        "ok": false,
+        "code": "PORT_ERROR"
+      },
+      "stateUnchanged": true,
+      "before": {
+        "instant": 0,
+        "stepIndex": 3,
+        "levels": [
+          {
+            "id": "rlvl-j8ecs88q",
+            "symbol": "",
+            "price": 2649.5,
+            "note": "seed-level",
+            "creationInstant": 1767574800,
+            "creationStep": 3
+          }
+        ],
+        "playing": false,
+        "returnedToCurrent": false,
+        "clockOps": 0
+      },
+      "after": {
+        "instant": 0,
+        "stepIndex": 3,
+        "levels": [
+          {
+            "id": "rlvl-j8ecs88q",
+            "symbol": "",
+            "price": 2649.5,
+            "note": "seed-level",
+            "creationInstant": 1767574800,
+            "creationStep": 3
+          }
+        ],
+        "playing": false,
+        "returnedToCurrent": false,
+        "clockOps": 0
+      },
+      "bytesUnchanged": true,
+      "truthfulCode": true
+    },
+    {
+      "op": "restore",
+      "behavior": "okfalse",
+      "result": {
+        "ok": false,
+        "code": "WRITE_REFUSED"
+      },
+      "stateUnchanged": true,
+      "before": {
+        "instant": 0,
+        "stepIndex": 3,
+        "levels": [
+          {
+            "id": "rlvl-4g13iawj",
+            "symbol": "",
+            "price": 2649.5,
+            "note": "seed-level",
+            "creationInstant": 1767574800,
+            "creationStep": 3
+          }
+        ],
+        "playing": false,
+        "returnedToCurrent": false,
+        "clockOps": 0
+      },
+      "after": {
+        "instant": 0,
+        "stepIndex": 3,
+        "levels": [
+          {
+            "id": "rlvl-4g13iawj",
+            "symbol": "",
+            "price": 2649.5,
+            "note": "seed-level",
+            "creationInstant": 1767574800,
+            "creationStep": 3
+          }
+        ],
+        "playing": false,
+        "returnedToCurrent": false,
+        "clockOps": 0
+      },
+      "bytesUnchanged": true,
+      "truthfulCode": true
+    },
+    {
+      "op": "restore",
+      "behavior": "throw",
+      "result": {
+        "ok": false,
+        "code": "PORT_ERROR"
+      },
+      "stateUnchanged": true,
+      "before": {
+        "instant": 0,
+        "stepIndex": 3,
+        "levels": [
+          {
+            "id": "rlvl-p9r41gw7",
+            "symbol": "",
+            "price": 2649.5,
+            "note": "seed-level",
+            "creationInstant": 1767574800,
+            "creationStep": 3
+          }
+        ],
+        "playing": false,
+        "returnedToCurrent": false,
+        "clockOps": 0
+      },
+      "after": {
+        "instant": 0,
+        "stepIndex": 3,
+        "levels": [
+          {
+            "id": "rlvl-p9r41gw7",
+            "symbol": "",
+            "price": 2649.5,
+            "note": "seed-level",
+            "creationInstant": 1767574800,
+            "creationStep": 3
+          }
+        ],
+        "playing": false,
+        "returnedToCurrent": false,
+        "clockOps": 0
+      },
+      "bytesUnchanged": true,
+      "truthfulCode": true
+    },
+    {
+      "op": "reset",
+      "behavior": "throw",
+      "result": {
+        "ok": false,
+        "code": "PORT_ERROR"
+      },
+      "stateUnchanged": true,
+      "before": {
+        "instant": 0,
+        "stepIndex": 3,
+        "levels": [
+          {
+            "id": "rlvl-a4q13r6i",
+            "symbol": "",
+            "price": 2649.5,
+            "note": "seed-level",
+            "creationInstant": 1767574800,
+            "creationStep": 3
+          }
+        ],
+        "playing": false,
+        "returnedToCurrent": false,
+        "clockOps": 0
+      },
+      "after": {
+        "instant": 0,
+        "stepIndex": 3,
+        "levels": [
+          {
+            "id": "rlvl-a4q13r6i",
+            "symbol": "",
+            "price": 2649.5,
+            "note": "seed-level",
+            "creationInstant": 1767574800,
+            "creationStep": 3
+          }
+        ],
+        "playing": false,
+        "returnedToCurrent": false,
+        "clockOps": 0
+      },
+      "bytesUnchanged": true,
+      "truthfulCode": true
+    }
+  ],
+  "recovery": {
+    "refusedStep": {
+      "ok": false,
+      "code": "WRITE_REFUSED"
+    },
+    "refusedGhost": {
+      "ok": false,
+      "code": "WRITE_REFUSED"
+    },
+    "ghostAbsent": true,
+    "healedStepOk": true,
+    "healedLevelOk": true,
+    "stored": {
+      "stepIndex": 4,
+      "instant": 1767575700,
+      "levels": [
+        "seed-level",
+        "post-heal"
+      ]
+    },
+    "reloadExact": true
+  },
+  "tableAllPass": true
+}

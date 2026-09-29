@@ -1,0 +1,802 @@
+{
+  "fixtureDigest": "e6b0b749bc09f9a0baca59c270f02429881b620251c94b82b488e6f5a0a6b804",
+  "ceA": [
+    {
+      "clock": "2026-01-05T04:14:30Z",
+      "prefixCountA": 16,
+      "prefixCountB": 16,
+      "identicalPrefix": true,
+      "availabilityAtIdentical": false,
+      "availabilityAtA": [
+        {
+          "status": "missing",
+          "from": 1767585600,
+          "to": null
+        }
+      ],
+      "availabilityAtB": [],
+      "barsIdentical": true,
+      "availabilityAtDiffers": true
+    },
+    {
+      "clock": "2026-01-05T04:15Z",
+      "prefixCountA": 17,
+      "prefixCountB": 17,
+      "identicalPrefix": true,
+      "availabilityAtIdentical": false,
+      "availabilityAtA": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": null
+        }
+      ],
+      "availabilityAtB": [],
+      "barsIdentical": true,
+      "availabilityAtDiffers": true
+    },
+    {
+      "clock": "2026-01-05T05:00Z",
+      "prefixCountA": 19,
+      "prefixCountB": 19,
+      "identicalPrefix": true,
+      "availabilityAtIdentical": false,
+      "availabilityAtA": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        },
+        {
+          "status": "missing",
+          "from": 1767589200,
+          "to": null
+        }
+      ],
+      "availabilityAtB": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        }
+      ],
+      "barsIdentical": true,
+      "availabilityAtDiffers": true
+    },
+    {
+      "clock": "2026-01-05T06:00Z",
+      "prefixCountA": 23,
+      "prefixCountB": 23,
+      "identicalPrefix": true,
+      "availabilityAtIdentical": false,
+      "availabilityAtA": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        },
+        {
+          "status": "missing",
+          "from": 1767592800,
+          "to": null
+        }
+      ],
+      "availabilityAtB": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        }
+      ],
+      "barsIdentical": true,
+      "availabilityAtDiffers": true
+    },
+    {
+      "clock": "2026-01-05T07:15Z",
+      "prefixCountA": 28,
+      "prefixCountB": 28,
+      "identicalPrefix": true,
+      "availabilityAtIdentical": false,
+      "availabilityAtA": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        },
+        {
+          "status": "missing",
+          "from": 1767597300,
+          "to": null
+        }
+      ],
+      "availabilityAtB": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        }
+      ],
+      "barsIdentical": true,
+      "availabilityAtDiffers": true
+    },
+    {
+      "clock": "2026-01-08T06:00Z",
+      "prefixCountA": 303,
+      "prefixCountB": 303,
+      "identicalPrefix": true,
+      "availabilityAtIdentical": false,
+      "availabilityAtA": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        },
+        {
+          "status": "missing",
+          "from": 1767841200,
+          "to": 1767848400
+        },
+        {
+          "status": "missing",
+          "from": 1767852000,
+          "to": null
+        }
+      ],
+      "availabilityAtB": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        },
+        {
+          "status": "missing",
+          "from": 1767841200,
+          "to": 1767848400
+        }
+      ],
+      "barsIdentical": true,
+      "availabilityAtDiffers": true
+    },
+    {
+      "clock": "2026-02-02T21:30:00.500Z",
+      "prefixCountA": 1997,
+      "prefixCountB": 1997,
+      "identicalPrefix": true,
+      "availabilityAtIdentical": false,
+      "availabilityAtA": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        },
+        {
+          "status": "missing",
+          "from": 1767841200,
+          "to": 1767848400
+        },
+        {
+          "status": "missing",
+          "from": 1768003200,
+          "to": 1768176000
+        },
+        {
+          "status": "missing",
+          "from": 1768608000,
+          "to": 1768780800
+        },
+        {
+          "status": "missing",
+          "from": 1769212800,
+          "to": 1769385600
+        },
+        {
+          "status": "missing",
+          "from": 1769817600,
+          "to": 1769990400
+        },
+        {
+          "status": "missing",
+          "from": 1770067800,
+          "to": null
+        }
+      ],
+      "availabilityAtB": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        },
+        {
+          "status": "missing",
+          "from": 1767841200,
+          "to": 1767848400
+        },
+        {
+          "status": "missing",
+          "from": 1768003200,
+          "to": 1768176000
+        },
+        {
+          "status": "missing",
+          "from": 1768608000,
+          "to": 1768780800
+        },
+        {
+          "status": "missing",
+          "from": 1769212800,
+          "to": 1769385600
+        },
+        {
+          "status": "missing",
+          "from": 1769817600,
+          "to": 1769990400
+        }
+      ],
+      "barsIdentical": true,
+      "availabilityAtDiffers": true
+    },
+    {
+      "clock": "2026-02-02T21:45Z",
+      "prefixCountA": 1998,
+      "prefixCountB": 1998,
+      "identicalPrefix": true,
+      "availabilityAtIdentical": false,
+      "availabilityAtA": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        },
+        {
+          "status": "missing",
+          "from": 1767841200,
+          "to": 1767848400
+        },
+        {
+          "status": "missing",
+          "from": 1768003200,
+          "to": 1768176000
+        },
+        {
+          "status": "missing",
+          "from": 1768608000,
+          "to": 1768780800
+        },
+        {
+          "status": "missing",
+          "from": 1769212800,
+          "to": 1769385600
+        },
+        {
+          "status": "missing",
+          "from": 1769817600,
+          "to": 1769990400
+        },
+        {
+          "status": "missing",
+          "from": 1770068700,
+          "to": null
+        }
+      ],
+      "availabilityAtB": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        },
+        {
+          "status": "missing",
+          "from": 1767841200,
+          "to": 1767848400
+        },
+        {
+          "status": "missing",
+          "from": 1768003200,
+          "to": 1768176000
+        },
+        {
+          "status": "missing",
+          "from": 1768608000,
+          "to": 1768780800
+        },
+        {
+          "status": "missing",
+          "from": 1769212800,
+          "to": 1769385600
+        },
+        {
+          "status": "missing",
+          "from": 1769817600,
+          "to": 1769990400
+        }
+      ],
+      "barsIdentical": true,
+      "availabilityAtDiffers": true
+    }
+  ],
+  "ceB": [
+    {
+      "op": "start",
+      "behavior": "okfalse",
+      "result": {
+        "ok": false,
+        "code": "EACCES",
+        "THROWN": null
+      },
+      "before": {
+        "instant": 1767574800,
+        "stepIndex": 3,
+        "levels": 1,
+        "levelIds": [
+          "rlvl-7567dn81"
+        ],
+        "playing": false,
+        "returnedToCurrent": false
+      },
+      "after": {
+        "instant": 1767573000,
+        "stepIndex": 1,
+        "levels": 0,
+        "levelIds": [],
+        "playing": false,
+        "returnedToCurrent": false
+      },
+      "stateAdvanced": true,
+      "bytesChanged": false
+    },
+    {
+      "op": "start-throw",
+      "behavior": "throw",
+      "result": {
+        "ok": false,
+        "code": "PORT_ERROR",
+        "THROWN": null
+      },
+      "before": {
+        "instant": 1767574800,
+        "stepIndex": 3,
+        "levels": 1,
+        "levelIds": [
+          "rlvl-yz6hn3yb"
+        ],
+        "playing": false,
+        "returnedToCurrent": false
+      },
+      "after": {
+        "instant": 1767573000,
+        "stepIndex": 1,
+        "levels": 0,
+        "levelIds": [],
+        "playing": false,
+        "returnedToCurrent": false
+      },
+      "stateAdvanced": true,
+      "bytesChanged": false
+    },
+    {
+      "op": "step",
+      "behavior": "okfalse",
+      "result": {
+        "ok": false,
+        "code": "EACCES",
+        "THROWN": null
+      },
+      "before": {
+        "instant": 1767574800,
+        "stepIndex": 3,
+        "levels": 1,
+        "levelIds": [
+          "rlvl-66uvxrhe"
+        ],
+        "playing": false,
+        "returnedToCurrent": false
+      },
+      "after": {
+        "instant": 1767575700,
+        "stepIndex": 4,
+        "levels": 1,
+        "levelIds": [
+          "rlvl-66uvxrhe"
+        ],
+        "playing": false,
+        "returnedToCurrent": false
+      },
+      "stateAdvanced": true,
+      "bytesChanged": false
+    },
+    {
+      "op": "step-throw",
+      "behavior": "throw",
+      "result": {
+        "ok": false,
+        "code": "PORT_ERROR",
+        "THROWN": null
+      },
+      "before": {
+        "instant": 1767574800,
+        "stepIndex": 3,
+        "levels": 1,
+        "levelIds": [
+          "rlvl-r7j3tp1t"
+        ],
+        "playing": false,
+        "returnedToCurrent": false
+      },
+      "after": {
+        "instant": 1767575700,
+        "stepIndex": 4,
+        "levels": 1,
+        "levelIds": [
+          "rlvl-r7j3tp1t"
+        ],
+        "playing": false,
+        "returnedToCurrent": false
+      },
+      "stateAdvanced": true,
+      "bytesChanged": false
+    },
+    {
+      "op": "createLevel",
+      "behavior": "okfalse",
+      "result": {
+        "ok": false,
+        "code": "EACCES",
+        "THROWN": null
+      },
+      "before": {
+        "instant": 1767574800,
+        "stepIndex": 3,
+        "levels": 1,
+        "levelIds": [
+          "rlvl-sxgpd2le"
+        ],
+        "playing": false,
+        "returnedToCurrent": false
+      },
+      "after": {
+        "instant": 1767574800,
+        "stepIndex": 3,
+        "levels": 2,
+        "levelIds": [
+          "rlvl-sxgpd2le",
+          "rlvl-3y5z7ytn"
+        ],
+        "playing": false,
+        "returnedToCurrent": false
+      },
+      "stateAdvanced": true,
+      "bytesChanged": false
+    },
+    {
+      "op": "createLevel-throw",
+      "behavior": "throw",
+      "result": {
+        "ok": false,
+        "code": "PORT_ERROR",
+        "THROWN": null
+      },
+      "before": {
+        "instant": 1767574800,
+        "stepIndex": 3,
+        "levels": 1,
+        "levelIds": [
+          "rlvl-jo8oq658"
+        ],
+        "playing": false,
+        "returnedToCurrent": false
+      },
+      "after": {
+        "instant": 1767574800,
+        "stepIndex": 3,
+        "levels": 2,
+        "levelIds": [
+          "rlvl-jo8oq658",
+          "rlvl-m6ek9b4l"
+        ],
+        "playing": false,
+        "returnedToCurrent": false
+      },
+      "stateAdvanced": true,
+      "bytesChanged": false
+    },
+    {
+      "op": "play",
+      "behavior": "okfalse",
+      "result": {
+        "ok": false,
+        "code": "EACCES",
+        "THROWN": null
+      },
+      "before": {
+        "instant": 1767574800,
+        "stepIndex": 3,
+        "levels": 1,
+        "levelIds": [
+          "rlvl-zzltt23w"
+        ],
+        "playing": false,
+        "returnedToCurrent": false
+      },
+      "after": {
+        "instant": 1767574800,
+        "stepIndex": 3,
+        "levels": 1,
+        "levelIds": [
+          "rlvl-zzltt23w"
+        ],
+        "playing": true,
+        "returnedToCurrent": false
+      },
+      "stateAdvanced": true,
+      "bytesChanged": false
+    },
+    {
+      "op": "play-throw",
+      "behavior": "throw",
+      "result": {
+        "ok": false,
+        "code": "PORT_ERROR",
+        "THROWN": null
+      },
+      "before": {
+        "instant": 1767574800,
+        "stepIndex": 3,
+        "levels": 1,
+        "levelIds": [
+          "rlvl-hxs76lby"
+        ],
+        "playing": false,
+        "returnedToCurrent": false
+      },
+      "after": {
+        "instant": 1767574800,
+        "stepIndex": 3,
+        "levels": 1,
+        "levelIds": [
+          "rlvl-hxs76lby"
+        ],
+        "playing": true,
+        "returnedToCurrent": false
+      },
+      "stateAdvanced": true,
+      "bytesChanged": false
+    },
+    {
+      "op": "pause",
+      "behavior": "okfalse",
+      "result": {
+        "ok": false,
+        "code": "EACCES",
+        "THROWN": null
+      },
+      "before": {
+        "instant": 1767574800,
+        "stepIndex": 3,
+        "levels": 1,
+        "levelIds": [
+          "rlvl-gbchqdn9"
+        ],
+        "playing": false,
+        "returnedToCurrent": false
+      },
+      "after": {
+        "instant": 1767574800,
+        "stepIndex": 3,
+        "levels": 1,
+        "levelIds": [
+          "rlvl-gbchqdn9"
+        ],
+        "playing": false,
+        "returnedToCurrent": false
+      },
+      "stateAdvanced": false,
+      "bytesChanged": false
+    },
+    {
+      "op": "pause-throw",
+      "behavior": "throw",
+      "result": {
+        "ok": false,
+        "code": "PORT_ERROR",
+        "THROWN": null
+      },
+      "before": {
+        "instant": 1767574800,
+        "stepIndex": 3,
+        "levels": 1,
+        "levelIds": [
+          "rlvl-f9uvmfnz"
+        ],
+        "playing": false,
+        "returnedToCurrent": false
+      },
+      "after": {
+        "instant": 1767574800,
+        "stepIndex": 3,
+        "levels": 1,
+        "levelIds": [
+          "rlvl-f9uvmfnz"
+        ],
+        "playing": false,
+        "returnedToCurrent": false
+      },
+      "stateAdvanced": false,
+      "bytesChanged": false
+    },
+    {
+      "op": "returnToCurrent",
+      "behavior": "okfalse",
+      "result": {
+        "ok": false,
+        "code": "EACCES",
+        "THROWN": null
+      },
+      "before": {
+        "instant": 1767574800,
+        "stepIndex": 3,
+        "levels": 1,
+        "levelIds": [
+          "rlvl-m59phv8l"
+        ],
+        "playing": false,
+        "returnedToCurrent": false
+      },
+      "after": {
+        "instant": 1767574800,
+        "stepIndex": 3,
+        "levels": 1,
+        "levelIds": [
+          "rlvl-m59phv8l"
+        ],
+        "playing": false,
+        "returnedToCurrent": true
+      },
+      "stateAdvanced": true,
+      "bytesChanged": false
+    },
+    {
+      "op": "returnToCurrent-throw",
+      "behavior": "throw",
+      "result": {
+        "ok": false,
+        "code": "PORT_ERROR",
+        "THROWN": null
+      },
+      "before": {
+        "instant": 1767574800,
+        "stepIndex": 3,
+        "levels": 1,
+        "levelIds": [
+          "rlvl-fwxw6oe4"
+        ],
+        "playing": false,
+        "returnedToCurrent": false
+      },
+      "after": {
+        "instant": 1767574800,
+        "stepIndex": 3,
+        "levels": 1,
+        "levelIds": [
+          "rlvl-fwxw6oe4"
+        ],
+        "playing": false,
+        "returnedToCurrent": true
+      },
+      "stateAdvanced": true,
+      "bytesChanged": false
+    },
+    {
+      "op": "restore",
+      "behavior": "okfalse",
+      "result": {
+        "ok": false,
+        "code": "EACCES",
+        "THROWN": null
+      },
+      "before": {
+        "instant": 1767574800,
+        "stepIndex": 3,
+        "levels": 1,
+        "levelIds": [
+          "rlvl-6vqfhqbv"
+        ],
+        "playing": false,
+        "returnedToCurrent": false
+      },
+      "after": {
+        "instant": 1767574800,
+        "stepIndex": 3,
+        "levels": 1,
+        "levelIds": [
+          "rlvl-6vqfhqbv"
+        ],
+        "playing": false,
+        "returnedToCurrent": false
+      },
+      "stateAdvanced": false,
+      "bytesChanged": false
+    },
+    {
+      "op": "restore-throw",
+      "behavior": "throw",
+      "result": {
+        "ok": false,
+        "code": "PORT_ERROR",
+        "THROWN": null
+      },
+      "before": {
+        "instant": 1767574800,
+        "stepIndex": 3,
+        "levels": 1,
+        "levelIds": [
+          "rlvl-bjeh0qft"
+        ],
+        "playing": false,
+        "returnedToCurrent": false
+      },
+      "after": {
+        "instant": 1767574800,
+        "stepIndex": 3,
+        "levels": 1,
+        "levelIds": [
+          "rlvl-bjeh0qft"
+        ],
+        "playing": false,
+        "returnedToCurrent": false
+      },
+      "stateAdvanced": false,
+      "bytesChanged": false
+    },
+    {
+      "op": "reset",
+      "behavior": "throw",
+      "result": {
+        "ok": true,
+        "THROWN": null
+      },
+      "before": {
+        "instant": 1767574800,
+        "stepIndex": 3,
+        "levels": 1,
+        "levelIds": [
+          "rlvl-mb79uz0b"
+        ],
+        "playing": false,
+        "returnedToCurrent": false
+      },
+      "after": {
+        "instant": 1767574800,
+        "stepIndex": 0,
+        "levels": 0,
+        "levelIds": [],
+        "playing": false,
+        "returnedToCurrent": false
+      },
+      "stateAdvanced": true,
+      "bytesChanged": true
+    }
+  ],
+  "ceAViolationClocks": [
+    "2026-01-05T04:14:30Z",
+    "2026-01-05T04:15Z",
+    "2026-01-05T05:00Z",
+    "2026-01-05T06:00Z",
+    "2026-01-05T07:15Z",
+    "2026-01-08T06:00Z",
+    "2026-02-02T21:30:00.500Z",
+    "2026-02-02T21:45Z"
+  ],
+  "ceBStateAdvancedRows": [
+    "start/okfalse",
+    "start-throw/throw",
+    "step/okfalse",
+    "step-throw/throw",
+    "createLevel/okfalse",
+    "createLevel-throw/throw",
+    "play/okfalse",
+    "play-throw/throw",
+    "returnToCurrent/okfalse",
+    "returnToCurrent-throw/throw",
+    "reset/throw"
+  ]
+}

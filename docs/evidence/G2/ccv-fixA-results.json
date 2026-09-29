@@ -1,0 +1,555 @@
+{
+  "fixtureDigest": "e6b0b749bc09f9a0baca59c270f02429881b620251c94b82b488e6f5a0a6b804",
+  "candidatePack": "4316c06860fc84c11f30cde7df0ed7d73840d3669d99120243eac06aace9474b",
+  "rows": [
+    {
+      "clock": "2026-01-05T04:14:30Z",
+      "lastAvailClose": "2026-01-05T04:00:00.000Z",
+      "trailingEntryA": "{\"status\":\"missing\",\"from\":1767585600,\"to\":null}",
+      "allOutputsIdentical": true,
+      "oracleMatchA": true,
+      "oracleMatchB": true
+    },
+    {
+      "clock": "2026-01-05T04:15Z",
+      "lastAvailClose": "2026-01-05T04:15:00.000Z",
+      "trailingEntryA": null,
+      "allOutputsIdentical": true,
+      "oracleMatchA": true,
+      "oracleMatchB": true
+    },
+    {
+      "clock": "2026-01-05T04:15:01Z",
+      "lastAvailClose": "2026-01-05T04:15:00.000Z",
+      "trailingEntryA": "{\"status\":\"missing\",\"from\":1767586500,\"to\":null}",
+      "allOutputsIdentical": true,
+      "oracleMatchA": true,
+      "oracleMatchB": true
+    },
+    {
+      "clock": "2026-01-05T05:00Z",
+      "lastAvailClose": "2026-01-05T05:00:00.000Z",
+      "trailingEntryA": "{\"status\":\"missing\",\"from\":1767586500,\"to\":1767587400}",
+      "allOutputsIdentical": true,
+      "oracleMatchA": true,
+      "oracleMatchB": true
+    },
+    {
+      "clock": "2026-01-05T06:00Z",
+      "lastAvailClose": "2026-01-05T06:00:00.000Z",
+      "trailingEntryA": "{\"status\":\"missing\",\"from\":1767586500,\"to\":1767587400}",
+      "allOutputsIdentical": true,
+      "oracleMatchA": true,
+      "oracleMatchB": true
+    },
+    {
+      "clock": "2026-01-05T07:15Z",
+      "lastAvailClose": "2026-01-05T07:15:00.000Z",
+      "trailingEntryA": "{\"status\":\"missing\",\"from\":1767586500,\"to\":1767587400}",
+      "allOutputsIdentical": true,
+      "oracleMatchA": true,
+      "oracleMatchB": true
+    },
+    {
+      "clock": "2026-01-08T06:00Z",
+      "lastAvailClose": "2026-01-08T06:00:00.000Z",
+      "trailingEntryA": "{\"status\":\"missing\",\"from\":1767841200,\"to\":1767848400}",
+      "allOutputsIdentical": true,
+      "oracleMatchA": true,
+      "oracleMatchB": true
+    },
+    {
+      "clock": "2026-02-02T21:30:00.500Z",
+      "lastAvailClose": "2026-02-02T21:30:00.000Z",
+      "trailingEntryA": "{\"status\":\"missing\",\"from\":1769817600,\"to\":1769990400}",
+      "allOutputsIdentical": true,
+      "oracleMatchA": true,
+      "oracleMatchB": true
+    },
+    {
+      "clock": "2026-02-02T21:45Z",
+      "lastAvailClose": "2026-02-02T21:45:00.000Z",
+      "trailingEntryA": "{\"status\":\"missing\",\"from\":1769817600,\"to\":1769990400}",
+      "allOutputsIdentical": true,
+      "oracleMatchA": true,
+      "oracleMatchB": true
+    }
+  ],
+  "oracleMatchAll": true,
+  "allIdentical": true,
+  "eqDir": {
+    "at041500": {
+      "clock": "2026-01-05T04:15Z",
+      "availabilityAt": [],
+      "expect": [],
+      "match": true
+    },
+    "at041501": {
+      "clock": "2026-01-05T04:15:01Z",
+      "availabilityAt": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": null
+        }
+      ],
+      "expect": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": null
+        }
+      ],
+      "match": true
+    }
+  },
+  "hzAvailabilityAt": [
+    {
+      "status": "missing",
+      "from": 1767586500,
+      "to": 1767587400
+    },
+    {
+      "status": "missing",
+      "from": 1767841200,
+      "to": 1767848400
+    },
+    {
+      "status": "missing",
+      "from": 1768003200,
+      "to": 1768176000
+    },
+    {
+      "status": "missing",
+      "from": 1768608000,
+      "to": 1768780800
+    },
+    {
+      "status": "missing",
+      "from": 1769212800,
+      "to": 1769385600
+    },
+    {
+      "status": "missing",
+      "from": 1769817600,
+      "to": 1769990400
+    }
+  ],
+  "hzExpectNoTrailing": true,
+  "potency": {
+    "fullA": {
+      "maxHigh": 3112.5,
+      "sma20": 3107.25,
+      "count": 2023
+    },
+    "futureDeletedB_atHorizon": {
+      "maxHigh": 2657.81,
+      "sma20": 2647.537,
+      "count": 1998
+    },
+    "viewAt0600_prefix": {
+      "maxHigh": 2650.34,
+      "sma20": 2646.9715,
+      "count": 23
+    },
+    "naiveDiffersFullHistory": true
+  },
+  "sweep": [
+    {
+      "clock": "2026-01-05T04:15Z",
+      "mutation": "M1-remove-resumption-0430",
+      "identical": true,
+      "avClockVisible": [],
+      "hasInteriorGap": false,
+      "applied": true
+    },
+    {
+      "clock": "2026-01-05T04:15Z",
+      "mutation": "M2-add-bar-inside-gap-0415",
+      "identical": true,
+      "avClockVisible": [],
+      "hasInteriorGap": false,
+      "applied": true
+    },
+    {
+      "clock": "2026-01-05T04:15Z",
+      "mutation": "M3-remove-0430-0445",
+      "identical": true,
+      "avClockVisible": [],
+      "hasInteriorGap": false,
+      "applied": true
+    },
+    {
+      "clock": "2026-01-05T04:15Z",
+      "mutation": "M4-change-all-postclock-values",
+      "identical": true,
+      "avClockVisible": [],
+      "hasInteriorGap": false,
+      "applied": true
+    },
+    {
+      "clock": "2026-01-05T04:15Z",
+      "mutation": "M5-remove-far-future-0700-0715",
+      "identical": true,
+      "avClockVisible": [],
+      "hasInteriorGap": false,
+      "applied": true
+    },
+    {
+      "clock": "2026-01-05T04:15Z",
+      "mutation": "M6-remove-horizon-edge-bars",
+      "identical": true,
+      "avClockVisible": [],
+      "hasInteriorGap": false,
+      "applied": true
+    },
+    {
+      "clock": "2026-01-05T04:15Z",
+      "mutation": "M7-add-bar-beyond-fixture-end",
+      "identical": true,
+      "avClockVisible": [],
+      "hasInteriorGap": false,
+      "applied": true
+    },
+    {
+      "clock": "2026-01-05T05:00Z",
+      "mutation": "M4-change-all-postclock-values",
+      "identical": true,
+      "avClockVisible": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        }
+      ],
+      "hasInteriorGap": true,
+      "applied": true
+    },
+    {
+      "clock": "2026-01-05T05:00Z",
+      "mutation": "M5-remove-far-future-0700-0715",
+      "identical": true,
+      "avClockVisible": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        }
+      ],
+      "hasInteriorGap": true,
+      "applied": true
+    },
+    {
+      "clock": "2026-01-05T05:00Z",
+      "mutation": "M6-remove-horizon-edge-bars",
+      "identical": true,
+      "avClockVisible": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        }
+      ],
+      "hasInteriorGap": true,
+      "applied": true
+    },
+    {
+      "clock": "2026-01-05T05:00Z",
+      "mutation": "M7-add-bar-beyond-fixture-end",
+      "identical": true,
+      "avClockVisible": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        }
+      ],
+      "hasInteriorGap": true,
+      "applied": true
+    },
+    {
+      "clock": "2026-01-05T07:15Z",
+      "mutation": "M4-change-all-postclock-values",
+      "identical": true,
+      "avClockVisible": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        }
+      ],
+      "hasInteriorGap": true,
+      "applied": true
+    },
+    {
+      "clock": "2026-01-05T07:15Z",
+      "mutation": "M6-remove-horizon-edge-bars",
+      "identical": true,
+      "avClockVisible": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        }
+      ],
+      "hasInteriorGap": true,
+      "applied": true
+    },
+    {
+      "clock": "2026-01-05T07:15Z",
+      "mutation": "M7-add-bar-beyond-fixture-end",
+      "identical": true,
+      "avClockVisible": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        }
+      ],
+      "hasInteriorGap": true,
+      "applied": true
+    },
+    {
+      "clock": "2026-01-08T06:00Z",
+      "mutation": "M4-change-all-postclock-values",
+      "identical": true,
+      "avClockVisible": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        },
+        {
+          "status": "missing",
+          "from": 1767841200,
+          "to": 1767848400
+        }
+      ],
+      "hasInteriorGap": true,
+      "applied": true
+    },
+    {
+      "clock": "2026-01-08T06:00Z",
+      "mutation": "M6-remove-horizon-edge-bars",
+      "identical": true,
+      "avClockVisible": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        },
+        {
+          "status": "missing",
+          "from": 1767841200,
+          "to": 1767848400
+        }
+      ],
+      "hasInteriorGap": true,
+      "applied": true
+    },
+    {
+      "clock": "2026-01-08T06:00Z",
+      "mutation": "M7-add-bar-beyond-fixture-end",
+      "identical": true,
+      "avClockVisible": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        },
+        {
+          "status": "missing",
+          "from": 1767841200,
+          "to": 1767848400
+        }
+      ],
+      "hasInteriorGap": true,
+      "applied": true
+    },
+    {
+      "clock": "2026-02-02T21:45Z",
+      "mutation": "M4-change-all-postclock-values",
+      "identical": true,
+      "avClockVisible": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        },
+        {
+          "status": "missing",
+          "from": 1767841200,
+          "to": 1767848400
+        },
+        {
+          "status": "missing",
+          "from": 1768003200,
+          "to": 1768176000
+        },
+        {
+          "status": "missing",
+          "from": 1768608000,
+          "to": 1768780800
+        },
+        {
+          "status": "missing",
+          "from": 1769212800,
+          "to": 1769385600
+        },
+        {
+          "status": "missing",
+          "from": 1769817600,
+          "to": 1769990400
+        }
+      ],
+      "hasInteriorGap": true,
+      "applied": true
+    },
+    {
+      "clock": "2026-02-02T21:45Z",
+      "mutation": "M7-add-bar-beyond-fixture-end",
+      "identical": true,
+      "avClockVisible": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        },
+        {
+          "status": "missing",
+          "from": 1767841200,
+          "to": 1767848400
+        },
+        {
+          "status": "missing",
+          "from": 1768003200,
+          "to": 1768176000
+        },
+        {
+          "status": "missing",
+          "from": 1768608000,
+          "to": 1768780800
+        },
+        {
+          "status": "missing",
+          "from": 1769212800,
+          "to": 1769385600
+        },
+        {
+          "status": "missing",
+          "from": 1769817600,
+          "to": 1769990400
+        }
+      ],
+      "hasInteriorGap": true,
+      "applied": true
+    }
+  ],
+  "sweepApplicable": 19,
+  "sweepAllOk": true,
+  "naRecorded": [
+    {
+      "clock": "2026-01-05T05:00Z",
+      "mutation": "M1-remove-resumption-0430",
+      "applied": false,
+      "reason": "mutation affects no bar with close > clock (past-clock region unreachable at this clock)"
+    },
+    {
+      "clock": "2026-01-05T05:00Z",
+      "mutation": "M2-add-bar-inside-gap-0415",
+      "applied": false,
+      "reason": "mutation affects no bar with close > clock (past-clock region unreachable at this clock)"
+    },
+    {
+      "clock": "2026-01-05T05:00Z",
+      "mutation": "M3-remove-0430-0445",
+      "applied": false,
+      "reason": "mutation affects no bar with close > clock (past-clock region unreachable at this clock)"
+    },
+    {
+      "clock": "2026-01-05T07:15Z",
+      "mutation": "M1-remove-resumption-0430",
+      "applied": false,
+      "reason": "mutation affects no bar with close > clock (past-clock region unreachable at this clock)"
+    },
+    {
+      "clock": "2026-01-05T07:15Z",
+      "mutation": "M2-add-bar-inside-gap-0415",
+      "applied": false,
+      "reason": "mutation affects no bar with close > clock (past-clock region unreachable at this clock)"
+    },
+    {
+      "clock": "2026-01-05T07:15Z",
+      "mutation": "M3-remove-0430-0445",
+      "applied": false,
+      "reason": "mutation affects no bar with close > clock (past-clock region unreachable at this clock)"
+    },
+    {
+      "clock": "2026-01-05T07:15Z",
+      "mutation": "M5-remove-far-future-0700-0715",
+      "applied": false,
+      "reason": "mutation affects no bar with close > clock (past-clock region unreachable at this clock)"
+    },
+    {
+      "clock": "2026-01-08T06:00Z",
+      "mutation": "M1-remove-resumption-0430",
+      "applied": false,
+      "reason": "mutation affects no bar with close > clock (past-clock region unreachable at this clock)"
+    },
+    {
+      "clock": "2026-01-08T06:00Z",
+      "mutation": "M2-add-bar-inside-gap-0415",
+      "applied": false,
+      "reason": "mutation affects no bar with close > clock (past-clock region unreachable at this clock)"
+    },
+    {
+      "clock": "2026-01-08T06:00Z",
+      "mutation": "M3-remove-0430-0445",
+      "applied": false,
+      "reason": "mutation affects no bar with close > clock (past-clock region unreachable at this clock)"
+    },
+    {
+      "clock": "2026-01-08T06:00Z",
+      "mutation": "M5-remove-far-future-0700-0715",
+      "applied": false,
+      "reason": "mutation affects no bar with close > clock (past-clock region unreachable at this clock)"
+    },
+    {
+      "clock": "2026-02-02T21:45Z",
+      "mutation": "M1-remove-resumption-0430",
+      "applied": false,
+      "reason": "mutation affects no bar with close > clock (past-clock region unreachable at this clock)"
+    },
+    {
+      "clock": "2026-02-02T21:45Z",
+      "mutation": "M2-add-bar-inside-gap-0415",
+      "applied": false,
+      "reason": "mutation affects no bar with close > clock (past-clock region unreachable at this clock)"
+    },
+    {
+      "clock": "2026-02-02T21:45Z",
+      "mutation": "M3-remove-0430-0445",
+      "applied": false,
+      "reason": "mutation affects no bar with close > clock (past-clock region unreachable at this clock)"
+    },
+    {
+      "clock": "2026-02-02T21:45Z",
+      "mutation": "M5-remove-far-future-0700-0715",
+      "applied": false,
+      "reason": "mutation affects no bar with close > clock (past-clock region unreachable at this clock)"
+    },
+    {
+      "clock": "2026-02-02T21:45Z",
+      "mutation": "M6-remove-horizon-edge-bars",
+      "applied": false,
+      "reason": "mutation affects no bar with close > clock (past-clock region unreachable at this clock)"
+    }
+  ],
+  "gapVis": {
+    "2026-01-05T05:00Z": true,
+    "2026-01-05T06:00Z": true,
+    "2026-01-05T07:15Z": true,
+    "2026-01-08T06:00Z": true,
+    "2026-02-02T21:45Z": true
+  }
+}
