@@ -1,0 +1,198 @@
+{
+  "table": [
+    {
+      "failMode": "ok:false",
+      "op": "start",
+      "refused": true,
+      "code": "WRITE_REFUSED",
+      "codeTruthful": true,
+      "stateBeforeEqualsAfter": true,
+      "bytesBeforeEqualsAfter": true,
+      "message": "persistence port refused the write: STORAGE_VERIFY_FAILED: synthetic: port refuses every write — no state change",
+      "pass": true
+    },
+    {
+      "failMode": "ok:false",
+      "op": "step",
+      "refused": true,
+      "code": "WRITE_REFUSED",
+      "codeTruthful": true,
+      "stateBeforeEqualsAfter": true,
+      "bytesBeforeEqualsAfter": true,
+      "message": "persistence port refused the write: STORAGE_VERIFY_FAILED: synthetic: port refuses every write — no state change",
+      "pass": true
+    },
+    {
+      "failMode": "ok:false",
+      "op": "createLevel",
+      "refused": true,
+      "code": "WRITE_REFUSED",
+      "codeTruthful": true,
+      "stateBeforeEqualsAfter": true,
+      "bytesBeforeEqualsAfter": true,
+      "message": "persistence port refused the write: STORAGE_VERIFY_FAILED: synthetic: port refuses every write — no state change",
+      "pass": true
+    },
+    {
+      "failMode": "ok:false",
+      "op": "removeLevel",
+      "refused": true,
+      "code": "WRITE_REFUSED",
+      "codeTruthful": true,
+      "stateBeforeEqualsAfter": true,
+      "bytesBeforeEqualsAfter": true,
+      "message": "persistence port refused the write: STORAGE_VERIFY_FAILED: synthetic: port refuses every write — no state change",
+      "pass": true
+    },
+    {
+      "failMode": "ok:false",
+      "op": "play",
+      "refused": true,
+      "code": "WRITE_REFUSED",
+      "codeTruthful": true,
+      "stateBeforeEqualsAfter": true,
+      "bytesBeforeEqualsAfter": true,
+      "message": "persistence port refused the write: STORAGE_VERIFY_FAILED: synthetic: port refuses every write — no state change",
+      "pass": true
+    },
+    {
+      "failMode": "ok:false",
+      "op": "pause",
+      "refused": true,
+      "code": "WRITE_REFUSED",
+      "codeTruthful": true,
+      "stateBeforeEqualsAfter": true,
+      "bytesBeforeEqualsAfter": true,
+      "message": "persistence port refused the write: STORAGE_VERIFY_FAILED: synthetic: port refuses every write — no state change",
+      "pass": true
+    },
+    {
+      "failMode": "ok:false",
+      "op": "returnToCurrent",
+      "refused": true,
+      "code": "WRITE_REFUSED",
+      "codeTruthful": true,
+      "stateBeforeEqualsAfter": true,
+      "bytesBeforeEqualsAfter": true,
+      "message": "persistence port refused the write: STORAGE_VERIFY_FAILED: synthetic: port refuses every write — no state change",
+      "pass": true
+    },
+    {
+      "failMode": "throw",
+      "op": "start",
+      "refused": true,
+      "code": "PORT_ERROR",
+      "codeTruthful": true,
+      "stateBeforeEqualsAfter": true,
+      "bytesBeforeEqualsAfter": true,
+      "message": "synthetic: port write throws",
+      "pass": true
+    },
+    {
+      "failMode": "throw",
+      "op": "step",
+      "refused": true,
+      "code": "PORT_ERROR",
+      "codeTruthful": true,
+      "stateBeforeEqualsAfter": true,
+      "bytesBeforeEqualsAfter": true,
+      "message": "synthetic: port write throws",
+      "pass": true
+    },
+    {
+      "failMode": "throw",
+      "op": "createLevel",
+      "refused": true,
+      "code": "PORT_ERROR",
+      "codeTruthful": true,
+      "stateBeforeEqualsAfter": true,
+      "bytesBeforeEqualsAfter": true,
+      "message": "synthetic: port write throws",
+      "pass": true
+    },
+    {
+      "failMode": "throw",
+      "op": "removeLevel",
+      "refused": true,
+      "code": "PORT_ERROR",
+      "codeTruthful": true,
+      "stateBeforeEqualsAfter": true,
+      "bytesBeforeEqualsAfter": true,
+      "message": "synthetic: port write throws",
+      "pass": true
+    },
+    {
+      "failMode": "throw",
+      "op": "play",
+      "refused": true,
+      "code": "PORT_ERROR",
+      "codeTruthful": true,
+      "stateBeforeEqualsAfter": true,
+      "bytesBeforeEqualsAfter": true,
+      "message": "synthetic: port write throws",
+      "pass": true
+    },
+    {
+      "failMode": "throw",
+      "op": "pause",
+      "refused": true,
+      "code": "PORT_ERROR",
+      "codeTruthful": true,
+      "stateBeforeEqualsAfter": true,
+      "bytesBeforeEqualsAfter": true,
+      "message": "synthetic: port write throws",
+      "pass": true
+    },
+    {
+      "failMode": "throw",
+      "op": "returnToCurrent",
+      "refused": true,
+      "code": "PORT_ERROR",
+      "codeTruthful": true,
+      "stateBeforeEqualsAfter": true,
+      "bytesBeforeEqualsAfter": true,
+      "message": "synthetic: port write throws",
+      "pass": true
+    },
+    {
+      "failMode": "throw",
+      "op": "reset(remove failure)",
+      "refused": true,
+      "code": "PORT_ERROR",
+      "stateBeforeEqualsAfter": true,
+      "bytesBeforeEqualsAfter": true,
+      "message": "persistence port failed to remove the session record — no state change: synthetic: port remove throws",
+      "pass": true
+    },
+    {
+      "failMode": "ok:false",
+      "op": "restore",
+      "refused": true,
+      "code": "WRITE_REFUSED",
+      "stateBeforeEqualsAfter": true,
+      "bytesBeforeEqualsAfter": true,
+      "pass": true
+    },
+    {
+      "failMode": "throw",
+      "op": "restore",
+      "refused": true,
+      "code": "PORT_ERROR",
+      "stateBeforeEqualsAfter": true,
+      "bytesBeforeEqualsAfter": true,
+      "pass": true
+    }
+  ],
+  "allPass": true,
+  "notApplicable": [
+    "reset(remove) under an ok:false remove — the remove() contract has no ok:false value; the only removal failure shape is a throw (recorded as not-applicable)"
+  ],
+  "recovery": {
+    "ok": true,
+    "ghostLevelAbsent": true,
+    "realLevelPresent": true,
+    "stepMatchesRecord": true,
+    "instantMatchesRecord": 1767572100,
+    "reloadExact": true
+  }
+}

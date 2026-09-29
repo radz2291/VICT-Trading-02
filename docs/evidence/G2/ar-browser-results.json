@@ -1,0 +1,168 @@
+{
+  "steps": {
+    "load": {
+      "ok": true,
+      "hasSelect": true
+    },
+    "enter-replay-consistent": {
+      "ok": true,
+      "pos": {
+        "step": 2,
+        "instant": "2026-01-05 00:15Z"
+      },
+      "stored": {
+        "step": 2,
+        "instantISO": "2026-01-05 00:15Z"
+      },
+      "consistent": true
+    },
+    "rapid-double-step": {
+      "ok": true,
+      "shot1": {
+        "screen": {
+          "step": 2,
+          "instant": "2026-01-05 00:15Z"
+        },
+        "stored": {
+          "version": 1,
+          "symbol": "",
+          "instant": 1767572100,
+          "stepIndex": 2,
+          "playing": false,
+          "levels": [],
+          "returnedToCurrent": false
+        }
+      },
+      "mid": {
+        "screen": {
+          "step": 4,
+          "instant": "2026-01-05 00:45Z"
+        },
+        "stored": {
+          "version": 1,
+          "symbol": "",
+          "instant": 1767573900,
+          "stepIndex": 4,
+          "playing": false,
+          "levels": [],
+          "returnedToCurrent": false
+        },
+        "ts": 1790691373068
+      },
+      "settled": {
+        "screen": {
+          "step": 4,
+          "instant": "2026-01-05 00:45Z"
+        },
+        "stored": {
+          "version": 1,
+          "symbol": "",
+          "instant": 1767573900,
+          "stepIndex": 4,
+          "playing": false,
+          "levels": [],
+          "returnedToCurrent": false
+        }
+      },
+      "settledConsistent": true,
+      "noLostStep": true,
+      "midStorageNoUncommittedGap": true
+    },
+    "play-ticks-no-uncommitted": {
+      "ok": true,
+      "samplesCount": 8,
+      "gaplessDuringPlay": true,
+      "lastSample": {
+        "step": 6,
+        "instant": "2026-01-05 01:15Z",
+        "storedStep": 6,
+        "storedInstant": "2026-01-05 01:15Z"
+      },
+      "settledConsistent": true
+    },
+    "refuse-corrupt-key": {
+      "ok": true,
+      "statusRendered": "step unavailable: storage read failed",
+      "truthfulAlert": true,
+      "alertRolePresent": true,
+      "healedRecord": {
+        "version": 1,
+        "symbol": "",
+        "instant": 1767574800,
+        "stepIndex": 4,
+        "playing": false,
+        "levels": [],
+        "returnedToCurrent": false
+      },
+      "recoveredStep": {
+        "step": 7,
+        "instant": "2026-01-05 01:30Z"
+      },
+      "recoveredConsistent": true
+    },
+    "return-to-current-exact": {
+      "ok": true,
+      "banner": "CURRENT",
+      "storedReturnedToCurrent": true,
+      "exact": true
+    },
+    "w1-create-edit-undo-redo": {
+      "ok": true,
+      "created": [
+        {
+          "price": 2647.77,
+          "note": "level"
+        }
+      ],
+      "edited": [
+        {
+          "price": 2647.77,
+          "note": "edited"
+        }
+      ],
+      "afterUndo": [
+        {
+          "price": 2647.77,
+          "note": "level"
+        }
+      ],
+      "afterRedo": [
+        {
+          "price": 2647.77,
+          "note": "edited"
+        }
+      ],
+      "createOk": true,
+      "editOk": true,
+      "undoOk": true,
+      "redoOk": true
+    },
+    "reload-adopts-last-write": {
+      "ok": true,
+      "levelsAfterReload": [
+        {
+          "price": 2647.77,
+          "note": "edited"
+        }
+      ],
+      "adoptsLastWrite": true
+    },
+    "console-clean": {
+      "ok": true,
+      "totalNonFavicon": 1,
+      "items": [
+        {
+          "level": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        }
+      ]
+    }
+  },
+  "console": [
+    {
+      "level": "error",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    }
+  ],
+  "durMs": 11062
+}

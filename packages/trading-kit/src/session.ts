@@ -10,23 +10,43 @@
  *  - per-operation re-verification: EVERY persisted mutation re-reads the
  *    stored record first; on read failure it is refused with READ_FAILED,
  *    no write occurs, stored bytes untouched, live state unchanged.
- *  - TRANSACTIONAL writes (owner correction-cycle-2 ruling): every persisted
- *    operation computes its NEXT state (clock target via the ReplayClock
- *    snapshot/restore primitive; levels/playing/returnedToCurrent are plain
- *    fields), PERSISTS THE NEXT-STATE RECORD FIRST, and only on a successful
- *    write commits the live state. On a refused or failed write the outcome
- *    is ok:false WITH a truthful code (WRITE_REFUSED when the port resolves
- *    ok:false; PORT_ERROR when the port throws), the live state is restored
- *    verbatim (clock instant, step index, drawings, playing,
- *    returnedToCurrent — and the clock's operation log), and no stored bytes
- *    are changed. A subsequent successful write simply works (recovery).
+ *  - FIFO serialization + write-first-commit-after (async-persistence repair):
+ *    EVERY persisted operation (start, step, play, pause, drawing
+ *    create/remove, returnToCurrent, restore, reset) enqueues on a per-session
+ *    promise chain in CALL order; each op executes only after the previous op
+ *    settles (the guarantee is per-session-instance). At EXECUTION time (not
+ *    call time) the op computes its NEXT-STATE record WITHOUT observable
+ *    mutation: it snapshots, drafts the mutation, captures the full next
+ *    record, and restores back to the pre-op committed state — all
+ *    synchronously — then PERSISTS THAT RECORD and only on a successful write
+ *    COMMITs (re-applies the mutation to live state). During the pending
+ *    window every public read therefore reflects the LAST COMMITTED frame
+ *    only. On a refused or failed write the outcome is ok:false WITH a
+ *    truthful code (WRITE_REFUSED when the port resolves ok:false; PORT_ERROR
+ *    when the port throws); nothing was ever mutated, stored bytes are
+ *    unchanged, no event is emitted, and a fresh session adopts exactly the
+ *    last successful write (recovery).
+ *  - EXECUTION-TIME RE-BASE (explicit non-composition): because the next
+ *    state is computed at execution time, an op queued behind a FAILED op
+ *    re-bases on the pre-op committed state of the failed op. Example: A
+ *    step() fails, then B step() executes → B produces T0+3600/step 2,
+ *    NOT T0+7200/step 3. A consumer issuing B before A settles cannot assume
+ *    B composes onto the state B observed at call time — B's effect depends
+ *    on A's outcome.
+ *  - QUEUED-BEHIND-RESET: ops queued behind a reset() re-base on the
+ *    post-reset cleared state and pass through the same existing gates
+ *    (acknowledgment, re-verify, horizon, input validation) — there is no
+ *    additional invalidation mechanism.
  *  - restore()'s write-commit is transactional too: the persisted record is
- *    written FIRST; live state adopts it only on success.
+ *    written FIRST; live state adopts it only on success (same FIFO queue).
  *  - reset()'s record REMOVAL is transactional: if the removal fails, live
- *    state does not change (the session stays active at its prior position).
+ *    state does not change (the session stays active at its prior position)
+ *    — also FIFO-serialized so it cannot interleave with a queued write.
  *
- * Order in every persisted operation: gate → re-verify → compute next state
- * → persist(next) → commit → emit. Emit reflects COMMITTED state only.
+ * Order in every persisted operation: enqueue → (at execution time) gate →
+ * re-verify → validate → draft+capture next record → restore → persist(next)
+ * → commit → emit. Events emit only POST-COMMIT, in call order (== execution
+ * order); failed ops emit nothing. Emit reflects COMMITTED state only.
  * The kit never touches storage itself.
  */
 import type { ClockSnapshot, ReplayClock } from './clock.js';
@@ -59,6 +79,12 @@ interface StateSnapshot {
 }
 
 export class ReplaySession {
+	/**
+	 * FIFO chain for persisted operations: each persisted op runs only after
+	 * the previous one settles, in call order (async-persistence repair).
+	 * Guarantee is per-session-instance.
+	 */
+	private queue: Promise<void> = Promise.resolve();
 	private readonly clock: ReplayClock;
 	private readonly persistence: SessionPersistence;
 	private readonly onEvent?: (event: SessionEvent) => void;
@@ -161,6 +187,56 @@ export class ReplaySession {
 		this.stepCounter = snap.stepCounter;
 	}
 
+	/**
+	 * Enqueue a persisted operation on the per-session FIFO chain. The op's
+	 * promise settles only after it has executed; callers awaiting the
+	 * returned promise therefore observe only committed state plus their own
+	 * op's outcome.
+	 */
+	private enqueue<T>(op: () => Promise<T>): Promise<T> {
+		const run = this.queue.then(op);
+		this.queue = run.then(
+			() => undefined,
+			() => undefined
+		);
+		return run;
+	}
+
+	/** Full next-state record built from current live (drafted) state. */
+	private recordFromLive(): SessionRecord {
+		return {
+			version: 1,
+			symbol: '',
+			instant: this.clock.now(),
+			stepIndex: this.stepCounter,
+			playing: this.playing,
+			levels: this.levels.map((l) => ({ ...l })),
+			returnedToCurrent: this.returnedToCurrent
+		};
+	}
+
+	/**
+	 * Write-first-commit-after execution of one persisted mutation
+	 * (async-persistence repair). All of draft → capture → restore runs
+	 * synchronously inside this op's own execution slice, so no other code can
+	 * observe the drafted state: live state is held at the pre-op committed
+	 * value during the whole pending write. `draft` re-applies the identical
+	 * mutation to COMMIT after a successful write; on failure nothing is
+	 * applied, no event is emitted, and the failure outcome is returned
+	 * truthfully (WRITE_REFUSED / PORT_ERROR).
+	 */
+	private async persistViaRecord(draft: () => void, emit: () => void): Promise<MutationOutcome> {
+		const snap = this.snapshotState();
+		draft();
+		const next = this.recordFromLive();
+		this.restoreState(snap);
+		const outcome = await this.persist(next);
+		if (!outcome.ok) return outcome;
+		draft(); // COMMIT
+		emit();
+		return outcome;
+	}
+
 	/** Committed live state, for consumers' before/after evidence checks. */
 	currentState(): { instant: number; stepIndex: number; levels: ReplayLevel[]; playing: boolean; returnedToCurrent: boolean } {
 		return {
@@ -186,23 +262,16 @@ export class ReplaySession {
 	}
 
 	/**
-	 * Persist the NEXT-STATE record. Called BEFORE the live-state commit
-	 * (transactional order). Returns ok:false with a truthful code on any
-	 * port refusal: WRITE_REFUSED when the port resolves {ok:false},
-	 * PORT_ERROR when the port throws.
+	 * Persist an explicit NEXT-STATE record (computed at execution time from
+	 * the drafted, then un-drafted, live state — never an uncommitted live
+	 * state). Called BEFORE the live-state commit (write-first order). Returns
+	 * ok:false with a truthful code on any port refusal: WRITE_REFUSED when
+	 * the port resolves {ok:false}, PORT_ERROR when the port throws. No bytes
+	 * change until success.
 	 */
-	private async persist(record?: SessionRecord): Promise<MutationOutcome> {
-		const next: SessionRecord = record ?? {
-			version: 1,
-			symbol: '',
-			instant: this.clock.now(),
-			stepIndex: this.stepCounter,
-			playing: this.playing,
-			levels: this.levels.map((l) => ({ ...l })),
-			returnedToCurrent: this.returnedToCurrent
-		};
+	private async persist(record: SessionRecord): Promise<MutationOutcome> {
 		try {
-			const r = await this.persistence.write(next);
+			const r = await this.persistence.write(record);
 			if (r && r.ok === false) {
 				return {
 					ok: false,
@@ -218,8 +287,15 @@ export class ReplaySession {
 
 	// ---- lifecycle ---------------------------------------------------------
 
-	/** Enter replay at a historical instant (unix seconds, must be ≤ horizon). */
-	async start(fromInstant: number): Promise<MutationOutcome> {
+	/**
+	 * Enter replay at a historical instant (unix seconds, must be ≤ horizon).
+	 * FIFO-serialized; writes FIRST, commits only on write success.
+	 */
+	start(fromInstant: number): Promise<MutationOutcome> {
+		return this.enqueue(() => this.startNow(fromInstant));
+	}
+
+	private async startNow(fromInstant: number): Promise<MutationOutcome> {
 		const gated = this.gate();
 		if (gated) return gated;
 		const rv = this.reverify();
@@ -227,78 +303,87 @@ export class ReplaySession {
 		if (fromInstant > this.clock.horizon()) {
 			return { ok: false, code: 'PAST_HORIZON', message: 'start instant is beyond the configured horizon' };
 		}
-		const snap = this.snapshotState();
-		this.clock.setFrame(fromInstant);
-		this.levels = [];
-		this.stepCounter = 1; // start counts as the first frame
-		this.returnedToCurrent = false;
-		const p = await this.persist();
-		if (!p.ok) {
-			this.restoreState(snap);
-			return p;
-		}
-		this.emit('start', { fromInstant });
-		return p;
+		return this.persistViaRecord(
+			() => {
+				this.clock.setFrame(fromInstant);
+				this.levels = [];
+				this.stepCounter = 1; // start counts as the first frame
+				this.returnedToCurrent = false;
+			},
+			() => this.emit('start', { fromInstant })
+		);
 	}
 
-	/** Advance the clock by one caller-chosen step and persist. */
-	async step(stepSeconds: number): Promise<MutationOutcome> {
+	/**
+	 * Advance the clock by one caller-chosen step and persist. FIFO-serialized;
+	 * writes FIRST, commits only on write success. An op queued behind a
+	 * FAILED op re-bases on the pre-op committed state (non-composition).
+	 */
+	step(stepSeconds: number): Promise<MutationOutcome> {
+		return this.enqueue(() => this.stepNow(stepSeconds));
+	}
+
+	private async stepNow(stepSeconds: number): Promise<MutationOutcome> {
 		const gated = this.gate();
 		if (gated) return gated;
 		const rv = this.reverify();
 		if (rv.outcome) return rv.outcome;
-		const snap = this.snapshotState();
-		this.clock.advance(stepSeconds);
-		this.stepCounter += 1;
-		const p = await this.persist();
-		if (!p.ok) {
-			this.restoreState(snap);
-			return p;
-		}
-		this.emit('step', { stepSeconds, capped: this.clock.now() >= this.clock.horizon() });
-		return p;
+		return this.persistViaRecord(
+			() => {
+				this.clock.advance(stepSeconds);
+				this.stepCounter += 1;
+			},
+			() => this.emit('step', { stepSeconds, capped: this.clock.now() >= this.clock.horizon() })
+		);
 	}
 
-	async play(): Promise<MutationOutcome> {
+	play(): Promise<MutationOutcome> {
+		return this.enqueue(() => this.playNow());
+	}
+
+	private async playNow(): Promise<MutationOutcome> {
 		const gated = this.gate();
 		if (gated) return gated;
 		const rv = this.reverify();
 		if (rv.outcome) return rv.outcome;
-		const snap = this.snapshotState();
-		this.playing = true;
-		const p = await this.persist();
-		if (!p.ok) {
-			this.restoreState(snap);
-			return p;
-		}
-		this.emit('play');
-		return p;
+		return this.persistViaRecord(
+			() => {
+				this.playing = true;
+			},
+			() => this.emit('play')
+		);
 	}
 
-	async pause(): Promise<MutationOutcome> {
+	pause(): Promise<MutationOutcome> {
+		return this.enqueue(() => this.pauseNow());
+	}
+
+	private async pauseNow(): Promise<MutationOutcome> {
 		const gated = this.gate();
 		if (gated) return gated;
 		const rv = this.reverify();
 		if (rv.outcome) return rv.outcome;
-		const snap = this.snapshotState();
-		this.playing = false;
-		const p = await this.persist();
-		if (!p.ok) {
-			this.restoreState(snap);
-			return p;
-		}
-		this.emit('pause');
-		return p;
+		return this.persistViaRecord(
+			() => {
+				this.playing = false;
+			},
+			() => this.emit('pause')
+		);
 	}
 
 	/**
 	 * Restore the exact persisted session (clock instant + step index +
 	 * stamped drawings). The restored record is PERSISTED FIRST and live
 	 * state adopts it only on a successful write; on refusal/failure the
-	 * live state is untouched. Returns the restored record; ok:false NEVER
+	 * live state is untouched. FIFO-serialized like every persisted op.
+	 * Returns the restored record; ok:false NEVER
 	 * silently overwrites anything.
 	 */
-	async restore(): Promise<MutationOutcome & { record?: SessionRecord | null }> {
+	restore(): Promise<MutationOutcome & { record?: SessionRecord | null }> {
+		return this.enqueue(() => this.restoreNow());
+	}
+
+	private async restoreNow(): Promise<MutationOutcome & { record?: SessionRecord | null }> {
 		const gated = this.gate();
 		if (gated) return gated;
 		let record: SessionRecord | null;
@@ -334,8 +419,15 @@ export class ReplaySession {
 	 * removal is TRANSACTIONAL: if the port's remove fails (ok:false is not
 	 * part of the remove contract, so failures surface as throws) the live
 	 * state does NOT change — the session stays active at its prior position.
+	 * FIFO-serialized so a reset cannot interleave with a queued write; ops
+	 * queued behind a reset re-base on the post-reset cleared state and pass
+	 * through the same existing gates (no additional invalidation mechanism).
 	 */
-	async reset(): Promise<MutationOutcome> {
+	reset(): Promise<MutationOutcome> {
+		return this.enqueue(() => this.resetNow());
+	}
+
+	private async resetNow(): Promise<MutationOutcome> {
 		const gated = this.gate();
 		if (gated) return gated;
 		const rv = this.reverify();
@@ -362,34 +454,42 @@ export class ReplaySession {
 	/**
 	 * Return to the current (non-replay) context: the session is persisted as
 	 * ended; the consumer then restores its current-mode view exactly.
+	 * FIFO-serialized; writes FIRST, commits only on write success.
 	 */
-	async returnToCurrent(): Promise<MutationOutcome> {
+	returnToCurrent(): Promise<MutationOutcome> {
+		return this.enqueue(() => this.returnToCurrentNow());
+	}
+
+	private async returnToCurrentNow(): Promise<MutationOutcome> {
 		const gated = this.gate();
 		if (gated) return gated;
 		const rv = this.reverify();
 		if (rv.outcome) return rv.outcome;
-		const snap = this.snapshotState();
-		this.playing = false;
-		this.returnedToCurrent = true;
-		const p = await this.persist();
-		if (!p.ok) {
-			this.restoreState(snap);
-			return p;
-		}
-		this.emit('returnToCurrent');
-		return p;
+		return this.persistViaRecord(
+			() => {
+				this.playing = false;
+				this.returnedToCurrent = true;
+			},
+			() => this.emit('returnToCurrent')
+		);
 	}
 
 	// ---- replay-stamped drawings ------------------------------------------
 
-	/** Create a replay-stamped level at `price` (stamped with clock.now()). */
-	async createLevel(price: number, note?: string): Promise<MutationOutcome & { id?: string }> {
+	/**
+	 * Create a replay-stamped level at `price` (stamped with clock.now()).
+	 * FIFO-serialized; writes FIRST, commits only on write success.
+	 */
+	createLevel(price: number, note?: string): Promise<MutationOutcome & { id?: string }> {
+		return this.enqueue(() => this.createLevelNow(price, note));
+	}
+
+	private async createLevelNow(price: number, note?: string): Promise<MutationOutcome & { id?: string }> {
 		const gated = this.gate();
 		if (gated) return gated;
 		const rv = this.reverify();
 		if (rv.outcome) return rv.outcome;
 		if (!Number.isFinite(price)) return { ok: false, code: 'INVALID_INPUT', message: 'price must be finite' };
-		const snap = this.snapshotState();
 		const level: ReplayLevel = {
 			id: this.genId(),
 			symbol: '',
@@ -398,17 +498,24 @@ export class ReplaySession {
 			creationInstant: this.clock.now(),
 			creationStep: this.stepCounter
 		};
-		this.levels = [...this.levels, level];
-		const p = await this.persist();
-		if (!p.ok) {
-			this.restoreState(snap);
-			return p;
-		}
-		this.emit('level-created', { id: level.id, creationInstant: level.creationInstant, creationStep: level.creationStep });
-		return { ok: true, id: level.id };
+		const outcome = await this.persistViaRecord(
+			() => {
+				this.levels = [...this.levels, level];
+			},
+			() => this.emit('level-created', { id: level.id, creationInstant: level.creationInstant, creationStep: level.creationStep })
+		);
+		return outcome.ok ? { ok: true, id: level.id } : outcome;
 	}
 
-	async removeLevel(id: string): Promise<MutationOutcome> {
+	/**
+	 * Remove a replay-stamped level by id. FIFO-serialized; writes FIRST,
+	 * commits only on write success.
+	 */
+	removeLevel(id: string): Promise<MutationOutcome> {
+		return this.enqueue(() => this.removeLevelNow(id));
+	}
+
+	private async removeLevelNow(id: string): Promise<MutationOutcome> {
 		const gated = this.gate();
 		if (gated) return gated;
 		const rv = this.reverify();
@@ -416,15 +523,12 @@ export class ReplaySession {
 		const before = this.levels.length;
 		const next = this.levels.filter((l) => l.id !== id);
 		if (next.length === before) return { ok: false, code: 'NOT_FOUND', message: 'no level ' + id };
-		const snap = this.snapshotState();
-		this.levels = next;
-		const p = await this.persist();
-		if (!p.ok) {
-			this.restoreState(snap);
-			return p;
-		}
-		this.emit('level-removed', { id });
-		return p;
+		return this.persistViaRecord(
+			() => {
+				this.levels = next;
+			},
+			() => this.emit('level-removed', { id })
+		);
 	}
 
 	/** Persisted step semantics: 1 after start, +1 per step, restored exactly. */

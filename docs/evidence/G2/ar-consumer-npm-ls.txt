@@ -1,0 +1,2 @@
+ar-g2-consumer@ C:\Users\RZ1\Desktop\RZ\ar-g2-consumer
+`-- @vict-trading/trading-kit@0.1.0

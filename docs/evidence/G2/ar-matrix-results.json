@@ -1,0 +1,162 @@
+{
+  "rows": [
+    {
+      "group": "pending",
+      "row": "step(3600): live==pre-op (sync + microtask); storage untouched; settled commit",
+      "duringPendingLive": "{\"instant\":1767571200,\"stepIndex\":1,\"playing\":false,\"returnedToCurrent\":false,\"levels\":[],\"barsCount\":0,\"lastBarTime\":null}",
+      "postInstant": 1767574800,
+      "pass": true
+    },
+    {
+      "group": "pending",
+      "row": "createLevel(2700): no uncommitted drawing; refused -> byte-identical, no event",
+      "code": "WRITE_REFUSED",
+      "storedLevelCount": 0,
+      "pass": true
+    },
+    {
+      "group": "pending",
+      "row": "removeLevel: level still visible during pending; refused -> restored, no event",
+      "code": "WRITE_REFUSED",
+      "duringLevelCount": 1,
+      "pass": true
+    },
+    {
+      "group": "pending",
+      "row": "play(): playing==false during pending, true after commit",
+      "durPlaying": false,
+      "postPlaying": true,
+      "pass": true
+    },
+    {
+      "group": "pending",
+      "row": "returnToCurrent refused: flag never flips, no event",
+      "code": "WRITE_REFUSED",
+      "durRtc": false,
+      "pass": true
+    },
+    {
+      "group": "overlap",
+      "kind": "step-step",
+      "combo": "s,s",
+      "finalLive": "{\"instant\":1767578400,\"stepIndex\":3,\"playing\":false,\"returnedToCurrent\":false,\"levels\":[],\"barsCount\":8,\"lastBarTime\":1767577500}",
+      "finalStored": "{\"instant\":1767578400,\"stepIndex\":3,\"playing\":false,\"levelCount\":0,\"returnedToCurrent\":false}",
+      "opA": "ok",
+      "opB": "ok",
+      "pendingWhileA": 1,
+      "pendingWhileB": 1,
+      "pass": true
+    },
+    {
+      "group": "overlap",
+      "kind": "step-step",
+      "combo": "s,f",
+      "finalLive": "{\"instant\":1767574800,\"stepIndex\":2,\"playing\":false,\"returnedToCurrent\":false,\"levels\":[],\"barsCount\":4,\"lastBarTime\":1767573900}",
+      "finalStored": "{\"instant\":1767574800,\"stepIndex\":2,\"playing\":false,\"levelCount\":0,\"returnedToCurrent\":false}",
+      "opA": "ok",
+      "opB": "WRITE_REFUSED",
+      "pendingWhileA": 1,
+      "pendingWhileB": 1,
+      "pass": true
+    },
+    {
+      "group": "overlap",
+      "kind": "step-step",
+      "combo": "f,s",
+      "finalLive": "{\"instant\":1767574800,\"stepIndex\":2,\"playing\":false,\"returnedToCurrent\":false,\"levels\":[],\"barsCount\":4,\"lastBarTime\":1767573900}",
+      "finalStored": "{\"instant\":1767574800,\"stepIndex\":2,\"playing\":false,\"levelCount\":0,\"returnedToCurrent\":false}",
+      "opA": "WRITE_REFUSED",
+      "opB": "ok",
+      "pendingWhileA": 1,
+      "pendingWhileB": 1,
+      "pass": true
+    },
+    {
+      "group": "overlap",
+      "kind": "step-create",
+      "combo": "s,s",
+      "finalLive": "{\"instant\":1767574800,\"stepIndex\":2,\"playing\":false,\"returnedToCurrent\":false,\"levels\":[{\"id\":\"ar-lvl-001\",\"symbol\":\"\",\"price\":2700,\"note\":\"lvl\",\"creationInstant\":1767574800,\"creationStep\":2}],\"barsCount\":4,\"lastBarTime\":1767573900}",
+      "finalStored": "{\"instant\":1767574800,\"stepIndex\":2,\"playing\":false,\"levelCount\":1,\"returnedToCurrent\":false}",
+      "opA": "ok",
+      "opB": "ok",
+      "pendingWhileA": 1,
+      "pendingWhileB": 1,
+      "pass": true
+    },
+    {
+      "group": "overlap",
+      "kind": "step-create",
+      "combo": "s,f",
+      "finalLive": "{\"instant\":1767574800,\"stepIndex\":2,\"playing\":false,\"returnedToCurrent\":false,\"levels\":[],\"barsCount\":4,\"lastBarTime\":1767573900}",
+      "finalStored": "{\"instant\":1767574800,\"stepIndex\":2,\"playing\":false,\"levelCount\":0,\"returnedToCurrent\":false}",
+      "opA": "ok",
+      "opB": "WRITE_REFUSED",
+      "pendingWhileA": 1,
+      "pendingWhileB": 1,
+      "pass": true
+    },
+    {
+      "group": "overlap",
+      "kind": "step-create",
+      "combo": "f,s",
+      "finalLive": "{\"instant\":1767571200,\"stepIndex\":1,\"playing\":false,\"returnedToCurrent\":false,\"levels\":[{\"id\":\"ar-lvl-001\",\"symbol\":\"\",\"price\":2700,\"note\":\"lvl\",\"creationInstant\":1767571200,\"creationStep\":1}],\"barsCount\":0,\"lastBarTime\":null}",
+      "finalStored": "{\"instant\":1767571200,\"stepIndex\":1,\"playing\":false,\"levelCount\":1,\"returnedToCurrent\":false}",
+      "opA": "WRITE_REFUSED",
+      "opB": "ok",
+      "pendingWhileA": 1,
+      "pendingWhileB": 1,
+      "pass": true
+    },
+    {
+      "group": "overlap",
+      "row": "3 queued steps: kit holds EXACTLY ONE pending write at a time (out-of-order rows structurally excluded)",
+      "pendingCount": 1,
+      "pass": true
+    },
+    {
+      "group": "re-base",
+      "row": "A step refused, then B step ok -> T0+3600/step2 (NOT T0+7200/step3)",
+      "instant": 1767574800,
+      "step": 2,
+      "pass": true
+    },
+    {
+      "group": "re-base",
+      "row": "B QUEUED while A pending; A refused -> identical re-based result",
+      "instant": 1767574800,
+      "step": 2,
+      "pass": true
+    },
+    {
+      "group": "queued-behind-reset",
+      "row": "reset then step(600) -> runs on the cleared counters from the pre-reset clock: +600/step1, record written",
+      "instant": 1767575400,
+      "step": 1,
+      "pass": true
+    },
+    {
+      "group": "queued-behind-reset",
+      "row": "step ok + reset(remove throws) -> live stays step2, record kept, truthful PORT_ERROR",
+      "code": "PORT_ERROR",
+      "pass": true
+    },
+    {
+      "group": "events",
+      "row": "A fail + B ok -> only the B event; stream matches committed state",
+      "eventTypes": [
+        "level-created"
+      ],
+      "pass": true
+    },
+    {
+      "group": "events",
+      "row": "order: step, (NOT_FOUND emits nothing), level-created",
+      "eventTypes": [
+        "step",
+        "level-created"
+      ],
+      "pass": true
+    }
+  ],
+  "fail": []
+}
