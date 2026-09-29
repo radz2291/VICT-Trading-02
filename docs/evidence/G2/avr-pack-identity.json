@@ -1,0 +1,31 @@
+{
+	"what": "Pack identity + provenance verification for the G2 async-persistence independent reproduction",
+	"verifierSession": {
+		"date": "2026-09-29 (session clock 2026-09-29T21:57+08:00)",
+		"role": "fresh verifier (independent of builder)",
+		"testedRepoHead": "b05e9474b459037ad3425d9c0267e94a2a0dadc7",
+		"pinnedShaMatch": true,
+		"workingTreeCleanAtStart": true,
+		"remote": "https://github.com/radz2291/VICT-Trading-02.git (origin, authorized)",
+		"branch": "main"
+	},
+	"pack": {
+		"package": "@vict-trading/trading-kit@0.1.0",
+		"freshPackCommand": "npm pack --pack-destination C:/Users/RZ1/Desktop/RZ/avr-g2-consumer/pkgs  (run inside packages/trading-kit at the pinned SHA)",
+		"freshPackSha256": "4316c06860fc84c11f30cde7df0ed7d73840d3669d99120243eac06aace9474b",
+		"committedTarballPath": "packages/trading-kit/vict-trading-trading-kit-0.1.0.tgz",
+		"committedTarballSha256": "4316c06860fc84c11f30cde7df0ed7d73840d3669d99120243eac06aace9474b",
+		"claimedSha256": "4316c06860fc84c1…",
+		"equalsClaim": true,
+		"freshEqualsCommitted": true
+	},
+	"consumer": {
+		"path": "C:/Users/RZ1/Desktop/RZ/avr-g2-consumer (OUTSIDE the monorepo, distinct from the builder's g2-ap-consumer)",
+		"npmLs": "avr-g2-consumer@0.0.0 └── @vict-trading/trading-kit@0.1.0 (file:pkgs/vict-trading-trading-kit-0.1.0.tgz — single direct dependency, no app imports, no workspace aliases)",
+		"fixture": "committed docs/evidence/G2/fixture.json copied into the consumer (XAUUSD 15m, 2023 bars, horizon 1770068700 = 2026-02-02T21:45Z, T0 1767571200 = 2026-01-05T00:00Z)",
+		"node": "v22.13.1",
+		"npm": "11.19.1"
+	},
+	"portModel": "verifier-owned DeferredPort: read() sync/throws; write() promise — {ok:false} = WRITE_REFUSED, throw = PORT_ERROR, {ok:true} commits the call-time-captured record AT RESOLUTION TIME; remove() deferred likewise",
+	"hygiene": "one pass per probe, no retries, no servers, no processes started (pure node scripts), repo untouched except evidence files added under docs/evidence/G2/"
+}

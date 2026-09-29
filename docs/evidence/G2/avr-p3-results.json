@@ -1,0 +1,1012 @@
+{
+	"meta": {
+		"T0": 1767571200,
+		"matrix": "2 kinds x 2 resolve orders x {s,s; s,f; f,s} = 12 rows; f = port resolves {ok:false}"
+	},
+	"rows": [
+		{
+			"row": "step-step | resolve A-first | combo s,s",
+			"opResults": {
+				"A": {
+					"ok": true,
+					"code": null
+				},
+				"B": {
+					"ok": true,
+					"code": null
+				}
+			},
+			"preState": {
+				"instant": 1767571200,
+				"stepIndex": 1
+			},
+			"midAfterFirstSettle": {
+				"instant": 1767578400,
+				"stepIndex": 3,
+				"levelCount": 0
+			},
+			"finalLive": {
+				"instant": 1767578400,
+				"stepIndex": 3,
+				"levelCount": 0,
+				"levelIds": []
+			},
+			"finalStored": {
+				"instant": 1767578400,
+				"stepIndex": 3,
+				"levelCount": 0
+			},
+			"freshAdoption": {
+				"ok": true,
+				"instant": 1767578400,
+				"stepIndex": 3,
+				"levelCount": 0
+			},
+			"writeCallOrder": [
+				{
+					"id": 0,
+					"record": null
+				},
+				{
+					"id": 1,
+					"record": {
+						"instant": 1767574800,
+						"stepIndex": 2,
+						"levelCount": 0
+					}
+				},
+				{
+					"id": 2,
+					"record": {
+						"instant": 1767578400,
+						"stepIndex": 3,
+						"levelCount": 0
+					}
+				}
+			],
+			"settleOrder": [
+				{
+					"id": 1,
+					"outcome": "ok"
+				},
+				{
+					"id": 2,
+					"outcome": "ok"
+				}
+			],
+			"eventEmissionOrder": [
+				"start",
+				"step",
+				"step"
+			],
+			"sequentialExpectation": {
+				"instant": 1767578400,
+				"stepIndex": 3,
+				"levelCount": 0
+			},
+			"matchesSequential": true,
+			"verdict": "CONSISTENT",
+			"mechanism": "none"
+		},
+		{
+			"row": "step-step | resolve A-first | combo s,f",
+			"opResults": {
+				"A": {
+					"ok": true,
+					"code": null
+				},
+				"B": {
+					"ok": false,
+					"code": "WRITE_REFUSED"
+				}
+			},
+			"preState": {
+				"instant": 1767571200,
+				"stepIndex": 1
+			},
+			"midAfterFirstSettle": {
+				"instant": 1767578400,
+				"stepIndex": 3,
+				"levelCount": 0
+			},
+			"finalLive": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 0,
+				"levelIds": []
+			},
+			"finalStored": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 0
+			},
+			"freshAdoption": {
+				"ok": true,
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 0
+			},
+			"writeCallOrder": [
+				{
+					"id": 0,
+					"record": null
+				},
+				{
+					"id": 1,
+					"record": {
+						"instant": 1767574800,
+						"stepIndex": 2,
+						"levelCount": 0
+					}
+				},
+				{
+					"id": 2,
+					"record": {
+						"instant": 1767578400,
+						"stepIndex": 3,
+						"levelCount": 0
+					}
+				}
+			],
+			"settleOrder": [
+				{
+					"id": 1,
+					"outcome": "ok"
+				},
+				{
+					"id": 2,
+					"outcome": "refuse"
+				}
+			],
+			"eventEmissionOrder": [
+				"start",
+				"step"
+			],
+			"sequentialExpectation": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 0
+			},
+			"matchesSequential": true,
+			"verdict": "CONSISTENT",
+			"mechanism": "none"
+		},
+		{
+			"row": "step-step | resolve A-first | combo f,s",
+			"opResults": {
+				"A": {
+					"ok": false,
+					"code": "WRITE_REFUSED"
+				},
+				"B": {
+					"ok": true,
+					"code": null
+				}
+			},
+			"preState": {
+				"instant": 1767571200,
+				"stepIndex": 1
+			},
+			"midAfterFirstSettle": {
+				"instant": 1767578400,
+				"stepIndex": 3,
+				"levelCount": 0
+			},
+			"finalLive": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"levelCount": 0,
+				"levelIds": []
+			},
+			"finalStored": {
+				"instant": 1767578400,
+				"stepIndex": 3,
+				"levelCount": 0
+			},
+			"freshAdoption": {
+				"ok": true,
+				"instant": 1767578400,
+				"stepIndex": 3,
+				"levelCount": 0
+			},
+			"writeCallOrder": [
+				{
+					"id": 0,
+					"record": null
+				},
+				{
+					"id": 1,
+					"record": {
+						"instant": 1767574800,
+						"stepIndex": 2,
+						"levelCount": 0
+					}
+				},
+				{
+					"id": 2,
+					"record": {
+						"instant": 1767578400,
+						"stepIndex": 3,
+						"levelCount": 0
+					}
+				}
+			],
+			"settleOrder": [
+				{
+					"id": 1,
+					"outcome": "refuse"
+				},
+				{
+					"id": 2,
+					"outcome": "ok"
+				}
+			],
+			"eventEmissionOrder": [
+				"start",
+				"step"
+			],
+			"sequentialExpectation": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 0
+			},
+			"matchesSequential": false,
+			"verdict": "DISAGREEMENT",
+			"mechanism": "LIVE_REGRESSED_BELOW_STORAGE_reload_resurrects_op"
+		},
+		{
+			"row": "step-step | resolve B-first | combo s,s",
+			"opResults": {
+				"A": {
+					"ok": true,
+					"code": null
+				},
+				"B": {
+					"ok": true,
+					"code": null
+				}
+			},
+			"preState": {
+				"instant": 1767571200,
+				"stepIndex": 1
+			},
+			"midAfterFirstSettle": {
+				"instant": 1767578400,
+				"stepIndex": 3,
+				"levelCount": 0
+			},
+			"finalLive": {
+				"instant": 1767578400,
+				"stepIndex": 3,
+				"levelCount": 0,
+				"levelIds": []
+			},
+			"finalStored": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 0
+			},
+			"freshAdoption": {
+				"ok": true,
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 0
+			},
+			"writeCallOrder": [
+				{
+					"id": 0,
+					"record": null
+				},
+				{
+					"id": 1,
+					"record": {
+						"instant": 1767574800,
+						"stepIndex": 2,
+						"levelCount": 0
+					}
+				},
+				{
+					"id": 2,
+					"record": {
+						"instant": 1767578400,
+						"stepIndex": 3,
+						"levelCount": 0
+					}
+				}
+			],
+			"settleOrder": [
+				{
+					"id": 2,
+					"outcome": "ok"
+				},
+				{
+					"id": 1,
+					"outcome": "ok"
+				}
+			],
+			"eventEmissionOrder": [
+				"start",
+				"step",
+				"step"
+			],
+			"sequentialExpectation": {
+				"instant": 1767578400,
+				"stepIndex": 3,
+				"levelCount": 0
+			},
+			"matchesSequential": true,
+			"verdict": "DISAGREEMENT",
+			"mechanism": "LOST_OP_IN_STORAGE_lastResolvedOlderWriteWon"
+		},
+		{
+			"row": "step-step | resolve B-first | combo s,f",
+			"opResults": {
+				"A": {
+					"ok": true,
+					"code": null
+				},
+				"B": {
+					"ok": false,
+					"code": "WRITE_REFUSED"
+				}
+			},
+			"preState": {
+				"instant": 1767571200,
+				"stepIndex": 1
+			},
+			"midAfterFirstSettle": {
+				"instant": 1767578400,
+				"stepIndex": 3,
+				"levelCount": 0
+			},
+			"finalLive": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 0,
+				"levelIds": []
+			},
+			"finalStored": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 0
+			},
+			"freshAdoption": {
+				"ok": true,
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 0
+			},
+			"writeCallOrder": [
+				{
+					"id": 0,
+					"record": null
+				},
+				{
+					"id": 1,
+					"record": {
+						"instant": 1767574800,
+						"stepIndex": 2,
+						"levelCount": 0
+					}
+				},
+				{
+					"id": 2,
+					"record": {
+						"instant": 1767578400,
+						"stepIndex": 3,
+						"levelCount": 0
+					}
+				}
+			],
+			"settleOrder": [
+				{
+					"id": 2,
+					"outcome": "refuse"
+				},
+				{
+					"id": 1,
+					"outcome": "ok"
+				}
+			],
+			"eventEmissionOrder": [
+				"start",
+				"step"
+			],
+			"sequentialExpectation": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 0
+			},
+			"matchesSequential": true,
+			"verdict": "CONSISTENT",
+			"mechanism": "none"
+		},
+		{
+			"row": "step-step | resolve B-first | combo f,s",
+			"opResults": {
+				"A": {
+					"ok": false,
+					"code": "WRITE_REFUSED"
+				},
+				"B": {
+					"ok": true,
+					"code": null
+				}
+			},
+			"preState": {
+				"instant": 1767571200,
+				"stepIndex": 1
+			},
+			"midAfterFirstSettle": {
+				"instant": 1767578400,
+				"stepIndex": 3,
+				"levelCount": 0
+			},
+			"finalLive": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"levelCount": 0,
+				"levelIds": []
+			},
+			"finalStored": {
+				"instant": 1767578400,
+				"stepIndex": 3,
+				"levelCount": 0
+			},
+			"freshAdoption": {
+				"ok": true,
+				"instant": 1767578400,
+				"stepIndex": 3,
+				"levelCount": 0
+			},
+			"writeCallOrder": [
+				{
+					"id": 0,
+					"record": null
+				},
+				{
+					"id": 1,
+					"record": {
+						"instant": 1767574800,
+						"stepIndex": 2,
+						"levelCount": 0
+					}
+				},
+				{
+					"id": 2,
+					"record": {
+						"instant": 1767578400,
+						"stepIndex": 3,
+						"levelCount": 0
+					}
+				}
+			],
+			"settleOrder": [
+				{
+					"id": 2,
+					"outcome": "ok"
+				},
+				{
+					"id": 1,
+					"outcome": "refuse"
+				}
+			],
+			"eventEmissionOrder": [
+				"start",
+				"step"
+			],
+			"sequentialExpectation": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 0
+			},
+			"matchesSequential": false,
+			"verdict": "DISAGREEMENT",
+			"mechanism": "LIVE_REGRESSED_BELOW_STORAGE_reload_resurrects_op"
+		},
+		{
+			"row": "step-create | resolve A-first | combo s,s",
+			"opResults": {
+				"A": {
+					"ok": true,
+					"code": null
+				},
+				"B": {
+					"ok": true,
+					"code": null
+				}
+			},
+			"preState": {
+				"instant": 1767571200,
+				"stepIndex": 1
+			},
+			"midAfterFirstSettle": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 1
+			},
+			"finalLive": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 1,
+				"levelIds": [
+					"avr-lvl-001"
+				]
+			},
+			"finalStored": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 1
+			},
+			"freshAdoption": {
+				"ok": true,
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 1
+			},
+			"writeCallOrder": [
+				{
+					"id": 0,
+					"record": null
+				},
+				{
+					"id": 1,
+					"record": {
+						"instant": 1767574800,
+						"stepIndex": 2,
+						"levelCount": 0
+					}
+				},
+				{
+					"id": 2,
+					"record": {
+						"instant": 1767574800,
+						"stepIndex": 2,
+						"levelCount": 1
+					}
+				}
+			],
+			"settleOrder": [
+				{
+					"id": 1,
+					"outcome": "ok"
+				},
+				{
+					"id": 2,
+					"outcome": "ok"
+				}
+			],
+			"eventEmissionOrder": [
+				"start",
+				"step",
+				"level-created"
+			],
+			"sequentialExpectation": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 1
+			},
+			"matchesSequential": true,
+			"verdict": "CONSISTENT",
+			"mechanism": "none"
+		},
+		{
+			"row": "step-create | resolve A-first | combo s,f",
+			"opResults": {
+				"A": {
+					"ok": true,
+					"code": null
+				},
+				"B": {
+					"ok": false,
+					"code": "WRITE_REFUSED"
+				}
+			},
+			"preState": {
+				"instant": 1767571200,
+				"stepIndex": 1
+			},
+			"midAfterFirstSettle": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 1
+			},
+			"finalLive": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 0,
+				"levelIds": []
+			},
+			"finalStored": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 0
+			},
+			"freshAdoption": {
+				"ok": true,
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 0
+			},
+			"writeCallOrder": [
+				{
+					"id": 0,
+					"record": null
+				},
+				{
+					"id": 1,
+					"record": {
+						"instant": 1767574800,
+						"stepIndex": 2,
+						"levelCount": 0
+					}
+				},
+				{
+					"id": 2,
+					"record": {
+						"instant": 1767574800,
+						"stepIndex": 2,
+						"levelCount": 1
+					}
+				}
+			],
+			"settleOrder": [
+				{
+					"id": 1,
+					"outcome": "ok"
+				},
+				{
+					"id": 2,
+					"outcome": "refuse"
+				}
+			],
+			"eventEmissionOrder": [
+				"start",
+				"step"
+			],
+			"sequentialExpectation": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 0
+			},
+			"matchesSequential": true,
+			"verdict": "CONSISTENT",
+			"mechanism": "none"
+		},
+		{
+			"row": "step-create | resolve A-first | combo f,s",
+			"opResults": {
+				"A": {
+					"ok": false,
+					"code": "WRITE_REFUSED"
+				},
+				"B": {
+					"ok": true,
+					"code": null
+				}
+			},
+			"preState": {
+				"instant": 1767571200,
+				"stepIndex": 1
+			},
+			"midAfterFirstSettle": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 1
+			},
+			"finalLive": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"levelCount": 0,
+				"levelIds": []
+			},
+			"finalStored": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 1
+			},
+			"freshAdoption": {
+				"ok": true,
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 1
+			},
+			"writeCallOrder": [
+				{
+					"id": 0,
+					"record": null
+				},
+				{
+					"id": 1,
+					"record": {
+						"instant": 1767574800,
+						"stepIndex": 2,
+						"levelCount": 0
+					}
+				},
+				{
+					"id": 2,
+					"record": {
+						"instant": 1767574800,
+						"stepIndex": 2,
+						"levelCount": 1
+					}
+				}
+			],
+			"settleOrder": [
+				{
+					"id": 1,
+					"outcome": "refuse"
+				},
+				{
+					"id": 2,
+					"outcome": "ok"
+				}
+			],
+			"eventEmissionOrder": [
+				"start",
+				"level-created"
+			],
+			"sequentialExpectation": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 1
+			},
+			"matchesSequential": false,
+			"verdict": "DISAGREEMENT",
+			"mechanism": "LIVE_REGRESSED_BELOW_STORAGE_reload_resurrects_op"
+		},
+		{
+			"row": "step-create | resolve B-first | combo s,s",
+			"opResults": {
+				"A": {
+					"ok": true,
+					"code": null
+				},
+				"B": {
+					"ok": true,
+					"code": null
+				}
+			},
+			"preState": {
+				"instant": 1767571200,
+				"stepIndex": 1
+			},
+			"midAfterFirstSettle": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 1
+			},
+			"finalLive": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 1,
+				"levelIds": [
+					"avr-lvl-001"
+				]
+			},
+			"finalStored": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 0
+			},
+			"freshAdoption": {
+				"ok": true,
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 0
+			},
+			"writeCallOrder": [
+				{
+					"id": 0,
+					"record": null
+				},
+				{
+					"id": 1,
+					"record": {
+						"instant": 1767574800,
+						"stepIndex": 2,
+						"levelCount": 0
+					}
+				},
+				{
+					"id": 2,
+					"record": {
+						"instant": 1767574800,
+						"stepIndex": 2,
+						"levelCount": 1
+					}
+				}
+			],
+			"settleOrder": [
+				{
+					"id": 2,
+					"outcome": "ok"
+				},
+				{
+					"id": 1,
+					"outcome": "ok"
+				}
+			],
+			"eventEmissionOrder": [
+				"start",
+				"level-created",
+				"step"
+			],
+			"sequentialExpectation": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 1
+			},
+			"matchesSequential": true,
+			"verdict": "DISAGREEMENT",
+			"mechanism": "LOST_OP_IN_STORAGE_lastResolvedOlderWriteWon"
+		},
+		{
+			"row": "step-create | resolve B-first | combo s,f",
+			"opResults": {
+				"A": {
+					"ok": true,
+					"code": null
+				},
+				"B": {
+					"ok": false,
+					"code": "WRITE_REFUSED"
+				}
+			},
+			"preState": {
+				"instant": 1767571200,
+				"stepIndex": 1
+			},
+			"midAfterFirstSettle": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 1
+			},
+			"finalLive": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 0,
+				"levelIds": []
+			},
+			"finalStored": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 0
+			},
+			"freshAdoption": {
+				"ok": true,
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 0
+			},
+			"writeCallOrder": [
+				{
+					"id": 0,
+					"record": null
+				},
+				{
+					"id": 1,
+					"record": {
+						"instant": 1767574800,
+						"stepIndex": 2,
+						"levelCount": 0
+					}
+				},
+				{
+					"id": 2,
+					"record": {
+						"instant": 1767574800,
+						"stepIndex": 2,
+						"levelCount": 1
+					}
+				}
+			],
+			"settleOrder": [
+				{
+					"id": 2,
+					"outcome": "refuse"
+				},
+				{
+					"id": 1,
+					"outcome": "ok"
+				}
+			],
+			"eventEmissionOrder": [
+				"start",
+				"step"
+			],
+			"sequentialExpectation": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 0
+			},
+			"matchesSequential": true,
+			"verdict": "CONSISTENT",
+			"mechanism": "none"
+		},
+		{
+			"row": "step-create | resolve B-first | combo f,s",
+			"opResults": {
+				"A": {
+					"ok": false,
+					"code": "WRITE_REFUSED"
+				},
+				"B": {
+					"ok": true,
+					"code": null
+				}
+			},
+			"preState": {
+				"instant": 1767571200,
+				"stepIndex": 1
+			},
+			"midAfterFirstSettle": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 1
+			},
+			"finalLive": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"levelCount": 0,
+				"levelIds": []
+			},
+			"finalStored": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 1
+			},
+			"freshAdoption": {
+				"ok": true,
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 1
+			},
+			"writeCallOrder": [
+				{
+					"id": 0,
+					"record": null
+				},
+				{
+					"id": 1,
+					"record": {
+						"instant": 1767574800,
+						"stepIndex": 2,
+						"levelCount": 0
+					}
+				},
+				{
+					"id": 2,
+					"record": {
+						"instant": 1767574800,
+						"stepIndex": 2,
+						"levelCount": 1
+					}
+				}
+			],
+			"settleOrder": [
+				{
+					"id": 2,
+					"outcome": "ok"
+				},
+				{
+					"id": 1,
+					"outcome": "refuse"
+				}
+			],
+			"eventEmissionOrder": [
+				"start",
+				"level-created"
+			],
+			"sequentialExpectation": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 1
+			},
+			"matchesSequential": false,
+			"verdict": "DISAGREEMENT",
+			"mechanism": "LIVE_REGRESSED_BELOW_STORAGE_reload_resurrects_op"
+		}
+	]
+}

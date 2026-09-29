@@ -1,0 +1,172 @@
+{
+	"meta": {
+		"T0": 1767571200,
+		"purpose": "pending->failure sanity; one pass, no retries"
+	},
+	"rows": [
+		{
+			"row": "P2-1 step(3600) -> write refused",
+			"duringPendingExposureKnown": true,
+			"outcome": {
+				"ok": false,
+				"code": "WRITE_REFUSED",
+				"message": "persistence port refused the write: AVR_REFUSED: refused by avr test port — no state change"
+			},
+			"rollbackExact": true,
+			"storedBytesUnchanged": true,
+			"clockOpLogRestored": true,
+			"noEventEmitted": true,
+			"freshAdoption": {
+				"ok": true,
+				"adopted": {
+					"instant": 1767571200,
+					"stepIndex": 1,
+					"levelCount": 0,
+					"playing": false
+				}
+			}
+		},
+		{
+			"row": "P2-2 step(3600) -> write threw",
+			"outcome": {
+				"ok": false,
+				"code": "PORT_ERROR",
+				"message": "avr-port: induced write failure"
+			},
+			"rollbackExact": true,
+			"storedBytesUnchanged": true,
+			"clockOpLogRestored": true,
+			"noEventEmitted": true,
+			"freshAdoption": {
+				"ok": true,
+				"adopted": {
+					"instant": 1767571200,
+					"stepIndex": 1,
+					"levelCount": 0,
+					"playing": false
+				}
+			}
+		},
+		{
+			"row": "P2-3 createLevel -> write refused",
+			"outcome": {
+				"ok": false,
+				"code": "WRITE_REFUSED",
+				"message": "persistence port refused the write: AVR_REFUSED: refused by avr test port — no state change"
+			},
+			"rollbackExact": true,
+			"storedBytesUnchanged": true,
+			"noEventEmitted": true,
+			"freshAdoption": {
+				"ok": true,
+				"adopted": {
+					"instant": 1767571200,
+					"stepIndex": 1,
+					"levelCount": 0,
+					"playing": false
+				}
+			}
+		},
+		{
+			"row": "P2-4 returnToCurrent -> write refused",
+			"outcome": {
+				"ok": false,
+				"code": "WRITE_REFUSED",
+				"message": "persistence port refused the write: AVR_REFUSED: refused by avr test port — no state change"
+			},
+			"rollbackExact": true,
+			"storedBytesUnchanged": true,
+			"noEventEmitted": true,
+			"freshAdoption": {
+				"ok": true,
+				"adopted": {
+					"instant": 1767571200,
+					"stepIndex": 1,
+					"levelCount": 0,
+					"playing": false
+				}
+			}
+		},
+		{
+			"row": "P2-5 removeLevel -> write refused",
+			"outcome": {
+				"ok": false,
+				"code": "WRITE_REFUSED",
+				"message": "persistence port refused the write: AVR_REFUSED: refused by avr test port — no state change"
+			},
+			"rollbackExact": true,
+			"storedBytesUnchanged": true,
+			"noEventEmitted": true
+		},
+		{
+			"row": "P2-6 reset -> removal rejected",
+			"outcome": {
+				"ok": false,
+				"code": "PORT_ERROR",
+				"message": "persistence port failed to remove the session record — no state change: avr-port: induced removal failure"
+			},
+			"liveUnchanged": true,
+			"storedRecordStillPresent": true,
+			"noEventEmitted": true
+		},
+		{
+			"row": "P2-7 restore -> write refused",
+			"outcome": {
+				"ok": false,
+				"code": "WRITE_REFUSED",
+				"message": "persistence port refused the write: AVR_REFUSED: refused by avr test port — no state change"
+			},
+			"liveUntouched": true,
+			"storedRecordIntact": true,
+			"noEventEmitted": true
+		},
+		{
+			"row": "P2-8 restore -> success adopts record exactly",
+			"outcome": {
+				"ok": true,
+				"restoredInstant": 1767574800,
+				"restoredStepIndex": 2
+			},
+			"adopted": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 1,
+				"level": {
+					"id": "avr-craft-3",
+					"symbol": "XAUUSD",
+					"price": 2700,
+					"creationInstant": 1767574800,
+					"creationStep": 2
+				},
+				"playing": false
+			},
+			"exactAdoption": true,
+			"storedBytesStillCrafted": true
+		},
+		{
+			"row": "P2-9 reset -> success",
+			"outcome": {
+				"ok": true
+			},
+			"storedCleared": true,
+			"liveCleared": {
+				"instant": 1767571200,
+				"stepIndex": 0,
+				"levels": 0,
+				"playing": false,
+				"returnedToCurrent": false
+			}
+		},
+		{
+			"row": "P2-10 step with induced read failure (reverify)",
+			"outcome": {
+				"ok": false,
+				"code": "READ_FAILED",
+				"message": "stored session record is unreadable — operation refused, stored bytes untouched"
+			},
+			"liveUntouched": true,
+			"storedBytesUnchanged": true,
+			"noEventEmitted": true
+		}
+	]
+}

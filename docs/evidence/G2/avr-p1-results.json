@@ -1,0 +1,263 @@
+{
+	"meta": {
+		"fixture": {
+			"symbol": "XAUUSD",
+			"timeframe": "15m",
+			"bars": 2023,
+			"horizon": 1770068700
+		},
+		"T0": 1767571200,
+		"T0ISO": "2026-01-05T00:00:00.000Z",
+		"horizonISO": "2026-02-02T21:45:00.000Z",
+		"generatedAt": "fixed-clock probes — no wall clock used for market time"
+	},
+	"rows": [
+		{
+			"row": "P1-1 step(3600) unawaited — exposure while write pending",
+			"pre": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"barsCount": 0,
+				"lastBar": null,
+				"stored": {
+					"instant": 1767571200,
+					"stepIndex": 1,
+					"playing": false,
+					"levelCount": 0,
+					"returnedToCurrent": false
+				},
+				"eventCount": 1
+			},
+			"syncDuringPending": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"clockNow": 1767574800,
+				"barsCount": 4,
+				"lastBar": {
+					"time": 1767573900,
+					"close": 2649.4
+				},
+				"stored": {
+					"instant": 1767571200,
+					"stepIndex": 1,
+					"playing": false,
+					"levelCount": 0,
+					"returnedToCurrent": false
+				},
+				"eventCount": 1,
+				"eventTypes": [
+					"start"
+				]
+			},
+			"microDuringPending": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"stored": {
+					"instant": 1767571200,
+					"stepIndex": 1,
+					"playing": false,
+					"levelCount": 0,
+					"returnedToCurrent": false
+				}
+			},
+			"exposedNewFrameWhilePending": true,
+			"storedUnchangedDuringPending": true,
+			"outcome": {
+				"ok": true
+			},
+			"post": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"stored": {
+					"instant": 1767574800,
+					"stepIndex": 2,
+					"playing": false,
+					"levelCount": 0,
+					"returnedToCurrent": false
+				}
+			}
+		},
+		{
+			"row": "P1-2 createLevel(2700) unawaited — drawing exposure while pending",
+			"pre": {
+				"levelCount": 0,
+				"storedLevelCount": 0
+			},
+			"syncDuringPending": {
+				"levelCount": 1,
+				"level": {
+					"id": "avr-lvl-001",
+					"symbol": "",
+					"price": 2700,
+					"note": "probe",
+					"creationInstant": 1767571200,
+					"creationStep": 1
+				},
+				"storedLevelCount": 0,
+				"eventCount": 1
+			},
+			"exposedNewDrawingWhilePending": true,
+			"storedUnchangedDuringPending": true,
+			"outcome": {
+				"ok": true,
+				"id": "avr-lvl-001"
+			},
+			"post": {
+				"levelCount": 1,
+				"storedLevelCount": 1
+			}
+		},
+		{
+			"row": "P1-2b createLevel unawaited then write refused",
+			"syncDuringPending": {
+				"levelCount": 1,
+				"storedLevelCount": 0
+			},
+			"outcome": {
+				"ok": false,
+				"code": "WRITE_REFUSED",
+				"message": "persistence port refused the write: AVR_REFUSED: refused by avr test port — no state change"
+			},
+			"rollbackExact": true,
+			"storedBytesUnchanged": true,
+			"postLevelCount": 0
+		},
+		{
+			"row": "P1-3 play() unawaited — playing flag exposure while pending",
+			"pre": {
+				"playing": false,
+				"storedPlaying": false
+			},
+			"syncDuringPending": {
+				"playing": true,
+				"storedPlaying": false,
+				"eventCount": 1
+			},
+			"exposedPlayingWhilePending": true,
+			"storedUnchangedDuringPending": true,
+			"outcome": {
+				"ok": true
+			},
+			"post": {
+				"playing": true,
+				"storedPlaying": true
+			}
+		},
+		{
+			"row": "P1-4a removeLevel unawaited — level hidden live while write pending; refusal restores",
+			"pre": {
+				"levelCount": 1,
+				"storedLevelCount": 1
+			},
+			"syncDuringPending": {
+				"levelCount": 0,
+				"storedLevelCount": 1
+			},
+			"removalVisibleWhilePending": true,
+			"outcome": {
+				"ok": false,
+				"code": "WRITE_REFUSED",
+				"message": "persistence port refused the write: AVR_REFUSED: refused by avr test port — no state change"
+			},
+			"rollbackExact": true,
+			"storedBytesUnchanged": true
+		},
+		{
+			"row": "P1-4b returnToCurrent unawaited — ended flag exposed while pending; refusal restores",
+			"pre": {
+				"returnedToCurrent": false,
+				"storedRTC": false
+			},
+			"syncDuringPending": {
+				"returnedToCurrent": true,
+				"storedRTC": false
+			},
+			"exposedWhilePending": true,
+			"outcome": {
+				"ok": false,
+				"code": "WRITE_REFUSED",
+				"message": "persistence port refused the write: AVR_REFUSED: refused by avr test port — no state change"
+			},
+			"rollbackExact": true,
+			"storedBytesUnchanged": true
+		},
+		{
+			"row": "P1-5a restore() unawaited — pending window must show PRE-restore state (write-first)",
+			"pre": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"levelCount": 0
+			},
+			"syncDuringPending": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"levelCount": 0,
+				"stored": {
+					"instant": 1767574800,
+					"stepIndex": 2,
+					"playing": false,
+					"levelCount": 1,
+					"returnedToCurrent": false
+				}
+			},
+			"pendingWindowShowsPreRestore": true,
+			"outcome": {
+				"ok": true,
+				"restoredInstant": 1767574800,
+				"restoredStepIndex": 2
+			},
+			"post": {
+				"instant": 1767574800,
+				"stepIndex": 2,
+				"levelCount": 1,
+				"level": {
+					"id": "avr-craft-1",
+					"symbol": "XAUUSD",
+					"price": 2700,
+					"note": "crafted",
+					"creationInstant": 1767574800,
+					"creationStep": 2
+				}
+			},
+			"storedBytesAfterEqualCrafted": true
+		},
+		{
+			"row": "P1-5b reset() unawaited — live unchanged while removal pending; ok clears",
+			"pre": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"stored": {
+					"instant": 1767571200,
+					"stepIndex": 1,
+					"playing": false,
+					"levelCount": 0,
+					"returnedToCurrent": false
+				}
+			},
+			"syncDuringPending": {
+				"instant": 1767571200,
+				"stepIndex": 1,
+				"stored": {
+					"instant": 1767571200,
+					"stepIndex": 1,
+					"playing": false,
+					"levelCount": 0,
+					"returnedToCurrent": false
+				}
+			},
+			"liveUnchangedWhilePending": true,
+			"storedStillPresentWhilePending": true,
+			"outcome": {
+				"ok": true
+			},
+			"post": {
+				"instant": 1767571200,
+				"stepIndex": 0,
+				"stored": null,
+				"levels": 0,
+				"playing": false,
+				"returnedToCurrent": false
+			}
+		}
+	]
+}
