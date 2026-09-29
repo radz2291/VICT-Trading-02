@@ -39,7 +39,9 @@ The app's credibility rests on *honesty of time*: replay is a simulation of the 
   - **(a) `market-time-anchored`** — holds a market-time coordinate. *None exists today* for horizontal levels.
   - **(b) `replay-stamped`** — a drawing created during replay is stamped with the **replay-clock instant at creation**; that stamp is a market-time coordinate by construction, and it is the only provable basis for historical visibility.
   - **(c) `provenance-unknown`** — carries only wall-clock metadata. **All currently persisted levels are class (c)**: `createdAt` is wall-clock and cannot prove a drawing existed at any market time.
-- Honest treatment: a class-(c) drawing displayed during replay must carry an explicit present-day marker (e.g. "added today — not timestamped to market time") and never present itself as historical; every such display is recorded on the evidence channel. The kit exposes `visibilityAt(marketInstant)` predicates per class; consumers invent no provenance of their own.
+- Honest treatment (**AMENDED by D-003, owner 2026-09-29** — class-(c) drawings are **HIDDEN in blind replay**; the earlier present-day-marker wording, retained below, is superseded because a marker cannot keep a drawing's **price level** from revealing future information):
+  - **Current rule:** class-(c) drawings are withheld from the replay view entirely. Replay-stamped drawings are visible only at or after their creation step. Current-mode behavior is unchanged. The kit exposes `visibilityAt(marketInstant)` predicates per class; consumers invent no provenance classes of their own.
+  - **Superseded history (retained verbatim):** ~"a class-(c) drawing displayed during replay must carry an explicit present-day marker (e.g. 'added today — not timestamped to market time') and never present itself as historical; every such display is recorded on the evidence channel."~
 - Back-leak rule: a class-(b) drawing created at step N must not be visible at steps < N.
 
 ### R4 — Dependency direction (shown, not implied)

@@ -19,7 +19,7 @@ Implement the accepted G0–G7 program defined in `docs/STAGES.md` to the extent
 **Stage scopes accepted by this handoff:**
 
 - **G0 (technology intake and selection proof) — PRE-AUTHORIZED** upon owner acceptance of this handoff. Scope: repository/package bootstrap needed for a minimal verification host; chart-candidate comparison on a fixture; simulation-engine evidence review or explicit deferral with a proof task; publication of `docs/evidence/G0/` claim matrix, reproduction steps, and lineage; STATE.md updates. Prohibited: selecting a final chart or engine without the written selection proof; copying old Trading OS code or private VICT source; publishing packages; any account, order, or secret handling.
-- **G1–G7 — NOT YET AUTHORIZED.** Each requires its own stage handoff record appended to this file (or a successor), with scope, prohibited paths, expected demo, and stop conditions, accepted by the owner before work begins. A new or changed scope requires its own acceptance; the builder must not self-extend.
+- **G1–G7 — each requires its own stage handoff record accepted by the owner before work begins.** G1 (2026-09-28) and G1-PKG (2026-09-29) were subsequently accepted and closed; **G2 was accepted on 2026-09-29 against pinned SHA `c9b780d…` (see its record below; amendments in D-003)**. A new or changed scope requires its own acceptance; the builder must not self-extend.
 
 **Authority boundaries (all stages):** no live account connection, no real orders, no publishing of packages, no edits outside the authorized remote, no secrets in source/fixtures/logs/screenshots. Where the verified Builder Kit requires accepted-scope records tied to exact handoff bytes, obtain and preserve them; never self-accept.
 
@@ -41,9 +41,9 @@ Owner instruction (2026-09-29, baseline `1596c4c`): superseding decision D-001. 
 **Correction in progress (owner-directed, 2026-09-29, baseline `964038b…`):** bounded G1-PKG correction — (1) note preservation on price-only edits + documented explicit clear (`note: ''`); (2) persistence-contract resolution: intrinsic read-acknowledgment gate (`acknowledgeRead`, code `READ_NOT_ACKNOWLEDGED`) on top of the unchanged adapter-side read-gate; (3) status/npm-availability wording fixes. No commit/push/publish by the correcting builder; final gate-record update belongs to the fresh verifier + orchestrator.
 > **Correction verified (fresh verifier, 2026-09-29):** all claims proven at `f148fff…` per `docs/evidence/G1-PKG/verifier-report-correction.md`; gate verdict unchanged (PASS WITH NON-BLOCKING FINDINGS).
 
-## Stage handoff record — G2 — **DRAFT, NOT ACCEPTED, GRANTS NO AUTHORITY** — blind replay in the workspace
+## Stage handoff record — G2 (ACCEPTED 2026-09-29 by owner against pinned SHA `c9b780d5f127998ae82948a0e2f517dfb89294b2`, with two amendments recorded in DECISIONS.md D-003) — blind replay in the workspace
 
-> **This record is a PREPARED DRAFT for owner review only. The owner's acceptance of D-001/D-002 (boundaries and architectural direction) does NOT authorize G2 implementation. No replay code, no kit package, nothing is built until the owner accepts a final record at a pinned SHA.**
+> **This record was PREPARED AS A DRAFT and is now ACCEPTED** — owner instruction 2026-09-29 (against pinned SHA `c9b780d5f127998ae82948a0e2f517dfb89294b2`), with two corrections applied at acceptance and recorded as **D-003**: (1) poison-future criterion corrected to the both-directions form in pass criterion 2; (2) R3 amended — provenance-unknown drawings are hidden in blind replay (the present-day-label treatment recorded in D-002 is superseded; its original wording is preserved in DECISIONS.md and the boundary proposal as superseded history).
 
 **Owner direction feeding this draft:** D-001 (Trading Kit boundary precedes replay) + D-002 (accepted choices: `@vict-trading/trading-kit`; independence from chart-workspace; app composes both; app-supplied session persistence port; smallest useful clock/data/replay/evidence contracts; the four precision rules R1–R4 are normative).
 
@@ -62,9 +62,9 @@ Owner instruction (2026-09-29, baseline `1596c4c`): superseding decision D-001. 
 ### Pass criteria (candidate only if accepted)
 
 1. No future data leaks through **any** channel: chart series content, larger-timeframe aggregates, unfinished bars, drawings/annotations created later, derived calculation output, current quote, or any future-derived value. Detection is by **programmatic assertion** on the kit's requested/served records plus content comparison, not UI observation alone.
-2. A result computed over the visible slice must **change** if poison future bars changed — proven by mutating poison bar values and showing historical-visible results are unaffected (no future dependency).
+2. **Poison-future proof, both directions (amended at acceptance, D-003):** (a) **Potency** — changing only bars after the replay clock MUST change a deliberately naive full-history calculation (e.g. a naive maximum or simple moving average computed over the entire fixture changes when poison bar values change); (b) **Isolation** — every result derived from the historical-visible slice (chart series content in replay mode, aggregates, indicator/readout values) remains IDENTICAL across that poison change. (a) without (b) is a leak and fails; (b) without (a) means the fixture was not actually poison and the proof is void — retry with a stronger poison until both hold.
 3. Unfinished larger-timeframe bars never returned (R2); missing intervals explicit, never bridged (R2).
-4. Drawing provenance honest per R3; a drawing created at step N invisible at steps < N; class-(c) drawings carry present-day markers when shown.
+4. Drawing provenance honest per the amended R3 (D-003): in replay, existing drawings with **unknown historical provenance are HIDDEN** (not displayed with a present-day label — a label cannot keep the drawing's price level from revealing future information); replay-stamped drawings visible only at or after their creation step; a drawing created at step N invisible at steps < N. Current-mode (non-replay) drawing behavior is unchanged.
 5. Session restore/reset exact and replayable by recorded rules; reload matches the recorded rules; return-to-current works and is labelled.
 6. Replay vs current unmistakably labelled; replay controls cannot reach a current-market endpoint.
 7. Kit builds and packs independently; external-consumer proof passes; import audit both directions (no kit↔chart-workspace, no app imports).
