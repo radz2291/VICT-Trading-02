@@ -99,3 +99,24 @@ One line: **Repository bootstrapped and governed; handoff accepted; G0 platform 
 
 ### 5. Summary
 **Direction corrected by owner decision (D-001) and proven in practice: the Chart Workspace now exists as an independently installable versioned package whose artifact a consumer outside the monorepo installs and uses — with the read-gate invariants, W1 behavior, and honest failure states preserved. Replay boundary design is the next decision, awaiting the owner.**
+
+## Session 2026-09-29 — D-003 + G2 executed, verified, closed
+
+### 1. Autonomous decisions
+| Decision | Why | Why no founding intent |
+|---|---|---|
+| Two .tgz pack artifacts committed in-repo | Byte-identity checking by verifier; local pack only (not publishing) | Artifact identity proof aid; no publish |
+| Verdict findings F-1/F-2/F-3 recorded minor, not repaired at G2 | Owner instruction: record verdict → push → stop for review; remediation is owner's call | Bounded-run discipline |
+
+### 2. Owner decisions recorded
+- D-003 (2026-09-29, against `c9b780d`): G2 draft ACCEPTED with amendments — (1) poison-future both directions; (2) provenance-unknown drawings HIDDEN in replay (marker route superseded, retained as history).
+
+### 3. Deferred to owner/next
+- F-1/F-2/F-3 minor findings (remediation timing = owner call; F-2 is the honesty-relevant one).
+- G3 stage record + engine LGPL decision; publication timing.
+
+### 4. Progress
+- G2 complete — PASS WITH NON-BLOCKING FINDINGS at `5ebe4ee`; lineage `c9b780d (D-002+draft) → f68c1ae → 113a04e → 429e395 (authority) → 5ebe4ee (G2 candidate) → verifier evidence → STATE verdict`. Trading Kit is real: zero-dep kit, both-directions poison proof, kit↔chart independence, external consumer proof.
+
+### 5. Summary
+**G2 delivered blind replay under the amended criteria with an independently reproduced verdict. Replay never lets the trader see what they could not have known — and the fixture proves it would be caught if it tried.**
