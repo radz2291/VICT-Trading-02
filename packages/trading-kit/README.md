@@ -12,7 +12,7 @@ Headless **replay capability** for a market-data workspace: a market-time replay
 ## Precision rules implemented
 
 - **R1 — capped queries.** `dataSession.bars()` is the ONLY bar-returning API. A slice always ends at `min(requestedUntil, clock.now())`; the clock itself can never exceed the configured horizon (`now()` caps, records `requested` vs `applied`). Every query records `{requestedUntil, servedUntil, capped, count}` so evidence can prove capping programmatically.
-- **R2 — availability (amended: contested-case ruling, normative).** A base bar is available iff its close time ≤ clock now. An aggregated larger-timeframe bar is returned ONLY when EVERY **required constituent slot** of its bucket (`bucketStart + k·baseSeconds`, `k = 0..factor-1`) is present in the source AND available — read as all REQUIRED slots present-and-available. A bucket missing any slot (unfinished **or** a source gap) is never returned and never fabricated from partials. Gaps are computed ONLY over source bars with close ≤ the clock instant; a gap whose resumption is not yet within the clock's availability is reported **open-ended** (`to: null`) — a public replay query never reveals a future resumption time. `to` is a number only when the resumption bar is already within the clock's availability. Gaps are **never bridged**, and none are invented beyond known source extent. The **availability edge** is reported uniformly as a trailing open-ended interval (`from` = last available close, `to: null`): from the clock's viewpoint there is no available data beyond it, and whether it is a source gap or ordinary unfinished future must not be revealed before the clock reaches it (that uniformity is what makes public outputs identical under post-clock source mutations).
+- **R2 — availability (amended: contested-case ruling, normative).** A base bar is available iff its close time ≤ clock now. An aggregated larger-timeframe bar is returned ONLY when EVERY **required constituent slot** of its bucket (`bucketStart + k·baseSeconds`, `k = 0..factor-1`) is present in the source AND available — read as all REQUIRED slots present-and-available. A bucket missing any slot (unfinished **or** a source gap) is never returned and never fabricated from partials. Gaps are computed ONLY from clock-visible information: interior gaps are detected between consecutive AVAILABLE bars (both endpoints clock-visible), `to` is a number only when the resumption bar's close is already within the clock's availability; otherwise the gap is **open-ended** (`to: null`) — a public replay query never reveals a future resumption time. Gaps are **never bridged**, and none are invented beyond known source extent. The **availability edge** (owner correction-cycle-2 ruling, normative): whenever the last available close precedes the clock, it is reported uniformly as a trailing open-ended interval (`from` = last available close, `to: null`) — availability is computed ONLY from clock-visible information (the available prefix plus the clock itself; NO lookahead into the source beyond that prefix, no existence check on post-clock source bars), so public outputs are identical whether post-clock source bars exist, differ, or were wholesale deleted. When the last available close equals the clock (availability current through now), NO edge entry is emitted — the not-yet-closed next slot is undelivered future, honestly invisible.
 - **R3 — provenance (as amended by D-003).** `provenance-unknown` drawings are **HIDDEN in replay**; `replay-stamped` drawings are visible iff `creationStep ≤ currentStep` (and `creationInstant ≤ now`); `market-time-anchored` drawings are visible. The kit defines the rules; the consumer decides display.
 - **R4 — dependency direction.** The kit depends on nothing; persistence is an app-supplied `SessionPersistence` port with a **read-before-write acknowledgment gate** (`READ_NOT_ACKNOWLEDGED` until a successful `read()` result is acknowledged).
 
@@ -52,10 +52,19 @@ const data = createDataSession({
 	rules: { symbol: 'XAUUSD', baseTimeframe: '15m' }
 });
 
-// your own storage — the kit never touches it (read-before-write gate!)
+// your own storage — the kit never touches it (read-before-write gate!).
+// The kit is TRANSACTIONAL: the next-state record is written FIRST and live
+// state commits only on a successful write. A failing port (ok:false
+// resolved as WRITE_REFUSED, or throw, resolved as PORT_ERROR) leaves the
+// session state completely unchanged:
+let failWrites = false;
 const persistence = {
 	read: () => JSON.parse(localStorage.getItem('my.replay.v1') ?? 'null'),
-	write: async (record) => { localStorage.setItem('my.replay.v1', JSON.stringify(record)); return { ok: true }; },
+	write: async (record) => {
+		if (failWrites) return { ok: false, code: 'STORAGE_VERIFY_FAILED', message: 'write verification failed' };
+		localStorage.setItem('my.replay.v1', JSON.stringify(record));
+		return { ok: true };
+	},
 	remove: () => localStorage.removeItem('my.replay.v1')
 };
 const session = new ReplaySession({ clock, persistence });
@@ -75,7 +84,17 @@ console.log(capped.servedUntil, capped.capped);
 const over = data.bars({ until: capped.servedUntil + 86_400 });
 console.log(over.requestedUntil > over.servedUntil, data.queryRecords().at(-1));
 
-await session.step(900); // one 15m bar; capped at the horizon automatically
+failWrites = true;
+{
+	// refused write: truthful failure, ZERO live-state change (clock instant,
+	// step index, drawings, playing all identical before/after), stored bytes
+	// untouched. A subsequent healthy write works (recovery):
+	const r = await session.step(900);
+	if (!r.ok && r.code === 'WRITE_REFUSED')
+		showUser('step failed: next state could not be persisted — nothing changed');
+}
+failWrites = false;
+await session.step(900); // works again; state was never corrupted
 await session.createLevel(2650.5, 'support'); // replay-stamped, visible only at/after this step
 
 const verdict = visibilityInReplay({ id: 'x', provenance: 'provenance-unknown' }, clock);

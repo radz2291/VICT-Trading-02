@@ -1,0 +1,449 @@
+{
+  "clocks": [
+    {
+      "clock": "2026-01-05T04:15:00Z",
+      "bars15": true,
+      "bars1h": true,
+      "bars4h": true,
+      "availabilityAt": true,
+      "queryRecordsStructure": true,
+      "clockRecords": true,
+      "stats": true,
+      "availabilityAtMatchesOracle": true,
+      "ok": true,
+      "availabilityA": [],
+      "counts": {
+        "m15": 17
+      }
+    },
+    {
+      "clock": "2026-01-05T04:14:30Z",
+      "bars15": true,
+      "bars1h": true,
+      "bars4h": true,
+      "availabilityAt": true,
+      "queryRecordsStructure": true,
+      "clockRecords": true,
+      "stats": true,
+      "availabilityAtMatchesOracle": true,
+      "ok": true,
+      "availabilityA": [
+        {
+          "status": "missing",
+          "from": 1767585600,
+          "to": null
+        }
+      ],
+      "counts": {
+        "m15": 16
+      }
+    },
+    {
+      "clock": "2026-01-05T05:00:00Z",
+      "bars15": true,
+      "bars1h": true,
+      "bars4h": true,
+      "availabilityAt": true,
+      "queryRecordsStructure": true,
+      "clockRecords": true,
+      "stats": true,
+      "availabilityAtMatchesOracle": true,
+      "ok": true,
+      "availabilityA": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        }
+      ],
+      "counts": {
+        "m15": 19
+      }
+    },
+    {
+      "clock": "2026-01-05T06:00:00Z",
+      "bars15": true,
+      "bars1h": true,
+      "bars4h": true,
+      "availabilityAt": true,
+      "queryRecordsStructure": true,
+      "clockRecords": true,
+      "stats": true,
+      "availabilityAtMatchesOracle": true,
+      "ok": true,
+      "availabilityA": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        }
+      ],
+      "counts": {
+        "m15": 23
+      }
+    },
+    {
+      "clock": "2026-01-05T07:15:00Z",
+      "bars15": true,
+      "bars1h": true,
+      "bars4h": true,
+      "availabilityAt": true,
+      "queryRecordsStructure": true,
+      "clockRecords": true,
+      "stats": true,
+      "availabilityAtMatchesOracle": true,
+      "ok": true,
+      "availabilityA": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        }
+      ],
+      "counts": {
+        "m15": 28
+      }
+    },
+    {
+      "clock": "2026-01-08T06:00:00Z",
+      "bars15": true,
+      "bars1h": true,
+      "bars4h": true,
+      "availabilityAt": true,
+      "queryRecordsStructure": true,
+      "clockRecords": true,
+      "stats": true,
+      "availabilityAtMatchesOracle": true,
+      "ok": true,
+      "availabilityA": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        },
+        {
+          "status": "missing",
+          "from": 1767841200,
+          "to": 1767848400
+        }
+      ],
+      "counts": {
+        "m15": 303
+      }
+    },
+    {
+      "clock": "2026-02-02T21:45:00Z",
+      "bars15": true,
+      "bars1h": true,
+      "bars4h": true,
+      "availabilityAt": true,
+      "queryRecordsStructure": true,
+      "clockRecords": true,
+      "stats": true,
+      "availabilityAtMatchesOracle": true,
+      "ok": true,
+      "availabilityA": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        },
+        {
+          "status": "missing",
+          "from": 1767841200,
+          "to": 1767848400
+        },
+        {
+          "status": "missing",
+          "from": 1768003200,
+          "to": 1768176000
+        },
+        {
+          "status": "missing",
+          "from": 1768608000,
+          "to": 1768780800
+        },
+        {
+          "status": "missing",
+          "from": 1769212800,
+          "to": 1769385600
+        },
+        {
+          "status": "missing",
+          "from": 1769817600,
+          "to": 1769990400
+        }
+      ],
+      "counts": {
+        "m15": 1998
+      }
+    },
+    {
+      "clock": "2026-02-02T21:30:00.500Z",
+      "bars15": true,
+      "bars1h": true,
+      "bars4h": true,
+      "availabilityAt": true,
+      "queryRecordsStructure": true,
+      "clockRecords": true,
+      "stats": true,
+      "availabilityAtMatchesOracle": true,
+      "ok": true,
+      "availabilityA": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        },
+        {
+          "status": "missing",
+          "from": 1767841200,
+          "to": 1767848400
+        },
+        {
+          "status": "missing",
+          "from": 1768003200,
+          "to": 1768176000
+        },
+        {
+          "status": "missing",
+          "from": 1768608000,
+          "to": 1768780800
+        },
+        {
+          "status": "missing",
+          "from": 1769212800,
+          "to": 1769385600
+        },
+        {
+          "status": "missing",
+          "from": 1769817600,
+          "to": 1769990400
+        },
+        {
+          "status": "missing",
+          "from": 1770067800,
+          "to": null
+        }
+      ],
+      "counts": {
+        "m15": 1997
+      }
+    }
+  ],
+  "identity": true,
+  "potency": {
+    "note": "naive FULL-HISTORY max-high and SMA20 over the identical-available pair: they DIFFER — the compare is over a real future-existence difference",
+    "maxNaive_full": 3112.5,
+    "maxNaive_prefixAtHorizon": 2657.81,
+    "maxDiffers": true,
+    "smaNaive_full": 3107.25,
+    "smaNaive_prefixAtHorizon": 2647.537,
+    "smaDiffers": true,
+    "barCountDiffers": 25,
+    "maxNaive_fullAt0600": 3112.5,
+    "maxNaive_prefix0600": 2650.34,
+    "smaNaive_prefix0600": 2646.9715
+  },
+  "mutationSweep": [
+    {
+      "name": "remove resumption 04:30Z",
+      "clock": "2026-01-05T04:15:00Z",
+      "identityBars15": true,
+      "identityBars1h": true,
+      "identityBars4h": true,
+      "identityAvailabilityAt": true,
+      "identityQueryRecords": true,
+      "identityStats": true,
+      "interiorGapStillReported": [],
+      "ok": true
+    },
+    {
+      "name": "remove resumption 04:30Z",
+      "clock": "2026-01-05T05:00:00Z",
+      "notApplicable": true,
+      "note": "mutation reaches the clock-visible region at this clock — out of the future-only sweep contract"
+    },
+    {
+      "name": "remove resumption 04:30Z",
+      "clock": "2026-01-05T07:15:00Z",
+      "notApplicable": true,
+      "note": "mutation reaches the clock-visible region at this clock — out of the future-only sweep contract"
+    },
+    {
+      "name": "remove resumption 04:30Z",
+      "clock": "2026-02-02T21:45:00Z",
+      "notApplicable": true,
+      "note": "mutation reaches the clock-visible region at this clock — out of the future-only sweep contract"
+    },
+    {
+      "name": "add bar inside gap @04:15Z",
+      "clock": "2026-01-05T04:15:00Z",
+      "identityBars15": true,
+      "identityBars1h": true,
+      "identityBars4h": true,
+      "identityAvailabilityAt": true,
+      "identityQueryRecords": true,
+      "identityStats": true,
+      "interiorGapStillReported": [],
+      "ok": true
+    },
+    {
+      "name": "add bar inside gap @04:15Z",
+      "clock": "2026-01-05T05:00:00Z",
+      "notApplicable": true,
+      "note": "mutation reaches the clock-visible region at this clock — out of the future-only sweep contract"
+    },
+    {
+      "name": "add bar inside gap @04:15Z",
+      "clock": "2026-01-05T07:15:00Z",
+      "notApplicable": true,
+      "note": "mutation reaches the clock-visible region at this clock — out of the future-only sweep contract"
+    },
+    {
+      "name": "add bar inside gap @04:15Z",
+      "clock": "2026-02-02T21:45:00Z",
+      "notApplicable": true,
+      "note": "mutation reaches the clock-visible region at this clock — out of the future-only sweep contract"
+    },
+    {
+      "name": "remove 04:30Z+04:45Z",
+      "clock": "2026-01-05T04:15:00Z",
+      "identityBars15": true,
+      "identityBars1h": true,
+      "identityBars4h": true,
+      "identityAvailabilityAt": true,
+      "identityQueryRecords": true,
+      "identityStats": true,
+      "interiorGapStillReported": [],
+      "ok": true
+    },
+    {
+      "name": "remove 04:30Z+04:45Z",
+      "clock": "2026-01-05T05:00:00Z",
+      "notApplicable": true,
+      "note": "mutation reaches the clock-visible region at this clock — out of the future-only sweep contract"
+    },
+    {
+      "name": "remove 04:30Z+04:45Z",
+      "clock": "2026-01-05T07:15:00Z",
+      "notApplicable": true,
+      "note": "mutation reaches the clock-visible region at this clock — out of the future-only sweep contract"
+    },
+    {
+      "name": "remove 04:30Z+04:45Z",
+      "clock": "2026-02-02T21:45:00Z",
+      "notApplicable": true,
+      "note": "mutation reaches the clock-visible region at this clock — out of the future-only sweep contract"
+    },
+    {
+      "name": "change values of bars with close > clock",
+      "clock": "2026-01-05T04:15:00Z",
+      "identityBars15": true,
+      "identityBars1h": true,
+      "identityBars4h": true,
+      "identityAvailabilityAt": true,
+      "identityQueryRecords": true,
+      "identityStats": true,
+      "interiorGapStillReported": [],
+      "ok": true
+    },
+    {
+      "name": "change values of bars with close > clock",
+      "clock": "2026-01-05T05:00:00Z",
+      "identityBars15": true,
+      "identityBars1h": true,
+      "identityBars4h": true,
+      "identityAvailabilityAt": true,
+      "identityQueryRecords": true,
+      "identityStats": true,
+      "interiorGapStillReported": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        }
+      ],
+      "ok": true
+    },
+    {
+      "name": "change values of bars with close > clock",
+      "clock": "2026-01-05T07:15:00Z",
+      "identityBars15": true,
+      "identityBars1h": true,
+      "identityBars4h": true,
+      "identityAvailabilityAt": true,
+      "identityQueryRecords": true,
+      "identityStats": true,
+      "interiorGapStillReported": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        }
+      ],
+      "ok": true
+    },
+    {
+      "name": "change values of bars with close > clock",
+      "clock": "2026-02-02T21:45:00Z",
+      "identityBars15": true,
+      "identityBars1h": true,
+      "identityBars4h": true,
+      "identityAvailabilityAt": true,
+      "identityQueryRecords": true,
+      "identityStats": true,
+      "interiorGapStillReported": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        }
+      ],
+      "ok": true
+    },
+    {
+      "name": "remove far-future 07:00Z+07:15Z",
+      "clock": "2026-01-05T04:15:00Z",
+      "identityBars15": true,
+      "identityBars1h": true,
+      "identityBars4h": true,
+      "identityAvailabilityAt": true,
+      "identityQueryRecords": true,
+      "identityStats": true,
+      "interiorGapStillReported": [],
+      "ok": true
+    },
+    {
+      "name": "remove far-future 07:00Z+07:15Z",
+      "clock": "2026-01-05T05:00:00Z",
+      "identityBars15": true,
+      "identityBars1h": true,
+      "identityBars4h": true,
+      "identityAvailabilityAt": true,
+      "identityQueryRecords": true,
+      "identityStats": true,
+      "interiorGapStillReported": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        }
+      ],
+      "ok": true
+    },
+    {
+      "name": "remove far-future 07:00Z+07:15Z",
+      "clock": "2026-01-05T07:15:00Z",
+      "notApplicable": true,
+      "note": "mutation reaches the clock-visible region at this clock — out of the future-only sweep contract"
+    },
+    {
+      "name": "remove far-future 07:00Z+07:15Z",
+      "clock": "2026-02-02T21:45:00Z",
+      "notApplicable": true,
+      "note": "mutation reaches the clock-visible region at this clock — out of the future-only sweep contract"
+    }
+  ],
+  "sweepAllOk": true
+}

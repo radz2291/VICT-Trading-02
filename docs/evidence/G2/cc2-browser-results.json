@@ -1,0 +1,30 @@
+{
+  "steps": {
+    "load": {
+      "ok": true,
+      "hasSelect": false
+    },
+    "replay-enter-step2": {
+      "ok": false,
+      "error": "Error: No element found for selector: [data-testid=\"sel-replay-start\"]"
+    },
+    "failing-write-step": {
+      "ok": false,
+      "error": "Error: No element found for selector: [data-testid=\"btn-replay-step\"]"
+    },
+    "frv2-corrupt-at-start": {
+      "ok": false,
+      "error": "Error: No element found for selector: [data-testid=\"btn-return-current\"]"
+    },
+    "recovery-then-return": {
+      "ok": false,
+      "error": "Error: synthetic quota"
+    }
+  },
+  "console": [
+    {
+      "level": "error",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    }
+  ]
+}

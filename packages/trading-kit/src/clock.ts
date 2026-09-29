@@ -16,9 +16,24 @@ export interface ReplayClockConfig {
 	start: number;
 }
 
+/** Opaque snapshot of the clock's committed state (transactional support:
+ * lets the session attempt a clock mutation, persist the resulting state,
+ * and restore the snapshot verbatim if the persistence port refuses or
+ * fails — including truncating the operation log). */
+export interface ClockSnapshot {
+	/** current replay instant at snapshot time (unix seconds) */
+	instant: number;
+	/** number of recorded operations at snapshot time */
+	opCount: number;
+}
+
 export interface ReplayClock {
 	/** current replay instant — guaranteed ≤ horizon */
 	now(): number;
+	/** snapshot the committed instant + operation-log length (transactional writes) */
+	snapshot(): ClockSnapshot;
+	/** restore a snapshot verbatim (instant + truncate the operation log) */
+	restoreSnapshot(s: ClockSnapshot): void;
 	/** advance by a caller-chosen step (seconds); capped at the horizon */
 	advance(stepSeconds: number): number;
 	/** jump the frame to an absolute instant; capped at the horizon */
@@ -55,6 +70,11 @@ export function createReplayClock(config: ReplayClockConfig): ReplayClock {
 
 	return {
 		now: () => instant,
+		snapshot: () => ({ instant, opCount: records.length }),
+		restoreSnapshot: (s) => {
+			instant = s.instant;
+			records.length = s.opCount;
+		},
 		advance: (stepSeconds: number) => apply('advance', stepSeconds),
 		setFrame: (t: number) => apply('setFrame', t),
 		stepIndex: () => records.length,

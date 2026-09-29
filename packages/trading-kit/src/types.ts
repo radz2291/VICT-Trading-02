@@ -68,10 +68,19 @@ export interface QueryRecord {
 
 /**
  * An explicit unavailability interval (R2 — gaps are NEVER bridged).
- * Future-honesty: gaps are computed only over source bars with close ≤ the
- * clock instant. `to` is a number ONLY when the resumption bar is already
- * within the clock's availability; otherwise the gap is OPEN-ENDED
- * (`to: null`) — a public replay query never reveals a future resumption time.
+ * Future-honesty (owner correction-cycle-2 ruling, normative): availability
+ * is computed ONLY from clock-visible information — the available prefix
+ * (close ≤ clock) plus the clock-visible bound (now/horizon). Interior gaps
+ * are detected between consecutive AVAILABLE bars; `to` is a number ONLY
+ * when the resumption bar's close is already within the clock's availability;
+ * otherwise the gap is OPEN-ENDED (`to: null`). The availability edge is
+ * emitted uniformly as a trailing open-ended interval (`from` = last
+ * available close, `to: null`) whenever that close precedes the clock —
+ * NO lookahead into the source beyond the available prefix, ever — so public
+ * outputs cannot change when post-clock source bars are added or removed.
+ * No entry is emitted when availability is current through the clock
+ * (lastAvailableClose === now): the not-yet-closed next slot is undelivered
+ * future, honestly invisible.
  */
 export interface MissingInterval {
 	status: 'missing';
@@ -106,6 +115,11 @@ export interface ProvenancedDrawing {
  * Read-before-write acknowledgment (chart-workspace pattern): the session
  * refuses persistence mutations with READ_NOT_ACKNOWLEDGED until a
  * successful read() result has been acknowledged via acknowledgeState().
+ * The kit is transactional on top of this port: it persists the NEXT-state
+ * record FIRST and commits its live state only after a successful write —
+ * a write() that resolves {ok:false} (surfaced as code WRITE_REFUSED) or
+ * throws (code PORT_ERROR) leaves the live session state completely
+ * unchanged, so ports may fail without corrupting the session.
  */
 export interface SessionPersistence {
 	/** Full read of the stored session record. THROW on failure. */

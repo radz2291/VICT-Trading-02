@@ -9,8 +9,13 @@ import type { ReplayClock } from './clock.js';
  *      bypass the cap: `bars` is the only bar-returning method.
  *  R2: a base bar is available iff close ≤ now. An aggregated (HTF) bar is
  *      returned only when ALL its constituent base bars are available — no
- *      unfinished-bar preview, ever. Missing intervals are reported as
- *      explicit {status:'missing', from, to} records and NEVER bridged.
+ *      unfinished-bar preview, ever. Availability is computed ONLY from
+ *      clock-visible information (the available prefix plus the clock
+ *      itself): interior gaps that resume within the clock are reported as
+ *      {status:'missing', from, to}; every later region is open-ended
+ *      ({from, to: null}) with NO lookahead into the source beyond the
+ *      available prefix — public outputs cannot change when post-clock
+ *      source bars are added or removed. Gaps are NEVER bridged.
  *
  * The consumer supplies the source (base-granularity bars) and the
  * instrument/timeframe rules; the kit fetches nothing.
@@ -168,15 +173,16 @@ export function createDataSession(config: DataSessionConfig): DataSession {
 		availabilityAt(t) {
 			const at = Math.min(t ?? clock.now(), clock.now());
 			const missing: MissingInterval[] = [];
-			// Gaps are computed ONLY over source bars whose close ≤ `at` (the
-			// historical-visible slice). A public replay query must never reveal
-			// a FUTURE resumption instant (contested-case ruling, normative):
-			// a gap whose resumption bar is not yet within the clock's
-			// availability is reported OPEN-ENDED (`to: null`). `to` is a number
-			// only when the resumption bar's close is already ≤ `at`. Gaps are
-			// detected between consecutive AVAILABLE bars; a gap extending past
-			// the clock's end / horizon stays open-ended — no gaps are invented
-			// beyond known source extent.
+			// Gaps are computed ONLY from clock-visible information (owner
+			// correction-cycle-2 ruling, normative): the available prefix (close
+			// ≤ `at`) plus the clock-visible bound `at` itself. A public replay
+			// query must never reveal a FUTURE resumption instant, and must never
+			// change when post-clock source bars change: interior gaps are
+			// detected between consecutive AVAILABLE bars (both endpoints
+			// clock-visible), `to` is a number only when the resumption bar's
+			// close is already ≤ `at`, and a gap whose resumption is not yet
+			// within the clock's availability is OPEN-ENDED (`to: null`). See the
+			// availability-edge block below for the edge rule.
 			const avail = availableBase(at);
 			for (let i = 1; i < avail.length; i++) {
 				const prev = avail[i - 1];
@@ -186,24 +192,24 @@ export function createDataSession(config: DataSessionConfig): DataSession {
 					missing.push({ status: 'missing', from: gapFrom, to: cur.time });
 				}
 			}
-			// Trailing open-ended gap: the last AVAILABLE bar is followed by a
-			// further SOURCE bar that is not yet available (its close lies
-			// beyond the clock). The resumption is not within the clock's
-			// availability → report OPEN-ENDED; never name the future instant.
+			// Availability edge (owner correction-cycle-2 ruling, normative):
+			// availability is computed ONLY from clock-visible information — the
+			// available prefix (close ≤ `at`) plus the clock-visible bound (`at`)
+			// itself. Whenever the last available close precedes the clock, the
+			// edge is reported as an open-ended interval {from: lastAvailableClose,
+			// to: null}: from the clock's viewpoint there is no available data
+			// known beyond it (whether that is a source gap or ordinary
+			// not-yet-delivered future is honestly invisible). There is NO
+			// lookahead into the source beyond `avail`, ever — no existence check
+			// on post-clock source bars — so public outputs cannot change when
+			// source bars after the clock are added, removed, or wholesale
+			// deleted. When lastAvailableClose === `at` (availability is current
+			// through the clock), NO edge entry is emitted: the not-yet-closed
+			// next slot is undelivered future, honestly invisible.
 			if (avail.length > 0) {
-				const last = avail[avail.length - 1];
-				let nextSource: Bar | null = null;
-				for (const b of base) {
-					if (b.time > last.time) {
-						nextSource = b;
-						break;
-					}
-				}
-				if (nextSource) {
-					const gapFrom = last.time + baseSeconds;
-					if (nextSource.time > gapFrom || nextSource.time + baseSeconds > at) {
-						missing.push({ status: 'missing', from: gapFrom, to: null });
-					}
+				const lastClose = avail[avail.length - 1].time + baseSeconds;
+				if (lastClose < at) {
+					missing.push({ status: 'missing', from: lastClose, to: null });
 				}
 			}
 			return missing;

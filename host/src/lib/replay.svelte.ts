@@ -109,10 +109,14 @@ export function createReplayState() {
 	function refused(action: string, r: { code?: string; message?: string }): void {
 		if (r.code === 'READ_FAILED') status = action + ' unavailable: storage read failed';
 		else if (r.code === 'READ_NOT_ACKNOWLEDGED') status = action + ' unavailable: stored session has not been read successfully';
-		else if (r.code === 'STORAGE_VERIFY_FAILED' || r.code === 'PORT_ERROR') status = action + ' failed: storage write could not be verified — stored bytes restored';
+		else if (r.code === 'WRITE_REFUSED') status = action + ' failed: storage write refused — session state unchanged (nothing was advanced or overwritten)';
+		else if (r.code === 'STORAGE_VERIFY_FAILED' || r.code === 'PORT_ERROR') status = action + ' failed: storage write could not be completed — no state change';
 		else status = action + ' refused: ' + r.code + ': ' + r.message;
 		statusFailed = true;
 	}
+	// The kit is transactional (correction-cycle-2): a refused or thrown write
+// leaves live state unchanged (clock instant, step, drawings, playing), so
+// the pre-refusal UI state stays truthful and no refresh is needed.
 	function okStatus(text: string): void {
 		status = text;
 		statusFailed = false;

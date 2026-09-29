@@ -11,7 +11,7 @@
  * storage, and never consults the wall clock for market-time decisions.
  */
 export { createReplayClock } from './clock.js';
-export type { ReplayClock, ReplayClockConfig } from './clock.js';
+export type { ReplayClock, ReplayClockConfig, ClockSnapshot } from './clock.js';
 export { createDataSession } from './data.js';
 export type { BarsResult, DataSession, DataSessionConfig } from './data.js';
 export { ReplaySession } from './session.js';

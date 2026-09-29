@@ -402,6 +402,12 @@
 							<button data-testid="btn-replay-reset" onclick={() => void replay.resetSession()}>Reset session</button>
 						</div>
 					{/if}
+					{#if !replay.active && replay.statusFailed}
+						<!-- F-RV-2 fix (correction-cycle-2): refused replay ops while replay
+						is NOT active (corrupt-at-start / never-acknowledged) must render a
+						truthful explanation too — same status surface as in replay mode. -->
+						<p class="hint replay-status failed" data-testid="replay-status" role="alert">{replay.status}</p>
+					{/if}
 					{#if replay.active}
 						<div class="replay-controls" role="group" aria-label="Replay controls">
 							<button data-testid="btn-replay-step" onclick={() => void replay.step()} disabled={replay.now >= replay.horizon}>Step +15m</button>

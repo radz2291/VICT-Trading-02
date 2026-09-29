@@ -6,14 +6,30 @@
  * Read-before-write acknowledgment (chart-workspace pattern): every
  * persistence mutation is refused with READ_NOT_ACKNOWLEDGED until the
  * consumer acknowledges a SUCCESSFUL port read via acknowledgeState().
- * Additionally (contested-case remediation) EVERY persisted mutation
- * re-verifies readability of the stored record before applying: on read
- * failure it is refused with READ_FAILED, stored bytes untouched, live
- * state unchanged — recovery is automatic once a read succeeds again.
- * Every transition is emitted on the evidence channel with the recorded
- * rules. The kit never touches storage itself.
+ * Additionally:
+ *  - per-operation re-verification: EVERY persisted mutation re-reads the
+ *    stored record first; on read failure it is refused with READ_FAILED,
+ *    no write occurs, stored bytes untouched, live state unchanged.
+ *  - TRANSACTIONAL writes (owner correction-cycle-2 ruling): every persisted
+ *    operation computes its NEXT state (clock target via the ReplayClock
+ *    snapshot/restore primitive; levels/playing/returnedToCurrent are plain
+ *    fields), PERSISTS THE NEXT-STATE RECORD FIRST, and only on a successful
+ *    write commits the live state. On a refused or failed write the outcome
+ *    is ok:false WITH a truthful code (WRITE_REFUSED when the port resolves
+ *    ok:false; PORT_ERROR when the port throws), the live state is restored
+ *    verbatim (clock instant, step index, drawings, playing,
+ *    returnedToCurrent — and the clock's operation log), and no stored bytes
+ *    are changed. A subsequent successful write simply works (recovery).
+ *  - restore()'s write-commit is transactional too: the persisted record is
+ *    written FIRST; live state adopts it only on success.
+ *  - reset()'s record REMOVAL is transactional: if the removal fails, live
+ *    state does not change (the session stays active at its prior position).
+ *
+ * Order in every persisted operation: gate → re-verify → compute next state
+ * → persist(next) → commit → emit. Emit reflects COMMITTED state only.
+ * The kit never touches storage itself.
  */
-import type { ReplayClock } from './clock.js';
+import type { ClockSnapshot, ReplayClock } from './clock.js';
 import type {
 	ReplayLevel,
 	ReplaySessionOptions,
@@ -31,6 +47,15 @@ export interface MutationOutcome {
 	ok: boolean;
 	code?: string;
 	message?: string;
+}
+
+/** Live-state snapshot used to make each persisted operation transactional. */
+interface StateSnapshot {
+	clock: ClockSnapshot;
+	levels: ReplayLevel[];
+	playing: boolean;
+	returnedToCurrent: boolean;
+	stepCounter: number;
 }
 
 export class ReplaySession {
@@ -92,23 +117,19 @@ export class ReplaySession {
 	}
 
 	/**
-	 * Per-operation re-verification (contested-case remediation): the
-	 * one-shot construction-time acknowledgment is NOT enough — EVERY
-	 * persisted mutation first re-reads (re-verifies readability of) the
-	 * stored record. On read failure the operation is REFUSED with
-	 * READ_FAILED, no in-memory state changes, no write occurs, and the
-	 * stored bytes are untouched. Recovery: once a successful read
-	 * completes (via this check or an explicit acknowledgeState after a
-	 * successful consumer read), subsequent operations work again —
-	 * acknowledgeState() itself is only required once, at construction.
-	 * Returns the fresh record on success, null is never a failure here.
+	 * Per-operation re-verification: the one-shot construction-time
+	 * acknowledgment is NOT enough — EVERY persisted mutation first re-reads
+	 * (re-verifies readability of) the stored record. On read failure the
+	 * operation is REFUSED with READ_FAILED, no in-memory state changes, no
+	 * write occurs, and the stored bytes are untouched. Recovery: once a
+	 * successful read completes, subsequent operations work again.
 	 */
 	private reverify(): { outcome: MutationOutcome | null; record: SessionRecord | null } {
 		try {
 			const record = this.persistence.read();
 			this.lastRead = record;
 			return { outcome: null, record };
-		} catch (e) {
+		} catch {
 			return {
 				outcome: {
 					ok: false,
@@ -118,6 +139,37 @@ export class ReplaySession {
 				record: null
 			};
 		}
+	}
+
+	// ---- transactional state primitives ---------------------------------
+
+	private snapshotState(): StateSnapshot {
+		return {
+			clock: this.clock.snapshot(),
+			levels: this.levels,
+			playing: this.playing,
+			returnedToCurrent: this.returnedToCurrent,
+			stepCounter: this.stepCounter
+		};
+	}
+
+	private restoreState(snap: StateSnapshot): void {
+		this.clock.restoreSnapshot(snap.clock);
+		this.levels = snap.levels;
+		this.playing = snap.playing;
+		this.returnedToCurrent = snap.returnedToCurrent;
+		this.stepCounter = snap.stepCounter;
+	}
+
+	/** Committed live state, for consumers' before/after evidence checks. */
+	currentState(): { instant: number; stepIndex: number; levels: ReplayLevel[]; playing: boolean; returnedToCurrent: boolean } {
+		return {
+			instant: this.clock.now(),
+			stepIndex: this.stepCounter,
+			levels: this.levelsAll(),
+			playing: this.playing,
+			returnedToCurrent: this.returnedToCurrent
+		};
 	}
 
 	// ---- evidence ----------------------------------------------------------
@@ -133,8 +185,14 @@ export class ReplaySession {
 		});
 	}
 
-	private async persist(): Promise<MutationOutcome> {
-		const record: SessionRecord = {
+	/**
+	 * Persist the NEXT-STATE record. Called BEFORE the live-state commit
+	 * (transactional order). Returns ok:false with a truthful code on any
+	 * port refusal: WRITE_REFUSED when the port resolves {ok:false},
+	 * PORT_ERROR when the port throws.
+	 */
+	private async persist(record?: SessionRecord): Promise<MutationOutcome> {
+		const next: SessionRecord = record ?? {
 			version: 1,
 			symbol: '',
 			instant: this.clock.now(),
@@ -144,8 +202,14 @@ export class ReplaySession {
 			returnedToCurrent: this.returnedToCurrent
 		};
 		try {
-			const r = await this.persistence.write(record);
-			if (r && r.ok === false) return { ok: false, code: r.code, message: r.message };
+			const r = await this.persistence.write(next);
+			if (r && r.ok === false) {
+				return {
+					ok: false,
+					code: 'WRITE_REFUSED',
+					message: `persistence port refused the write: ${r.code ?? 'unnamed'}: ${r.message ?? 'no message'} — no state change`
+				};
+			}
 			return { ok: true };
 		} catch (e) {
 			return { ok: false, code: 'PORT_ERROR', message: e instanceof Error ? e.message : 'port error' };
@@ -163,12 +227,18 @@ export class ReplaySession {
 		if (fromInstant > this.clock.horizon()) {
 			return { ok: false, code: 'PAST_HORIZON', message: 'start instant is beyond the configured horizon' };
 		}
+		const snap = this.snapshotState();
 		this.clock.setFrame(fromInstant);
 		this.levels = [];
 		this.stepCounter = 1; // start counts as the first frame
 		this.returnedToCurrent = false;
+		const p = await this.persist();
+		if (!p.ok) {
+			this.restoreState(snap);
+			return p;
+		}
 		this.emit('start', { fromInstant });
-		return this.persist();
+		return p;
 	}
 
 	/** Advance the clock by one caller-chosen step and persist. */
@@ -177,10 +247,16 @@ export class ReplaySession {
 		if (gated) return gated;
 		const rv = this.reverify();
 		if (rv.outcome) return rv.outcome;
+		const snap = this.snapshotState();
 		this.clock.advance(stepSeconds);
 		this.stepCounter += 1;
+		const p = await this.persist();
+		if (!p.ok) {
+			this.restoreState(snap);
+			return p;
+		}
 		this.emit('step', { stepSeconds, capped: this.clock.now() >= this.clock.horizon() });
-		return this.persist();
+		return p;
 	}
 
 	async play(): Promise<MutationOutcome> {
@@ -188,9 +264,15 @@ export class ReplaySession {
 		if (gated) return gated;
 		const rv = this.reverify();
 		if (rv.outcome) return rv.outcome;
+		const snap = this.snapshotState();
 		this.playing = true;
+		const p = await this.persist();
+		if (!p.ok) {
+			this.restoreState(snap);
+			return p;
+		}
 		this.emit('play');
-		return this.persist();
+		return p;
 	}
 
 	async pause(): Promise<MutationOutcome> {
@@ -198,15 +280,23 @@ export class ReplaySession {
 		if (gated) return gated;
 		const rv = this.reverify();
 		if (rv.outcome) return rv.outcome;
+		const snap = this.snapshotState();
 		this.playing = false;
+		const p = await this.persist();
+		if (!p.ok) {
+			this.restoreState(snap);
+			return p;
+		}
 		this.emit('pause');
-		return this.persist();
+		return p;
 	}
 
 	/**
 	 * Restore the exact persisted session (clock instant + step index +
-	 * stamped drawings). Returns the restored record; ok:false NEVER silently
-	 * overwrites anything.
+	 * stamped drawings). The restored record is PERSISTED FIRST and live
+	 * state adopts it only on a successful write; on refusal/failure the
+	 * live state is untouched. Returns the restored record; ok:false NEVER
+	 * silently overwrites anything.
 	 */
 	async restore(): Promise<MutationOutcome & { record?: SessionRecord | null }> {
 		const gated = this.gate();
@@ -222,33 +312,50 @@ export class ReplaySession {
 			return { ok: false, code: 'SESSION_ENDED', message: 'the persisted session already returned to current' };
 		}
 		this.lastRead = record;
+		const snap = this.snapshotState();
+		// transactional write-commit: persist the restored record FIRST
+		const p = await this.persist(
+			{ ...record, levels: (record.levels ?? []).map((l) => ({ ...l })) }
+		);
+		if (!p.ok) {
+			this.restoreState(snap);
+			return p;
+		}
 		this.clock.setFrame(record.instant);
 		this.levels = (record.levels ?? []).map((l) => ({ ...l }));
 		this.stepCounter = record.stepIndex ?? this.stepCounter;
 		this.playing = false;
 		this.emit('restore', { restoredInstant: record.instant, restoredStepIndex: record.stepIndex });
-		const p = await this.persist();
-		return p.ok ? { ok: true, record } : p;
+		return { ok: true, record };
 	}
 
-	/** Deliberately discard the persisted session (removes the record). */
+	/**
+	 * Deliberately discard the persisted session (removes the record). The
+	 * removal is TRANSACTIONAL: if the port's remove fails (ok:false is not
+	 * part of the remove contract, so failures surface as throws) the live
+	 * state does NOT change — the session stays active at its prior position.
+	 */
 	async reset(): Promise<MutationOutcome> {
 		const gated = this.gate();
 		if (gated) return gated;
 		const rv = this.reverify();
 		if (rv.outcome) return rv.outcome;
+		if (this.persistence.remove) {
+			try {
+				await this.persistence.remove();
+			} catch (e) {
+				return {
+					ok: false,
+					code: 'PORT_ERROR',
+					message: 'persistence port failed to remove the session record — no state change: ' + (e instanceof Error ? e.message : 'port error')
+				};
+			}
+		}
 		this.levels = [];
 		this.playing = false;
 		this.stepCounter = 0;
 		this.returnedToCurrent = false;
 		this.emit('reset');
-		if (this.persistence.remove) {
-			try {
-				await this.persistence.remove();
-			} catch (e) {
-				return { ok: false, code: 'PORT_ERROR', message: e instanceof Error ? e.message : 'port error' };
-			}
-		}
 		return { ok: true };
 	}
 
@@ -261,10 +368,16 @@ export class ReplaySession {
 		if (gated) return gated;
 		const rv = this.reverify();
 		if (rv.outcome) return rv.outcome;
+		const snap = this.snapshotState();
 		this.playing = false;
 		this.returnedToCurrent = true;
+		const p = await this.persist();
+		if (!p.ok) {
+			this.restoreState(snap);
+			return p;
+		}
 		this.emit('returnToCurrent');
-		return this.persist();
+		return p;
 	}
 
 	// ---- replay-stamped drawings ------------------------------------------
@@ -276,6 +389,7 @@ export class ReplaySession {
 		const rv = this.reverify();
 		if (rv.outcome) return rv.outcome;
 		if (!Number.isFinite(price)) return { ok: false, code: 'INVALID_INPUT', message: 'price must be finite' };
+		const snap = this.snapshotState();
 		const level: ReplayLevel = {
 			id: this.genId(),
 			symbol: '',
@@ -284,10 +398,14 @@ export class ReplaySession {
 			creationInstant: this.clock.now(),
 			creationStep: this.stepCounter
 		};
-		this.levels.push(level);
-		this.emit('level-created', { id: level.id, creationInstant: level.creationInstant, creationStep: level.creationStep });
+		this.levels = [...this.levels, level];
 		const p = await this.persist();
-		return p.ok ? { ok: true, id: level.id } : p;
+		if (!p.ok) {
+			this.restoreState(snap);
+			return p;
+		}
+		this.emit('level-created', { id: level.id, creationInstant: level.creationInstant, creationStep: level.creationStep });
+		return { ok: true, id: level.id };
 	}
 
 	async removeLevel(id: string): Promise<MutationOutcome> {
@@ -296,10 +414,17 @@ export class ReplaySession {
 		const rv = this.reverify();
 		if (rv.outcome) return rv.outcome;
 		const before = this.levels.length;
-		this.levels = this.levels.filter((l) => l.id !== id);
-		if (this.levels.length === before) return { ok: false, code: 'NOT_FOUND', message: 'no level ' + id };
+		const next = this.levels.filter((l) => l.id !== id);
+		if (next.length === before) return { ok: false, code: 'NOT_FOUND', message: 'no level ' + id };
+		const snap = this.snapshotState();
+		this.levels = next;
+		const p = await this.persist();
+		if (!p.ok) {
+			this.restoreState(snap);
+			return p;
+		}
 		this.emit('level-removed', { id });
-		return this.persist();
+		return p;
 	}
 
 	/** Persisted step semantics: 1 after start, +1 per step, restored exactly. */
