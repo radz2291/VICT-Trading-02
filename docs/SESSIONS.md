@@ -166,3 +166,29 @@ One line: **Repository bootstrapped and governed; handoff accepted; G0 platform 
 
 ### 6. Summary
 **Both new counterexamples were real and both are now fixed, reproduced-then-verified under the same independent standard — and the record error (the never-recorded D-004) was caught and corrected honestly.**
+
+## Session 2026-09-30 — G2 async-persistence follow-up (owner-directed)
+
+### 1. Autonomous decisions
+| Decision | Why | Why no founding intent |
+|---|---|---|
+| Repair only after independent reproduction (both verdicts at pinned prior candidates) | Owner: "do not change code just to satisfy a prediction" | Owner-direct |
+| FIFO queue + commit-after-own-write + re-base as the repair shape | Verifier repair-spec; smallest kit-level change; host zero changes | Derived from reproduced failures |
+| Re-base documented as normative non-composition | Makes failed-op semantics explicit rather than accidental | Spec decision recorded in D-004 |
+| D-004 extension recorded inside D-004 (not a new decision id) | Same owner instruction territory (persistence consistency) | Record-keeping |
+
+### 2. Reliability notes
+- The 8c075fc failure (commit message claimed D-004; chain had skipped the append; the commit carried staged evidence instead) was caught by the owner. Remedy now standard: verify record content IN THE PUSHED COMMIT (git show HEAD:<file>) before ever claiming a record exists; keep commits single-purpose; never let one command's staged files leak into the next commit.
+- esbuild dev-cache corruption (vite pre-bundle of @victframework/ui-svelte) broke dev hydration; production preview unaffected — fixed by deleting host/node_modules/.vite (regenerates). Environment-only.
+
+### 3. Owner decisions recorded
+- Async extension of D-004 (verbatim requirement in DECISIONS.md); "record evidence, don't change code on prediction" honored and noted there.
+
+### 4. Deferred to owner/next
+- F-AVC-1 (stale refusal message persists after recovery — app display, minor, carried to G3), F-AVC-2/3 informational boundaries; F-1, F-3, F-C2-2; note-update has no kit op surface (consumer-side); G3 record; engine LGPL; publication.
+
+### 5. Progress
+- Async failures: diagnostic → independent reproduction (b05e947) → repair (91d1df7) → falsification failed → verdict PASS WITH NON-BLOCKING FINDINGS at 91d1df7. G2 remains closed; no G3 work started.
+
+### 6. Summary
+**The owner's async challenge was right: pending writes exposed uncommitted frames and overlapping writes silently lost ops. Both were reproduced independently at the pinned prior candidate before any repair, the smallest kit-level repair now provably commits live state only after its own write with call-order FIFO, and a fresh verifier could not falsify it — G2 verdict updated to 91d1df7 per evidence, nothing more.**
