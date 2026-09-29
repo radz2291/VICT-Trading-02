@@ -23,7 +23,22 @@ Implement the accepted G0–G7 program defined in `docs/STAGES.md` to the extent
 
 **Authority boundaries (all stages):** no live account connection, no real orders, no publishing of packages, no edits outside the authorized remote, no secrets in source/fixtures/logs/screenshots. Where the verified Builder Kit requires accepted-scope records tied to exact handoff bytes, obtain and preserve them; never self-accept.
 
-## Stage handoff record — G1 (ACCEPTED 2026-09-28)
+## Stage handoff record — G1-PKG (ACCEPTED 2026-09-29, owner-directed) — CAPABILITY PACKAGING PROOF, G2 depends on this
+
+Owner instruction (2026-09-29, baseline `1596c4c`): superseding decision D-001. Delivery outcome = composed app AND independently installable capabilities; Trading Kit boundary established before replay code. Publication is a later decision — **npm publish is prohibited in this run**; `npm pack` + independent-consumer install is the proof standard.
+
+**Part A — close outstanding G1 review findings (precede packaging work):**
+1. A failed **read** of saved drawings must prevent save/update/delete from overwriting existing stored data or reporting success: reproduce with valid stored drawings + induced read failure (corrupt key and getter-throw); verify the original storage bytes survive byte-for-byte; statuses must show failure, not success.
+2. Demonstrate **loading** and **unavailable** states in a browser (throttle/force as needed; unavailable = e.g. storage read failure). Record screenshots.
+3. Correct the “absolute price+time anchoring” claim: `createdAt` is wall-clock metadata, NOT a market-time coordinate. Describe precisely what a horizontal price level anchors to (price-axis coordinate; renders across all market time; instrument context). Verify precisely; if the G1 time-anchor requirement is judged unmet by the verifier, keep that criterion **HELD** (do not silently call it passed).
+4. Preserve all prior verifier reports; append the correction + fresh verdict to the G1 evidence (do not rewrite).
+5. Exercise the **reset** interaction with a proper browser-dialog handler; record result.
+
+**Part B — packaging proof (after findings closure):** extract the proven Chart Workspace into a real versioned package **within this repository** (e.g. `packages/chart-workspace/`): reusable chart + drawing behavior, small documented public API, must NOT import from the app; fixtures, product wording, provider choices, browser storage keys, and app composition stay in the app; the app consumes via public exports with W1 behavior preserved (desktop + narrow). Evidence: standalone build, `npm pack` artifact (contents + integrity), **independent consumer OUTSIDE the monorepo workspace** installing the packed artifact and demonstrating chart + drawing save/reload without app imports or workspace aliases; record exact commands, dependency identities, API example, bundle observations, screenshots.
+
+**In-scope paths:** `packages/**` (new), `host/**`, `docs/evidence/G1-PKG/**`, plus this record, STATE.md, and the doc updates in DECISIONS.md D-001. **Prohibited:** G2 work, replay, simulation engine, npm publish, VICT edits, accounts, secrets. **Verifier:** fresh agent vs exact candidate SHA — especially the independent-consumer proof and storage-failure behavior. **Exit:** commit + push corrections and packaging proof, report SHA + verdict, stop for owner review.
+
+## Stage handoff record — G1 (ACCEPTED 2026-09-28, COMPLETED 2026-09-29)
 
 Owner accepted the G1 scope below by direct instruction on 2026-09-28 (baseline `74da07c4bfd7a130b0d5c0dd6cbecdeffcdd05c4`), including: G0 technical choices carry into G1 (lightweight-charts 5.0.8, published VICT `0.4.0-rc.1` set, published `ui-svelte` extension path); **owner accepts the release candidate for G1 development** — recheck compatibility when stable `0.4.0` is published; VICT and Trading OS repos remain read-only; uPlot spike stays as historical G0 evidence.
 

@@ -1,5 +1,7 @@
 # Product intent
 
+> **D-001 (owner-directed, 2026-09-29, supersedes in part):** The delivery outcome is **both** a working chart-first trading app **and** reusable capabilities that a future version of the app can install (identified directions: a Chart Workspace capability — chart interaction, drawings, panels, layouts — and a Trading Kit direction — data rules, replay, scripts, simulation, risk, evidence). The app composes these capabilities through public VICT contracts. Package *publication* is a later release decision; *proving an independently installable package* is part of the development outcome. See DECISIONS.md D-001.
+
 ## Promise
 
 Build a personal, chart-first trading workspace for discovering, practising, testing, and eventually operating discretionary and scripted ideas. The working surface should feel native and free to approach: the trader may start with a bare XAUUSD or EURUSD chart and decide what to do next. The product supports exploration without requiring a Trading Program, Method, formal Session, or preselected mode.

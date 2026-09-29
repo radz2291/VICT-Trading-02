@@ -69,3 +69,5 @@
 ## Change rules
 
 If a stage exposes a better dependency order, update this plan with evidence and a decision record before implementation crosses the affected boundary. A later stage cannot waive an earlier safety/time/identity gate. A stage may be deferred, but the final report must say which product capabilities are absent. Full TradingView feature parity is not an exit criterion.
+
+> **Owner-directed insertion (2026-09-29, D-001):** a bounded packaging gate **G1-PKG — Capability packaging proof** sits between G1 and G2. **G2 (and any replay code) depends on G1-PKG passing**: the Trading Kit boundary is established at boundary level before replay code is written, and the proven Chart Workspace is extracted as a real versioned package consumed by the app. See the G1-PKG stage record in HANDOFF.md and DECISIONS.md D-001 for pass conditions (standalone build, `npm pack` artifact, independent consumer outside the monorepo). Full stage description to be added when G2 planning begins; the gate's exit criteria are in HANDOFF.md and are normative for this gate.

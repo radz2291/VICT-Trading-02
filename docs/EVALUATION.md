@@ -2,6 +2,8 @@
 
 ## Verdict vocabulary
 
+> **D-001 packaging proof requirements (owner-directed, 2026-09-29):** a packaging gate verdict requires, as evidence of *real* reuse (not file moves): a standalone package build; an `npm pack` artifact with recorded contents/integrity; an **independent consumer outside the monorepo workspace** installing that artifact and demonstrating the packaged capability without importing app source or using workspace aliases; exact commands, package contents, dependency identities, an API example, bundle observations, and screenshots. Storage/read-failure behavior of the packaged capability is in scope. Publication is a separate later decision and is not part of any gate.
+
 - **PASS:** every required stage criterion demonstrated with reproducible evidence and a fresh verifier's independent attempt.
 - **PASS WITH NON-BLOCKING FINDINGS:** all required behaviors pass; each minor issue is identified, bounded, owned and carried forward.
 - **HELD:** a required fact, browser demonstration, owner experience judgment, or external integration proof is missing.
@@ -21,6 +23,7 @@ A builder report is a candidate, not an independent verdict. A screenshot withou
 | Time/data | Relevant data revision, timezone, timeframe, gap behavior and historical availability; future-poison and unfinished-bar cases from G2 onward |
 | State | Save/reload/restart and interruption behavior appropriate to the stage, including truthful failure states |
 | Authority | No unintended account, secret, publish or live-order authority; negative tests deepen with G4 and G6 |
+| Reuse (packaging gate) | Standalone package build; `npm pack` artifact contents + integrity; independent-consumer demo outside the monorepo (no app imports/workspace aliases); public API example; bundle observations; app W1 preserved after consuming the package |
 | Product fit | Walkthrough IDs actually attempted, context switches or friction noted, and explicit owner feedback when the gate requires hands-on judgment |
 
 Scope tests to the risk introduced by the stage. Avoid unit tests that only repeat the implementation. A browser interaction, deterministic fixture, or crash/restart proof is more useful when it catches a distinct failure.

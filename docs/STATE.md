@@ -48,7 +48,7 @@ A filled handoff at `HANDOFF.md` covering target/provenance, push rules, and a p
 | O-03 | Chart component and drawing model | **lightweight-charts 5.0.8 selected for G1** — G0 spike + fresh verifier PASS (durable drawing, pan/zoom/mapping); uPlot falsified (see G0 record); final drawing/editing model proven at G1 |
 | O-04 | Historical/current data provider and resolution | Provenance, availability, rights, G0–G2 |
 | O-05 | Simulation engine and script language | Explicitly open: NT (LGPL-3.0 — owner license decision required) vs LEAN (Apache-2.0, weak release provenance); both need gap-semantics + future-isolation behavioral proof on the pinned fixture, G3 |
-| O-06 | Package extraction boundary | Consumer dependency and second-use evidence, G3–G5 |
+| O-06 | Package extraction boundary | **SUPERSEDED by D-001 (2026-09-29):** packaging gate G1-PKG pulled forward between G1 and G2 (Chart Workspace capability first); Trading Kit boundary established before replay code; publication remains a later release decision |
 | O-07 | Live provider, account and risk settings | Separate owner decision and G6 proof |
 
 Update this page after every gate. Supersede a decision explicitly and retain its earlier evidence. Do not present a proposal as an accepted product rule.
