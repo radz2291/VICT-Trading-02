@@ -117,7 +117,7 @@ Owner accepted the G1 scope below by direct instruction on 2026-09-28 (baseline 
 
 ## Reports and stop
 
-After each candidate: exact branch/full SHA, diff summary, commands/results, browser walkthrough evidence, decision changes, unresolved findings; then a fresh verifier verdict against that exact SHA. Continue through already-authorized passing gates (currently G0 only). Stop at HELD/FAIL/BLOCKED dependencies, a changed scope, a material product fork, live account activation, or a missing external right. Final program report maps every G0–G7 gate to an evidenced verdict and names every unbuilt feature; owner product acceptance remains separate.
+After each candidate: exact branch/full SHA, diff summary, commands/results, browser walkthrough evidence, decision changes, unresolved findings; then a fresh verifier verdict against that exact SHA. Continue through already-authorized passing gates (live status: see STATE.md — G0, G1, G1-PKG closed; G2 accepted 2026-09-29 at `c9b780d…`). Stop at HELD/FAIL/BLOCKED dependencies, a changed scope, a material product fork, live account activation, or a missing external right. Final program report maps every G0–G7 gate to an evidenced verdict and names every unbuilt feature; owner product acceptance remains separate.
 
 ## Owner acceptance
 
