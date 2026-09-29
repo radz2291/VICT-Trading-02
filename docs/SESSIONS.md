@@ -76,3 +76,26 @@ One line: **Repository bootstrapped and governed; handoff accepted; G0 platform 
 
 ### 6. Summary
 **G1 delivered and independently verified: a working chart-first workspace with no prerequisites, full drawing lifecycle through the VICT contract path, durable persistence, honest states — one medium finding caught by the fresh verifier and fixed before closure.**
+
+## Session 2026-09-29 — D-001 direction correction + G1-PKG packaging gate
+
+### 1. Autonomous decisions
+| Decision | Why | Why no founding intent |
+|---|---|---|
+| Verifier's anchoring ruling (MET) reconciled; builder's HELD recommendation recorded as overruled | Verifier is the independent judge (EVALUATION.md); its empirical evidence decides | Pack-mandated verdict process |
+| Chart package: no VICT dependency (package-owned minimal validation) | Reuse package must stand alone; VICT dep would drag governed-runtime semantics into chart internals | Design choice within accepted gate scope; recorded in packaging report |
+| F-N1 fixed inside Part B (app shell touched there anyway) | Same file area; avoids a second round-trip | Bounded, in-scope |
+| file: dependency committed for monorepo dev; final proof via packed tgz only | Standard dev pattern; gate standard is the packed artifact | Operational |
+
+### 2. Owner decisions recorded
+- D-001 (2026-09-29, baseline 1596c4c): delivery = composed app AND independently installable capabilities; Chart Workspace + Trading Kit directions; packaging gate G1-PKG inserted, G2 depends on it; Trading Kit boundary before replay code; publication = later release decision; verbatim constraints recorded in HANDOFF.md G1-PKG record.
+
+### 3. Deferred to owner/next
+- G2 stage record + Trading Kit boundary design (owner review required before any replay code).
+- (a) stale prose in packaging report; (c) README note-semantics doc; bundle-delta accounting unverified (minor). F-R1, RF4, stable-0.4.0 recheck, engine LGPL (G3) all carried.
+
+### 4. Progress
+- G1-PKG gate complete — PASS WITH NON-BLOCKING FINDINGS at `f0fdcd4`; lineage `1596c4c → 11c8b41 (D-001) → 4a43176 (partA) → 02d9d05 (vera) → f0fdcd4 (partB) → eda2a59 (verb evidence) → 560eeb3 (STATE)`. Evidence: 3 builder reports, 3 verifier reports, byte-snapshot jsons, ~35 screenshots across verifier sessions + consumer screenshots.
+
+### 5. Summary
+**Direction corrected by owner decision (D-001) and proven in practice: the Chart Workspace now exists as an independently installable versioned package whose artifact a consumer outside the monorepo installs and uses — with the read-gate invariants, W1 behavior, and honest failure states preserved. Replay boundary design is the next decision, awaiting the owner.**
