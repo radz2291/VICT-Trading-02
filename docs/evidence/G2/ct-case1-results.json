@@ -1,0 +1,238 @@
+{
+  "case": 1,
+  "sha256Bbars": "e6b0b749bc09f9a0",
+  "horizonInstant": 1770068700,
+  "sections": {
+    "bucketAudit": {
+      "affected1h_total": 1,
+      "affected1h": [
+        {
+          "bucketStart": 1767585600,
+          "time": "2026-01-05 04:00Z",
+          "existing": 3,
+          "required": 4,
+          "note": "incomplete (missing slots or partial)"
+        }
+      ],
+      "affected4h_total": 3,
+      "affected4h": [
+        {
+          "bucketStart": 1767585600,
+          "time": "2026-01-05 04:00Z",
+          "existing": 15,
+          "required": 16,
+          "note": "incomplete (missing slots or partial)"
+        },
+        {
+          "bucketStart": 1767830400,
+          "time": "2026-01-08 00:00Z",
+          "existing": 12,
+          "required": 16,
+          "note": "incomplete (missing slots or partial)"
+        },
+        {
+          "bucketStart": 1767844800,
+          "time": "2026-01-08 04:00Z",
+          "existing": 12,
+          "required": 16,
+          "note": "incomplete (missing slots or partial)"
+        }
+      ]
+    },
+    "main1h": {
+      "clockInstant": 1767592800,
+      "time": "2026-01-05 06:00Z",
+      "query": "data.bars({until:null,granularity:'1h'})",
+      "bucketsReturned": 6,
+      "bucket_0400_present": true,
+      "bucket_0400_ohlc": {
+        "time": 1767585600,
+        "open": 2646.11,
+        "high": 2646.62,
+        "low": 2645.36,
+        "close": 2646.24
+      },
+      "constituents": [
+        {
+          "time": 1767585600,
+          "open": 2646.11,
+          "high": 2646.5,
+          "low": 2645.36,
+          "close": 2645.73,
+          "closeTime": 1767586500
+        },
+        {
+          "time": 1767587400,
+          "open": 2645.73,
+          "high": 2646.08,
+          "low": 2645.69,
+          "close": 2646.04,
+          "closeTime": 1767588300
+        },
+        {
+          "time": 1767588300,
+          "open": 2646.04,
+          "high": 2646.62,
+          "low": 2645.76,
+          "close": 2646.24,
+          "closeTime": 1767589200
+        }
+      ],
+      "note": "source has 04:00,04:30,04:45 only — 04:15 slot MISSING from source"
+    },
+    "atHorizon1h": {
+      "bucket_0400_present": true,
+      "ohlc": {
+        "time": 1767585600,
+        "open": 2646.11,
+        "high": 2646.62,
+        "low": 2645.36,
+        "close": 2646.24
+      }
+    },
+    "main4h": {
+      "bucket4h_start": 1767585600,
+      "time": "2026-01-05 04:00Z",
+      "present": false,
+      "ohlc": null,
+      "constituentsInBucket": 15
+    },
+    "edges": {
+      "firstBar": {
+        "time": 1767571200,
+        "iso": "2026-01-05 00:00Z",
+        "alignedTo1h": true
+      },
+      "lastBar": {
+        "time": 1770090300,
+        "timeIso": "2026-02-03 03:45Z",
+        "closeIso": "2026-02-03 04:00Z"
+      },
+      "last1hBucket": {
+        "start": 1770087600,
+        "iso": "2026-02-03 03:00Z",
+        "existingInBucket": 4,
+        "returned": false
+      },
+      "last4hBucket": {
+        "start": 1770076800,
+        "iso": "2026-02-03 00:00Z",
+        "existingInBucket": 16,
+        "slotsToBucketEnd": 0,
+        "returned": false
+      }
+    },
+    "horizon4hAffected": [
+      {
+        "bucketStart": 1767585600,
+        "time": "2026-01-05 04:00Z",
+        "existing": 15,
+        "required": 16,
+        "note": "incomplete (missing slots or partial)",
+        "returnedAsComplete": true,
+        "engineOHLC": {
+          "time": 1767585600,
+          "open": 2646.11,
+          "high": 2647.07,
+          "low": 2644.47,
+          "close": 2644.84
+        },
+        "OHLCEqualsPartialConstituents": true,
+        "availabilityAt_says": [
+          {
+            "status": "missing",
+            "from": 1767586500,
+            "to": 1767587400
+          }
+        ]
+      },
+      {
+        "bucketStart": 1767830400,
+        "time": "2026-01-08 00:00Z",
+        "existing": 12,
+        "required": 16,
+        "note": "incomplete (missing slots or partial)",
+        "returnedAsComplete": true,
+        "engineOHLC": {
+          "time": 1767830400,
+          "open": 2654.72,
+          "high": 2656.48,
+          "low": 2654.26,
+          "close": 2656.02
+        },
+        "OHLCEqualsPartialConstituents": true,
+        "availabilityAt_says": [
+          {
+            "status": "missing",
+            "from": 1767841200,
+            "to": 1767848400
+          }
+        ]
+      },
+      {
+        "bucketStart": 1767844800,
+        "time": "2026-01-08 04:00Z",
+        "existing": 12,
+        "required": 16,
+        "note": "incomplete (missing slots or partial)",
+        "returnedAsComplete": true,
+        "engineOHLC": {
+          "time": 1767844800,
+          "open": 2656.02,
+          "high": 2657.81,
+          "low": 2655.49,
+          "close": 2656.57
+        },
+        "OHLCEqualsPartialConstituents": true,
+        "availabilityAt_says": [
+          {
+            "status": "missing",
+            "from": 1767841200,
+            "to": 1767848400
+          }
+        ]
+      }
+    ],
+    "bothDirections": {
+      "availabilityAt_reports_gap": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        },
+        {
+          "status": "missing",
+          "from": 1767841200,
+          "to": 1767848400
+        },
+        {
+          "status": "missing",
+          "from": 1768003200,
+          "to": 1768176000
+        }
+      ],
+      "yet1hBucketReturnedAnyway": true,
+      "contradiction": "availabilityAt() names 04:15→04:30 as {status:\"missing\"} while bars('1h') ALSO returns the 04:00–05:00 bucket as a complete bar whose OHLC covers that interval"
+    },
+    "servedVsAudit": {
+      "firstAffected1h": {
+        "bucketStart": 1767585600,
+        "time": "2026-01-05 04:00Z",
+        "existing": 3,
+        "required": 4,
+        "note": "incomplete (missing slots or partial)"
+      },
+      "returnedByEngine": {
+        "present": true,
+        "ohlc": {
+          "time": 1767585600,
+          "open": 2646.11,
+          "high": 2646.62,
+          "low": 2645.36,
+          "close": 2646.24
+        }
+      }
+    },
+    "reproDigest": "b4c58db907d1b61d"
+  }
+}

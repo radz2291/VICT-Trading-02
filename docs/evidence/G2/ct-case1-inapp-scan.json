@@ -1,0 +1,32 @@
+{
+  "context": "replay 1h view at step 25 (clock 06:00Z), 2026-01-05; crosshair x-scan, y=311.7; chart container left=24.8 width=941.6",
+  "gapnote": "1 missing interval(s) — shown, never bridged",
+  "barsReturned": 6,
+  "scan": [
+    {
+      "x": 60,
+      "readout": "O 2650 H 2650.34 L 2649.19 C 2649.4 · 2026-01-05 00:00Z"
+    },
+    {
+      "x": 180,
+      "readout": "O 2649.4 H 2649.83 L 2647.73 C 2647.75 · 2026-01-05 01:00Z"
+    },
+    {
+      "x": 340,
+      "readout": "O 2647.75 H 2648.2 L 2646.42 C 2646.58 · 2026-01-05 02:00Z"
+    },
+    {
+      "x": 500,
+      "readout": "O 2646.58 H 2647.09 L 2645.6 C 2646.11 · 2026-01-05 03:00Z"
+    },
+    {
+      "x": 660,
+      "readout": "O 2646.11 H 2646.62 L 2645.36 C 2646.24 · 2026-01-05 04:00Z — PARTIAL-3 BUCKET rendered as complete candle"
+    },
+    {
+      "x": 820,
+      "readout": "O 2646.24 H 2647.07 L 2645.78 C 2646.11 · 2026-01-05 05:00Z"
+    }
+  ],
+  "note": "04:00Z bar OHLC exactly equals the 3-constituent partial aggregate computed from the committed fixture (04:00,04:30,04:45); a complete 4-bar bucket is rendered indistinguishable."
+}

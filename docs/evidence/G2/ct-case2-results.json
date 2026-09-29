@@ -1,0 +1,515 @@
+{
+  "case": 2,
+  "sections": {
+    "directLeak": {
+      "clockInstant": 1767586500,
+      "time": "2026-01-05 04:15Z",
+      "availabilityAt": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        }
+      ],
+      "reported_to": 1767587400,
+      "reported_to_is_iso": "2026-01-05 04:30Z",
+      "resumptionBar_time": 1767587400,
+      "resumptionBar_closeTime": 1767588300,
+      "resumptionBar_close_GT_clock": true,
+      "verdict_note": "availabilityAt() at clock 04:15Z reports to=04:30Z — the open time of a source bar whose close (04:45Z) is in the FUTURE relative to the clock. The kit reveals WHEN the future resumes before the future is reached."
+    },
+    "mutationSweep": [
+      {
+        "instant": 1767585600,
+        "time": "04:00Z",
+        "base_identicalSelfCheck": true,
+        "variants": [
+          {
+            "variant": "B: add post-clock bar inside gap @04:15",
+            "identicalToBase": true,
+            "availabilityAt": [],
+            "bars15Count": 16,
+            "bars1hCount": 4,
+            "bars4hCount": 1,
+            "stats": {
+              "maxH": 2650.34,
+              "sma20": 2647.8581250000007
+            },
+            "delta": ""
+          },
+          {
+            "variant": "A1: remove 04:30 resumption bar",
+            "identicalToBase": true,
+            "availabilityAt": [],
+            "bars15Count": 16,
+            "bars1hCount": 4,
+            "bars4hCount": 1,
+            "stats": {
+              "maxH": 2650.34,
+              "sma20": 2647.8581250000007
+            },
+            "delta": ""
+          },
+          {
+            "variant": "A2: remove 2 post-clock bars (2026-01-05 04:00Z,2026-01-05 04:30Z)",
+            "identicalToBase": false,
+            "availabilityAt": [
+              {
+                "status": "missing",
+                "from": 1767585600,
+                "to": 1767588300
+              }
+            ],
+            "bars15Count": 16,
+            "bars1hCount": 4,
+            "bars4hCount": 1,
+            "stats": {
+              "maxH": 2650.34,
+              "sma20": 2647.8581250000007
+            },
+            "delta": ""
+          },
+          {
+            "variant": "A3: remove 2026-01-05 16:00Z",
+            "identicalToBase": true,
+            "availabilityAt": [],
+            "bars15Count": 16,
+            "bars1hCount": 4,
+            "bars4hCount": 1,
+            "stats": {
+              "maxH": 2650.34,
+              "sma20": 2647.8581250000007
+            },
+            "delta": ""
+          },
+          {
+            "variant": "C: change post-clock values",
+            "identicalToBase": true,
+            "availabilityAt": [],
+            "bars15Count": 16,
+            "bars1hCount": 4,
+            "bars4hCount": 1,
+            "stats": {
+              "maxH": 2650.34,
+              "sma20": 2647.8581250000007
+            },
+            "delta": ""
+          }
+        ]
+      },
+      {
+        "instant": 1767586470,
+        "time": "04:14:30Z (pre-gap-bar close)",
+        "base_identicalSelfCheck": true,
+        "variants": [
+          {
+            "variant": "B: add post-clock bar inside gap @04:15",
+            "identicalToBase": true,
+            "availabilityAt": [],
+            "bars15Count": 16,
+            "bars1hCount": 4,
+            "bars4hCount": 1,
+            "stats": {
+              "maxH": 2650.34,
+              "sma20": 2647.8581250000007
+            },
+            "delta": ""
+          },
+          {
+            "variant": "A1: remove 04:30 resumption bar",
+            "identicalToBase": true,
+            "availabilityAt": [],
+            "bars15Count": 16,
+            "bars1hCount": 4,
+            "bars4hCount": 1,
+            "stats": {
+              "maxH": 2650.34,
+              "sma20": 2647.8581250000007
+            },
+            "delta": ""
+          },
+          {
+            "variant": "A2: remove 2 post-clock bars (2026-01-05 04:00Z,2026-01-05 04:30Z)",
+            "identicalToBase": false,
+            "availabilityAt": [
+              {
+                "status": "missing",
+                "from": 1767585600,
+                "to": 1767588300
+              }
+            ],
+            "bars15Count": 16,
+            "bars1hCount": 4,
+            "bars4hCount": 1,
+            "stats": {
+              "maxH": 2650.34,
+              "sma20": 2647.8581250000007
+            },
+            "delta": ""
+          },
+          {
+            "variant": "A3: remove 2026-01-05 16:00Z",
+            "identicalToBase": true,
+            "availabilityAt": [],
+            "bars15Count": 16,
+            "bars1hCount": 4,
+            "bars4hCount": 1,
+            "stats": {
+              "maxH": 2650.34,
+              "sma20": 2647.8581250000007
+            },
+            "delta": ""
+          },
+          {
+            "variant": "C: change post-clock values",
+            "identicalToBase": true,
+            "availabilityAt": [],
+            "bars15Count": 16,
+            "bars1hCount": 4,
+            "bars4hCount": 1,
+            "stats": {
+              "maxH": 2650.34,
+              "sma20": 2647.8581250000007
+            },
+            "delta": ""
+          }
+        ]
+      },
+      {
+        "instant": 1767586500,
+        "time": "04:15Z (gap instant)",
+        "base_identicalSelfCheck": true,
+        "variants": [
+          {
+            "variant": "B: add post-clock bar inside gap @04:15",
+            "identicalToBase": false,
+            "availabilityAt": [],
+            "bars15Count": 17,
+            "bars1hCount": 4,
+            "bars4hCount": 1,
+            "stats": {
+              "maxH": 2650.34,
+              "sma20": 2647.7329411764713
+            },
+            "delta": "DIFFERS (see per-section output)"
+          },
+          {
+            "variant": "A1: remove 04:30 resumption bar",
+            "identicalToBase": false,
+            "availabilityAt": [
+              {
+                "status": "missing",
+                "from": 1767586500,
+                "to": 1767588300
+              }
+            ],
+            "bars15Count": 17,
+            "bars1hCount": 4,
+            "bars4hCount": 1,
+            "stats": {
+              "maxH": 2650.34,
+              "sma20": 2647.7329411764713
+            },
+            "delta": ""
+          },
+          {
+            "variant": "A2: remove 2 post-clock bars (2026-01-05 04:30Z,2026-01-05 04:45Z)",
+            "identicalToBase": false,
+            "availabilityAt": [
+              {
+                "status": "missing",
+                "from": 1767586500,
+                "to": 1767589200
+              }
+            ],
+            "bars15Count": 17,
+            "bars1hCount": 5,
+            "bars4hCount": 1,
+            "stats": {
+              "maxH": 2650.34,
+              "sma20": 2647.7329411764713
+            },
+            "delta": ""
+          },
+          {
+            "variant": "A3: remove 2026-01-05 16:15Z",
+            "identicalToBase": true,
+            "availabilityAt": [
+              {
+                "status": "missing",
+                "from": 1767586500,
+                "to": 1767587400
+              }
+            ],
+            "bars15Count": 17,
+            "bars1hCount": 4,
+            "bars4hCount": 1,
+            "stats": {
+              "maxH": 2650.34,
+              "sma20": 2647.7329411764713
+            },
+            "delta": ""
+          },
+          {
+            "variant": "C: change post-clock values",
+            "identicalToBase": true,
+            "availabilityAt": [
+              {
+                "status": "missing",
+                "from": 1767586500,
+                "to": 1767587400
+              }
+            ],
+            "bars15Count": 17,
+            "bars1hCount": 4,
+            "bars4hCount": 1,
+            "stats": {
+              "maxH": 2650.34,
+              "sma20": 2647.7329411764713
+            },
+            "delta": ""
+          }
+        ]
+      },
+      {
+        "instant": 1767589200,
+        "time": "05:00Z",
+        "base_identicalSelfCheck": true,
+        "variants": [
+          {
+            "variant": "A2: remove 2 post-clock bars (2026-01-05 05:00Z,2026-01-05 05:15Z)",
+            "identicalToBase": false,
+            "availabilityAt": [
+              {
+                "status": "missing",
+                "from": 1767586500,
+                "to": 1767587400
+              },
+              {
+                "status": "missing",
+                "from": 1767589200,
+                "to": 1767591000
+              }
+            ],
+            "bars15Count": 19,
+            "bars1hCount": 5,
+            "bars4hCount": 1,
+            "stats": {
+              "maxH": 2650.34,
+              "sma20": 2647.5652631578955
+            },
+            "delta": ""
+          },
+          {
+            "variant": "A3: remove 2026-01-05 17:00Z",
+            "identicalToBase": true,
+            "availabilityAt": [
+              {
+                "status": "missing",
+                "from": 1767586500,
+                "to": 1767587400
+              }
+            ],
+            "bars15Count": 19,
+            "bars1hCount": 5,
+            "bars4hCount": 1,
+            "stats": {
+              "maxH": 2650.34,
+              "sma20": 2647.5652631578955
+            },
+            "delta": ""
+          },
+          {
+            "variant": "C: change post-clock values",
+            "identicalToBase": true,
+            "availabilityAt": [
+              {
+                "status": "missing",
+                "from": 1767586500,
+                "to": 1767587400
+              }
+            ],
+            "bars15Count": 19,
+            "bars1hCount": 5,
+            "bars4hCount": 1,
+            "stats": {
+              "maxH": 2650.34,
+              "sma20": 2647.5652631578955
+            },
+            "delta": ""
+          }
+        ]
+      },
+      {
+        "instant": 1767596400,
+        "time": "07:00Z",
+        "base_identicalSelfCheck": true,
+        "variants": [
+          {
+            "variant": "A2: remove 2 post-clock bars (2026-01-05 07:00Z,2026-01-05 07:15Z)",
+            "identicalToBase": false,
+            "availabilityAt": [
+              {
+                "status": "missing",
+                "from": 1767586500,
+                "to": 1767587400
+              },
+              {
+                "status": "missing",
+                "from": 1767596400,
+                "to": 1767598200
+              }
+            ],
+            "bars15Count": 27,
+            "bars1hCount": 7,
+            "bars4hCount": 1,
+            "stats": {
+              "maxH": 2650.34,
+              "sma20": 2646.375
+            },
+            "delta": ""
+          },
+          {
+            "variant": "A3: remove 2026-01-05 19:00Z",
+            "identicalToBase": true,
+            "availabilityAt": [
+              {
+                "status": "missing",
+                "from": 1767586500,
+                "to": 1767587400
+              }
+            ],
+            "bars15Count": 27,
+            "bars1hCount": 7,
+            "bars4hCount": 1,
+            "stats": {
+              "maxH": 2650.34,
+              "sma20": 2646.375
+            },
+            "delta": ""
+          },
+          {
+            "variant": "C: change post-clock values",
+            "identicalToBase": true,
+            "availabilityAt": [
+              {
+                "status": "missing",
+                "from": 1767586500,
+                "to": 1767587400
+              }
+            ],
+            "bars15Count": 27,
+            "bars1hCount": 7,
+            "bars4hCount": 1,
+            "stats": {
+              "maxH": 2650.34,
+              "sma20": 2646.375
+            },
+            "delta": ""
+          }
+        ]
+      },
+      {
+        "instant": 1770068700,
+        "time": "horizon",
+        "base_identicalSelfCheck": true,
+        "variants": [
+          {
+            "variant": "A2: remove 2 post-clock bars (2026-02-02 21:45Z,2026-02-02 22:00Z)",
+            "identicalToBase": false,
+            "availabilityAt": [
+              {
+                "status": "missing",
+                "from": 1767586500,
+                "to": 1767587400
+              },
+              {
+                "status": "missing",
+                "from": 1767841200,
+                "to": 1767848400
+              },
+              {
+                "status": "missing",
+                "from": 1768003200,
+                "to": 1768176000
+              },
+              {
+                "status": "missing",
+                "from": 1768608000,
+                "to": 1768780800
+              },
+              {
+                "status": "missing",
+                "from": 1769212800,
+                "to": 1769385600
+              },
+              {
+                "status": "missing",
+                "from": 1769817600,
+                "to": 1769990400
+              },
+              {
+                "status": "missing",
+                "from": 1770068700,
+                "to": 1770070500
+              }
+            ],
+            "bars15Count": 1998,
+            "bars1hCount": 500,
+            "bars4hCount": 125,
+            "stats": {
+              "maxH": 2657.81,
+              "sma20": 2647.537
+            },
+            "delta": ""
+          },
+          {
+            "variant": "C: change post-clock values",
+            "identicalToBase": true,
+            "availabilityAt": [
+              {
+                "status": "missing",
+                "from": 1767586500,
+                "to": 1767587400
+              },
+              {
+                "status": "missing",
+                "from": 1767841200,
+                "to": 1767848400
+              },
+              {
+                "status": "missing",
+                "from": 1768003200,
+                "to": 1768176000
+              },
+              {
+                "status": "missing",
+                "from": 1768608000,
+                "to": 1768780800
+              },
+              {
+                "status": "missing",
+                "from": 1769212800,
+                "to": 1769385600
+              },
+              {
+                "status": "missing",
+                "from": 1769817600,
+                "to": 1769990400
+              }
+            ],
+            "bars15Count": 1998,
+            "bars1hCount": 499,
+            "bars4hCount": 125,
+            "stats": {
+              "maxH": 2657.81,
+              "sma20": 2647.537
+            },
+            "delta": ""
+          }
+        ]
+      }
+    ],
+    "digest": "7c5b69fb484b3f26"
+  }
+}
