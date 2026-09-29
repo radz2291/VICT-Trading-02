@@ -1,0 +1,36 @@
+{
+ "context": "replay step 23 dot 05:30Z then step 30 dot 07:15Z; tf 1h and 4h; real CDP mouse hover sweep; window 762x484; container left=25 top=121 w=682 h=320",
+ "sweep_1h_at_0530Z": {
+  "file": "rv-c1-1h-hover-sweep.txt",
+  "distinctBarsRead": [
+   "00:00Z",
+   "01:00Z",
+   "02:00Z",
+   "03:00Z"
+  ],
+  "fourOClockBarPresent": false
+ },
+ "sweep_1h_at_0715Z": {
+  "file": "rv-c1-1h-hover-sweep-0630.txt",
+  "distinctBarsRead": [
+   "05:00Z",
+   "06:00Z"
+  ],
+  "fourOClockBarPresent": false
+ },
+ "sweep_4h_at_0530Z": {
+  "file": "rv-c1-4h-hover-sweep.txt",
+  "distinctBarsRead": [
+   "00:00Z complete bucket O 2650 H 2650.34 L 2645.6 C 2646.11",
+   "crosshair off chart header"
+  ],
+  "incomplete4hBucketPresent": false
+ },
+ "forbiddenPartialAggregate": {
+  "ohlc": "O 2646.11 H 2646.62 L 2645.36 C 2646.24",
+  "present": false
+ },
+ "timestamp_04_00Z_present_in_readouts": false,
+ "gapnoteAt0530Z": "2 missing interval(s) — shown, never bridged: missing from 2026-01-05 04:15Z to 2026-01-05 04:30Z; missing from 2026-01-05 05:30Z — still missing",
+ "gapnoteAt0715Z": "2 missing interval(s) — shown, never bridged: missing from 2026-01-05 04:15Z to 2026-01-05 04:30Z; missing from 2026-01-05 07:15Z — still missing"
+}

@@ -1,0 +1,469 @@
+{
+ "engineVsOracle": [
+  {
+   "clock": "2026-01-05T04:15Z",
+   "granularity": "1h",
+   "engineCount": 4,
+   "oracleCount": 4,
+   "equal": true
+  },
+  {
+   "clock": "2026-01-05T04:15Z",
+   "granularity": "4h",
+   "engineCount": 1,
+   "oracleCount": 1,
+   "equal": true
+  },
+  {
+   "clock": "2026-01-05T05:00Z",
+   "granularity": "1h",
+   "engineCount": 4,
+   "oracleCount": 4,
+   "equal": true
+  },
+  {
+   "clock": "2026-01-05T05:00Z",
+   "granularity": "4h",
+   "engineCount": 1,
+   "oracleCount": 1,
+   "equal": true
+  },
+  {
+   "clock": "2026-01-05T06:00Z",
+   "granularity": "1h",
+   "engineCount": 5,
+   "oracleCount": 5,
+   "equal": true
+  },
+  {
+   "clock": "2026-01-05T06:00Z",
+   "granularity": "4h",
+   "engineCount": 1,
+   "oracleCount": 1,
+   "equal": true
+  },
+  {
+   "clock": "2026-01-05T08:00Z",
+   "granularity": "1h",
+   "engineCount": 7,
+   "oracleCount": 7,
+   "equal": true
+  },
+  {
+   "clock": "2026-01-05T08:00Z",
+   "granularity": "4h",
+   "engineCount": 1,
+   "oracleCount": 1,
+   "equal": true
+  },
+  {
+   "clock": "2026-01-08T06:00Z",
+   "granularity": "1h",
+   "engineCount": 75,
+   "oracleCount": 75,
+   "equal": true
+  },
+  {
+   "clock": "2026-01-08T06:00Z",
+   "granularity": "4h",
+   "engineCount": 17,
+   "oracleCount": 17,
+   "equal": true
+  },
+  {
+   "clock": "2026-01-08T12:00Z",
+   "granularity": "1h",
+   "engineCount": 81,
+   "oracleCount": 81,
+   "equal": true
+  },
+  {
+   "clock": "2026-01-08T12:00Z",
+   "granularity": "4h",
+   "engineCount": 18,
+   "oracleCount": 18,
+   "equal": true
+  },
+  {
+   "clock": "2026-02-02T21:45Z",
+   "granularity": "1h",
+   "engineCount": 498,
+   "oracleCount": 498,
+   "equal": true
+  },
+  {
+   "clock": "2026-02-02T21:45Z",
+   "granularity": "4h",
+   "engineCount": 122,
+   "oracleCount": 122,
+   "equal": true
+  },
+  {
+   "clock": "2026-02-02T20:45Z",
+   "granularity": "1h",
+   "engineCount": 497,
+   "oracleCount": 497,
+   "equal": true
+  },
+  {
+   "clock": "2026-02-02T20:45Z",
+   "granularity": "4h",
+   "engineCount": 122,
+   "oracleCount": 122,
+   "equal": true
+  }
+ ],
+ "absentChecks": [
+  {
+   "clock": "2026-01-05T05:00Z",
+   "granularity": "1h",
+   "bucket": "2026-01-05T04:00Z",
+   "returned": false
+  },
+  {
+   "clock": "2026-01-05T06:00Z",
+   "granularity": "1h",
+   "bucket": "2026-01-05T04:00Z",
+   "returned": false
+  },
+  {
+   "clock": "2026-01-05T08:00Z",
+   "granularity": "1h",
+   "bucket": "2026-01-05T04:00Z",
+   "returned": false
+  },
+  {
+   "clock": "2026-01-05T08:00Z",
+   "granularity": "4h",
+   "bucket": "2026-01-05T04:00Z",
+   "returned": false
+  },
+  {
+   "clock": "2026-01-08T06:00Z",
+   "granularity": "1h",
+   "bucket": "2026-01-05T04:00Z",
+   "returned": false
+  },
+  {
+   "clock": "2026-01-08T06:00Z",
+   "granularity": "4h",
+   "bucket": "2026-01-05T04:00Z",
+   "returned": false
+  },
+  {
+   "clock": "2026-01-08T06:00Z",
+   "granularity": "4h",
+   "bucket": "2026-01-08T00:00Z",
+   "returned": false
+  },
+  {
+   "clock": "2026-01-08T12:00Z",
+   "granularity": "1h",
+   "bucket": "2026-01-05T04:00Z",
+   "returned": false
+  },
+  {
+   "clock": "2026-01-08T12:00Z",
+   "granularity": "4h",
+   "bucket": "2026-01-05T04:00Z",
+   "returned": false
+  },
+  {
+   "clock": "2026-01-08T12:00Z",
+   "granularity": "4h",
+   "bucket": "2026-01-08T00:00Z",
+   "returned": false
+  },
+  {
+   "clock": "2026-01-08T12:00Z",
+   "granularity": "4h",
+   "bucket": "2026-01-08T04:00Z",
+   "returned": false
+  },
+  {
+   "clock": "2026-02-02T21:45Z",
+   "granularity": "1h",
+   "bucket": "2026-01-05T04:00Z",
+   "returned": false
+  },
+  {
+   "clock": "2026-02-02T21:45Z",
+   "granularity": "4h",
+   "bucket": "2026-01-05T04:00Z",
+   "returned": false
+  },
+  {
+   "clock": "2026-02-02T21:45Z",
+   "granularity": "4h",
+   "bucket": "2026-01-08T00:00Z",
+   "returned": false
+  },
+  {
+   "clock": "2026-02-02T21:45Z",
+   "granularity": "4h",
+   "bucket": "2026-01-08T04:00Z",
+   "returned": false
+  },
+  {
+   "clock": "2026-02-02T20:45Z",
+   "granularity": "1h",
+   "bucket": "2026-01-05T04:00Z",
+   "returned": false
+  },
+  {
+   "clock": "2026-02-02T20:45Z",
+   "granularity": "4h",
+   "bucket": "2026-01-05T04:00Z",
+   "returned": false
+  },
+  {
+   "clock": "2026-02-02T20:45Z",
+   "granularity": "4h",
+   "bucket": "2026-01-08T00:00Z",
+   "returned": false
+  },
+  {
+   "clock": "2026-02-02T20:45Z",
+   "granularity": "4h",
+   "bucket": "2026-01-08T04:00Z",
+   "returned": false
+  }
+ ],
+ "availabilityContradiction": [],
+ "baseChecks": [
+  {
+   "clock": "2026-01-05T04:15Z",
+   "count": 17,
+   "expectedCount": 17,
+   "equal": true,
+   "spotValues": [
+    {
+     "time": 1767571200,
+     "open": 2650,
+     "high": 2650.27,
+     "low": 2649.83,
+     "close": 2650.1
+    },
+    {
+     "time": 1767578400,
+     "open": 2647.75,
+     "high": 2648.2,
+     "low": 2646.85,
+     "close": 2647.27
+    },
+    {
+     "time": 1767585600,
+     "open": 2646.11,
+     "high": 2646.5,
+     "low": 2645.36,
+     "close": 2645.73
+    }
+   ]
+  },
+  {
+   "clock": "2026-01-05T05:00Z",
+   "count": 19,
+   "expectedCount": 19,
+   "equal": true,
+   "spotValues": [
+    {
+     "time": 1767571200,
+     "open": 2650,
+     "high": 2650.27,
+     "low": 2649.83,
+     "close": 2650.1
+    },
+    {
+     "time": 1767579300,
+     "open": 2647.27,
+     "high": 2647.29,
+     "low": 2646.42,
+     "close": 2646.92
+    },
+    {
+     "time": 1767588300,
+     "open": 2646.04,
+     "high": 2646.62,
+     "low": 2645.76,
+     "close": 2646.24
+    }
+   ]
+  },
+  {
+   "clock": "2026-01-05T06:00Z",
+   "count": 23,
+   "expectedCount": 23,
+   "equal": true,
+   "spotValues": [
+    {
+     "time": 1767571200,
+     "open": 2650,
+     "high": 2650.27,
+     "low": 2649.83,
+     "close": 2650.1
+    },
+    {
+     "time": 1767581100,
+     "open": 2646.86,
+     "high": 2646.93,
+     "low": 2646.5,
+     "close": 2646.58
+    },
+    {
+     "time": 1767591900,
+     "open": 2646.14,
+     "high": 2646.22,
+     "low": 2645.78,
+     "close": 2646.11
+    }
+   ]
+  },
+  {
+   "clock": "2026-01-05T08:00Z",
+   "count": 31,
+   "expectedCount": 31,
+   "equal": true,
+   "spotValues": [
+    {
+     "time": 1767571200,
+     "open": 2650,
+     "high": 2650.27,
+     "low": 2649.83,
+     "close": 2650.1
+    },
+    {
+     "time": 1767584700,
+     "open": 2646.48,
+     "high": 2646.49,
+     "low": 2645.6,
+     "close": 2646.11
+    },
+    {
+     "time": 1767599100,
+     "open": 2645.36,
+     "high": 2645.75,
+     "low": 2644.47,
+     "close": 2644.84
+    }
+   ]
+  },
+  {
+   "clock": "2026-01-08T06:00Z",
+   "count": 303,
+   "expectedCount": 303,
+   "equal": true,
+   "spotValues": [
+    {
+     "time": 1767571200,
+     "open": 2650,
+     "high": 2650.27,
+     "low": 2649.83,
+     "close": 2650.1
+    },
+    {
+     "time": 1767708000,
+     "open": 2652.7,
+     "high": 2653.31,
+     "low": 2652.48,
+     "close": 2653.21
+    },
+    {
+     "time": 1767851100,
+     "open": 2656.24,
+     "high": 2656.44,
+     "low": 2656.22,
+     "close": 2656.39
+    }
+   ]
+  },
+  {
+   "clock": "2026-01-08T12:00Z",
+   "count": 327,
+   "expectedCount": 327,
+   "equal": true,
+   "spotValues": [
+    {
+     "time": 1767571200,
+     "open": 2650,
+     "high": 2650.27,
+     "low": 2649.83,
+     "close": 2650.1
+    },
+    {
+     "time": 1767718800,
+     "open": 2653.19,
+     "high": 2653.75,
+     "low": 2652.89,
+     "close": 2653.7
+    },
+    {
+     "time": 1767872700,
+     "open": 2656.6,
+     "high": 2657.15,
+     "low": 2656.07,
+     "close": 2656.75
+    }
+   ]
+  },
+  {
+   "clock": "2026-02-02T21:45Z",
+   "count": 1998,
+   "expectedCount": 1998,
+   "equal": true,
+   "spotValues": [
+    {
+     "time": 1767571200,
+     "open": 2650,
+     "high": 2650.27,
+     "low": 2649.83,
+     "close": 2650.1
+    },
+    {
+     "time": 1768824000,
+     "open": 2648.57,
+     "high": 2649.18,
+     "low": 2648.4,
+     "close": 2648.94
+    },
+    {
+     "time": 1770067800,
+     "open": 2646.57,
+     "high": 2647.31,
+     "low": 2646.2,
+     "close": 2646.92
+    }
+   ]
+  },
+  {
+   "clock": "2026-02-02T20:45Z",
+   "count": 1994,
+   "expectedCount": 1994,
+   "equal": true,
+   "spotValues": [
+    {
+     "time": 1767571200,
+     "open": 2650,
+     "high": 2650.27,
+     "low": 2649.83,
+     "close": 2650.1
+    },
+    {
+     "time": 1768822200,
+     "open": 2648.06,
+     "high": 2648.24,
+     "low": 2647.7,
+     "close": 2648.06
+    },
+    {
+     "time": 1770064200,
+     "open": 2647.76,
+     "high": 2648.62,
+     "low": 2647.43,
+     "close": 2648.08
+    }
+   ]
+  }
+ ],
+ "kit": "0.1.0",
+ "allPass": true
+}

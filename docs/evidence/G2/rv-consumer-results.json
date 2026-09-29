@@ -1,0 +1,25 @@
+{
+ "freshPack": {
+  "sha256": "ed1af86a57e715a15b52911579f406d196720bc44266f8ed2d3fe0c28d9f79e0",
+  "equalsCommittedTarballs": {
+   "packages": true,
+   "docs_evidence_copy": true
+  }
+ },
+ "consumer": {
+  "dir": "C:/Users/RZ1/Desktop/RZ/g2-rv-consumer",
+  "outsideMonorepo": true,
+  "npmLsFile": "rv-consumer-npm-ls.txt"
+ },
+ "importAudit": {
+  "kitRuntimeDeps": 0,
+  "bareImportsInDist": 0,
+  "chartWorkspaceImportsKit": "n/a (chart-workspace untouched in diff)",
+  "kitImportsChartWorkspaceOrApp": false
+ },
+ "consumerReplayLifecycle": {
+  "case1_slotCompleteness": "PASS (rv-consumer-case1-results.json; kit bars() == independent slot oracle at 8 instants x 1h/4h; 04:15Z 1h slot region never returned as candle; base 15m identical to available prefix)",
+  "case2_mutationSweep": "PASS for bounded mutations (9 clocks x 8 bounded variants, all outputs identical); degenerate wholesale-future-removal probe changes ONLY the trailing availability-edge entry (reported for ruling)",
+  "case3_persistenceRefusals": "PASS (all ops refused READ_FAILED with untouched bytes; recovery works; getter-throw + corrupt-at-start gate READ_NOT_ACKNOWLEDGED)"
+ }
+}

@@ -1,0 +1,22 @@
+{
+ "g1LevelsV1": {
+  "len": 94,
+  "sha256_12": "4645215c5ac7e72b"
+ },
+ "g2ReplayV1_valid": {
+  "len": 104,
+  "value": "{\"version\":1,\"symbol\":\"\",\"instant\":1767597300,\"stepIndex\":30,\"playing\":false,\"levels\":[],\"returnedToCurrent\":false}"
+ },
+ "g2ReplayV1_corrupt": {
+  "len": 57,
+  "value": "{\"version\":1,\"symbol\":\"\",\"instant\":1767597300,\"stepIndex\""
+ },
+ "perOp_g2Len": {
+  "stepRefused": 57,
+  "restoreRefused": 57,
+  "saveRefused": 57,
+  "resetRefused": 57
+ },
+ "perOp_g1Len": 94,
+ "note": "length + content verified in-page at each refused op (readouts in the session log); corrupt bytes unchanged throughout; g1 untouched in every op"
+}

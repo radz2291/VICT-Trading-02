@@ -1,0 +1,1662 @@
+{
+ "sweep": [
+  {
+   "clock": "2026-01-05T04:00Z",
+   "variant": "A_removeResumption0430",
+   "label": "remove the 04:30Z Jan5 resumption bar",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767585600,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767585600,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-05T04:00Z",
+   "variant": "A2_remove0430And0445",
+   "label": "remove 04:30Z + 04:45Z Jan5",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767585600,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767585600,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-05T04:00Z",
+   "variant": "B_addBarInGap0415",
+   "label": "add a bar inside the gap at 04:15Z Jan5",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767585600,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767585600,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-05T04:00Z",
+   "variant": "C_removeBars0500",
+   "label": "remove bars at 05:00Z+05:15Z Jan5",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767585600,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767585600,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-05T04:00Z",
+   "variant": "D_modifyAllFutureValues",
+   "label": "multiply high/close of every post-clock bar",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767585600,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767585600,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-05T04:00Z",
+   "variant": "E_removeBars0700",
+   "label": "remove bars at 07:00Z+07:15Z Jan5",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767585600,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767585600,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-05T04:00Z",
+   "variant": "F_removeBarsAtHorizonEdge",
+   "label": "remove last two bars with close>clock at horizon edge (21:45Z+22:00Z Feb2)",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767585600,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767585600,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-05T04:00Z",
+   "variant": "G_removeEntireFuture",
+   "label": "remove ALL bars with close > clock (wholesale)",
+   "diffs": [
+    "av"
+   ],
+   "identical": false,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767585600,
+     "to": null
+    }
+   ],
+   "avMut": [],
+   "degenerate": true
+  },
+  {
+   "clock": "2026-01-05T04:00Z",
+   "variant": "H_addBarBeyondEnd",
+   "label": "add a bar beyond the fixture end",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767585600,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767585600,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-05T04:00Z",
+   "variant": "I_remove0400",
+   "label": "remove the bar at 04:00Z Jan5",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767585600,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767585600,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-05T04:15Z",
+   "variant": "A_removeResumption0430",
+   "label": "remove the 04:30Z Jan5 resumption bar",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-05T04:15Z",
+   "variant": "A2_remove0430And0445",
+   "label": "remove 04:30Z + 04:45Z Jan5",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-05T04:15Z",
+   "variant": "B_addBarInGap0415",
+   "label": "add a bar inside the gap at 04:15Z Jan5",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-05T04:15Z",
+   "variant": "C_removeBars0500",
+   "label": "remove bars at 05:00Z+05:15Z Jan5",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-05T04:15Z",
+   "variant": "D_modifyAllFutureValues",
+   "label": "multiply high/close of every post-clock bar",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-05T04:15Z",
+   "variant": "E_removeBars0700",
+   "label": "remove bars at 07:00Z+07:15Z Jan5",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-05T04:15Z",
+   "variant": "F_removeBarsAtHorizonEdge",
+   "label": "remove last two bars with close>clock at horizon edge (21:45Z+22:00Z Feb2)",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-05T04:15Z",
+   "variant": "G_removeEntireFuture",
+   "label": "remove ALL bars with close > clock (wholesale)",
+   "diffs": [
+    "av"
+   ],
+   "identical": false,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": null
+    }
+   ],
+   "avMut": [],
+   "degenerate": true
+  },
+  {
+   "clock": "2026-01-05T04:15Z",
+   "variant": "H_addBarBeyondEnd",
+   "label": "add a bar beyond the fixture end",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-05T04:30Z",
+   "variant": "A_removeResumption0430",
+   "label": "remove the 04:30Z Jan5 resumption bar",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-05T04:30Z",
+   "variant": "A2_remove0430And0445",
+   "label": "remove 04:30Z + 04:45Z Jan5",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-05T04:30Z",
+   "variant": "C_removeBars0500",
+   "label": "remove bars at 05:00Z+05:15Z Jan5",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-05T04:30Z",
+   "variant": "D_modifyAllFutureValues",
+   "label": "multiply high/close of every post-clock bar",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-05T04:30Z",
+   "variant": "E_removeBars0700",
+   "label": "remove bars at 07:00Z+07:15Z Jan5",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-05T04:30Z",
+   "variant": "F_removeBarsAtHorizonEdge",
+   "label": "remove last two bars with close>clock at horizon edge (21:45Z+22:00Z Feb2)",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-05T04:30Z",
+   "variant": "G_removeEntireFuture",
+   "label": "remove ALL bars with close > clock (wholesale)",
+   "diffs": [
+    "av"
+   ],
+   "identical": false,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": null
+    }
+   ],
+   "avMut": [],
+   "degenerate": true
+  },
+  {
+   "clock": "2026-01-05T04:30Z",
+   "variant": "H_addBarBeyondEnd",
+   "label": "add a bar beyond the fixture end",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-05T04:45Z",
+   "variant": "A2_remove0430And0445",
+   "label": "remove 04:30Z + 04:45Z Jan5",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767588300,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767588300,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-05T04:45Z",
+   "variant": "C_removeBars0500",
+   "label": "remove bars at 05:00Z+05:15Z Jan5",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767588300,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767588300,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-05T04:45Z",
+   "variant": "D_modifyAllFutureValues",
+   "label": "multiply high/close of every post-clock bar",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767588300,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767588300,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-05T04:45Z",
+   "variant": "E_removeBars0700",
+   "label": "remove bars at 07:00Z+07:15Z Jan5",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767588300,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767588300,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-05T04:45Z",
+   "variant": "F_removeBarsAtHorizonEdge",
+   "label": "remove last two bars with close>clock at horizon edge (21:45Z+22:00Z Feb2)",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767588300,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767588300,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-05T04:45Z",
+   "variant": "G_removeEntireFuture",
+   "label": "remove ALL bars with close > clock (wholesale)",
+   "diffs": [
+    "av"
+   ],
+   "identical": false,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767588300,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    }
+   ],
+   "degenerate": true
+  },
+  {
+   "clock": "2026-01-05T04:45Z",
+   "variant": "H_addBarBeyondEnd",
+   "label": "add a bar beyond the fixture end",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767588300,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767588300,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-05T05:00Z",
+   "variant": "C_removeBars0500",
+   "label": "remove bars at 05:00Z+05:15Z Jan5",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767589200,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767589200,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-05T05:00Z",
+   "variant": "D_modifyAllFutureValues",
+   "label": "multiply high/close of every post-clock bar",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767589200,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767589200,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-05T05:00Z",
+   "variant": "E_removeBars0700",
+   "label": "remove bars at 07:00Z+07:15Z Jan5",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767589200,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767589200,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-05T05:00Z",
+   "variant": "F_removeBarsAtHorizonEdge",
+   "label": "remove last two bars with close>clock at horizon edge (21:45Z+22:00Z Feb2)",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767589200,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767589200,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-05T05:00Z",
+   "variant": "G_removeEntireFuture",
+   "label": "remove ALL bars with close > clock (wholesale)",
+   "diffs": [
+    "av"
+   ],
+   "identical": false,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767589200,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    }
+   ],
+   "degenerate": true
+  },
+  {
+   "clock": "2026-01-05T05:00Z",
+   "variant": "H_addBarBeyondEnd",
+   "label": "add a bar beyond the fixture end",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767589200,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767589200,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-05T07:00Z",
+   "variant": "D_modifyAllFutureValues",
+   "label": "multiply high/close of every post-clock bar",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767596400,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767596400,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-05T07:00Z",
+   "variant": "E_removeBars0700",
+   "label": "remove bars at 07:00Z+07:15Z Jan5",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767596400,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767596400,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-05T07:00Z",
+   "variant": "F_removeBarsAtHorizonEdge",
+   "label": "remove last two bars with close>clock at horizon edge (21:45Z+22:00Z Feb2)",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767596400,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767596400,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-05T07:00Z",
+   "variant": "G_removeEntireFuture",
+   "label": "remove ALL bars with close > clock (wholesale)",
+   "diffs": [
+    "av"
+   ],
+   "identical": false,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767596400,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    }
+   ],
+   "degenerate": true
+  },
+  {
+   "clock": "2026-01-05T07:00Z",
+   "variant": "H_addBarBeyondEnd",
+   "label": "add a bar beyond the fixture end",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767596400,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767596400,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-08T06:00Z",
+   "variant": "D_modifyAllFutureValues",
+   "label": "multiply high/close of every post-clock bar",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767841200,
+     "to": 1767848400
+    },
+    {
+     "status": "missing",
+     "from": 1767852000,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767841200,
+     "to": 1767848400
+    },
+    {
+     "status": "missing",
+     "from": 1767852000,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-08T06:00Z",
+   "variant": "F_removeBarsAtHorizonEdge",
+   "label": "remove last two bars with close>clock at horizon edge (21:45Z+22:00Z Feb2)",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767841200,
+     "to": 1767848400
+    },
+    {
+     "status": "missing",
+     "from": 1767852000,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767841200,
+     "to": 1767848400
+    },
+    {
+     "status": "missing",
+     "from": 1767852000,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-01-08T06:00Z",
+   "variant": "G_removeEntireFuture",
+   "label": "remove ALL bars with close > clock (wholesale)",
+   "diffs": [
+    "av"
+   ],
+   "identical": false,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767841200,
+     "to": 1767848400
+    },
+    {
+     "status": "missing",
+     "from": 1767852000,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767841200,
+     "to": 1767848400
+    }
+   ],
+   "degenerate": true
+  },
+  {
+   "clock": "2026-01-08T06:00Z",
+   "variant": "H_addBarBeyondEnd",
+   "label": "add a bar beyond the fixture end",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767841200,
+     "to": 1767848400
+    },
+    {
+     "status": "missing",
+     "from": 1767852000,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767841200,
+     "to": 1767848400
+    },
+    {
+     "status": "missing",
+     "from": 1767852000,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-02-02T21:45Z",
+   "variant": "D_modifyAllFutureValues",
+   "label": "multiply high/close of every post-clock bar",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767841200,
+     "to": 1767848400
+    },
+    {
+     "status": "missing",
+     "from": 1768003200,
+     "to": 1768176000
+    },
+    {
+     "status": "missing",
+     "from": 1768608000,
+     "to": 1768780800
+    },
+    {
+     "status": "missing",
+     "from": 1769212800,
+     "to": 1769385600
+    },
+    {
+     "status": "missing",
+     "from": 1769817600,
+     "to": 1769990400
+    },
+    {
+     "status": "missing",
+     "from": 1770068700,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767841200,
+     "to": 1767848400
+    },
+    {
+     "status": "missing",
+     "from": 1768003200,
+     "to": 1768176000
+    },
+    {
+     "status": "missing",
+     "from": 1768608000,
+     "to": 1768780800
+    },
+    {
+     "status": "missing",
+     "from": 1769212800,
+     "to": 1769385600
+    },
+    {
+     "status": "missing",
+     "from": 1769817600,
+     "to": 1769990400
+    },
+    {
+     "status": "missing",
+     "from": 1770068700,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-02-02T21:45Z",
+   "variant": "F_removeBarsAtHorizonEdge",
+   "label": "remove last two bars with close>clock at horizon edge (21:45Z+22:00Z Feb2)",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767841200,
+     "to": 1767848400
+    },
+    {
+     "status": "missing",
+     "from": 1768003200,
+     "to": 1768176000
+    },
+    {
+     "status": "missing",
+     "from": 1768608000,
+     "to": 1768780800
+    },
+    {
+     "status": "missing",
+     "from": 1769212800,
+     "to": 1769385600
+    },
+    {
+     "status": "missing",
+     "from": 1769817600,
+     "to": 1769990400
+    },
+    {
+     "status": "missing",
+     "from": 1770068700,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767841200,
+     "to": 1767848400
+    },
+    {
+     "status": "missing",
+     "from": 1768003200,
+     "to": 1768176000
+    },
+    {
+     "status": "missing",
+     "from": 1768608000,
+     "to": 1768780800
+    },
+    {
+     "status": "missing",
+     "from": 1769212800,
+     "to": 1769385600
+    },
+    {
+     "status": "missing",
+     "from": 1769817600,
+     "to": 1769990400
+    },
+    {
+     "status": "missing",
+     "from": 1770068700,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  },
+  {
+   "clock": "2026-02-02T21:45Z",
+   "variant": "G_removeEntireFuture",
+   "label": "remove ALL bars with close > clock (wholesale)",
+   "diffs": [
+    "av"
+   ],
+   "identical": false,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767841200,
+     "to": 1767848400
+    },
+    {
+     "status": "missing",
+     "from": 1768003200,
+     "to": 1768176000
+    },
+    {
+     "status": "missing",
+     "from": 1768608000,
+     "to": 1768780800
+    },
+    {
+     "status": "missing",
+     "from": 1769212800,
+     "to": 1769385600
+    },
+    {
+     "status": "missing",
+     "from": 1769817600,
+     "to": 1769990400
+    },
+    {
+     "status": "missing",
+     "from": 1770068700,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767841200,
+     "to": 1767848400
+    },
+    {
+     "status": "missing",
+     "from": 1768003200,
+     "to": 1768176000
+    },
+    {
+     "status": "missing",
+     "from": 1768608000,
+     "to": 1768780800
+    },
+    {
+     "status": "missing",
+     "from": 1769212800,
+     "to": 1769385600
+    },
+    {
+     "status": "missing",
+     "from": 1769817600,
+     "to": 1769990400
+    }
+   ],
+   "degenerate": true
+  },
+  {
+   "clock": "2026-02-02T21:45Z",
+   "variant": "H_addBarBeyondEnd",
+   "label": "add a bar beyond the fixture end",
+   "diffs": [],
+   "identical": true,
+   "avBase": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767841200,
+     "to": 1767848400
+    },
+    {
+     "status": "missing",
+     "from": 1768003200,
+     "to": 1768176000
+    },
+    {
+     "status": "missing",
+     "from": 1768608000,
+     "to": 1768780800
+    },
+    {
+     "status": "missing",
+     "from": 1769212800,
+     "to": 1769385600
+    },
+    {
+     "status": "missing",
+     "from": 1769817600,
+     "to": 1769990400
+    },
+    {
+     "status": "missing",
+     "from": 1770068700,
+     "to": null
+    }
+   ],
+   "avMut": [
+    {
+     "status": "missing",
+     "from": 1767586500,
+     "to": 1767587400
+    },
+    {
+     "status": "missing",
+     "from": 1767841200,
+     "to": 1767848400
+    },
+    {
+     "status": "missing",
+     "from": 1768003200,
+     "to": 1768176000
+    },
+    {
+     "status": "missing",
+     "from": 1768608000,
+     "to": 1768780800
+    },
+    {
+     "status": "missing",
+     "from": 1769212800,
+     "to": 1769385600
+    },
+    {
+     "status": "missing",
+     "from": 1769817600,
+     "to": 1769990400
+    },
+    {
+     "status": "missing",
+     "from": 1770068700,
+     "to": null
+    }
+   ],
+   "degenerate": false
+  }
+ ],
+ "openEndedInvariants": [],
+ "degenerateWholesale": {
+  "clock": "2026-01-05T05:00Z",
+  "baselineTrailing": {
+   "status": "missing",
+   "from": 1767589200,
+   "to": null
+  },
+  "wholesaleTrailing": {
+   "status": "missing",
+   "from": 1767586500,
+   "to": 1767587400
+  },
+  "availabilityIdentical": false,
+  "barsIdentical": [
+   "av"
+  ]
+ },
+ "allPass": true
+}
