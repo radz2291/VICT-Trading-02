@@ -1,6 +1,6 @@
 # Repository-specific autonomous handoff — VICT Trading Workspace
 
-**STATUS: ACCEPTED.** Owner acceptance recorded 2026-09-27 for this file as committed at `5ed125aa222c4b2f17832e5a5dbad8140b3638e4` (owner instruction: "Ok then please proceed", given after review of the draft). This handoff is the authority record for the stages it covers, currently **G0 only**.
+**STATUS: ACCEPTED.** Owner acceptance recorded 2026-09-27 for this file as committed at `5ed125aa222c4b2f17832e5a5dbad8140b3638e4` (owner instruction: "Ok then please proceed", given after review of the draft). This handoff's stage records have since progressed: **G0, G1, and G1-PKG were each accepted, executed, and closed (verdicts PASS WITH NON-BLOCKING FINDINGS); the D-001 and D-002 decisions are owner-accepted; the G2 record below is DRAFT and NOT accepted** — each later stage record carries its own acceptance note and baseline SHA.
 
 ## Target and provenance
 
@@ -40,6 +40,53 @@ Owner instruction (2026-09-29, baseline `1596c4c`): superseding decision D-001. 
 
 **Correction in progress (owner-directed, 2026-09-29, baseline `964038b…`):** bounded G1-PKG correction — (1) note preservation on price-only edits + documented explicit clear (`note: ''`); (2) persistence-contract resolution: intrinsic read-acknowledgment gate (`acknowledgeRead`, code `READ_NOT_ACKNOWLEDGED`) on top of the unchanged adapter-side read-gate; (3) status/npm-availability wording fixes. No commit/push/publish by the correcting builder; final gate-record update belongs to the fresh verifier + orchestrator.
 > **Correction verified (fresh verifier, 2026-09-29):** all claims proven at `f148fff…` per `docs/evidence/G1-PKG/verifier-report-correction.md`; gate verdict unchanged (PASS WITH NON-BLOCKING FINDINGS).
+
+## Stage handoff record — G2 — **DRAFT, NOT ACCEPTED, GRANTS NO AUTHORITY** — blind replay in the workspace
+
+> **This record is a PREPARED DRAFT for owner review only. The owner's acceptance of D-001/D-002 (boundaries and architectural direction) does NOT authorize G2 implementation. No replay code, no kit package, nothing is built until the owner accepts a final record at a pinned SHA.**
+
+**Owner direction feeding this draft:** D-001 (Trading Kit boundary precedes replay) + D-002 (accepted choices: `@vict-trading/trading-kit`; independence from chart-workspace; app composes both; app-supplied session persistence port; smallest useful clock/data/replay/evidence contracts; the four precision rules R1–R4 are normative).
+
+### Scope (if and as accepted)
+
+- New package **`packages/trading-kit/`** (`@vict-trading/trading-kit@0.1.0`): smallest useful contracts per D-002 — `createReplayClock` (hard future-guard; now/advance/setFrame; R1 capping), `createDataSession` (R1 capped queries + R2 availability semantics; consumer-provided source; no fetching), `ReplaySession` (start/restore/reset/return-to-current with recorded rules; **app-supplied persistence port**), `visibilityAt` provenance predicates (R3), minimal evidence hooks (R1 requested/served records are part of evidence). No scripts, no simulation runtime, no risk, no order pathway, no wall-clock use for market-time decisions.
+- App integration **`host/**`**: replay mode composing kit + existing Chart Workspace — choose a historical start on the chart, step/play/pause, switch supported timeframes, restore or deliberately reset a session, **return to current data**. Replay and current contexts unmistakably labelled. Chart and derived calculations receive data only via capped queries (R1); explicit unavailable states for missing intervals (R2); drawing visibility per provenance classes (R3). W1 functionality and current-mode behavior unaffected.
+- Pinned **poison-future fixture** (consumer data, app-provided): derived deterministically from seed `20260927` (XAUUSD, 2023 bars, 15m) by generator command recorded in the evidence; a named replay horizon plus **poison later bars containing values that would change a naive calculation's result if they were visible** (e.g. a spike that would flip a naive maximum or a simple moving average); fixture identity pinned by recorded generation command + SHA-256 committed under `docs/evidence/G2/fixture/`. Baseline and poison variants share all bars ≤ horizon (only the future differs).
+- Evidence **`docs/evidence/G2/**`**: builder report, claim matrix, reproduction commands, screenshots, fixture identity, kit artifact identity.
+- Kit packaging proof at this stage (same G1-PKG standard): standalone build, `npm pack` artifact with recorded sha512, **independent consumer OUTSIDE the monorepo** with the consumer's OWN data and OWN storage/session adapter demonstrating: capped query behavior (requested beyond clock → capped + recorded), refusal semantics, and a replay slice lifecycle. No npm publish.
+
+### Product test
+
+**W3** (docs/EXPERIENCE.md) as the main test on the poison-future fixture; W1 unaffected-current-mode check; desktop (≥1280) **and narrow (375 and 768)** real-browser interaction.
+
+### Pass criteria (candidate only if accepted)
+
+1. No future data leaks through **any** channel: chart series content, larger-timeframe aggregates, unfinished bars, drawings/annotations created later, derived calculation output, current quote, or any future-derived value. Detection is by **programmatic assertion** on the kit's requested/served records plus content comparison, not UI observation alone.
+2. A result computed over the visible slice must **change** if poison future bars changed — proven by mutating poison bar values and showing historical-visible results are unaffected (no future dependency).
+3. Unfinished larger-timeframe bars never returned (R2); missing intervals explicit, never bridged (R2).
+4. Drawing provenance honest per R3; a drawing created at step N invisible at steps < N; class-(c) drawings carry present-day markers when shown.
+5. Session restore/reset exact and replayable by recorded rules; reload matches the recorded rules; return-to-current works and is labelled.
+6. Replay vs current unmistakably labelled; replay controls cannot reach a current-market endpoint.
+7. Kit builds and packs independently; external-consumer proof passes; import audit both directions (no kit↔chart-workspace, no app imports).
+8. `npm run check` + build clean; console clean; keyboard access for replay controls; desktop + narrow passes.
+
+### Stop conditions (candidate fails if seen)
+
+Chart masking while calculations see future data; any leak channel demonstrated; a future query returning uncapped data; replay controls reaching a current-market endpoint; unsupported timeframe silently substituted; kit not buildable/packable standalone or consumer resolving to app; replay/current contexts confused in UI; session state lost on reload; any prohibited work (below).
+
+### Verifier instructions (fresh agent, exact candidate SHA)
+
+Challenge-first walkthrough of W3 and the pass criteria: **direct future queries** (beyond clock, beyond horizon), **changed future bars** (mutate poison values; verify historical results unchanged), **unfinished larger-timeframe bars**, **gaps**, **later annotations** (create at step N, revisit steps < N), **derived output** (indicator over visible slice vs over full history must differ exactly when future data would matter), **session reload** (restore exact state), **return to current context** (correctness + labelling). Plus: kit standalone build + own `npm pack` + fresh external consumer with own data/adapter; import audit; app W1 at desktop + narrow; check/build/console; scope audit of the candidate diff. Verifier writes `docs/evidence/G2/verifier-report-G2.md` with EVALUATION.md vocabulary; builder never self-certifies.
+
+### Prohibited (as accepted G2 scope would define)
+
+Scripting runtime or script features; simulation engine selection or runtime inclusion (O-05 stays open; LGPL question pending for G3); risk models; any order or account pathway; live feeds; npm publish; VICT/Trading OS repo edits; secrets; modifying pack product documents without a superseding decision; starting G3+.
+
+### Exit (once accepted and executed)
+
+Candidate commit + push, fresh verifier verdict, STATE.md verdict + SHA, report to owner, **stop for review**.
+
+---
 
 ## Stage handoff record — G1 (ACCEPTED 2026-09-28, COMPLETED 2026-09-29)
 
