@@ -1,0 +1,57 @@
+{
+ "refusalBeforeRead": {
+  "ok": false,
+  "code": "READ_NOT_ACKNOWLEDGED",
+  "message": "no successful read acknowledged yet — call acknowledgeState(await persistence.read()) after your read succeeds"
+ },
+ "capChecks": {
+  "overClock": {
+   "requested": 1760012600,
+   "served": 1760009000,
+   "capped": true,
+   "recordedCap": true
+  },
+  "overHorizon": {
+   "served": 1760009000,
+   "capped": true,
+   "clockNow": 1760009000,
+   "servedEqualsClockNow": true
+  }
+ },
+ "visibility": {
+  "atCreation": true,
+  "oneStepBefore": false,
+  "unknownHiddenInReplay": false
+ },
+ "htf": {
+  "baseBars": 13,
+  "oneHourBars": 4,
+  "missing": []
+ },
+ "persisted": {
+  "version": 1,
+  "symbol": "",
+  "instant": 1760011700,
+  "stepIndex": 4,
+  "playing": false,
+  "levels": [
+   {
+    "id": "rlvl-xjeinj43",
+    "symbol": "",
+    "price": 1.0856,
+    "note": "resistance",
+    "creationInstant": 1760011700,
+    "creationStep": 4
+   }
+  ],
+  "returnedToCurrent": false
+ },
+ "restore": {
+  "ok": true,
+  "instantMatches": true,
+  "stepMatches": true,
+  "levelRestored": true,
+  "restoredInstant": 1760012600,
+  "restoredStep": 5
+ }
+}

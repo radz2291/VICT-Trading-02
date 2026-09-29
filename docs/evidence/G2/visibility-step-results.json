@@ -1,0 +1,25 @@
+{
+ "stampExample": {
+  "provenance": "replay-stamped",
+  "creationInstant": 1769451300,
+  "creationStep": 5
+ },
+ "levelVisibilityByStep": {
+  "visibleAtStep1": false,
+  "visibleAtStep2": false,
+  "visibleAtStep3": false,
+  "visibleAtStep4": true,
+  "visibleAtStep5": true,
+  "visibleAtStep6": true
+ },
+ "levelCreated": {
+  "creationStep": 4,
+  "creationInstant": 1769450400
+ },
+ "stepVisibilityRule": true,
+ "provenanceUnknownHiddenInReplay": true,
+ "provenanceUnknownVisibleInCurrent": true,
+ "restoreExact": true,
+ "restoredInstant": 1769451300,
+ "restoredStep": 5
+}

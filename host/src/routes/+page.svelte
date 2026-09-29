@@ -9,6 +9,8 @@
 		workspaceSetInput
 	} from '$lib/definition.js';
 	import ChartIslandLWC from '$lib/islands/ChartIslandLWC.svelte';
+	import ReplayIsland from '$lib/islands/ReplayIsland.svelte';
+	import { createReplayState, fmtInstant } from '$lib/replay.svelte.js';
 	import { SYMBOLS, TIMEFRAMES, type InstrumentSymbol, type Timeframe } from '$lib/fixture.js';
 	import type { Level } from '$lib/chart-api.js';
 
@@ -17,6 +19,9 @@
 	registry.register({ componentId: 'cmp.chart.lwc', revision: '1', implementation: ChartIslandLWC });
 
 	const plan = compileWorkspacePlan();
+
+	// ---- replay (G2) — kit-composed state; see lib/replay.svelte.ts -------
+	const replay = createReplayState();
 
 	// ---- durable stores (host-side) --------------------------------------
 	const LEVELS_KEY = 'g1.levels.v1';
@@ -342,6 +347,13 @@
 		<button class="panel-toggle" data-testid="btn-toggle-panel" onclick={togglePanel} aria-expanded={ws.panelOpen === 1}>
 			{ws.panelOpen === 1 ? 'Hide panel' : 'Show panel'}
 		</button>
+		{#if replay.active}
+			<span class="mode-banner" data-testid="mode-banner" role="status">
+				REPLAY — historical fixture data as of {fmtInstant(replay.now)} · horizon {fmtInstant(replay.horizon)} · NOT current
+			</span>
+		{:else}
+			<span class="mode-banner current" data-testid="mode-banner" role="status">CURRENT</span>
+		{/if}
 	</header>
 
 	{#if !hydrated}
@@ -349,7 +361,11 @@
 	{:else}
 	<div class="body" class:panel-closed={ws.panelOpen !== 1}>
 		<main class="main">
-			<VitApp {plan} {registry} {dispatch} path="/" {viewData} record={null} onInvalidate={() => { dataVersion += 1; }} />
+			{#if replay.active}
+				<ReplayIsland replay={replay} onCreateAtPrice={(p) => void replay.createLevel(p)} />
+			{:else}
+				<VitApp {plan} {registry} {dispatch} path="/" {viewData} record={null} onInvalidate={() => { dataVersion += 1; }} />
+			{/if}
 		</main>
 
 		{#if ws.panelOpen === 1}
@@ -370,8 +386,69 @@
 				</div>
 
 				<div class="group">
+					<h3>Replay (historical fixture)</h3>
+					{#if !replay.active}
+						<label class="ctl">
+							Historical start
+							<select data-testid="sel-replay-start" onchange={(e) => void replay.start(Number(e.currentTarget.value))}>
+								<option value="">choose…</option>
+								{#each replay.startOptions as o (o.index)}
+									<option value={o.index}>{o.label} (bar {o.index})</option>
+								{/each}
+							</select>
+						</label>
+						<div class="replay-controls" role="group" aria-label="Replay session controls">
+							<button data-testid="btn-replay-restore" onclick={() => void replay.restore()}>Restore session</button>
+							<button data-testid="btn-replay-reset" onclick={() => void replay.resetSession()}>Reset session</button>
+						</div>
+					{/if}
+					{#if replay.active}
+						<div class="replay-controls" role="group" aria-label="Replay controls">
+							<button data-testid="btn-replay-step" onclick={() => void replay.step()} disabled={replay.now >= replay.horizon}>Step +15m</button>
+							{#if replay.playing}
+								<button data-testid="btn-replay-pause" onclick={() => void replay.pause()}>Pause</button>
+							{:else}
+								<button data-testid="btn-replay-play" onclick={() => void replay.play()} disabled={replay.now >= replay.horizon}>Play</button>
+							{/if}
+							<button data-testid="btn-replay-restore" onclick={() => void replay.restore()}>Restore session</button>
+							<button data-testid="btn-replay-reset" onclick={() => void replay.resetSession()}>Reset session</button>
+							<button data-testid="btn-return-current" class="accent" onclick={() => void replay.returnToCurrent()}>Return to current</button>
+						</div>
+						<label class="ctl">
+							Replay timeframe
+							<select data-testid="sel-replay-tf" value={replay.timeframe} onchange={(e) => replay.setTimeframe(e.currentTarget.value as '15m' | '1h' | '4h')}>
+								{#each ['15m', '1h', '4h'] as t}<option value={t}>{t}</option>{/each}
+							</select>
+						</label>
+						<p class="hint" data-testid="replay-position">step {replay.stepIndex} · instant {fmtInstant(replay.now)} · horizon {fmtInstant(replay.horizon)}</p>
+						{#if replay.missing.length > 0}
+							<p class="hint gapnote" data-testid="replay-gaps">{replay.missing.length} missing interval(s) — shown, never bridged</p>
+						{/if}
+					{/if}
+					<p class="hint">Replay sessions persist under g2.replay.v1. Fixture variant: {replay.fixtureVariant}. No live data.</p>
+				</div>
+
+				<div class="group">
 					<h3>Drawings — {ws.symbol}</h3>
-					{#if panelRead.failed}
+					{#if replay.active}
+						<p class="empty hidden-note" data-testid="replay-levels-hidden">
+							Existing saved levels are NOT shown in replay — provenance unknown. ({panelRead.levels.length} hidden)
+						</p>
+						{#if replay.levels.length === 0}
+							<p class="empty" data-testid="replay-levels-empty">No replay-stamped levels yet. Click the replay chart to draw one (stamped with the replay clock).</p>
+						{:else}
+							<ul class="drawings" data-testid="replay-levels">
+								{#each replay.levels as l (l.id)}
+									<li>
+										<span class="d-price">{l.price}</span>
+										<span class="d-note">{l.note ?? ''}</span>
+										<span class="d-time">step {l.creationStep}</span>
+										<button class="mini" aria-label="Delete replay level {l.id}" onclick={() => void replay.removeLevel(l.id)}>×</button>
+									</li>
+								{/each}
+							</ul>
+						{/if}
+					{:else if panelRead.failed}
 						<p class="empty read-failed" data-testid="panel-read-failed">
 							Drawings list unavailable: storage read failed. Existing levels may still be visible on the chart.
 						</p>
@@ -444,6 +521,20 @@
 	}
 	.pill.failed {
 		color: #ff7b72;
+	}
+	.mode-banner {
+		font: 11px ui-monospace, Consolas, monospace;
+		padding: 2px 10px;
+		border-radius: 3px;
+		background: #3a1412;
+		color: #ff9b8a;
+		border: 1px solid #b0413e;
+		letter-spacing: 0.04em;
+	}
+	.mode-banner.current {
+		background: #12291a;
+		color: #2f9e63;
+		border-color: #2f9e63;
 	}
 	.feed-note {
 		color: #e0c96b;
@@ -562,6 +653,45 @@
 		cursor: pointer;
 		font: 12px system-ui;
 		width: 100%;
+	}
+	.replay-controls {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 5px;
+	}
+	.replay-controls button {
+		background: #241418;
+		color: #f0c9a0;
+		border: 1px solid #b0413e;
+		border-radius: 4px;
+		padding: 4px 8px;
+		cursor: pointer;
+		font: 12px system-ui;
+	}
+	.replay-controls button.accent {
+		background: #12291a;
+		color: #2f9e63;
+		border-color: #2f9e63;
+	}
+	.replay-controls button:focus-visible,
+	.panel select:focus-visible {
+		outline: 2px solid #ffd54a;
+		outline-offset: 1px;
+	}
+	.hidden-note {
+		color: #ff9b8a;
+	}
+	.gapnote {
+		color: #e0c96b;
+	}
+	.drawings button.mini {
+		background: transparent;
+		border: 1px solid #7a3b38;
+		color: #ff7b72;
+		border-radius: 3px;
+		cursor: pointer;
+		font: 11px system-ui;
+		padding: 0 5px;
 	}
 
 	/* narrow widths: panel stacks below the chart, nothing overflows */

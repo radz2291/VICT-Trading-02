@@ -1,0 +1,36 @@
+{
+	"name": "@vict-trading/trading-kit",
+	"version": "0.1.0",
+	"description": "Headless replay capability: market-time replay clock with a hard future-guard, clock-capped and evidence-recorded data queries (R1), honest availability semantics with explicit missing intervals (R2), drawing visibility provenance rules (R3/D-003), and a replay session persisted only through a consumer-supplied port. Renders nothing, fetches nothing, owns no storage, zero runtime dependencies.",
+	"type": "module",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.js"
+		}
+	},
+	"files": [
+		"dist",
+		"README.md"
+	],
+	"scripts": {
+		"build": "tsc -p tsconfig.json",
+		"check": "tsc -p tsconfig.json --noEmit",
+		"prepare": "npm run build",
+		"prepublishOnly": "npm run build"
+	},
+	"keywords": [
+		"replay",
+		"market-time",
+		"data-capping",
+		"availability",
+		"provenance"
+	],
+	"license": "UNLICENSED",
+	"dependencies": {},
+	"devDependencies": {
+		"typescript": "^5.6.0"
+	}
+}

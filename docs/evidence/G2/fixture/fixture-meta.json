@@ -1,0 +1,32 @@
+{
+  "generatedBy": "node generate.mjs",
+  "seed": 20260927,
+  "derivation": "host/src/lib/fixture.ts XAUUSD walk (seed 20260927, 15m, start 2026-01-05T00:00:00Z, step 900s, 2800 slots, weekend+gap drops) — bars ≤ horizon identical to the app base series",
+  "horizonBarIndex": 1997,
+  "horizonInstant": 1770068700,
+  "poisonBarCount": 25,
+  "poisonBaseline": {
+    "closeStart": 3100,
+    "closeStep": 0.5
+  },
+  "poisonAlternate": {
+    "closeStart": 6100,
+    "closeStep": 0.5
+  },
+  "naiveCalculations": {
+    "baseline": {
+      "fullHistoryMax": 3112.5,
+      "sma20Final": 3107.25
+    },
+    "alternate": {
+      "fullHistoryMax": 6112.5,
+      "sma20Final": 6107.25
+    }
+  },
+  "sha256": {
+    "baseline": "e6b0b749bc09f9a0baca59c270f02429881b620251c94b82b488e6f5a0a6b804",
+    "alternate": "b9df6fc8232960cb5d0091337e8825407afd805e8365a51c66589072e759eb76",
+    "historicalPrefixBothVariants": "c51a4e38bbb474a83ad211cab739671ac91e2877cac9c16ecb3a9315b04ca147"
+  },
+  "oneCommandRegenerator": "node docs/evidence/G2/fixture/generate.mjs alternate"
+}

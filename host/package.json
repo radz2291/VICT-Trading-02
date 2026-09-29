@@ -11,6 +11,7 @@
 	},
 	"dependencies": {
 		"@vict-trading/chart-workspace": "file:../packages/chart-workspace",
+		"@vict-trading/trading-kit": "file:../packages/trading-kit",
 		"@victframework/application": "0.4.0-rc.1",
 		"@victframework/contracts": "0.4.0-rc.1",
 		"@victframework/sdk": "0.4.0-rc.1",
