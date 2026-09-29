@@ -140,3 +140,29 @@ One line: **Repository bootstrapped and governed; handoff accepted; G0 platform 
 
 ### 5. Summary
 **The time-honesty rules the kit exists to enforce survived their first real attack — they were wrong in two places and silent in one, and now they aren't.**
+
+## Session 2026-09-29 (c) — G2 correction cycle 2 (owner's two counterexamples)
+
+### 1. Autonomous decisions
+| Decision | Why | Why no founding intent |
+|---|---|---|
+| Trailing-edge semantics superseded by clock-visible-only rule | Owner instruction verbatim; old rule had demonstrated future-existence sensitivity | Owner-direct |
+| Transactional persistence (persist-next-before-commit) | Owner: failed ops must not silently advance session | Owner-direct |
+| Provider switch for subagents (settings.json overrides zai->ollama) | Owner instruction after z.ai quota exhaustion | Environment fix, owner-direct |
+| 900MB stderr flood deleted (temp dir) | Broken browser harness retry loop; run interrupted | Operational cleanup, logged here not in evidence |
+
+### 2. Reliability notes
+- Browser harness flooded runner.stderr twice (hang on CDP route). Mitigations now standard: bounded per-step caps/unique ports/temp profiles. Cycle-3 should reuse them from the start.
+- Bash chains with `git diff --cached --check && commit` silently skipped commits 3x (whitespace artifacts) — check output carefully when chains break; fix artifact THEN commit (both happened late in cycle-2).
+
+### 3. Owner decisions recorded
+- D-004 recorded NOW with erratum: clock-visible-only availability + transactional persistence (authority: owner instruction this cycle; NOT an accepted-waiver record — the waivers were rejected).
+
+### 4. Deferred to owner/next
+- F-C2-2 (WRITE_REFUSED display has no live production refuser yet), F-1, F-3; unproven: full per-op browser sweep of 17 rows, 375-width replay sweep; G3 record; LGPL decision; publication.
+
+### 5. Progress
+- Current G2 verdict: PASS WITH NON-BLOCKING FINDINGS at db66475 (counterexamples fixed, verified fresh incl. live browser).
+
+### 6. Summary
+**Both new counterexamples were real and both are now fixed, reproduced-then-verified under the same independent standard — and the record error (the never-recorded D-004) was caught and corrected honestly.**
