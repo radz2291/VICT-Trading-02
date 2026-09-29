@@ -19,7 +19,7 @@ This file binds every agent session in this repository, from session start to co
 
 ## 3. Non-negotiable rules (every stage, every session)
 
-1. **No unauthorized stage work.** Execute only stages explicitly accepted in the handoff. Today that is G0 only, once accepted.
+1. **No unauthorized stage work.** Execute only stages explicitly accepted in the handoff. As of 2026-09-29 those are G0, G1, G1-PKG (all closed) and G2 (accepted at `c9b780d…`, amendments in D-003); G3+ are not accepted.
 2. **Truthful verdicts.** A builder never certifies its own candidate. Every stage needs a fresh verifier session working from the pinned candidate SHA. A screenshot without interaction evidence proves nothing; never convert a missing demonstration into a pass by inference.
 3. **Evidence before claims.** Record claim matrix, reproduction commands, artifacts, and lineage under `docs/evidence/Gx/` per `docs/EVALUATION.md`. Preserve red evidence and earlier verdicts; never rewrite them.
 4. **Never fabricate.** No invented SHAs, verdicts, owner approvals, package versions, or test results. If a fact is unverified, write "unverified" and what would verify it.
