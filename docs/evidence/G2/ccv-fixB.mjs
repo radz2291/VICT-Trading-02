@@ -89,7 +89,7 @@ async function row(op, behavior) {
 }
 
 // NOTE cleanup: S_0 helper is bogus; clock start must be BEFORE the persisted record instant check... actually
-// the fresh live session must be built at some start instant; the persisted record says instant = ? 
+// the fresh live session must be built at some start instant; the persisted record says instant = ?
 // The record from healthy baseline is at instant START_AT+2*S = 00:30+30m = 01:00Z with stepIndex 3.
 // Fresh session adopting it: start of clock irrelevant because we do NOT restore; we only acknowledge.
 const rows = [];
