@@ -51,6 +51,45 @@
 		}
 	}
 
+	// G1-PKG FIX 1 — READ-FAILURE WRITE GUARD.
+	// Invariant: **no persisted write to the levels collection occurs unless
+	// the prior read of that collection succeeded.** If the stored bytes
+	// cannot be read (corrupt `g1.levels.v1` JSON, or a throwing storage),
+	// every level mutation (save / update / delete) is REFUSED before any
+	// `setItem` happens, the existing stored bytes are left untouched, and
+	// the failure is surfaced (contract path returns ok:false with code
+	// STORAGE_READ_FAILED; panel pill and island status show failure).
+	// Additionally every accepted write is verified by an immediate read-back
+	// compare; a mismatch restores the original bytes and reports failure.
+	function gateLevelsRead(): { ok: true; rawBefore: string | null } | { ok: false } {
+		try {
+			const rawBefore = window.localStorage.getItem(LEVELS_KEY); // throws on getter-throw
+			readLevels(); // full parse + shape check; throws on corrupt data
+			return { ok: true, rawBefore };
+		} catch {
+			return { ok: false };
+		}
+	}
+
+	function writeLevelsVerified(next: string, rawBefore: string | null): { ok: true } | { ok: false; code: string; message: string } {
+		try {
+			window.localStorage.setItem(LEVELS_KEY, next);
+			if (window.localStorage.getItem(LEVELS_KEY) !== next) throw new Error('read-back mismatch');
+			return { ok: true };
+		} catch {
+			// Verification failed: restore the exact original bytes (best effort), report failure honestly.
+			try {
+				if (rawBefore === null) window.localStorage.removeItem(LEVELS_KEY);
+				else window.localStorage.setItem(LEVELS_KEY, rawBefore);
+			} catch {
+				// restore itself failed; the read-back evidence in the report covers this case
+			}
+			panelStatus = 'failed';
+			panelDetail = 'storage';
+			return { ok: false, code: 'STORAGE_VERIFY_FAILED', message: 'write verification failed — original data restored' };
+		}
+	}
+
 	function loadWorkspace(): WorkspaceRow {
 		if (typeof window === 'undefined') return DEFAULT_WS;
 		try {
@@ -72,6 +111,10 @@
 
 	// ---- panel state (host-side mirror of the workspace resource) ---------
 	let ws = $state<WorkspaceRow>(DEFAULT_WS);
+	// G1-PKG FIX 2 — `loading` gate: the host renders the app-defined loading
+	// wording (t.loading, definition.ts screen states) until client hydration
+	// has completed the first storage read. Visible under network throttling.
+	let hydrated = $state(false);
 	let panelStatus = $state<'idle' | 'saving' | 'saved' | 'failed' | 'unavailable'>('idle');
 	let panelDetail = $state('');
 	let saveTimer: ReturnType<typeof setTimeout> | undefined;
@@ -79,6 +122,7 @@
 	$effect(() => {
 		// hydrate panel state once on the client
 		ws = loadWorkspace();
+		hydrated = true;
 	});
 
 	function persistWorkspace(row: WorkspaceRow): void {
@@ -111,43 +155,59 @@
 
 	async function dispatch(actionId: string, input: unknown): Promise<ActionResult> {
 		try {
-			if (actionId === 'act.level.save') {
-				const parsed = levelSaveInput.parse(input);
-				if (!parsed.ok) {
-					return { ok: false, code: 'CONTRACT_REJECTED', message: parsed.issues[0]?.message ?? 'invalid input' };
+			if (actionId === 'act.level.save' || actionId === 'act.level.update' || actionId === 'act.level.delete') {
+				// G1-PKG FIX 1 read-gate: refuse BEFORE any write if the stored
+				// collection cannot be read. Bytes are never overwritten blind.
+				const gate = gateLevelsRead();
+				if (!gate.ok) {
+					panelStatus = 'failed';
+					panelDetail = 'storage';
+					return {
+						ok: false,
+						code: 'STORAGE_READ_FAILED',
+						message: 'stored drawings unreadable — write refused to protect existing data'
+					};
 				}
-				const levels = loadLevels().filter((l) => l.id !== parsed.value.id);
-				levels.push(parsed.value);
-				window.localStorage.setItem(LEVELS_KEY, JSON.stringify(levels));
-				dataVersion += 1;
-				return { ok: true, value: { levels } };
-			}
-			if (actionId === 'act.level.update') {
-				const parsed = levelUpdateInput.parse(input);
-				if (!parsed.ok) {
-					return { ok: false, code: 'CONTRACT_REJECTED', message: parsed.issues[0]?.message ?? 'invalid input' };
+				if (actionId === 'act.level.save') {
+					const parsed = levelSaveInput.parse(input);
+					if (!parsed.ok) {
+						return { ok: false, code: 'CONTRACT_REJECTED', message: parsed.issues[0]?.message ?? 'invalid input' };
+					}
+					const levels = loadLevels().filter((l) => l.id !== parsed.value.id);
+					levels.push(parsed.value);
+					const w = writeLevelsVerified(JSON.stringify(levels), gate.rawBefore);
+					if (!w.ok) return { ok: false, code: w.code, message: w.message };
+					dataVersion += 1;
+					return { ok: true, value: { levels } };
 				}
-				const levels = loadLevels();
-				const idx = levels.findIndex((l) => l.id === parsed.value.id);
-				if (idx === -1) {
-					return { ok: false, code: 'NOT_FOUND', message: 'no level ' + parsed.value.id };
+				if (actionId === 'act.level.update') {
+					const parsed = levelUpdateInput.parse(input);
+					if (!parsed.ok) {
+						return { ok: false, code: 'CONTRACT_REJECTED', message: parsed.issues[0]?.message ?? 'invalid input' };
+					}
+					const levels = loadLevels();
+					const idx = levels.findIndex((l) => l.id === parsed.value.id);
+					if (idx === -1) {
+						return { ok: false, code: 'NOT_FOUND', message: 'no level ' + parsed.value.id };
+					}
+					levels[idx] = {
+						...levels[idx],
+						price: parsed.value.price,
+						note: parsed.value.note
+					};
+					const w = writeLevelsVerified(JSON.stringify(levels), gate.rawBefore);
+					if (!w.ok) return { ok: false, code: w.code, message: w.message };
+					dataVersion += 1;
+					return { ok: true, value: { levels } };
 				}
-				levels[idx] = {
-					...levels[idx],
-					price: parsed.value.price,
-					note: parsed.value.note
-				};
-				window.localStorage.setItem(LEVELS_KEY, JSON.stringify(levels));
-				dataVersion += 1;
-				return { ok: true, value: { levels } };
-			}
-			if (actionId === 'act.level.delete') {
+				// act.level.delete
 				const parsed = levelDeleteInput.parse(input);
 				if (!parsed.ok) {
 					return { ok: false, code: 'CONTRACT_REJECTED', message: parsed.issues[0]?.message ?? 'invalid input' };
 				}
 				const levels = loadLevels().filter((l) => l.id !== parsed.value.id);
-				window.localStorage.setItem(LEVELS_KEY, JSON.stringify(levels));
+				const w = writeLevelsVerified(JSON.stringify(levels), gate.rawBefore);
+				if (!w.ok) return { ok: false, code: w.code, message: w.message };
 				dataVersion += 1;
 				return { ok: true, value: { levels } };
 			}
@@ -276,6 +336,9 @@
 		</button>
 	</header>
 
+	{#if !hydrated}
+		<p class="loading" data-testid="workspace-loading">Loading workspace…</p>
+	{:else}
 	<div class="body" class:panel-closed={ws.panelOpen !== 1}>
 		<main class="main">
 			<VitApp {plan} {registry} {dispatch} path="/" {viewData} record={null} onInvalidate={() => { dataVersion += 1; }} />
@@ -334,9 +397,15 @@
 			</aside>
 		{/if}
 	</div>
+	{/if}
 </div>
 
 <style>
+	.loading {
+		padding: 24px;
+		color: #7d8b99;
+		font: 13px system-ui;
+	}
 	.workspace {
 		display: flex;
 		flex-direction: column;
