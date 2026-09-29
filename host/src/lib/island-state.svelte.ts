@@ -25,16 +25,36 @@
  */
 import { onMount } from 'svelte';
 import { useVictActions } from '@victframework/ui-svelte/component-actions';
+import { DrawingWorkspace, createChart, type ChartCallbacks, type ChartController, type PriceLevel as Level, type WorkspacePersistence } from '@vict-trading/chart-workspace';
 import { buildSeries, SYMBOLS, TIMEFRAMES, type Bar, type InstrumentSymbol, type Timeframe } from './fixture.js';
-import type { ChartCallbacks, ChartController, Level } from './chart-api.js';
-import { createLwcChart } from './lwc.js';
 
 export type MutationStatus = 'idle' | 'saving' | 'saved' | 'deleting' | 'failed';
 
-/** A prebuilt, replayable action pair — the unit of the undo/redo stacks. */
-interface ActionPair {
-	undo: { actionId: string; input: Record<string, unknown> };
-	redo: { actionId: string; input: Record<string, unknown> };
+/**
+ * G1-PKG: the drawing lifecycle (create/select/edit/move/remove/undo/redo)
+ * is the package's `DrawingWorkspace`; the app supplies a persistence port
+ * routed through the VICT action contract path. Reads stay app-side: the
+ * host feeds its own view rows into the workspace via `setSource`.
+ */
+function makePort(run: (actionId: string, input: Record<string, unknown>) => Promise<boolean>): WorkspacePersistence {
+	return {
+		// reads are consumer-fed (host views); the port only carries writes
+		readLevels: () => {
+			throw new Error('reads are consumer-owned; use setSource');
+		},
+		apply: async (op) => {
+			if (op.type === 'save') {
+				const ok = await run('act.level.save', { ...op.level });
+				return ok ? { ok: true } : { ok: false, code: 'STORAGE_WRITE_REFUSED', message: 'save refused by host storage' };
+			}
+			if (op.type === 'update') {
+				const ok = await run('act.level.update', { id: op.id, price: op.price, note: op.note });
+				return ok ? { ok: true } : { ok: false, code: 'STORAGE_WRITE_REFUSED', message: 'update refused by host storage' };
+			}
+			const ok = await run('act.level.delete', { id: op.id });
+			return ok ? { ok: true } : { ok: false, code: 'STORAGE_WRITE_REFUSED', message: 'delete refused by host storage' };
+		}
+	};
 }
 
 export type IslandProps = { symbol?: string; timeframe?: string; levels?: unknown; workspace?: unknown };
@@ -58,10 +78,33 @@ export function workspaceState(props: IslandProps) {
 	let selectedId: string | null = $state(null);
 	let editPrice: string = $state('');
 	let editNote: string = $state('');
-
-	const undoStack: ActionPair[] = [];
-	const redoStack: ActionPair[] = [];
 	let stackVersion = $state(0); // reactivity trigger for canUndo/canRedo
+
+	// package-owned headless workspace; undo/redo stacks live inside it
+	const store = new DrawingWorkspace(
+		makePort(async (actionId, input) => {
+			status = actionId === 'act.level.delete' ? 'deleting' : 'saving';
+			statusDetail = '';
+			try {
+				const r = await actions.run(actionId, input);
+				if (r && r.ok === false) {
+					status = 'failed';
+					statusDetail = r.code ?? 'rejected';
+					return false;
+				}
+				status = 'saved';
+				return true;
+			} catch {
+				status = 'failed';
+				statusDetail = 'dispatch error';
+				return false;
+			}
+		})
+	);
+	store.subscribe(() => {
+		stackVersion++;
+		selectedId = store.selectedId;
+	});
 
 	// ---- workspace view → symbol/timeframe (host panel is the writer) ----
 	const workspaceRow = $derived(rowsOf(props.workspace)[0] as WorkspaceRow | undefined);
@@ -109,6 +152,12 @@ export function workspaceState(props: IslandProps) {
 	// bars: deterministic fixture per symbol, honestly aggregated per timeframe
 	const bars = $derived(buildSeries(symbol, timeframe));
 
+	// G1-PKG: feed the package workspace the consumer-owned read (host views)
+	$effect(() => {
+		void myLevels;
+		store.setSource(incoming, symbol);
+	});
+
 	const callbacks: ChartCallbacks = {
 		onCrosshairMove: (r) => {
 			readout = r;
@@ -126,7 +175,7 @@ export function workspaceState(props: IslandProps) {
 
 	onMount(() => {
 		if (!container) return;
-		controller = createLwcChart({ container }, bars, callbacks);
+		controller = createChart({ container }, bars, callbacks);
 		controller.setData(bars);
 		controller.setLevels(myLevels);
 		return () => {
@@ -143,134 +192,12 @@ export function workspaceState(props: IslandProps) {
 		if (controller) controller.setLevels(myLevels);
 	});
 
-	// ---- mutation plumbing ------------------------------------------------
-	function genId(): string {
-		return 'lvl-' + Math.random().toString(36).slice(2, 10);
-	}
-
-	async function runAction(actionId: string, input: Record<string, unknown>): Promise<boolean> {
-		status = actionId === 'act.level.delete' ? 'deleting' : 'saving';
-		statusDetail = '';
-		try {
-			const r = await actions.run(actionId, input);
-			if (r && r.ok === false) {
-				status = 'failed';
-				statusDetail = r.code ?? 'rejected';
-				return false;
-			}
-			status = 'saved';
-			return true;
-		} catch {
-			status = 'failed';
-			statusDetail = 'dispatch error';
-			return false;
-		}
-	}
-
-	function current(id: string): Level | undefined {
-		return incoming.find((l) => l.id === id);
-	}
-
-	async function createLevel(price: number): Promise<void> {
-		const id = genId();
-		const snapshot: Level = {
-			id,
-			price,
-			note: 'level',
-			symbol,
-			createdAt: Math.floor(Date.now() / 1000)
-		};
-		const save = { actionId: 'act.level.save', input: { ...snapshot } };
-		if (await runAction(save.actionId, save.input)) {
-			undoStack.push({ undo: { actionId: 'act.level.delete', input: { id } }, redo: save });
-			redoStack.length = 0;
-			stackVersion++;
-			selectLevel(id);
-		}
-	}
-
-	async function moveLevel(id: string, price: number): Promise<void> {
-		const cur = current(id);
-		if (!cur) return;
-		await pushEdit(id, price, cur.note, { price: cur.price, note: cur.note });
-	}
-
-	async function editSelected(price: number, note: string): Promise<void> {
-		if (selectedId === null) return;
-		const cur = current(selectedId);
-		if (!cur) return;
-		await pushEdit(selectedId, price, note === '' ? undefined : note, {
-			price: cur.price,
-			note: cur.note
-		});
-	}
-
-	async function pushEdit(
-		id: string,
-		price: number,
-		note: string | undefined,
-		before: { price: number; note?: string }
-	): Promise<void> {
-		if (price === before.price && note === before.note) return;
-		const after = { price, note };
-		if (
-			await runAction('act.level.update', {
-				id,
-				price,
-				note
-			})
-		) {
-			undoStack.push({
-				undo: { actionId: 'act.level.update', input: { id, price: before.price, note: before.note } },
-				redo: { actionId: 'act.level.update', input: { id, price: after.price, note: after.note } }
-			});
-			redoStack.length = 0;
-			stackVersion++;
-		}
-	}
-
-	async function removeSelected(): Promise<void> {
-		if (selectedId === null) return;
-		const cur = current(selectedId);
-		if (!cur) return;
-		const snapshot: Level = { ...cur };
-		if (await runAction('act.level.delete', { id: cur.id })) {
-			undoStack.push({
-				undo: { actionId: 'act.level.save', input: { ...snapshot } },
-				redo: { actionId: 'act.level.delete', input: { id: cur.id } }
-			});
-			redoStack.length = 0;
-			stackVersion++;
-			selectLevel(null);
-		}
-	}
-
-	async function undo(): Promise<void> {
-		const op = undoStack.pop();
-		if (!op) return;
-		if (await runAction(op.undo.actionId, op.undo.input)) {
-			redoStack.push(op);
-		} else {
-			undoStack.push(op); // failed undo: put it back, stay honest
-		}
-		stackVersion++;
-	}
-
-	async function redo(): Promise<void> {
-		const op = redoStack.pop();
-		if (!op) return;
-		if (await runAction(op.redo.actionId, op.redo.input)) {
-			undoStack.push(op);
-		} else {
-			redoStack.push(op);
-		}
-		stackVersion++;
-	}
+	// ---- mutation plumbing (package-owned behavior, app-owned status) ----
 
 	function selectLevel(id: string | null): void {
-		selectedId = id;
+		store.select(id);
 		controller?.setSelected(id);
-		const cur = id !== null ? current(id) : undefined;
+		const cur = id !== null ? incoming.find((l) => l.id === id) : undefined;
 		editPrice = cur ? String(cur.price) : '';
 		editNote = cur?.note ?? '';
 	}
@@ -296,6 +223,34 @@ export function workspaceState(props: IslandProps) {
 		} else if (e.key === 'Escape') {
 			selectLevel(null);
 		}
+	}
+
+	async function createLevel(price: number): Promise<void> {
+		const r = await store.create({ price, note: 'level', symbol, createdAt: Math.floor(Date.now() / 1000) });
+		if (r.ok) selectLevel(r.id ?? null);
+	}
+
+	async function moveLevel(id: string, price: number): Promise<void> {
+		await store.move(id, price);
+	}
+
+	async function editSelected(price: number, note: string): Promise<void> {
+		if (selectedId === null) return;
+		await store.edit(selectedId, { price, note: note === '' ? undefined : note });
+	}
+
+	async function removeSelected(): Promise<void> {
+		if (selectedId === null) return;
+		const r = await store.remove(selectedId);
+		if (r.ok) selectLevel(store.selectedId);
+	}
+
+	async function undo(): Promise<void> {
+		await store.undo();
+	}
+
+	async function redo(): Promise<void> {
+		await store.redo();
 	}
 
 	function addLevelAtLastClose(): void {
@@ -339,11 +294,11 @@ export function workspaceState(props: IslandProps) {
 		},
 		get canUndo() {
 			void stackVersion;
-			return undoStack.length > 0;
+			return store.canUndo;
 		},
 		get canRedo() {
 			void stackVersion;
-			return redoStack.length > 0;
+			return store.canRedo;
 		},
 		get symbol() {
 			return symbol;

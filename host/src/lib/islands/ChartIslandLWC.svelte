@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { createLwcChart } from '../lwc.js';
+	import { createChart } from '@vict-trading/chart-workspace';
 	import { workspaceState } from '../island-state.svelte.js';
 
 	let props = $props();

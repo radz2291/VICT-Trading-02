@@ -1,6 +1,9 @@
 /**
  * Chart implementation: TradingView lightweight-charts 5.0.8 (G0 selection).
  *
+ * Package-internal LWC adapter behind the public `createChart` export.
+ * Imports NOTHING from any host app; bars and levels come from the caller.
+ *
  * Pan/zoom: native (mouse drag + wheel). Crosshair: native.
  * Levels: series.createPriceLine, diffed by level id; selection highlight;
  * drag-to-move implemented client-side via coordinate conversion
@@ -23,8 +26,7 @@ import {
 	type UTCTimestamp,
 	type MouseEventParams
 } from 'lightweight-charts';
-import type { Bar } from './fixture.js';
-import type { ChartCallbacks, ChartController, ChartHost, CrosshairRead, Level } from './chart-api.js';
+import type { Bar, ChartCallbacks, ChartController, ChartHost, CrosshairRead, PriceLevel } from './types.js';
 
 const HIT_PX = 6;
 const CLICK_MAX_PX = 4;
@@ -70,10 +72,10 @@ export function createLwcChart(host: ChartHost, bars: Bar[], cb: ChartCallbacks)
 	});
 
 	// ---- levels ----------------------------------------------------------
-	const drawn = new Map<string, { line: IPriceLine; level: Level }>();
+	const drawn = new Map<string, { line: IPriceLine; level: PriceLevel }>();
 	let selectedId: string | null = null;
 
-	function styleLine(entry: { line: IPriceLine; level: Level }): void {
+	function styleLine(entry: { line: IPriceLine; level: PriceLevel }): void {
 		const selected = entry.level.id === selectedId;
 		entry.line.applyOptions({
 			color: selected ? LEVEL_SELECTED : LEVEL_COLOR,
@@ -82,7 +84,7 @@ export function createLwcChart(host: ChartHost, bars: Bar[], cb: ChartCallbacks)
 		});
 	}
 
-	function setLevels(levels: Level[]): void {
+	function setLevels(levels: PriceLevel[]): void {
 		const wanted = new Map(levels.map((l) => [l.id, l]));
 		for (const [id, entry] of drawn) {
 			if (!wanted.has(id)) {
@@ -156,7 +158,12 @@ export function createLwcChart(host: ChartHost, bars: Bar[], cb: ChartCallbacks)
 				dragStartY = downY;
 				// suppress chart panning while a level drag is armed; restored on pointerup
 				chart.applyOptions({ handleScroll: false });
-				host.container.setPointerCapture(e.pointerId);
+				try {
+					host.container.setPointerCapture(e.pointerId);
+				} catch {
+					// synthetic/inactive pointer ids throw; drag still works while the
+					// pointer stays over the container
+				}
 			}
 		}
 	}
@@ -195,7 +202,11 @@ export function createLwcChart(host: ChartHost, bars: Bar[], cb: ChartCallbacks)
 					cb.onSelectLevel(dragId);
 				}
 			}
-			host.container.releasePointerCapture(e.pointerId);
+			try {
+				host.container.releasePointerCapture(e.pointerId);
+			} catch {
+				// ignore: capture may not be held (see pointerdown)
+			}
 			dragId = null;
 			return;
 		}
@@ -212,6 +223,8 @@ export function createLwcChart(host: ChartHost, bars: Bar[], cb: ChartCallbacks)
 	host.container.addEventListener('pointerup', onPointerUp);
 
 	return {
+		coordinateToPrice: (y: number) => series.coordinateToPrice(y) as number | null,
+		priceToCoordinate: (price: number) => series.priceToCoordinate(price),
 		setData(b2: Bar[]) {
 			data = b2;
 			series.setData(

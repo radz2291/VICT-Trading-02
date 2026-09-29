@@ -178,6 +178,10 @@
 					const w = writeLevelsVerified(JSON.stringify(levels), gate.rawBefore);
 					if (!w.ok) return { ok: false, code: w.code, message: w.message };
 					dataVersion += 1;
+					// F-N1 fix: a successful level mutation clears a stale failure pill
+					// (recovery must be visible in the topbar, not only in the island).
+					panelStatus = 'saved';
+					panelDetail = '';
 					return { ok: true, value: { levels } };
 				}
 				if (actionId === 'act.level.update') {
@@ -198,6 +202,8 @@
 					const w = writeLevelsVerified(JSON.stringify(levels), gate.rawBefore);
 					if (!w.ok) return { ok: false, code: w.code, message: w.message };
 					dataVersion += 1;
+					panelStatus = 'saved'; // F-N1 fix: recovery visible in the pill
+					panelDetail = '';
 					return { ok: true, value: { levels } };
 				}
 				// act.level.delete
@@ -209,6 +215,8 @@
 				const w = writeLevelsVerified(JSON.stringify(levels), gate.rawBefore);
 				if (!w.ok) return { ok: false, code: w.code, message: w.message };
 				dataVersion += 1;
+				panelStatus = 'saved'; // F-N1 fix: recovery visible in the pill
+				panelDetail = '';
 				return { ok: true, value: { levels } };
 			}
 			if (actionId === 'act.workspace.set') {

@@ -1,0 +1,37 @@
+{
+	"name": "@vict-trading/chart-workspace",
+	"version": "0.1.0",
+	"description": "Headless chart workspace capability: lightweight-charts 5.0.8 chart surface, horizontal price-level drawing lifecycle (create/select/edit/move/remove/undo/redo), anchored price-coordinate mapping, and a persistence port so storage stays the consumer's concern. Owns no app storage keys, fixtures, or product wording.",
+	"type": "module",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.js"
+		}
+	},
+	"files": [
+		"dist",
+		"README.md"
+	],
+	"scripts": {
+		"build": "tsc -p tsconfig.json",
+		"check": "tsc -p tsconfig.json --noEmit",
+		"prepare": "npm run build",
+		"prepublishOnly": "npm run build"
+	},
+	"keywords": [
+		"chart",
+		"lightweight-charts",
+		"drawing",
+		"workspace"
+	],
+	"license": "UNLICENSED",
+	"dependencies": {
+		"lightweight-charts": "5.0.8"
+	},
+	"devDependencies": {
+		"typescript": "^5.6.0"
+	}
+}
