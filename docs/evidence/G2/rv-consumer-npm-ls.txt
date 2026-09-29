@@ -1,3 +1,2 @@
 g2-rv-consumer@1.0.0 C:\Users\RZ1\Desktop\RZ\g2-rv-consumer
 `-- @vict-trading/trading-kit@0.1.0
-
