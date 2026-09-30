@@ -72,7 +72,7 @@
 
 	<div class="statusline">
 		<span class="status {st.status}" data-testid="mutation-status">{st.status}{st.statusDetail ? ': ' + st.statusDetail : ''}</span>
-		<span class="note">fixture includes deliberate gaps · LWC renders them bridged (known limitation → G2)</span>
+		<span class="note">data gaps are explicit unavailable intervals — never bridged in data · the chart line may still bridge them visually (rendering limitation only)</span>
 	</div>
 </div>
 

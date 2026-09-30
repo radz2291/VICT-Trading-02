@@ -177,12 +177,16 @@ export function createReplayState() {
 		const r = await session.step(BASE_SECONDS);
 		if (!r.ok) { refused('step', r); return; }
 		refresh();
+		// F-AVC-1: success clears any stale refusal text — status reflects the
+		// CURRENT truth, not the last failure
+		okStatus('stepped to ' + fmtInstant(clock.now()));
 	}
 
 	async function play(): Promise<void> {
 		const r = await session.play();
 		if (!r.ok) { refused('play', r); return; }
 		playing = true;
+		okStatus('playing');
 		if (timer) clearInterval(timer);
 		timer = setInterval(() => {
 			if (clock.now() >= clock.horizon()) {
@@ -199,6 +203,7 @@ export function createReplayState() {
 		const r = await session.pause();
 		if (!r.ok) { refused('pause', r); return; }
 		playing = false;
+		okStatus('paused');
 	}
 
 	function setTimeframe(tf: '15m' | '1h' | '4h'): void {

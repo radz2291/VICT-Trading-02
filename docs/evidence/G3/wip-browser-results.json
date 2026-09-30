@@ -1,0 +1,25 @@
+{
+  "steps": {
+    "load": {
+      "ok": true,
+      "scriptsIsland": true
+    },
+    "new-draft": {
+      "ok": true,
+      "editorOpen": true,
+      "srcLen": 94
+    },
+    "set-sma-script": {
+      "ok": true,
+      "status": "saved"
+    },
+    "run-backtest": {
+      "ok": true,
+      "msg": "run 155c42926b23: 0 fills, net 0.00",
+      "hasPlot": true
+    }
+  },
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+}

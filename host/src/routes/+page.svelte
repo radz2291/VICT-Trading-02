@@ -10,6 +10,8 @@
 	} from '$lib/definition.js';
 	import ChartIslandLWC from '$lib/islands/ChartIslandLWC.svelte';
 	import ReplayIsland from '$lib/islands/ReplayIsland.svelte';
+	import ScriptsIsland from '$lib/islands/ScriptsIsland.svelte';
+	import { scriptsStore } from '$lib/scripts.svelte.js';
 	import { createReplayState, fmtInstant } from '$lib/replay.svelte.js';
 	import { SYMBOLS, TIMEFRAMES, type InstrumentSymbol, type Timeframe } from '$lib/fixture.js';
 	import type { Level } from '$lib/chart-api.js';
@@ -17,6 +19,7 @@
 	// Registry authority stays host-side (consumer code), per the ui-svelte contract.
 	const registry = createComponentRegistry('registry.g1.workspace', '1');
 	registry.register({ componentId: 'cmp.chart.lwc', revision: '1', implementation: ChartIslandLWC });
+	void scriptsStore; // G3: initialized on import (drafts + runs stores)
 
 	const plan = compileWorkspacePlan();
 
@@ -366,6 +369,7 @@
 			{:else}
 				<VitApp {plan} {registry} {dispatch} path="/" {viewData} record={null} onInvalidate={() => { dataVersion += 1; }} />
 			{/if}
+			<ScriptsIsland />
 		</main>
 
 		{#if ws.panelOpen === 1}
