@@ -216,3 +216,31 @@ One line: **Repository bootstrapped and governed; handoff accepted; G0 platform 
 
 ### 6. Summary
 **G3 is now reviewable before it exists: measurable pass/stop criteria, a kit-first delivery boundary with the D-001 packaging proof, evidence-gated runtime/engine selection with explicit owner gates, carried-findings dispositions, and single stage-manager ownership — zero implementation performed.**
+
+## Session 2026-09-30 — G3 executed to final verdict (stage manager, owner-directed)
+
+### 1. Autonomous decisions
+| Decision | Why | Why no founding intent |
+|---|---|---|
+| Implemented the sandbox determinism contract (seeded PRNG + Date pinning incl. the Date CONSTRUCTOR) rather than narrowing the criterion | Verifier falsified both the missing implementation and the constructor escape; criterion 5 is a named stop condition | From reproduced verifier evidence |
+| Chart-workspace 0.1.2 overlay extension per the verifier-prescribed API + pixel-level consumer proof | D-006 pre-authorized the bounded extension for the criterion-2 ruling (verifier ruled FAIL independently) | Owner-authorization direct |
+| Run result carries authoritative barTimes; host consumes it (no own x-axis math) | Dead-wiring root cause (250 base vs 249 run-TF bars); single source of truth | From the verifier's pixel evidence |
+| Kit 0.2.1 + cw 0.1.2 version bumps with committed tarballs + lineage README | Artifact-identity divergence finding (V-G3-R4): same-version sources had silently diverged from committed tarballs | Evidence discipline |
+
+### 2. Reliability notes
+- Shell backticks inside node -e strings cause command substitution — a D-006 provenance line was mangled once and repaired in the next commit; write patches as files.
+- Rebuilding the host while a preview server serves it crashes the server (stale manifest ENOENT) — restart after builds; harnesses must own their server lifecycle.
+- Async-resume of a subagent can hit retention-cleaned budget dirs (round-3 launch died at runner level, not agent level) — relaunch fresh instead.
+- The killed process left partial verifier evidence untracked; preserved + committed by the successor after re-running the harnesses itself.
+
+### 3. Owner decisions recorded
+- D-006: engine decision — neither external engine; kit-native bounded backtest runner approved as the G3 simulation implementation (research lineage: NT tested config recorded, narrowed wording per owner; LEAN locally unrunnable); bounded chart-workspace extension pre-authorized for the G3 criterion only.
+
+### 4. Deferred to owner/next
+- G4+ unstarted and unauthorized. Carried non-blocking: V-G3-3/-4/-5, F-G3-1/-4, F-1, V-G3-R5, V-G3-R6; stable-0.4.0 recheck still open.
+
+### 5. Progress
+- G3 FINAL VERDICT: PASS WITH NON-BLOCKING FINDINGS at 8a33b00 (verifier addendum committed at b1c9ef9; closeout reconciliation f741a22). Criterion-2 owner-mandated ruling: PASS (on-chart overlays, pixel-proven).
+
+### 6. Summary
+**W2/W5 delivered end to end and independently verified: scripts start from the chart with no Method prerequisite, run in a hardened deterministic sandbox, and bounded backtests reproduce a hand-calculated fixture exactly — with run identity pinning, immutable runs, two-run comparison, poison-future isolation proven per the amended criterion, package reuse proven by outside-monorepo consumers, and the on-chart criterion closed with a real pixel-level ruling.**
