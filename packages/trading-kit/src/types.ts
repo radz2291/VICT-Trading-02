@@ -174,3 +174,49 @@ export interface ReplaySessionOptions {
 	/** id generator for replay-stamped levels; injectable for tests */
 	genId?: () => string;
 }
+
+// ---- G3: scripts, runs, simulated fills ----------------------------------
+
+/** Fill/cost assumptions a backtest pins. ALL money values in PRICE UNITS. */
+export interface FillAssumptions {
+	/** half-spread charged against the trader at fill (price units) */
+	spread: number;
+	/** fixed slippage against the trader at fill (price units) */
+	slippage: number;
+	/** flat commission per fill (price units, not bps) */
+	commission: number;
+	/** starting cash (price units) */
+	startingCash: number;
+	/** fill model — only 'next-bar-open' exists at G3 */
+	model: 'next-bar-open';
+}
+
+/** One simulated fill. Simulated-only: never an account, never a live pathway. */
+export interface SimulatedFill {
+	id: string;
+	runId: string;
+	side: 'buy' | 'sell';
+	size: number;
+	/** bar whose CLOSE produced the order decision (unix seconds) */
+	signalBarTime: number;
+	/** bar whose OPEN filled the order (unix seconds) */
+	fillBarTime: number;
+	/** next-bar open before costs (price units) */
+	basePrice: number;
+	/** basePrice ± (spread/2 + slippage), signed against the trader */
+	fillPrice: number;
+	spreadCost: number;
+	slippageCost: number;
+	commission: number;
+	positionAfter: number;
+	cashAfter: number;
+	simulated: true;
+}
+
+/** An order the script placed that never filled (range ended first). */
+export interface UnfilledOrder {
+	side: 'buy' | 'sell';
+	size: number;
+	signalBarTime: number;
+	reason: 'range-ended';
+}

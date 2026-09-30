@@ -1,0 +1,307 @@
+{
+	"kind": "hand-calculated-strategy-fixture-v1",
+	"symbol": "XAUUSD-TEST",
+	"baseTimeframe": "15m",
+	"timeframe": "15m",
+	"fromTime": 1800000000,
+	"toTime": 1800021600,
+	"strategy": "long/flat SMA3 threshold (period 3), buys only from flat, sells only reduce",
+	"inputs": {
+		"period": 3
+	},
+	"fill": {
+		"spread": 0.1,
+		"slippage": 0.05,
+		"commission": 1,
+		"startingCash": 2000,
+		"model": "next-bar-open"
+	},
+	"bars": [
+		{
+			"time": 1800000000,
+			"open": 100,
+			"high": 100.25,
+			"low": 99.75,
+			"close": 100
+		},
+		{
+			"time": 1800000900,
+			"open": 100,
+			"high": 100.75,
+			"low": 99.75,
+			"close": 100.5
+		},
+		{
+			"time": 1800001800,
+			"open": 100.5,
+			"high": 101.25,
+			"low": 100.25,
+			"close": 101
+		},
+		{
+			"time": 1800002700,
+			"open": 101,
+			"high": 101.75,
+			"low": 100.75,
+			"close": 101.5
+		},
+		{
+			"time": 1800003600,
+			"open": 101.5,
+			"high": 102.25,
+			"low": 101.25,
+			"close": 102
+		},
+		{
+			"time": 1800004500,
+			"open": 102,
+			"high": 102.25,
+			"low": 100.75,
+			"close": 101
+		},
+		{
+			"time": 1800005400,
+			"open": 101,
+			"high": 101.75,
+			"low": 100.75,
+			"close": 101.5
+		},
+		{
+			"time": 1800006300,
+			"open": 101.5,
+			"high": 102.75,
+			"low": 101.25,
+			"close": 102.5
+		},
+		{
+			"time": 1800007200,
+			"open": 102.5,
+			"high": 103.25,
+			"low": 102.25,
+			"close": 103
+		},
+		{
+			"time": 1800008100,
+			"open": 103,
+			"high": 103.25,
+			"low": 101.75,
+			"close": 102
+		},
+		{
+			"time": 1800009000,
+			"open": 102,
+			"high": 102.25,
+			"low": 101.75,
+			"close": 102
+		},
+		{
+			"time": 1800009900,
+			"open": 102,
+			"high": 102.25,
+			"low": 101.25,
+			"close": 101.5
+		},
+		{
+			"time": 1800010800,
+			"open": 101.5,
+			"high": 102.75,
+			"low": 101.25,
+			"close": 102.5
+		},
+		{
+			"time": 1800011700,
+			"open": 102.5,
+			"high": 103.25,
+			"low": 102.25,
+			"close": 103
+		},
+		{
+			"time": 1800012600,
+			"open": 103,
+			"high": 103.75,
+			"low": 102.75,
+			"close": 103.5
+		},
+		{
+			"time": 1800013500,
+			"open": 103.5,
+			"high": 103.75,
+			"low": 102.75,
+			"close": 103
+		},
+		{
+			"time": 1800014400,
+			"open": 103,
+			"high": 103.25,
+			"low": 102.75,
+			"close": 103
+		},
+		{
+			"time": 1800015300,
+			"open": 103,
+			"high": 103.25,
+			"low": 102.25,
+			"close": 102.5
+		},
+		{
+			"time": 1800016200,
+			"open": 102.5,
+			"high": 102.75,
+			"low": 102.25,
+			"close": 102.5
+		},
+		{
+			"time": 1800017100,
+			"open": 102.5,
+			"high": 102.75,
+			"low": 101.75,
+			"close": 102
+		},
+		{
+			"time": 1800018000,
+			"open": 102,
+			"high": 102.25,
+			"low": 101.25,
+			"close": 101.5
+		},
+		{
+			"time": 1800018900,
+			"open": 101.5,
+			"high": 101.75,
+			"low": 100.75,
+			"close": 101
+		},
+		{
+			"time": 1800019800,
+			"open": 101,
+			"high": 101.25,
+			"low": 100.25,
+			"close": 100.5
+		},
+		{
+			"time": 1800020700,
+			"open": 100.5,
+			"high": 100.75,
+			"low": 99.75,
+			"close": 100
+		}
+	],
+	"scriptSource": "function onBar(bar, api) {\n  const closes = api.bars().bars.map(function (b) { return b.close; });\n  let m = null;\n  if (closes.length >= 3) {\n    m = (closes[closes.length - 1] + closes[closes.length - 2] + closes[closes.length - 3]) / 3;\n  }\n  api.plot('sma3', m);\n  if (m === null) return;\n  const st = api.state();\n  if (bar.close > m && st.position <= 0) api.order('buy', 10);\n  if (bar.close < m && st.position > 0) api.order('sell', 10);\n}",
+	"expected": {
+		"fills": [
+			{
+				"side": "buy",
+				"fillBarIndex": 3,
+				"signalBarIndex": 2,
+				"basePrice": 101,
+				"fillPrice": 101.1,
+				"cashAfter": 988,
+				"positionAfter": 10
+			},
+			{
+				"side": "sell",
+				"fillBarIndex": 6,
+				"signalBarIndex": 5,
+				"basePrice": 101,
+				"fillPrice": 100.9,
+				"cashAfter": 1996,
+				"positionAfter": 0
+			},
+			{
+				"side": "buy",
+				"fillBarIndex": 8,
+				"signalBarIndex": 7,
+				"basePrice": 102.5,
+				"fillPrice": 102.6,
+				"cashAfter": 969,
+				"positionAfter": 10
+			},
+			{
+				"side": "sell",
+				"fillBarIndex": 10,
+				"signalBarIndex": 9,
+				"basePrice": 102,
+				"fillPrice": 101.9,
+				"cashAfter": 1987,
+				"positionAfter": 0
+			},
+			{
+				"side": "buy",
+				"fillBarIndex": 13,
+				"signalBarIndex": 12,
+				"basePrice": 102.5,
+				"fillPrice": 102.6,
+				"cashAfter": 960,
+				"positionAfter": 10
+			},
+			{
+				"side": "sell",
+				"fillBarIndex": 16,
+				"signalBarIndex": 15,
+				"basePrice": 103,
+				"fillPrice": 102.9,
+				"cashAfter": 1988,
+				"positionAfter": 0
+			}
+		],
+		"stats": {
+			"finalEquity": 1988,
+			"netProfit": -12,
+			"tradeCount": 6,
+			"maxDrawdown": 21,
+			"maxDrawdownPct": 0.01045816733067729
+		},
+		"equityByBar": [
+			2000,
+			2000,
+			2000,
+			2003,
+			2008,
+			1998,
+			1996,
+			1996,
+			1999,
+			1989,
+			1987,
+			1987,
+			1987,
+			1990,
+			1995,
+			1990,
+			1988,
+			1988,
+			1988,
+			1988,
+			1988,
+			1988,
+			1988,
+			1988
+		],
+		"smaPlotByBar": [
+			null,
+			null,
+			100.5,
+			101,
+			101.5,
+			101.5,
+			101.5,
+			101.66666666666667,
+			102.33333333333333,
+			102.5,
+			102.33333333333333,
+			101.83333333333333,
+			102,
+			102.33333333333333,
+			103,
+			103.16666666666667,
+			103.16666666666667,
+			102.83333333333333,
+			102.66666666666667,
+			102.33333333333333,
+			102,
+			101.5,
+			101,
+			100.5
+		]
+	}
+}
