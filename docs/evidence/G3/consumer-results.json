@@ -1,0 +1,50 @@
+{
+  "steps": {
+    "standalone-build": {
+      "ok": true,
+      "built": true
+    },
+    "npm-pack": {
+      "ok": true,
+      "tarball": "vict-trading-trading-kit-0.2.0.tgz",
+      "bytes": 44638,
+      "sha512": "a6d4b02a1f63be7359d7dfd6df535aaa327c7b6872ff417ddf94eed439030387507252b03667fbc0510bd5935bef5a9fce4fffb7b0fd4c78c1b2a0ff3caa01cb",
+      "sha256": "5775181fc134a7efb5ad81e06547521805a925b5bad8aaae203fadba76ffea56"
+    },
+    "consumer-outside-monorepo": {
+      "ok": true,
+      "consumerRoot": "C:/Users/RZ1/Desktop/RZ/g3-consumer",
+      "kitVersion": "0.2.0",
+      "quickjsDepInstalled": true
+    },
+    "consumer-install": {
+      "ok": true,
+      "result": {
+        "aStatus": "succeeded",
+        "deterministic": true,
+        "oneInputFlips": true,
+        "aFills": 6,
+        "cFills": 6,
+        "cappedQueriesObserved": true,
+        "sandboxRefused": true,
+        "refusedCode": "SCRIPT_INTERRUPTED",
+        "noHostGlobals": true
+      }
+    },
+    "consumer-verdict": {
+      "ok": true,
+      "verdict": "PASS",
+      "checks": {
+        "aStatus": "succeeded",
+        "deterministic": true,
+        "oneInputFlips": true,
+        "aFills": 6,
+        "cFills": 6,
+        "cappedQueriesObserved": true,
+        "sandboxRefused": true,
+        "refusedCode": "SCRIPT_INTERRUPTED",
+        "noHostGlobals": true
+      }
+    }
+  }
+}
