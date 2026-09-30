@@ -1,0 +1,60 @@
+{
+  "steps": {
+    "v7-w1-regression": {
+      "ok": true,
+      "bareChartLoads": true,
+      "noPrereqPageErrors": true,
+      "levelsKeyFoundAtStart": true,
+      "levelsBytesStart": {
+        "key": "g1.levels.v1",
+        "bytes": "[{\"id\":\"lvl-ei5ac1dk\",\"price\":2647.77,\"note\":\"level\",\"symbol\":\"XAUUSD\",\"createdAt\":1790743267}]"
+      },
+      "levelsPersistAfterReload": true,
+      "levelsBytesAfter": "[{\"id\":\"lvl-ei5ac1dk\",\"price\":2647.77,\"note\":\"level\",\"symbol\":\"XAUUSD\",\"createdAt\":1790743267}]",
+      "timeframeAfterReload": "1h"
+    },
+    "v7-w3-replay-level-create": {
+      "ok": true,
+      "readout": "O 2647.86 H 2648.76 L 2647.67 C 2648.43 · 2026-01-06 01:15Z · cursor 2652.20",
+      "storedLevels": [
+        {
+          "price": 2652.188605451119,
+          "step": 1,
+          "instant": 1767752100
+        }
+      ],
+      "uiLevelRows": 1
+    },
+    "v7-w3-provunknown-hidden": {
+      "ok": true,
+      "hiddenNoteInReplay": "Existing saved levels are NOT shown in replay — provenance unknown. (1 hidden)",
+      "replayLevelRowsShown": 0
+    },
+    "v7-f3-footer-wording": {
+      "ok": true,
+      "footers": [
+        "1 missing interval(s) — shown, never bridged: missing from 2026-01-05 04:15Z to 2026-01-05 04:30Z"
+      ]
+    },
+    "v7-favc1-stale-refusal-clear": {
+      "ok": true,
+      "refusedStatus": "step unavailable: storage read failed",
+      "bytesPreserved": true,
+      "statusAfterRepair": "stepped to 2026-01-07 02:30Z",
+      "positionAfterRepair": "step 2 · instant 2026-01-07 02:30Z · horizon 2026-02-02 21:45Z"
+    },
+    "v7-keyboard-enter-run": {
+      "ok": false,
+      "error": "TypeError: Cannot read properties of null (reading 'runs')"
+    },
+    "v7-d004-fifo-overlap": {
+      "ok": false,
+      "error": "TypeError: Cannot read properties of null (reading 'drafts')"
+    }
+  },
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "finishedAt": "2026-09-30T04:41:26.404Z",
+  "consoleErrorCount": 1
+}

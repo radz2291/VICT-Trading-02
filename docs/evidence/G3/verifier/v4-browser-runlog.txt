@@ -1,0 +1,18 @@
+v4-load => {"ok":true,"banner":"CURRENT","feedNote":"fixture data — not live market","symbolsIsland":1}
+v4-w2-add-sma => {"ok":true,"runDone":true,"runMsg":"run f01f2563d21f: 0 fills, net 0.00"}
+v4-w2-draft-hide-reopen => {"ok":true,"editorGoneOnHide":true,"byteExactReopen":true,"status":"saved"}
+v4-w5-invalid-edit => {"ok":true,"runDone":true,"runMsg":"run failed: SCRIPT_SYNTAX_ERROR: invalid property name","storedLastStatus":"failed","runRows":2}
+v4-w5-restore-good-source => {"ok":true,"status":"saved"}
+v4-w5-identical-runs => {"ok":true,"runMsg1":"run 9b632b5e2de7: 36 fills, net -39.18","identicalIdAndResults":true,"ids":["9b632b5e2de7","9b632b5e2de7"]}
+v4-w5-one-input-flip => {"ok":true,"runMsg":"run 27c2900cba86: 38 fills, net -41.50","identityDiffers":true,"resultsDiffer_a":true}
+v4-w5-compare-view => {"ok":true,"compare":"Compare 27c2900cba86 vs 9b632b5e2de7 identity27c2900cba86 / 9b632b5e2de7inputs{\"period\":21} / {\"period\":20}net-41.50 / -39.18final equity9958.50 / 9960.82trades38 / 36max DD43.44 / 41.12trades A38 fills, first at 0
+v4-draft-edit-runs-immutable => {"ok":true,"runsBytesUnchanged":true,"status":"saved"}
+v4-refusal-scripts-corrupt-save => {"ok":true,"status":"failed: draft save refused [READ_FAILED]: stored record at g3.scripts.v1 is unreadable — operation refused, stored bytes untouched","corruptBytesPreserved":true}
+v4-recovery-scripts => {"ok":false,"error":"TimeoutError: Waiting for selector `[data-testid=\"scripts-island\"]` failed: Waiting failed: 40000ms exceeded"}
+v4-reload-draft-restored => {"ok":false,"error":"DOMException: SecurityError: Failed to read the 'localStorage' property from 'Window': Access is denied for this document."}
+v4-refusal-runs-corrupt-run => {"ok":false,"error":"DOMException: SecurityError: Failed to read the 'localStorage' property from 'Window': Access is denied for this document."}
+v4-keyboard => {"ok":false,"error":"TypeError: Cannot read properties of null (reading 'focus')"}
+v4-narrow-768 => {"ok":true,"horizontalOverflowPx":0,"runDone":false,"runMsg":""}
+v4-narrow-375 => {"ok":false,"error":"Error: Error: failed to find element matching selector \"[data-testid=\"scripts-island\"]\""}
+v4-fresh-session => {"ok":false,"error":"DOMException: SecurityError: Failed to read the 'localStorage' property from 'Window': Access is denied for this document."}
+SUMMARY ok=11/17 consoleErrors=1

@@ -1,0 +1,80 @@
+{
+  "steps": {
+    "v5-load-seed-corrupt": {
+      "ok": true,
+      "seeded": true
+    },
+    "v5-recovery-cycle": {
+      "ok": false,
+      "error": "Error: No element found for selector: [data-testid=\"btn-save-draft\"]"
+    },
+    "v5-refusal-runs-corrupt-run": {
+      "ok": true,
+      "runDone": false,
+      "status": "idle",
+      "runMsg": null,
+      "corruptBytesPreserved": true
+    },
+    "v5-runs-recovery": {
+      "ok": true,
+      "runDone": false,
+      "runMsg": null,
+      "status": "idle"
+    },
+    "v5-identity-across-session": {
+      "ok": false,
+      "error": "TypeError: Cannot read properties of undefined (reading 'id')"
+    },
+    "v5-w2-signal-plot": {
+      "ok": false,
+      "error": "TypeError: Cannot read properties of undefined (reading 'signals')"
+    },
+    "v5-keyboard": {
+      "ok": true,
+      "focusSequence": [
+        "sel-symbol",
+        "sel-timeframe",
+        "sel-run-range",
+        "run-inputs",
+        "sel-symbol"
+      ],
+      "runFocused": false,
+      "ranByKeyboard": false
+    },
+    "v5-narrow-768": {
+      "ok": true,
+      "horizontalOverflowPx": 0,
+      "runMsg": null
+    },
+    "v5-narrow-375": {
+      "ok": true,
+      "horizontalOverflowPx": 0,
+      "islandVisible": true,
+      "rowsVisible": 0
+    },
+    "v5-w1-fresh-profile-regression": {
+      "ok": false,
+      "error": "TypeError: p.wait is not a function"
+    },
+    "v5-w3-enter-replay-step": {
+      "ok": true,
+      "bannerOnEntry": "REPLAY — historical fixture data as of 2026-01-07 02:15Z · horizon 2026-02-02 21",
+      "replayPosition": "step 3 · instant 2026-01-07 02:45Z · horizon 2026-02-02 21:45Z",
+      "replayReadout1h": "crosshair off chart — XAUUSD 1h · 49 bars (capped slice)",
+      "unavailableNote": "1 missing interval(s) — shown, never bridged: missing from 2026-01-05 04:15Z to 2026-01-05 04:30Z",
+      "hiddenNote": "Existing saved levels are NOT shown in replay — provenance unknown. (0 hidden)",
+      "replayLevelsStored": 0,
+      "bannerAfterReload": "CURRENT",
+      "replayPosAfterReload": null,
+      "bannerAfterRestore": "REPLAY — historical fixture data as of 2026-01-07 02:45Z · horizon 2026-02-02 21",
+      "restoreStatus": "restored",
+      "levelCountAfterRestore": 0,
+      "bannerAfterReturnCurrent": "CURRENT"
+    }
+  },
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "finishedAt": "2026-09-30T04:29:42.004Z",
+  "consoleErrorCount": 1
+}

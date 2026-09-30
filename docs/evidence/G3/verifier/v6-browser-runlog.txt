@@ -1,0 +1,7 @@
+v6-seed-and-select => {"ok":true,"editorOpen":0}
+v6-refusal-runs-with-draft => {"ok":true,"runDone":true,"status":"failed: run store refused [READ_FAILED]: stored record at g3.runs.v1 is unreadable — operation refused, stored bytes untouched","corruptBytesPreserved":true,"runMsg":"run 08dc33e9206c: 1 fills, net -2.18"}
+v6-runs-recover-and-run => {"ok":true,"runDone":true,"runMsg":"run 08dc33e9206c: 1 fills, net -2.18"}
+v6-identity-across-fresh-session => {"ok":true,"identityMatchesAcrossSession":true,"idBefore":"08dc33e9206c","idAfter":"08dc33e9206c","firstRunRecordUnchanged":true}
+v6-keyboard => {"ok":true,"textareaFocusable":true,"nextTab":"btn-save-draft","walkToRun":["sel-run-range","run-inputs","btn-run-backtest","INPUT"],"ranByKeyboard":false}
+v6-narrow-with-runs => {"ok":false,"error":"ReferenceError: runDone is not defined"}
+v6-plot-visibility-pane => {"ok":true,"svg":{"w":949,"polyline":true,"circles":0},"plotPaneBelowChart":true,"sameAxesContextRecorded":"see-report"}

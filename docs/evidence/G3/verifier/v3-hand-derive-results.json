@@ -1,0 +1,76 @@
+{
+  "mineVsCommitted": {
+    "fillsCount": [
+      6,
+      6
+    ],
+    "eachFill": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "equityCurve": true,
+    "smaPlot": true,
+    "stats": {
+      "finalEquity": [
+        1988,
+        1988
+      ],
+      "netProfit": [
+        -12,
+        -12
+      ],
+      "tradeCount": [
+        6,
+        6
+      ],
+      "maxDrawdown": [
+        21,
+        21
+      ]
+    }
+  },
+  "mineVsKit": {
+    "status": "succeeded",
+    "fillsMatchMine": true,
+    "kitFillSummary": [
+      "buy@1800002700:101.1 pos=10 cash=988",
+      "sell@1800005400:100.9 pos=0 cash=1996",
+      "buy@1800007200:102.6 pos=10 cash=969",
+      "sell@1800009000:101.9 pos=0 cash=1987",
+      "buy@1800011700:102.6 pos=10 cash=960",
+      "sell@1800014400:102.9 pos=0 cash=1988"
+    ],
+    "mineFillSummary": [
+      "buy@1800002700:101.1 pos=10 cash=988",
+      "sell@1800005400:100.9 pos=0 cash=1996",
+      "buy@1800007200:102.6 pos=10 cash=969",
+      "sell@1800009000:101.9 pos=0 cash=1987",
+      "buy@1800011700:102.6 pos=10 cash=960",
+      "sell@1800014400:102.9 pos=0 cash=1988"
+    ],
+    "equityMatchMine": true,
+    "smaPlotMatchMine": true,
+    "statsMatchMine": {
+      "finalEquity": true,
+      "netProfit": true,
+      "tradeCount": true,
+      "maxDrawdown": true
+    }
+  },
+  "manual": {
+    "f1": {
+      "hand": {
+        "base": 101,
+        "fill": 101.1,
+        "cash": 988
+      }
+    },
+    "f6": {
+      "handCash": 1988
+    }
+  }
+}

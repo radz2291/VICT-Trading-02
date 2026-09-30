@@ -1,0 +1,37 @@
+{
+  "consumer": "C:/Users/RZ1/Desktop/RZ/g3-verifier-consumer (outside monorepo, own data/adapter)",
+  "kitVersion": "0.2.0",
+  "runnerKind": "trading-kit-backtest-runner",
+  "runnerVersion": "0.1.0",
+  "MAX_RUN_BARS": 100000,
+  "results": {
+    "det": {
+      "deterministic": true,
+      "runId": "1bbfe468abff8d62",
+      "fills": 10
+    },
+    "flip": {
+      "identityDiffers": true,
+      "resultsDiffer": true
+    },
+    "capped": {
+      "observed": true,
+      "records": 160,
+      "cappedRecords": 80
+    },
+    "refusal": {
+      "code": "SCRIPT_INTERRUPTED",
+      "identityPreserved": true
+    },
+    "globals": {
+      "clean": true
+    },
+    "simulatedOnly": {
+      "allFillsSimulated": true
+    },
+    "sessionChecks": {
+      "sliceCappedCorrectly": true,
+      "cappedBeyondClock": true
+    }
+  }
+}

@@ -1,0 +1,8 @@
+v8-seed => {"ok":true,"editorOpen":false,"status":"idle"}
+v8-keyboard-enter-run => {"ok":true,"tabWalkToRun":["sel-run-tf","sel-run-range","run-inputs","btn-run-backtest"],"runFocused":true,"enterActivatedRun":true,"saveFocused":false,"statusAfterEnterSave":"saved"}
+v8-d004-fifo-overlap => {"ok":false,"error":"Error: No element found for selector: [data-testid=\"btn-save-draft\"]"}
+SUMMARY ok=2/3 consoleErrors=0
+v8-seed => {"ok":true,"editorOpen":false,"status":"idle"}
+v8-keyboard-enter-run => {"ok":true,"tabWalkToRun":["sel-run-tf","sel-run-range","run-inputs","btn-run-backtest"],"runFocused":true,"enterActivatedRun":true,"saveFocused":false,"statusAfterEnterSave":"saved"}
+v8-d004-fifo-overlap => {"ok":true,"nameBefore":"kb draft","committedName":"kb draft v8-b","uiCommittedName":"kb draft v8-b","status":"saved","re_basedSuccess":true}
+SUMMARY ok=3/3 consoleErrors=0

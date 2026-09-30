@@ -1,0 +1,33 @@
+{
+  "steps": {
+    "v8-seed": {
+      "ok": true,
+      "editorOpen": false,
+      "status": "idle"
+    },
+    "v8-keyboard-enter-run": {
+      "ok": true,
+      "tabWalkToRun": [
+        "sel-run-tf",
+        "sel-run-range",
+        "run-inputs",
+        "btn-run-backtest"
+      ],
+      "runFocused": true,
+      "enterActivatedRun": true,
+      "saveFocused": false,
+      "statusAfterEnterSave": "saved"
+    },
+    "v8-d004-fifo-overlap": {
+      "ok": true,
+      "nameBefore": "kb draft",
+      "committedName": "kb draft v8-b",
+      "uiCommittedName": "kb draft v8-b",
+      "status": "saved",
+      "re_basedSuccess": true
+    }
+  },
+  "consoleErrors": [],
+  "finishedAt": "2026-09-30T04:45:12.037Z",
+  "consoleErrorCount": 0
+}

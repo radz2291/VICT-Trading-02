@@ -1,0 +1,320 @@
+{
+  "potency": {
+    "baseline": {
+      "fullHistoryMax": 3112.5,
+      "sma20Final": 3107.25
+    },
+    "alternate": {
+      "fullHistoryMax": 6112.5,
+      "sma20Final": 6107.25
+    },
+    "ownVariantC": {
+      "fullHistoryMax": 9999,
+      "sma20Final": 5014.5
+    },
+    "midHistoryD": {
+      "fullHistoryMax": 7645.5599999999995,
+      "sma20Final": 3107.25
+    }
+  },
+  "rows": [
+    {
+      "block": "committed-pair+variantC",
+      "tf": "15m",
+      "statusA": "succeeded",
+      "statusB": "succeeded",
+      "statusC": "succeeded",
+      "barsInRun": 1998,
+      "identicalBaselineVsAlternate": true,
+      "identicalBaselineVsOwnVariantC": true,
+      "oracleAllBarsMatch": true,
+      "oracleLast": {
+        "count": 1998,
+        "mx": 2657.81,
+        "sma": 2647.537,
+        "baseCount": 1998
+      },
+      "scriptLast": {
+        "mx": 2657.81,
+        "sma": 2647.537
+      },
+      "identityBase": "85fb83d22d70",
+      "identityAlt": "192b0288b239",
+      "identitiesDifferByDesign": true
+    },
+    {
+      "block": "committed-pair+variantC",
+      "tf": "1h",
+      "statusA": "succeeded",
+      "statusB": "succeeded",
+      "statusC": "succeeded",
+      "barsInRun": 498,
+      "identicalBaselineVsAlternate": true,
+      "identicalBaselineVsOwnVariantC": true,
+      "oracleAllBarsMatch": true,
+      "oracleLast": {
+        "count": 498,
+        "mx": 2657.81,
+        "sma": 2649.3415,
+        "baseCount": 1998
+      },
+      "scriptLast": {
+        "mx": 2657.81,
+        "sma": 2649.3415
+      },
+      "identityBase": "ef0a2e908891",
+      "identityAlt": "1e692e3baa5c",
+      "identitiesDifferByDesign": true
+    },
+    {
+      "block": "committed-pair+variantC",
+      "tf": "4h",
+      "statusA": "succeeded",
+      "statusB": "succeeded",
+      "statusC": "succeeded",
+      "barsInRun": 122,
+      "identicalBaselineVsAlternate": true,
+      "identicalBaselineVsOwnVariantC": true,
+      "oracleAllBarsMatch": true,
+      "oracleLast": {
+        "count": 122,
+        "mx": 2657.73,
+        "sma": 2649.8015,
+        "baseCount": 1998
+      },
+      "scriptLast": {
+        "mx": 2657.73,
+        "sma": 2649.8015
+      },
+      "identityBase": "c6c0abd3c432",
+      "identityAlt": "f9fe7aedde00",
+      "identitiesDifferByDesign": true
+    },
+    {
+      "block": "mid-history-mutation-D",
+      "tf": "15m",
+      "earlierHorizon": 1769403600,
+      "identicalAtEarlierHorizon": true,
+      "naiveDiffersAtLaterHorizon_whenHistorySeesMutation": true,
+      "naiveFullHistoryPotency_atEarlierHorizon": {
+        "baseline": {
+          "fullHistoryMax": 3112.5,
+          "sma20Final": 3107.25
+        },
+        "mutated": {
+          "fullHistoryMax": 7645.5599999999995,
+          "sma20Final": 3107.25
+        },
+        "responds": true
+      }
+    },
+    {
+      "block": "mid-history-mutation-D",
+      "tf": "1h",
+      "earlierHorizon": 1769403600,
+      "identicalAtEarlierHorizon": true,
+      "naiveDiffersAtLaterHorizon_whenHistorySeesMutation": true,
+      "naiveFullHistoryPotency_atEarlierHorizon": {
+        "baseline": {
+          "fullHistoryMax": 3112.5,
+          "sma20Final": 3107.25
+        },
+        "mutated": {
+          "fullHistoryMax": 7645.5599999999995,
+          "sma20Final": 3107.25
+        },
+        "responds": true
+      }
+    },
+    {
+      "block": "mid-history-mutation-D",
+      "tf": "4h",
+      "earlierHorizon": 1769403600,
+      "identicalAtEarlierHorizon": true,
+      "naiveDiffersAtLaterHorizon_whenHistorySeesMutation": true,
+      "naiveFullHistoryPotency_atEarlierHorizon": {
+        "baseline": {
+          "fullHistoryMax": 3112.5,
+          "sma20Final": 3107.25
+        },
+        "mutated": {
+          "fullHistoryMax": 7645.5599999999995,
+          "sma20Final": 3107.25
+        },
+        "responds": true
+      }
+    },
+    {
+      "block": "gaps-in-capped-history",
+      "tf": "15m",
+      "status": "succeeded",
+      "barsInRun": 1995,
+      "oracleBars": 1995,
+      "scriptMax": 2657.81,
+      "oracleMax": 2657.81,
+      "unavailable": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        },
+        {
+          "status": "missing",
+          "from": 1767841200,
+          "to": 1767848400
+        },
+        {
+          "status": "missing",
+          "from": 1768003200,
+          "to": 1768176000
+        },
+        {
+          "status": "missing",
+          "from": 1768202100,
+          "to": 1768203000
+        },
+        {
+          "status": "missing",
+          "from": 1768608000,
+          "to": 1768780800
+        },
+        {
+          "status": "missing",
+          "from": 1768824900,
+          "to": 1768825800
+        },
+        {
+          "status": "missing",
+          "from": 1769212800,
+          "to": 1769385600
+        },
+        {
+          "status": "missing",
+          "from": 1769447700,
+          "to": 1769448600
+        },
+        {
+          "status": "missing",
+          "from": 1769817600,
+          "to": 1769990400
+        }
+      ]
+    },
+    {
+      "block": "gaps-in-capped-history",
+      "tf": "1h",
+      "status": "succeeded",
+      "barsInRun": 495,
+      "oracleBars": 495,
+      "scriptMax": 2657.81,
+      "oracleMax": 2657.81,
+      "unavailable": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        },
+        {
+          "status": "missing",
+          "from": 1767841200,
+          "to": 1767848400
+        },
+        {
+          "status": "missing",
+          "from": 1768003200,
+          "to": 1768176000
+        },
+        {
+          "status": "missing",
+          "from": 1768202100,
+          "to": 1768203000
+        },
+        {
+          "status": "missing",
+          "from": 1768608000,
+          "to": 1768780800
+        },
+        {
+          "status": "missing",
+          "from": 1768824900,
+          "to": 1768825800
+        },
+        {
+          "status": "missing",
+          "from": 1769212800,
+          "to": 1769385600
+        },
+        {
+          "status": "missing",
+          "from": 1769447700,
+          "to": 1769448600
+        },
+        {
+          "status": "missing",
+          "from": 1769817600,
+          "to": 1769990400
+        }
+      ]
+    },
+    {
+      "block": "gaps-in-capped-history",
+      "tf": "4h",
+      "status": "succeeded",
+      "barsInRun": 119,
+      "oracleBars": 119,
+      "scriptMax": 2657.73,
+      "oracleMax": 2657.73,
+      "unavailable": [
+        {
+          "status": "missing",
+          "from": 1767586500,
+          "to": 1767587400
+        },
+        {
+          "status": "missing",
+          "from": 1767841200,
+          "to": 1767848400
+        },
+        {
+          "status": "missing",
+          "from": 1768003200,
+          "to": 1768176000
+        },
+        {
+          "status": "missing",
+          "from": 1768202100,
+          "to": 1768203000
+        },
+        {
+          "status": "missing",
+          "from": 1768608000,
+          "to": 1768780800
+        },
+        {
+          "status": "missing",
+          "from": 1768824900,
+          "to": 1768825800
+        },
+        {
+          "status": "missing",
+          "from": 1769212800,
+          "to": 1769385600
+        },
+        {
+          "status": "missing",
+          "from": 1769447700,
+          "to": 1769448600
+        },
+        {
+          "status": "missing",
+          "from": 1769817600,
+          "to": 1769990400
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "isolationAllRowsExact": 6,
+    "anyFalse": false
+  }
+}

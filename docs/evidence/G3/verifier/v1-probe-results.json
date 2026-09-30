@@ -1,0 +1,89 @@
+{
+  "label": "VERIFIER own sandbox probes (Node)",
+  "probes": {
+    "p1-constructor-global-dump": {
+      "status": "failed",
+      "code": "SCRIPT_ERROR",
+      "msg": "DUMP::Error,EvalError,RangeError,ReferenceError,SyntaxError,TypeError,URIError,InternalError,AggregateError,Array,Object,Function,Iterator,parseInt,parseFloat,isNaN,isFinite,decodeURI,decodeURIComponent,encodeURI,encodeURIComponent,escape,unescape,Infinity,NaN,undefined,eval,Number,Boolean,String,Math,Reflect,Symbol,globalThis,BigInt,Date,RegExp,JSON,Proxy,Map,Set,WeakMap,WeakSet,ArrayBuffer,Share…"
+    },
+    "p2-direct-globals": {
+      "status": "failed",
+      "code": "SCRIPT_ERROR",
+      "msg": "DUMP::Error,EvalError,RangeError,ReferenceError,SyntaxError,TypeError,URIError,InternalError,AggregateError,Array,Object,Function,Iterator,parseInt,parseFloat,isNaN,isFinite,decodeURI,decodeURIComponent,encodeURI,encodeURIComponent,escape,unescape,Infinity,NaN,undefined,eval,Number,Boolean,String,Math,Reflect,Symbol,globalThis,BigInt,Date,RegExp,JSON,Proxy,Map,Set,WeakMap,WeakSet,ArrayBuffer,Share…"
+    },
+    "p3-math-random-determinism": {
+      "sizesA": "[1.158782660022586]",
+      "sizesB": "[1.5922288013500867]",
+      "identical": false,
+      "statusA": "succeeded",
+      "statusB": "succeeded"
+    },
+    "p4-date-now": {
+      "tsA": 1545787,
+      "tsB": 1545796,
+      "identical": false
+    },
+    "p5-timers-and-microtasks": {
+      "status": "succeeded",
+      "haveTimeout": 0,
+      "haveMicrotask": 0
+    },
+    "p6-async-loop": {
+      "status": "succeeded",
+      "elapsedMs": 23
+    },
+    "p7-giant-string-plot": {
+      "status": "succeeded",
+      "plotsBlob": "number"
+    },
+    "p8-giant-host-payload": {
+      "status": "failed",
+      "code": "SCRIPT_OOM",
+      "identical": true
+    },
+    "p9-host-recursive-stack": {
+      "status": "failed",
+      "code": "SCRIPT_ERROR",
+      "msg": "'window' is not defined"
+    },
+    "p9b-host-stack-recursion": {
+      "status": "failed",
+      "code": "SCRIPT_STACK_OVERFLOW",
+      "msg": "guest stack exhausted (script recursion too deep)"
+    },
+    "p10-authority-hijack": {
+      "status": "succeeded",
+      "trades": 0,
+      "unfilled": 0
+    },
+    "p10b-fake-bars-hijack": {
+      "status": "succeeded",
+      "trades": 0
+    },
+    "p11-dynamic-import-onbar": {
+      "status": "succeeded"
+    },
+    "p12-future-accumulation-check": {
+      "status": "succeeded",
+      "msg": ""
+    },
+    "p13-error-stack-leak": {
+      "status": "succeeded",
+      "stackLen": 80
+    },
+    "p14-interrupt-with-host-calls": {
+      "status": "failed",
+      "code": "SCRIPT_INTERRUPTED",
+      "elapsedMs": 569,
+      "bounded": true
+    },
+    "p15-eval-and-fn-shadowing": {
+      "status": "succeeded",
+      "v": 2
+    },
+    "p16-host-arg-objects": {
+      "status": "succeeded",
+      "alive": 1
+    }
+  }
+}
