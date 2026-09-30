@@ -80,6 +80,29 @@ export function createQuickJsScriptRuntime(): ScriptRuntime {
 				const ctx = rt.newContext();
 				vm = ctx;
 
+				// DETERMINISM CONTRACT (script.ts; a1 README) — implemented here:
+				// guest Math.random is REPLACED with a PRNG seeded from the run's
+				// identity inputs; a guest cannot obtain nondeterminism.
+				let prngState = req.prngSeed >>> 0;
+				const nextRandom = (): number => {
+					prngState = (prngState + 0x6d2b79f5) | 0;
+					let t = Math.imul(prngState ^ (prngState >>> 15), 1 | prngState);
+					t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+					return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+				};
+				const mathObj = ctx.getProp(ctx.global, 'Math');
+				const randFn = ctx.newFunction('random', () => ctx.newNumber(nextRandom()));
+				ctx.setProp(mathObj, 'random', randFn);
+				randFn.dispose();
+				mathObj.dispose();
+				// Date.now is pinned (per-bar, by the kit driver's pinTime call); the
+				// initial pin is 0 — nothing wall-clock is reachable in the guest.
+				const dateObj = ctx.getProp(ctx.global, 'Date');
+				const nowFn = ctx.newFunction('now', () => ctx.newNumber(0));
+				ctx.setProp(dateObj, 'now', nowFn);
+				nowFn.dispose();
+				dateObj.dispose();
+
 				for (const [name, fn] of Object.entries(req.hostFunctions)) {
 					const h = ctx.newFunction('__vict_' + name, (argsPtr) => {
 						const argsJson = argsPtr ? ctx.getString(argsPtr) : '{}';

@@ -24,7 +24,7 @@
 import { createDataSession, type DataSession } from './data.js';
 import { createReplayClock, type ReplayClock } from './clock.js';
 import { dataRevision, runIdentity, type RunIdentity } from './identity.js';
-import { DEFAULT_RUNTIME_LIMITS, DRIVER_SOURCE, type RuntimeLimits, type ScriptRuntime } from './script.js';
+import { DEFAULT_RUNTIME_LIMITS, DRIVER_SOURCE, deriveGuestSeed, type RuntimeLimits, type ScriptRuntime } from './script.js';
 import type {
 	Bar,
 	FillAssumptions,
@@ -105,6 +105,9 @@ interface PendingOrder {
 
 const kitFatalJson = (code: string, message: string): string =>
 	JSON.stringify({ kitFatal: code, message });
+
+const canonicalOfInputs = (inputs: Record<string, number | string | boolean>): string =>
+	JSON.stringify(Object.keys(inputs).sort().map((k) => [k, inputs[k]]));
 
 export async function runBacktest(config: BacktestConfig): Promise<BacktestResult> {
 	const limits: RuntimeLimits = { ...DEFAULT_RUNTIME_LIMITS, ...config.limits };
@@ -395,7 +398,12 @@ export async function runBacktest(config: BacktestConfig): Promise<BacktestResul
 		scriptSource: config.scriptSource,
 		driverSource: DRIVER_SOURCE,
 		limits,
-		hostFunctions: hostFns
+		prngSeed: deriveGuestSeed([config.scriptSource, canonicalOfInputs(config.inputs)]),
+		hostFunctions: {
+			...hostFns,
+			// per-bar Date.now pin target = the current bar's market close (ms)
+			pinTime: () => JSON.stringify({ pinnedMs: (currentIndex >= 0 ? (runBars[currentIndex].time + tfSeconds) : runBars[0].time) * 1000 })
+		}
 	});
 
 	if (sand.status !== 'completed') {

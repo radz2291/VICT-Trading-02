@@ -320,6 +320,48 @@ test('bounded backtest: oversized ranges are refused, not run', async () => {
 	void MAX_RUN_BARS;
 });
 
+test('VERIFIER REGRESSION: guest Math.random is deterministic across identical runs (criterion 5)', async () => {
+	// the verifier reproduced bit-DIFFERENT fills when the guest used
+	// Math.random — the adapter must replace it with the seeded PRNG itself
+	const src = `
+	function onBar(bar, api) {
+		const r = Math.random();
+		api.plot('r', r);
+		if (r > 0.5 && api.state().position <= 0) api.order('buy', 1 + Math.floor(r * 3));
+		if (r <= 0.5 && api.state().position > 0) api.order('sell', 1);
+	}`;
+	const cfg = (scriptSource) => ({
+		symbol: 'T', baseTimeframe: '15m', timeframe: '15m',
+		fromTime: bars[0].time, toTime: bars[bars.length - 1].time + 900,
+		scriptSource, inputs: {}, fill: fixture.fill, sourceBars: bars,
+		runtime: rt()
+	});
+	const a = await runBacktest(cfg(src));
+	const b = await runBacktest(cfg(src));
+	assert.equal(a.status, 'succeeded');
+	assert.equal(a.identity.id, b.identity.id, 'identical identity');
+	assert.deepEqual(a.plots.r, b.plots.r, 'PRNG values must be identical across runs');
+	assert.deepEqual(a.trades.map((t) => [t.side, t.size, t.fillBarTime, t.fillPrice]), b.trades.map((t) => [t.side, t.size, t.fillBarTime, t.fillPrice]));
+	// and the guest ACTUALLY used the replacement (values in [0,1), sequence from the derived seed)
+	assert.ok(a.plots.r.every((v) => v === null || (v >= 0 && v < 1)));
+});
+
+test('VERIFIER REGRESSION: guest Date.now is pinned to the current bar market close (criterion 5)', async () => {
+	const src = `
+	function onBar(bar, api) {
+		api.plot('now', Date.now());
+	}`;
+	const r = await runBacktest({
+		symbol: 'T', baseTimeframe: '15m', timeframe: '15m',
+		fromTime: bars[0].time, toTime: bars[bars.length - 1].time + 900,
+		scriptSource: src, inputs: {}, fill: fixture.fill, sourceBars: bars, runtime: rt()
+	});
+	assert.equal(r.status, 'succeeded');
+	r.plots.now.forEach((v, i) => {
+		assert.equal(v, bars[i].time * 1000 + 900 * 1000, `Date.now at bar ${i} must equal the bar's market close in ms`);
+	});
+});
+
 test('failed runs still carry identity and full assumptions (criterion 9)', async () => {
 	const r = await runBacktest({
 		symbol: 'T', baseTimeframe: '15m', timeframe: '15m',

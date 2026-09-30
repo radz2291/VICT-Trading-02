@@ -57,6 +57,13 @@ export interface SandboxRunRequest {
 	driverSource: string;
 	limits: RuntimeLimits;
 	/**
+	 * Determinism seed for the guest's Math.random replacement (criterion-5
+	 * repair: the contract promised by script.ts docs + the a1 README is now
+	 * IMPLEMENTED — same identity inputs → same seed → same PRNG sequence).
+	 * Derive deterministically via deriveGuestSeed().
+	 */
+	prngSeed: number;
+	/**
 	 * host functions exposed to the guest. Each receives ONE JSON-string
 	 * argument and returns a JSON string. Host functions must never throw:
 	 * failures are reported in-band as JSON the driver understands.
@@ -73,6 +80,22 @@ export interface ScriptRuntime {
 	readonly kind: string;
 	readonly version: string;
 	run(req: SandboxRunRequest): Promise<SandboxRunResult>;
+}
+
+/**
+ * Deterministic 32-bit seed from identity-relevant strings (FNV-1a over the
+ * canonical composition). Same inputs → same seed → same PRNG sequence.
+ */
+export function deriveGuestSeed(parts: string[]): number {
+	let h = 0x811c9dc5;
+	for (const part of parts) {
+		for (let i = 0; i < part.length; i++) {
+			h ^= part.charCodeAt(i);
+			h = Math.imul(h, 0x01000193);
+		}
+		h ^= 0x9e3779b9;
+	}
+	return h >>> 0;
 }
 
 /**
@@ -98,6 +121,12 @@ export const DRIVER_SOURCE = `
     kitFatal('SCRIPT_CONTRACT_INVALID', 'script must define function onBar(bar, api)');
   }
   var count = Number(callHost('barCount', '{}').count);
+  // Per-bar Date.now pinning to MARKET time (the current bar's close, ms):
+  // the host serves the pin via pinTime; a script reading Date.now inside
+  // onBar gets the bar's market close — deterministic per run, never wall
+  // clock.
+  Date.now = function () { return 0; };
+  var __pinned = 0;
   // Per-granularity served-prefix cache. The run cursor only advances, so the
   // available prefix (bars with close <= cursor close) grows MONOTONICALLY
   // during a run: extending a cached prefix via __vict_barsSince is exactly
@@ -166,6 +195,8 @@ export const DRIVER_SOURCE = `
   };
   for (var i = 0; i < count; i++) {
     var bar = callHost('barAt', JSON.stringify({ index: i }));
+    __pinned = Number(callHost('pinTime', '{}').pinnedMs);
+    Date.now = function () { return __pinned; };
     onBar(bar, api);
   }
   callHost('complete', '{}');
