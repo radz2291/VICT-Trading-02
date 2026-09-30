@@ -1,0 +1,69 @@
+{
+  "steps": {
+    "v17-load": {
+      "ok": true,
+      "legend0": null,
+      "truthfulNoPlotYet": false
+    },
+    "v17-run-sma20-on-chart": {
+      "ok": true,
+      "done": true,
+      "legend": "Plots on chart — run f01f2563d21f (249 bars, 15m, sma20) · signals as markers at their candle",
+      "bluePx": 819,
+      "candlePx": 7712,
+      "blueBand": {
+        "y0": 62,
+        "y1": 205
+      },
+      "candleBand": {
+        "y0": 38,
+        "y1": 382
+      },
+      "sharesPricePane": true
+    },
+    "v17-crosshair-shared-time-axis": {
+      "ok": true,
+      "readoutAtA": "O 2640.31 H 2640.6 L 2639.67 C 2640.04 · 2026-01-27 11:30Z · cursor 2648.09",
+      "readoutAtB": "O 2644.33 H 2644.39 L 2643.74 C 2644.11 · 2026-01-22 03:00Z · cursor 2648.09",
+      "readoutOff": "crosshair off chart — XAUUSD 15m · 2023 bars",
+      "linkageAlive": true,
+      "timeAxisFollows": true
+    },
+    "v17-stacking-probe-period2": {
+      "ok": true,
+      "done": true,
+      "blueBefore": 817,
+      "blueAfter": 1219,
+      "replacedNotStacked": true
+    },
+    "v17-signals-as-markers": {
+      "ok": true,
+      "done1": true,
+      "done2": true,
+      "noMarkerPx": 575,
+      "withMarkerPx": 622,
+      "markerDeltaPx": 47,
+      "markersRender": true,
+      "legendAfter": "Plots on chart — run f18838f876ff (249 bars, 15m, w) · signals as markers at their candle"
+    },
+    "v17-replay-nothing-drawn": {
+      "ok": true,
+      "banner": "REPLAY — historical fixture data as of 2026-01-05 00:15Z · horizon 2026-02-02 21:45Z · NOT",
+      "legendInReplay": "No plot rendered yet — run a backtest · (current-mode chart only; replay charts show their own session)",
+      "blueInReplay": 0,
+      "replayCandles": 14774,
+      "nothingDrawnInReplay": true
+    },
+    "v17-return-to-current-restores-overlay": {
+      "ok": true,
+      "banner": "CURRENT",
+      "blueBack": 622
+    }
+  },
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "elapsedMs": 19243,
+  "finishedAt": "2026-09-30T06:32:14.929Z",
+  "consoleErrorCount": 1
+}

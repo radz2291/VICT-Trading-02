@@ -1,0 +1,31 @@
+{
+  "case": "DS",
+  "statusA": "succeeded",
+  "statusB": "succeeded",
+  "identityEqual": true,
+  "plotsBitIdentical": true,
+  "tradesBitIdentical": true,
+  "equityBitIdentical": true,
+  "barTimesLen": 24,
+  "plotLen": 24,
+  "pinnedCloseChecks": [
+    {
+      "plot": "dateStrParseMs",
+      "meaning": "Date.parse(String(Date())) == pinned close ms",
+      "ok": true,
+      "mismatches": []
+    },
+    {
+      "plot": "isoOfNewDate",
+      "meaning": "Date.parse(new Date().toISOString()) == pinned close ms",
+      "ok": true,
+      "mismatches": []
+    }
+  ],
+  "dateStrHashSample": [
+    431867956,
+    206633254,
+    613012417
+  ],
+  "ALL_OK": true
+}

@@ -1,0 +1,9 @@
+Round-3 verifier pack reproductions at pinned SHA 8a33b00a9bd0c12f7c8a5fc8ebc78ff9e28bb6e6 (2026-09-30):
+
+kit 0.2.1:  fresh `npm pack` (packages/trading-kit) -> /tmp/vict-trading-trading-kit-0.2.1.tgz
+  sha512 = 12851cb4357103c8f49013899b3a0481b1f077077cdfa60e1a0a6e26278564c8d67555efa648ad38c0c373ec0ee82559bf305b67f84ca6d711f541c4b7e8f4ff
+  == docs/evidence/G3/kit-0.2.1.tgz == packages/trading-kit/vict-trading-trading-kit-0.2.1.tgz
+
+chart-workspace 0.1.2: fresh `npm pack` (packages/chart-workspace) -> /tmp/vict-trading-chart-workspace-0.1.2.tgz
+  sha512 = 32e4f929d6d9462f323d2580a400f0276a5cdcaa061acd4475d3f751fe59ae17bb0b37513dda973d62a53d827ecdc73657da782e74443aaa820f4e83a77bf39e
+  == docs/evidence/G3/chart-workspace-0.1.2.tgz == packages/chart-workspace/vict-trading-chart-workspace-0.1.2.tgz

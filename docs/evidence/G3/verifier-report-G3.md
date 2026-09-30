@@ -332,3 +332,170 @@ node docs/evidence/G3/verifier/v13-browser.mjs      # pixel probe: blue overlay 
 cd packages/chart-workspace && npm pack + sha512sum == e4567272… (committed artifact matches)
 node docs/evidence/G3/verifier/v11-chart-consumer.mjs / v12-consumer-page.mjs   # extension consumer proofs + stacking falsification
 ```
+
+---
+
+# FINAL ADDENDUM — round-3 continuation verification (independent verifier session)
+
+**Candidate tested and verified:** `8a33b00a9bd0c12f7c8a5fc8ebc78ff9e28bb6e6` (HEAD == `origin/main`, verified by `git rev-parse` both; `git fetch` re-run mid-session — no drift). The repair diff under test is `685d769..8a33b00` (round-2 repairs V-G3-R1/R2/R3/R4). This verifier session is independent of the builder; it inherited only UNTRACKED evidence tooling left by a killed prior final instance in `docs/evidence/G3/verifier/` (v15-* harnesses + result files, unfinished v16 harness) — those result files were treated as PRIOR-INSTANCE evidence, RE-RUN ENTIRELY by this session (all results below are this session's own outputs), and the harness files are committed here (v16 completed by this session; nothing in product code touched by the verifier).
+
+## Stage-level FINAL VERDICT: **PASS WITH NON-BLOCKING FINDINGS at `8a33b00a9bd0c12f7c8a5fc8ebc78ff9e28bb6e6`**
+
+Both round-2 blockers are resolved and independently re-broken-attack-tested; no required behavior contradicts evidence; every criterion is demonstrated at a pinned SHA in a real browser or runnable harness. Minor non-blocking findings are listed below and preserved (none repaired, none hidden).
+
+## Round-2 blockers — re-verification (this session's own evidence)
+
+**V-G3-R2 (criterion 5, determinism) — RESOLVED.** My own re-run of the inherited v15 determinism harness at the candidate, all 6 cases: `MR` (guest `Math.random`: several draws × several bars), `DN` (`Date.now()`), `DT` (`new Date().getTime()`), `DS` (`String(Date())` hashed + `Date.parse(String(Date()))` + `Date.parse(new Date().toISOString())`) — in every case two identical-input `runBacktest` runs produce identical identity and bit-identical plots/trades/equity; every time form returns exactly the CURRENT BAR's pinned market close (ms) for all 24 bars (results at `verifier/v15-det-{MR,DN,DT,DS}-results.json`, exit 0). Adversarial extras `M2` (Math.random sizes REAL next-bar-open fills — the round-1 falsification shape: 8 fills, bit-identical incl. sample sizes `1.0037100075278431`, `1.2250308929942548`, …) and `ESC` (Function-constructor Date escape attempt, `performance` probe, `Date.prototype.getTime` on no-arg `new Date`, Date semantics intact) both ALL-OK (`v15-det-{M2,ESC}-results.json`). **Also reproduced end-to-end through the packed 0.2.1 artifact by the independent outside-monorepo consumer (below). The round-2 verdict's own failing probe (`new Date()` wall-clock leak) no longer reproduces.** Carried note: the inherited `MR` script gated orders on `bar.index`, a property the guest bar does NOT expose — its `tradesRunA` is `[]` (the orders silently never fire); this does not weaken the determinism proof (the Math.random plots themselves are asserted bit-identical at every bar, and M2 supplies real, bit-identical fills), but see findings.
+
+**V-G3-R1 + V-G3-R3 (criterion 2, on-chart placement + overlay lifecycle) — RESOLVED; final independent ruling: PASS.** My own browser harness `verifier/v17-browser.mjs` (fresh profile, production preview :5199, build run BEFORE serving) against the live host:
+
+- `v17-run-sma20-on-chart`: inside the workspace chart container itself — **overlay blue (#4ea1ff) pixels = 819**, candle pixels = 7712 (green+red), and the blue trace's vertical band (y 62–205) lies INSIDE the candle band (y 38–382) — the SMA shares the candle PRICE scale/pane. Screenshot `v17-shot-02-sma20.png`: the blue SMA curve hugs the candles and its last-value badge (2647.77, blue) renders on the candle price axis; the legend truthfully reads "Plots on chart — run f01f2563d21f (249 bars, 15m, sma20) · signals as markers at their candle"; the dead-code symptom from round 2 (blue pixels = 0) is GONE (kit now returns authoritative `barTimes` in the run result — `barTimesLen 24 == plotLen 24` verified in my v15 runs — and the host renders from it).
+- `v17-crosshair-shared-time-axis`: crosshair readout follows the mouse (`O 2640.31 H 2640.6 L 2639.67 C 2640.04 · 2026-01-27 11:30Z · cursor 2648.09` → different OHLC + timestamp at the second probe, truthful "crosshair off chart" state outside) — shared live time axis, native linkage.
+- `v17-stacking-probe-period2`: second run with period=2 → blue pixels 817 → 1219 with a single line's vertical band (replace, not stack; a stacked orphan would roughly double the count). The strict replace/orphan/inert/remove semantics are proven at the extension level by pixel counts through the packed 0.1.2 artifact: `pack-chart-workspace.mjs` → blue 1195 px after add; re-add same id → orphan color gone (0 px) AND replaced color live AND stale handle provably inert (setData through it changes nothing); `removeOverlay` → replacement color 0 px; sub-pane overlay + removal PASS (`consumer-chart-results.json`, screenshot `verifier/cw0312-consumer-overlay.png`).
+- `v17-signals-as-markers`: same plot with vs without signals → **marker delta 47 px** for two added markers (575 → 622 blue px); markers land at the plotted key's candle times via `setMarkers` (times[i] = kit barTimes[i], alignment asserted bit-exact in my v15/v16 evidence; screenshot `v17-shot-04-signals.png`). Combined with the pack-consumer marker-at-candle pixel proof (round 2, v12-shot-02) and the round-1-objection resolution, criterion 2 is satisfied ON THE CHART.
+- Replay honesty: in W3 replay the scripts legend says "No plot rendered yet — run a backtest · (current-mode chart only; replay charts show their own session)" and **blue pixels in the replay chart = 0 while 14774 candle pixels render** (`v17-shot-05-replay.png`); after Return-to-current the overlay is back (622 px, `v17-shot-06-back-current.png`).
+- Legend-truthfulness nuance (recorded): before ANY run the plots block does not exist at all (no claim is displayed — truthful absence); "No plot rendered yet" appears exactly when a run exists but nothing is/draws-applied (e.g. in replay).
+
+## Packaging (criterion 10) — artifact identities re-verified, consumer completed
+
+- sha512 verified by this session: committed `docs/evidence/G3/kit-0.2.1.tgz` == `packages/trading-kit/vict-trading-trading-kit-0.2.1.tgz` == **`12851cb4357103c8f49013899b3a0481b1f077077cdfa60e1a0a6e26278564c8d67555efa648ad38c0c373ec0ee82559bf305b67f84ca6d711f541c4b7e8f4ff`**; fresh `npm pack` reproduced it exactly (`verifier/pack-sha512-round3-verified.txt`). Same for chart-workspace 0.1.2 == **`32e4f929d6d9462f323d2580a400f0276a5cdcaa061acd4475d3f751fe59ae17bb0b37513dda973d62a53d827ecdc73657da782e74443aaa820f4e83a77bf39e`** (fresh pack reproduced). Tarball↔candidate lineage table added: `docs/evidence/G3/README.md` (0.2.0→685d769, 0.2.1→8a33b00; cw 0.1.1→ce8f875, 0.1.2→8a33b00).
+- **Independent kit consumer OUTSIDE the monorepo completed** (`verifier/v16-kit-consumer.mjs`, finished + run by this session): installs the packed kit-0.2.1 tarball into `C:/Users/RZ1/Desktop/RZ/g3-v3-verifier-kit-consumer` (import resolved from the consumer's own node_modules, asserted by path); with its OWN synthetic sawtooth data (no repo fixture): two-run bit-identity incl. an entropy-using script (Math.random plots + random-sized orders + Date.now plot + Date() string hash) — PASS with per-bar pinned-Date.now == bar close for every plotted bar (plotLen 119 of 120 bars: the toTime bar is the open bar, honestly not closed); one-input change (period 5→7) flips identity AND results; capped query during a live session (clock advanced into the data; request beyond clock → `capped: true`, 4 bars served, last served close == servedUntil — bounded by the clock, no future leak); one sandbox refusal (`SCRIPT_SYNTAX_ERROR: expecting ';'`) with the failed run's identity preserved; all 24 fills carry `simulated: true`. All checks OK (`v16-kit-consumer-results.json`).
+- Kit suite: **22/22** at the candidate (`node --test test/g3.test.mjs` after `tsc` build), incl. the new-Date and barTimes regressions.
+
+## Untouched-but-related spot checks (consolidation evidence)
+
+- **Criterion 7 (poison), FULL sweep re-run at the candidate** — beyond the required spot check: `node docs/evidence/G3/verifier/v2-poison-verify.mjs` exit 0; all 9 rows exact — isolation identical across the committed baseline/alternate pair AND my own variant C at 15m/1h/4h with per-bar oracle match; mid-history-mutation-D invisible at the earlier horizon while naive full-history potency responds (3112.5/3107.25 → 6112.5/6107.25, own variant C 9999/5014.5 — values identical to round 1, confirming reproducibility); own gap shapes: barsInRun == oracle (1995/495/119) with explicit unavailability intervals, none bridged (`v2-poison-verify-results.json` refreshed by this run).
+- **Criterion 1 reload limb re-verified** (`verifier/v18-reload.mjs`, `v18b-editor-source.mjs`): draft saved → `g3.scripts.v1` bytes byte-identical after full page reload; draft row restored; opening the restored draft re-shows its exact saved source. Round-1's deeper W2 lifecycle evidence stands (unchanged surfaces; the touched surface re-verified).
+- **Criterion 11 narrow widths on the touched ScriptsIsland**: `verifier/v19-narrow.mjs` — horizontal overflow 0 px at 768 AND 375 (screenshots `v19-shot-768.png`, `v19-shot-375.png`); desktop W2/W5 exercised end-to-end in v17; console: 1 benign resource-404 only (favicon, consistent with rounds 1–2), 0 page errors; `host npm run check` 0 errors (1 warning) + `npm run build` clean (run by this session).
+
+## Consolidated claim matrix (criteria 1–12) — with evidence lineage
+
+| # | Criterion | Final verdict | Basis (verifier sessions) |
+|---|---|---|---|
+| 1 | Free entry + draft lifecycle | PASS | Round 1 at depth (v4: no prerequisite, hide/reopen byte-exact; v6 fresh-session) **+ this session: reload byte-exactness + editor source restore re-run (v18/v18b)** |
+| 2 | Plots/signals on chart via capped data | PASS (final ruling, this session) | Capping proven round 1 (capped records, requested/served evidence; poison runs cappedQueryCount>0); placement FAIL at 685d769 and ce8f875 — **now PASS: on-chart overlays sharing candle price scale + time axis + crosshair, markers at candles, truthful legend (v17 pixels + screenshots; pack-consumer replace/orphan/inert/remove pixels)** |
+| 3 | Invalid-edit actionability; draft intact; prior version runnable | PASS | Round 1 (v4: SCRIPT_SYNTAX_ERROR rendered, stored failed run, prior run re-runnable; F-G3-4 no-line-numbers stands) — syntax-refusal surfaces also re-proven through the shipped artifact in my v16 consumer |
+| 4 | Sandbox boundary + limits + documented subset | PASS (with carried findings) | Round 1's 16-probe pack at depth (containment, OOM/stack/interrupt bounds, authority hijack contained). Touched surfaces = determinism rewiring only; escape re-probed per the DS/ESC cases above (incl. Function-constructor and prototype attacks) — none reach the wall clock |
+| 5 | Run identity + pinning + bit-identity | PASS (was FAIL at 685d769, ce8f875) | **This session: all 6 v15 determinism cases + M2/ESC + entropy-using two-run identity through the packed artifact (v16) — bit-identical across Math.random/Date.now/new Date()/Date()-string; one-input flip** |
+| 6 | Draft-mutation isolation (no rewrite of completed runs) | PASS | Round 1 (v4 byte-identical runs after draft edit; F-G3-5 MAX_RUNS=12 eviction note stands) — store untouched by the repairs; no re-verification path altered |
+| 7 | Future isolation, all TFs + derived (D-005 A1) | PASS | Round 1 beyond depth; **this session: full 9-row sweep re-run at 8a33b00, all exact, potency values reproduce** |
+| 8 | Simulated-only authority | PASS | Round 1 import audit + fill `simulated: true`; **this session: import audit re-run clean; all 24 consumer fills simulated:true; no network pathways** |
+| 9 | Honest run states | PASS | Round 1 (v4/v5) — surfaces untouched by the repairs except the legend text, re-checked live in v17 (truthful) |
+| 10 | Packaging + independent consumer | PASS (was artifact-divergence finding V-G3-R4 at ce8f875) | **This session: kit 0.2.1 + cw 0.1.2 sha512 three-way verified (committed == packages copy == fresh pack), lineage README added, full outside-monorepo consumer completed and passing** |
+| 11 | Shared checks (check/build/console/W2/W5 widths/keyboard/W1+W3 regressions) | PASS | Rounds 1–2 at depth (keyboard Enter-run, D-004 FIFO overlap, W1 fresh-profile, W3 full sweep, 15/15 suite at ce8f875); **this session: check+build clean, desktop W2/W5 core live (v17), narrow overflow 0 @768/375 (v19) on the touched surface** |
+| 12 | Carried-findings dispositions | EXECUTED | F-AVC-1, F-3, F-C2-2 resolved + verified (round 1, live); F-1 carry judged (wording amended); unchanged here. New carried findings below |
+
+## Findings (round 3; none blocking)
+
+| ID | Severity | Finding | Owner relevance |
+|---|---|---|---|
+| V-G3-R5 | informational | On-chart legend suffix "signals as markers at their candle" renders even for runs containing ZERO signals (static suffix). No false data is drawn — only wording optimism | Cosmetic; suggest conditional wording at a later cosmetic pass |
+| V-G3-R6 | informational | The guest bar passed to `onBar` has NO `.index` property (fields only: time/o/h/l/c by contract of the served bar); scripts must maintain their own counters. Not contradicted by any kit doc (docs never claim `.index`), but round-1's MR probe relied on it and its orders silently never fired (`tradesRunA: []`) — worth one README line about the bar's actual fields | Documentation nicety; no behavioral defect |
+| — | carried unchanged | V-G3-3 (QuickJS gc_obj_list stderr abort after stack exhaustion), V-G3-4 (async guest code silent no-op; README pump claim false), V-G3-5 (MAX_RUNS=12 silent eviction), F-G3-1 (dev-mode optimize-deps, environment-only), F-G3-4 (no line numbers on syntax errors), F-1 (upstream regenerator adds `horizonBarIndex`; not consumed by G3) — all still open, bounded, non-blocking; none touched by the repair diff; not re-tested (unchanged surfaces) | Recorded for later stages |
+
+## Not demonstrated / not re-executed (with commands)
+
+- NautilusTrader local evaluation re-run — out of scope (D-006 owner decision: neither; recorded evidence inspected rounds 1–2; command would be `C:/Users/RZ1/Desktop/RZ/g3-nt-eval/Scripts/python.exe docs/evidence/G3/selection/a2-engines/nt_eval2.py`).
+- Builder's committed 15/15 browser suite re-run against the 8a33b00 build was NOT repeated by this session (it was re-run at ce8f875; the repair commit's own suite presumably re-ran by the builder, and its 15 steps are superseded for the touched surfaces by my deeper v17 pixel-level checks; the untouched surfaces carry round-1/round-2 evidence). Command if desired: `node docs/evidence/G3/browser-verify.mjs` (requires :5199 preview).
+
+## Reproduction commands (this session, all run)
+
+```bash
+git rev-parse HEAD                              # 8a33b00a9bd0c12f7c8a5fc8ebc78ff9e28bb6e6 == origin/main
+cd packages/trading-kit && npm run build && node --test test/g3.test.mjs   # 22/22
+for c in MR DN DT DS; do node docs/evidence/G3/verifier/v15-det-final.mjs $c; done    # all exit 0
+for c in M2 ESC;   do node docs/evidence/G3/verifier/v15-det-extra.mjs $c; done      # all exit 0
+node docs/evidence/G3/verifier/v16-kit-consumer.mjs                  # outside-monorepo consumer, all OK
+node docs/evidence/G3/pack-chart-workspace.mjs                       # cw 0.1.2 consumer + pixel checks, PASS
+npm pack in packages/trading-kit and packages/chart-workspace         # both digests reproduced (pack-sha512-round3-verified.txt)
+cd host && npm run check && npm run build            # 0 errors / clean build; preview :5199 after build
+node docs/evidence/G3/verifier/v17-browser.mjs       # criterion-2 on-chart pixel + linkage + signals + replay evidence
+node docs/evidence/G3/verifier/v18-reload.mjs && node docs/evidence/G3/verifier/v18b-editor-source.mjs
+node docs/evidence/G3/verifier/v2-poison-verify.mjs  # full criterion-7 sweep, 9/9 exact
+node docs/evidence/G3/verifier/v19-narrow.mjs        # overflow 0 @ 768/375
+```
+
+## Scope audit (`git diff 685d769..8a33b00`)
+
+Changed paths confined to `packages/trading-kit/**`, `packages/chart-workspace/**`, `host/**`, `docs/evidence/G3/**` — all within the accepted G3 in-scope paths; exactly the four round-2 repairs + tests + tarballs + reports; nothing in pack product documents modified. Secrets grep clean (only normative rule text mentions "secret"); no network/live/account/order pathway in the diff; npm publish not performed. Import audit re-run: kit↔chart-workspace independence untouched (kit imports nothing from chart-workspace/app; chart-workspace imports nothing from kit; host composes both via public exports).
+
+## Verdict rationale
+
+Every required criterion is demonstrated with reproducible evidence; both prior FAIL verdicts' contradictions were re-attacked with fresh harnesses and no longer reproduce; negative cases (escape attempts, stacking, replay drawing, future leaks, artifact substitution) all fail to break the candidate. OPEN findings exist but are minor, bounded, and carried with dispositions. Per EVALUATION.md: **PASS WITH NON-BLOCKING FINDINGS at `8a33b00a9bd0c12f7c8a5fc8ebc78ff9e28bb6e6`.** STATE.md's G3 status line updated by this verdict; all prior red evidence and verdicts preserved intact.
+
+```acceptance-report
+{
+  "criteriaSatisfied": [
+    {
+      "id": "criterion-1",
+      "status": "satisfied",
+      "evidence": "This addendum: consolidated criteria-1..12 matrix, this session's own re-runs (v15 x6, v16 consumer finished, pack reproductions, v17 on-chart pixel evidence, v18/v18b reload persistence, v2 full poison sweep, v19 narrow), scope audit, final verdict PASS WITH NON-BLOCKING FINDINGS at 8a33b00"
+    }
+  ],
+  "changedFiles": [
+    "docs/evidence/G3/README.md",
+    "docs/evidence/G3/verifier-report-G3.md",
+    "docs/evidence/G3/verifier/v15-det-final.mjs",
+    "docs/evidence/G3/verifier/v15-det-extra.mjs",
+    "docs/evidence/G3/verifier/v15-det-MR-results.json",
+    "docs/evidence/G3/verifier/v15-det-DN-results.json",
+    "docs/evidence/G3/verifier/v15-det-DT-results.json",
+    "docs/evidence/G3/verifier/v15-det-DS-results.json",
+    "docs/evidence/G3/verifier/v15-det-M2-results.json",
+    "docs/evidence/G3/verifier/v15-det-ESC-results.json",
+    "docs/evidence/G3/verifier/v16-kit-consumer.mjs",
+    "docs/evidence/G3/verifier/v16-kit-consumer-results.json",
+    "docs/evidence/G3/verifier/pack-sha512-round3-verified.txt",
+    "docs/evidence/G3/verifier/v17-browser.mjs",
+    "docs/evidence/G3/verifier/v17-browser-results.json",
+    "docs/evidence/G3/verifier/v17-shot-01-initial.png",
+    "docs/evidence/G3/verifier/v17-shot-02-sma20.png",
+    "docs/evidence/G3/verifier/v17-shot-03-period2.png",
+    "docs/evidence/G3/verifier/v17-shot-04-signals.png",
+    "docs/evidence/G3/verifier/v17-shot-05-replay.png",
+    "docs/evidence/G3/verifier/v17-shot-06-back-current.png",
+    "docs/evidence/G3/verifier/v18-reload.mjs",
+    "docs/evidence/G3/verifier/v18-reload-results.json",
+    "docs/evidence/G3/verifier/v18b-editor-source.mjs",
+    "docs/evidence/G3/verifier/v18b-editor-source-results.json",
+    "docs/evidence/G3/verifier/v19-narrow.mjs",
+    "docs/evidence/G3/verifier/v19-narrow-results.json",
+    "docs/evidence/G3/verifier/v19-shot-768.png",
+    "docs/evidence/G3/verifier/v19-shot-375.png",
+    "docs/evidence/G3/verifier/v2-poison-verify-results.json",
+    "docs/evidence/G3/verifier/cw0312-consumer-overlay.png",
+    "docs/STATE.md"
+  ],
+  "testsAddedOrUpdated": [
+    "packages/trading-kit/test/g3.test.mjs (pre-existing; re-run 22/22 at the candidate)"
+  ],
+  "commandsRun": [
+    { "command": "sha512sum both tarball pairs + fresh npm pack x2", "result": "passed", "summary": "kit-0.2.1 == 12851cb4…, cw-0.1.2 == 32e4f929…, fresh packs reproduce both exactly" },
+    { "command": "node v15-det-final.mjs {MR,DN,DT,DS} + v15-det-extra.mjs {M2,ESC}", "result": "passed", "summary": "all 6 determinism cases ALL_OK (reproducible by this session)" },
+    { "command": "node docs/evidence/G3/verifier/v16-kit-consumer.mjs", "result": "passed", "summary": "outside-monorepo kit consumer finished; 9/9 checks incl. entropy forms, flip, capped slice, refusal, simulated fills" },
+    { "command": "node docs/evidence/G3/pack-chart-workspace.mjs", "result": "passed", "summary": "cw 0.1.2 consumer: same-id replace/orphan-gone/inert/remove + sub-pane, pixel-proven" },
+    { "command": "node --test test/g3.test.mjs (kit, after tsc)", "result": "passed", "summary": "22/22 at the candidate" },
+    { "command": "node docs/evidence/G3/verifier/v17-browser.mjs", "result": "passed", "summary": "criterion-2 on-chart PASS: 819 blue px in candle band, price-axis badge, crosshair linkage, marker delta 47px, replay draws nothing" },
+    { "command": "node docs/evidence/G3/verifier/{v18-reload,v18b-editor-source}.mjs", "result": "passed", "summary": "reload: bytes byte-identical, draft restored, editor reopens with exact source" },
+    { "command": "node docs/evidence/G3/verifier/v2-poison-verify.mjs", "result": "passed", "summary": "full criterion-7 sweep at 8a33b00: 9/9 rows exact, potency reproduces round-1 values" },
+    { "command": "node docs/evidence/G3/verifier/v19-narrow.mjs + host check/build", "result": "passed", "summary": "overflow 0 @ 768/375 on touched ScriptsIsland; check 0 errors; build clean" }
+  ],
+  "validationOutput": [
+    "FINAL VERDICT: PASS WITH NON-BLOCKING FINDINGS at 8a33b00a9bd0c12f7c8a5fc8ebc78ff9e28bb6e6",
+    "Round-2 blockers V-G3-R1/R2/R3/R4 all resolved under fresh falsification; carried findings V-G3-3/-4/-5, F-G3-1/-4, F-1 remain open, bounded, non-blocking"
+  ],
+  "residualRisks": [
+    "V-G3-R5 informational: legend mentions signal markers even when a run has zero signals (cosmetic wording)",
+    "V-G3-R6 informational: guest bar exposes no .index field (scripts should use own counters); one README line would prevent the confusion",
+    "QuickJS gc_obj_list stderr abort after stack exhaustion (V-G3-3) and async-guest silent no-op (V-G3-4) remain unchanged, bounded, non-blocking",
+    "Builder-committed 15-step browser suite not re-run by this session at 8a33b00 (touched surfaces superseded by deeper v17 pixel checks; recorded as such)"
+  ],
+  "noStagedFiles": true,
+  "diffSummary": "docs-only verifier round-3 continuation: adopted+re-ran the killed prior instance's v15 determinism harnesses (all 6 reproduce PASS), finished and ran the v16 outside-monorepo kit consumer on the packed kit-0.2.1 tarball (9/9), ran cw 0.1.2 replace/orphan/inert/remove pixel consumer, own v17/v18/v19 browser evidence, full v2 poison sweep re-run, lineage README, final addendum verdict; no product code touched",
+  "reviewFindings": [
+    "no blockers — stage-level PASS WITH NON-BLOCKING FINDINGS at 8a33b00a9bd0c12f7c8a5fc8ebc78ff9e28bb6e6",
+    "informational: V-G3-R5 legend wording, V-G3-R6 bar-field docs note; carries V-G3-3/-4/-5, F-G3-1/-4, F-1 unchanged"
+  ],
+  "manualNotes": "Tested SHA 8a33b00a9bd0c12f7c8a5fc8ebc78ff9e28bb6e6 (HEAD == origin/main, no drift after fetch). The killed prior final instance's untracked v15 tooling was adopted, fully re-executed (all results this session's own), and committed; its unfinished v16 was completed (runtime wiring + per-bar pin comparison over closed bars + meaningful capped-slice check) and run. Evidence tooling edits only — product code untouched, nothing published, no orders, preview server stopped after use."
+}
+```

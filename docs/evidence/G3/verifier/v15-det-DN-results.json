@@ -1,0 +1,20 @@
+{
+  "case": "DN",
+  "statusA": "succeeded",
+  "statusB": "succeeded",
+  "identityEqual": true,
+  "plotsBitIdentical": true,
+  "tradesBitIdentical": true,
+  "equityBitIdentical": true,
+  "barTimesLen": 24,
+  "plotLen": 24,
+  "pinnedCloseChecks": [
+    {
+      "plot": "nowMs",
+      "form": "all bars must equal (bar.time+tf)*1000",
+      "ok": true,
+      "mismatches": []
+    }
+  ],
+  "ALL_OK": true
+}

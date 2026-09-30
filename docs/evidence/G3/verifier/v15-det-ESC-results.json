@@ -1,0 +1,12 @@
+{
+  "case": "ESC",
+  "statusA": "succeeded",
+  "statusB": "succeeded",
+  "identityEqual": true,
+  "plotsBitIdentical": true,
+  "tradesBitIdentical": true,
+  "equityBitIdentical": true,
+  "signalsBitIdentical": true,
+  "unfilledBitIdentical": true,
+  "pinnedSeriesOk": true
+}

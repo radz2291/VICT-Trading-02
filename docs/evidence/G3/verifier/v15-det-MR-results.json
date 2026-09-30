@@ -1,0 +1,21 @@
+{
+  "case": "MR",
+  "statusA": "succeeded",
+  "statusB": "succeeded",
+  "identityEqual": true,
+  "plotsBitIdentical": true,
+  "tradesBitIdentical": true,
+  "equityBitIdentical": true,
+  "barTimesLen": 24,
+  "plotLen": 24,
+  "pinnedCloseChecks": [],
+  "rndSampleRunA": [
+    0.354530573124066,
+    0.2466525393538177,
+    0.4754002040717751,
+    0.21514744544401765,
+    0.6596444030292332
+  ],
+  "tradesRunA": [],
+  "ALL_OK": true
+}

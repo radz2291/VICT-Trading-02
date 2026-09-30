@@ -1,0 +1,39 @@
+installed kit version 0.2.1
+{
+  "results": {
+    "import-from-consumer-install": {
+      "ok": true,
+      "detail": "C:\\Users\\RZ1\\Desktop\\RZ\\g3-v3-verifier-kit-consumer\\node_modules\\@vict-trading\\trading-kit\\dist\\index.js"
+    },
+    "two-run-bit-identity": {
+      "ok": true
+    },
+    "pinned-date-now-is-bar-close-per-bar": {
+      "ok": true,
+      "detail": "{\"plotLen\":119,\"barsLen\":120}"
+    },
+    "one-input-flip": {
+      "ok": true
+    },
+    "capped-query-recorded": {
+      "ok": true,
+      "detail": "{\"capped\":true,\"servedUntil\":1739581200,\"n\":4,\"total\":4}"
+    },
+    "capped-slice-bounded-by-clock": {
+      "ok": true,
+      "detail": "{\"n\":4,\"lastClose\":1739581200,\"servedUntil\":1739581200}"
+    },
+    "sandbox-refusal-status-failed": {
+      "ok": true,
+      "detail": "{\"code\":\"SCRIPT_SYNTAX_ERROR\",\"message\":\"expecting ';'\"}"
+    },
+    "failed-run-identity-preserved": {
+      "ok": true
+    },
+    "fills-simulated-only": {
+      "ok": true,
+      "detail": "trades=24"
+    }
+  },
+  "allOk": true
+}

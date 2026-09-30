@@ -1,0 +1,15 @@
+{
+  "steps": {
+    "v18-create-save": {
+      "ok": true,
+      "draftBytesLen": 236,
+      "containsSource": false
+    },
+    "v18-reload-byte-exact": {
+      "ok": true,
+      "byteExact": true,
+      "draftRestored": true,
+      "editorRestored": false
+    }
+  }
+}

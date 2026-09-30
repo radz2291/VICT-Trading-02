@@ -1,0 +1,19 @@
+{
+  "case": "M2",
+  "statusA": "succeeded",
+  "statusB": "succeeded",
+  "identityEqual": true,
+  "plotsBitIdentical": true,
+  "tradesBitIdentical": true,
+  "equityBitIdentical": true,
+  "signalsBitIdentical": true,
+  "unfilledBitIdentical": true,
+  "tradeCount": 8,
+  "sampleFillSizes": [
+    1.0037100075278431,
+    1.2250308929942548,
+    1.6747979181818664,
+    1.830623485846445
+  ],
+  "ALL_OK": true
+}
