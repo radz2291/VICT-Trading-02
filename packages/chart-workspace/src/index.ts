@@ -7,6 +7,7 @@
 export { createLwcChart as createChart } from './lwc.js';
 export { DrawingWorkspace } from './workspace.js';
 export type { CreateLevelInput, MutationResult, WorkspaceOptions } from './workspace.js';
+export type { OverlayHandle, OverlayMarker, OverlayPoint, OverlaySpec } from './types.js';
 export {
 	isBar,
 	isFiniteNumber,

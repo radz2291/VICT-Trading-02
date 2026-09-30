@@ -12,5 +12,9 @@ export type {
 	PriceLevel as Level,
 	WorkspacePersistence,
 	PersistenceOp,
-	PortResult
+	PortResult,
+	OverlayHandle,
+	OverlayMarker,
+	OverlayPoint,
+	OverlaySpec
 } from '@vict-trading/chart-workspace';

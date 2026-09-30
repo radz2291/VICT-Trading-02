@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { scriptsStore as st } from '../scripts.svelte.js';
+	import { chartControllerRef } from '../island-state.svelte.js';
 
-	let props = $props();
-	void props;
+	let props = $props<{ replayActive?: boolean }>();
+	let replayActive = $derived(props.replayActive === true);
 
 	let newDraftName = $state('');
 	let inputsJson = $state('{"period": 20}');
@@ -11,6 +12,7 @@
 	let compareA = $state('');
 	let compareB = $state('');
 	let selectedPlot = $state('');
+	let overlayError = $state('');
 
 	const selected = $derived(st.drafts.find((d) => d.id === st.selectedDraftId) ?? null);
 	const succeededRuns = $derived(st.runs.filter((r) => r.status === 'succeeded'));
@@ -20,23 +22,57 @@
 	const activePlotName = $derived(selectedPlot && plotNames.includes(selectedPlot) ? selectedPlot : (plotNames[0] ?? ''));
 	const activePlot = $derived(lastRun && lastRun.plots ? (lastRun.plots[activePlotName] ?? []) : []);
 	const activeSignals = $derived(lastRun && lastRun.signals ? (lastRun.signals[activePlotName] ?? null) : null);
+	const overlayTimes = $derived(lastRun ? runTimesFor(lastRun) : []);
+
+	function runTimesFor(run: (typeof lastRun) & ({})): number[] {
+		if (run.barTimes && run.barTimes.length > 0) return run.barTimes;
+		// fall back to the chart's own candles clipped by count (bounded)
+		return [];
+	}
 
 	const fmtT = (t: number) => new Date(t * 1000).toISOString().slice(5, 16).replace('T', ' ');
 
-	// SVG plot geometry (width-normalized polyline)
-	const W = 560;
-	const H = 90;
-	function plotPoints(values: (number | null)[]): { x: number; y: number }[] {
-		const nums = values.filter((v): v is number => v !== null && Number.isFinite(v));
-		if (nums.length < 2) return [];
-		const min = Math.min(...nums);
-		const max = Math.max(...nums);
-		const span = max - min || 1;
-		return values
-			.map((v, i) => (v === null || !Number.isFinite(v) ? null : { x: (i / Math.max(1, values.length - 1)) * W, y: H - ((v - min) / span) * (H - 8) - 4 }))
-			.filter((p): p is { x: number; y: number } => p !== null);
+	// ---- on-chart overlays (G3, D-006-bounded extension) ---------------------
+	// The plots/signals map onto the WORKSPACE chart itself: same pane, same
+	// price scale (run values are in the instrument's units), same time scale,
+	// so candles + crosshair + time labels align natively. Data comes ONLY
+	// from the kit-capped run record (times are run-bar times; the run never
+	// contains bars beyond its own capped range).
+	function applyOverlays(): void {
+		overlayError = '';
+		const c = chartControllerRef.current;
+		if (!c) return;
+		if (replayActive) return; // overlays target the current-mode chart
+		if (!lastRun || !activePlotName) return;
+		try {
+			let h = c.addOverlay({ id: 'g3-plot-' + activePlotName, kind: 'line', pane: 'price', color: '#4ea1ff', lineWidth: 2 });
+			const times = overlayTimes;
+			if (times.length === activePlot.length && times.length > 0) {
+				const points = activePlot.map((v, i) => ({ time: times[i], value: v }));
+				h.setData(points.filter((p) => p !== null) as { time: number; value: number | null }[]);
+			} else {
+				// no bar times recorded (older run) — render nothing rather than guess
+				h = c.addOverlay({ id: 'g3-plot-' + activePlotName, kind: 'line', pane: 'price', color: '#4ea1ff', lineWidth: 2 });
+				h.setData([]);
+			}
+			if (activeSignals && activeSignals.length === times.length) {
+				const markers = activeSignals
+					.map((s, i) => (s === 1 ? { time: times[i], shape: 'circle' as const, text: activePlotName } : null))
+					.filter((m): m is { time: number; shape: 'circle'; text: string } => m !== null);
+				h.setMarkers(markers);
+			}
+		} catch (e) {
+			overlayError = `overlay render failed: ${(e as Error).message}`;
+		}
 	}
-	const polyPts = $derived(plotPoints(activePlot));
+
+	$effect(() => {
+		void lastRun;
+		void activePlotName;
+		void replayActive;
+		applyOverlays();
+	});
+
 	function diffCell(runA: typeof lastRun, runB: typeof lastRun, field: 'inputs' | 'finalEquity' | 'netProfit' | 'tradeCount' | 'maxDrawdown'): boolean {
 		if (!runA || !runB) return false;
 		if (field === 'inputs') return JSON.stringify(runA.inputs) !== JSON.stringify(runB.inputs);
@@ -130,6 +166,23 @@
 		<p class="runmsg" data-testid="run-message">{st.runMessage}</p>
 	{/if}
 
+	{#if lastRun}
+		<div class="plots" data-testid="script-plots">
+			<span class="title small" data-testid="overlay-legend">Plots on chart — run {lastRun.shortId} ({lastRun.rangeBars} bars, {lastRun.timeframe}, {activePlotName})</span>
+			<select data-testid="sel-plot" value={activePlotName} onchange={(e) => (selectedPlot = e.currentTarget.value)} aria-label="Plot series">
+				{#each plotNames as name (name)}
+					<option value={name}>{name}</option>
+				{/each}
+			</select>
+			<span class="hint">
+				plots render on the chart (shared time + price scale) · signals as markers at their candle
+				· {#if (lastRun.unavailable ?? []).length > 0}{(lastRun.unavailable ?? []).length} unavailability interval(s) in range{:else}gaps are explicit unavailable intervals — never bridged{/if}
+			</span>
+			{#if overlayError}<span class="failed">{overlayError}</span>{/if}
+			{#if replayActive}<span class="hint">scripts run in current mode; charts in replay show their own session</span>{/if}
+		</div>
+	{/if}
+
 	{#if st.runs.length > 0}
 		<div class="runs" data-testid="run-list">
 			<span class="title small">Runs (immutable)</span>
@@ -173,35 +226,6 @@
 			</table>
 		</div>
 	{/if}
-
-	{#if lastRun}
-		<div class="plots" data-testid="script-plots">
-			<span class="title small">Script plots — run {lastRun.shortId} ({lastRun.rangeBars} bars, {lastRun.timeframe})</span>
-			<select data-testid="sel-plot" value={activePlotName} onchange={(e) => (selectedPlot = e.currentTarget.value)} aria-label="Plot series">
-				{#each plotNames as name (name)}
-					<option value={name}>{name}</option>
-				{/each}
-			</select>
-			<svg data-testid="plot-svg" viewBox="0 0 {W} {H}" preserveAspectRatio="none" role="img" aria-label={`Plot ${activePlotName}`}>
-				{#if polyPts.length > 1}
-					<polyline fill="none" stroke="#4ea1ff" stroke-width="1.4" points={polyPts.map((p) => `${p.x},${p.y}`).join(' ')} />
-				{/if}
-				{#if activeSignals}
-					{#each activeSignals as s, i}
-						{#if s === 1}
-							<circle cx={(i / Math.max(1, activeSignals.length - 1)) * W} cy={H - 6} r="2.4" fill="#e0c96b" />
-						{/if}
-					{/each}
-				{/if}
-			</svg>
-			<span class="hint">
-				gaps are explicit unavailable intervals in data — never bridged
-				{#if (lastRun.unavailable ?? []).length > 0}
-					· {(lastRun.unavailable ?? []).length} unavailability interval(s) in range
-				{/if}
-			</span>
-		</div>
-	{/if}
 </div>
 
 <style>
@@ -231,7 +255,6 @@
 	.name {
 		width: 130px;
 	}
-	inputs,
 	.inputs {
 		width: 190px;
 	}
@@ -321,14 +344,6 @@
 	}
 	.plots {
 		margin-top: 6px;
-	}
-	.plots svg {
-		display: block;
-		width: 100%;
-		height: 90px;
-		background: #101418;
-		border-radius: 4px;
-		margin-top: 4px;
 	}
 	.hint {
 		color: #8ba1b9;

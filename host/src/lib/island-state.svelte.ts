@@ -69,6 +69,9 @@ function rowsOf(v: unknown): Record<string, unknown>[] {
 	return Array.isArray(v) ? (v as Record<string, unknown>[]) : [];
 }
 
+/** Shared handle to the workspace chart (G3: scripts overlays target it). */
+export const chartControllerRef: { current: ChartController | null } = { current: null };
+
 export function workspaceState(props: IslandProps) {
 	const actions = useVictActions();
 	let container: HTMLDivElement | undefined = $state();
@@ -179,10 +182,12 @@ export function workspaceState(props: IslandProps) {
 	onMount(() => {
 		if (!container) return;
 		controller = createChart({ container }, bars, callbacks);
+		chartControllerRef.current = controller; // G3: scripts overlays target the workspace chart
 		controller.setData(bars);
 		controller.setLevels(myLevels);
 		return () => {
 			controller?.destroy();
+			chartControllerRef.current = null;
 			controller = null;
 		};
 	});

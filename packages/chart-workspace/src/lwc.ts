@@ -18,7 +18,11 @@
  */
 import {
 	createChart,
+	createSeriesMarkers,
+	AreaSeries,
 	CandlestickSeries,
+	HistogramSeries,
+	LineSeries,
 	LineStyle,
 	type IChartApi,
 	type ISeriesApi,
@@ -26,7 +30,7 @@ import {
 	type UTCTimestamp,
 	type MouseEventParams
 } from 'lightweight-charts';
-import type { Bar, ChartCallbacks, ChartController, ChartHost, CrosshairRead, PriceLevel } from './types.js';
+import type { Bar, ChartCallbacks, ChartController, ChartHost, CrosshairRead, OverlayHandle, OverlayMarker, OverlayPoint, OverlaySpec, PriceLevel } from './types.js';
 
 const HIT_PX = 6;
 const CLICK_MAX_PX = 4;
@@ -222,6 +226,67 @@ export function createLwcChart(host: ChartHost, bars: Bar[], cb: ChartCallbacks)
 	host.container.addEventListener('pointermove', onPointerMove);
 	host.container.addEventListener('pointerup', onPointerUp);
 
+	// ---- overlay series (G3 bounded extension, D-006-pre-authorized) ----- 
+	type MarkerPlugin = ReturnType<typeof createSeriesMarkers>;
+	const overlays = new Map<
+		string,
+		{ series: ISeriesApi<'Line'> | ISeriesApi<'Area'> | ISeriesApi<'Histogram'>; markers: MarkerPlugin | null; spec: OverlaySpec }
+	>();
+
+	function addOverlay(spec: OverlaySpec): OverlayHandle {
+		const def = spec.kind === 'area' ? AreaSeries : spec.kind === 'histogram' ? HistogramSeries : LineSeries;
+		const options: Record<string, unknown> = {};
+		if (spec.color) options.color = spec.color;
+		if (spec.lineWidth) options.lineWidth = spec.lineWidth;
+		if (spec.pane === 'sub') options.priceScaleId = ''; // forces a separate scale inside the lower pane
+		const s = (spec.pane === 'sub' ? chart.addSeries(def, options, 1) : chart.addSeries(def, options)) as ISeriesApi<'Line'>;
+		const entry: { series: ISeriesApi<'Line'> | ISeriesApi<'Area'> | ISeriesApi<'Histogram'>; markers: MarkerPlugin | null; spec: OverlaySpec } = { series: s, markers: null, spec };
+		overlays.set(spec.id, entry);
+		return {
+			setData(points: OverlayPoint[]): void {
+				// ascending unique times; null value renders as a whitespace gap
+				let last: number | null = null;
+				const rows: Record<string, unknown>[] = [];
+				for (const p of points) {
+					if (p.time === last) continue;
+					if (last !== null && p.time < last) continue; // refuse out-of-order rather than corrupt the series
+					last = p.time;
+					rows.push(p.value === null ? { time: p.time as UTCTimestamp } : { time: p.time as UTCTimestamp, value: p.value });
+				}
+				s.setData(rows as never);
+			},
+			setMarkers(markers: OverlayMarker[]): void {
+				if (!markers.length) {
+					entry.markers?.setMarkers([]);
+					return;
+				}
+				if (!entry.markers) {
+					entry.markers = createSeriesMarkers(s as never, []);
+				}
+				entry.markers.setMarkers(
+					markers.map((m) => ({
+						time: m.time as UTCTimestamp,
+						position: (m.shape === 'arrowUp' ? 'aboveBar' : 'belowBar') as 'aboveBar' | 'belowBar',
+						shape: m.shape,
+						color: spec.color ?? '#e0c96b',
+						text: m.text ?? ''
+					}))
+				);
+			},
+			remove(): void {
+				try { chart.removeSeries(s); } catch { /* already removed with the chart */ }
+				overlays.delete(spec.id);
+			}
+		};
+	}
+
+	function removeOverlay(id: string): void {
+		const e = overlays.get(id);
+		if (!e) return;
+		try { chart.removeSeries(e.series as never); } catch { /* chart may be gone */ }
+		overlays.delete(id);
+	}
+
 	return {
 		coordinateToPrice: (y: number) => series.coordinateToPrice(y) as number | null,
 		priceToCoordinate: (price: number) => series.priceToCoordinate(price),
@@ -241,6 +306,8 @@ export function createLwcChart(host: ChartHost, bars: Bar[], cb: ChartCallbacks)
 		setLevels,
 		setSelected,
 		readCrosshair: () => latest,
+		addOverlay,
+		removeOverlay,
 		destroy: () => {
 			host.container.removeEventListener('pointerdown', onPointerDown);
 			host.container.removeEventListener('pointermove', onPointerMove);

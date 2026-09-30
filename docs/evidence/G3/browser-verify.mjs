@@ -132,10 +132,12 @@ await step('w5-fix-and-run', async () => {
 	await page.waitForFunction("document.querySelector('[data-testid=\"run-message\"]') && document.querySelector('[data-testid=\"run-message\"]').textContent.includes('run ')", { timeout: 90000 });
 	await sleep(300);
 	const msg = await txt('[data-testid="run-message"]');
+	const overlayLegend = await txt('[data-testid="overlay-legend"]').catch(() => null);
+	const svgPaneGone = (await page.$('[data-testid="plot-svg"]')) === null;
 	const runs = JSON.parse(await lsGet('g3.runs.v1'));
 	const succeeded = runs.runs.filter((r) => r.status === 'succeeded');
 	const last = succeeded[succeeded.length - 1];
-	return { msg: msg.slice(0, 100), fills: last.stats.tradeCount, identity: last.id.slice(0, 12), tradesStored: last.trades.length };
+	return { msg: msg.slice(0, 100), fills: last.stats.tradeCount, identity: last.id.slice(0, 12), tradesStored: last.trades.length, overlayLegendFound: !!overlayLegend && overlayLegend.includes(last.id.slice(0, 12)), svgPaneRemoved: svgPaneGone };
 });
 
 await step('w5-identical-inputs-identical-run', async () => {

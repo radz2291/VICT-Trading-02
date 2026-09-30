@@ -31,7 +31,9 @@
       "msg": "run e1a0d7b4944f: 36 fills, net -67.80",
       "fills": 36,
       "identity": "e1a0d7b4944f",
-      "tradesStored": 36
+      "tradesStored": 36,
+      "overlayLegendFound": true,
+      "svgPaneRemoved": true
     },
     "w5-identical-inputs-identical-run": {
       "ok": true,

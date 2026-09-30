@@ -369,7 +369,7 @@
 			{:else}
 				<VitApp {plan} {registry} {dispatch} path="/" {viewData} record={null} onInvalidate={() => { dataVersion += 1; }} />
 			{/if}
-			<ScriptsIsland />
+			<ScriptsIsland replayActive={replay.active} />
 		</main>
 
 		{#if ws.panelOpen === 1}

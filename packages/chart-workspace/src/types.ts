@@ -42,6 +42,39 @@ export interface CrosshairRead {
 	bar: Bar | null;
 }
 
+// ---- overlay series (G3 bounded extension, D-006-pre-authorized) ----------
+
+/** One overlay data point; `value: null` renders as a whitespace gap. */
+export interface OverlayPoint {
+	/** unix seconds (market time); must be ascending + unique within a call */
+	time: number;
+	value: number | null;
+}
+
+export interface OverlayMarker {
+	time: number;
+	shape: 'arrowUp' | 'arrowDown' | 'circle';
+	text?: string;
+}
+
+export interface OverlaySpec {
+	/** unique on this chart; re-adding replaces the handle */
+	id: string;
+	kind: 'line' | 'area' | 'histogram';
+	/** 'price' = same pane + same price scale as the candles; 'sub' = lower sub-pane sharing the time scale */
+	pane: 'price' | 'sub';
+	color?: string;
+	lineWidth?: number;
+}
+
+export interface OverlayHandle {
+	/** full-series replace; ascending unique times; null = gap */
+	setData(points: OverlayPoint[]): void;
+	/** positioned markers visible at their candle */
+	setMarkers(markers: OverlayMarker[]): void;
+	remove(): void;
+}
+
 export interface ChartController {
 	setData(bars: Bar[]): void;
 	/** Replace the full set of drawn horizontal levels (diffed by level id). */
@@ -54,6 +87,15 @@ export interface ChartController {
 	coordinateToPrice(y: number): number | null;
 	/** Price → screen-y (anchored mapping; null when off the visible scale). */
 	priceToCoordinate(price: number): number | null;
+	/**
+	 * Add an overlay series (G3, D-006-bounded): a line/area/histogram that
+	 * shares the chart's real time scale (+ price scale for 'price' pane),
+	 * so candles, crosshair, and time labels align natively. Data is mapped
+	 * by the CALLER from its own capped sources; this package fetches and
+	 * caps nothing. Re-adding an id replaces its handle.
+	 */
+	addOverlay(spec: OverlaySpec): OverlayHandle;
+	removeOverlay(id: string): void;
 	destroy(): void;
 }
 
