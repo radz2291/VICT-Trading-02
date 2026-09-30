@@ -1,0 +1,8 @@
+nt_version: 1.231.0 || fills: 6 / 6 || deterministic: true
+balances: ["locked=0.00","free=2049.88"]
+BUY 10 @ 100.500009 ts 2027-01-15 08:45:00 comm ['0.02 USD'] slip 0
+SELL 10 @ 101.999991 ts 2027-01-15 09:30:00 comm ['0.02 USD'] slip 0
+BUY 10 @ 101.500009 ts 2027-01-15 10:00:00 comm ['0.02 USD'] slip 0
+SELL 10 @ 102.999991 ts 2027-01-15 10:30:00 comm ['0.02 USD'] slip 0
+BUY 10 @ 101.500009 ts 2027-01-15 11:15:00 comm ['0.02 USD'] slip 0
+SELL 10 @ 103.499991 ts 2027-01-15 12:00:00 comm ['0.02 USD'] slip 0

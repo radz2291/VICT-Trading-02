@@ -1,0 +1,648 @@
+[1m2026-09-30T03:27:11.269328100Z[0m [36m[INFO] BACKTESTER-001.BacktestEngine: =================================================================[0m
+[1m2026-09-30T03:27:11.269381800Z[0m [36m[INFO] BACKTESTER-001.BacktestEngine:  NAUTILUS TRADER - Automated Algorithmic Trading Platform[0m
+[1m2026-09-30T03:27:11.269384400Z[0m [36m[INFO] BACKTESTER-001.BacktestEngine:  by Nautech Systems Pty Ltd.[0m
+[1m2026-09-30T03:27:11.269385100Z[0m [36m[INFO] BACKTESTER-001.BacktestEngine:  Copyright (C) 2015-2026. All rights reserved.[0m
+[1m2026-09-30T03:27:11.269386200Z[0m [36m[INFO] BACKTESTER-001.BacktestEngine: =================================================================[0m
+[1m2026-09-30T03:27:11.269386900Z[0m [INFO] BACKTESTER-001.BacktestEngine: [0m
+[1m2026-09-30T03:27:11.269387400Z[0m [INFO] BACKTESTER-001.BacktestEngine: ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣴⣶⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[0m
+[1m2026-09-30T03:27:11.269387900Z[0m [INFO] BACKTESTER-001.BacktestEngine: ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣾⣿⣿⣿⠀⢸⣿⣿⣿⣿⣶⣶⣤⣀⠀⠀⠀⠀⠀[0m
+[1m2026-09-30T03:27:11.269388400Z[0m [INFO] BACKTESTER-001.BacktestEngine: ⠀⠀⠀⠀⠀⠀⢀⣴⡇⢀⣾⣿⣿⣿⣿⣿⠀⣾⣿⣿⣿⣿⣿⣿⣿⠿⠓⠀⠀⠀⠀[0m
+[1m2026-09-30T03:27:11.269389100Z[0m [INFO] BACKTESTER-001.BacktestEngine: ⠀⠀⠀⠀⠀⣰⣿⣿⡀⢸⣿⣿⣿⣿⣿⣿⠀⣿⣿⣿⣿⣿⣿⠟⠁⣠⣄⠀⠀⠀⠀[0m
+[1m2026-09-30T03:27:11.269389600Z[0m [INFO] BACKTESTER-001.BacktestEngine: ⠀⠀⠀⠀⢠⣿⣿⣿⣇⠀⢿⣿⣿⣿⣿⣿⠀⢻⣿⣿⣿⡿⢃⣠⣾⣿⣿⣧⡀⠀⠀[0m
+[1m2026-09-30T03:27:11.269390400Z[0m [INFO] BACKTESTER-001.BacktestEngine: ⠀⠀⠀⠠⣾⣿⣿⣿⣿⣿⣧⠈⠋⢀⣴⣧⠀⣿⡏⢠⡀⢸⣿⣿⣿⣿⣿⣿⣿⡇⠀[0m
+[1m2026-09-30T03:27:11.269394000Z[0m [INFO] BACKTESTER-001.BacktestEngine: ⠀⠀⠀⣀⠙⢿⣿⣿⣿⣿⣿⠇⢠⣿⣿⣿⡄⠹⠃⠼⠃⠈⠉⠛⠛⠛⠛⠛⠻⠇⠀[0m
+[1m2026-09-30T03:27:11.269394600Z[0m [INFO] BACKTESTER-001.BacktestEngine: ⠀⠀⢸⡟⢠⣤⠉⠛⠿⢿⣿⠀⢸⣿⡿⠋⣠⣤⣄⠀⣾⣿⣿⣶⣶⣶⣦⡄⠀⠀⠀[0m
+[1m2026-09-30T03:27:11.269395300Z[0m [INFO] BACKTESTER-001.BacktestEngine: ⠀⠀⠸⠀⣾⠏⣸⣷⠂⣠⣤⠀⠘⢁⣴⣾⣿⣿⣿⡆⠘⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀[0m
+[1m2026-09-30T03:27:11.269395800Z[0m [INFO] BACKTESTER-001.BacktestEngine: ⠀⠀⠀⠀⠛⠀⣿⡟⠀⢻⣿⡄⠸⣿⣿⣿⣿⣿⣿⣿⡀⠘⣿⣿⣿⣿⠟⠀⠀⠀⠀[0m
+[1m2026-09-30T03:27:11.269396400Z[0m [INFO] BACKTESTER-001.BacktestEngine: ⠀⠀⠀⠀⠀⠀⣿⠇⠀⠀⢻⡿⠀⠈⠻⣿⣿⣿⣿⣿⡇⠀⢹⣿⠿⠋⠀⠀⠀⠀⠀[0m
+[1m2026-09-30T03:27:11.269397000Z[0m [INFO] BACKTESTER-001.BacktestEngine: ⠀⠀⠀⠀⠀⠀⠋⠀⠀⠀⡘⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠁⠀⠀⠀⠀⠀⠀⠀[0m
+[1m2026-09-30T03:27:11.269397500Z[0m [INFO] BACKTESTER-001.BacktestEngine: [0m
+[1m2026-09-30T03:27:11.269397900Z[0m [36m[INFO] BACKTESTER-001.BacktestEngine: =================================================================[0m
+[1m2026-09-30T03:27:11.269398500Z[0m [36m[INFO] BACKTESTER-001.BacktestEngine:  SYSTEM SPECIFICATION[0m
+[1m2026-09-30T03:27:11.269399200Z[0m [36m[INFO] BACKTESTER-001.BacktestEngine: =================================================================[0m
+[1m2026-09-30T03:27:11.269401100Z[0m [INFO] BACKTESTER-001.BacktestEngine: CPU architecture: Intel(R) Core(TM) i5-8265U CPU @ 1.60GHz[0m
+[1m2026-09-30T03:27:11.269403500Z[0m [INFO] BACKTESTER-001.BacktestEngine: CPU(s): 8 @ 1600 MHz[0m
+[1m2026-09-30T03:27:11.269409000Z[0m [INFO] BACKTESTER-001.BacktestEngine: OS: kernel-26200 Windows 11 Home[0m
+[1m2026-09-30T03:27:11.269829400Z[0m [36m[INFO] BACKTESTER-001.BacktestEngine: =================================================================[0m
+[1m2026-09-30T03:27:11.269831700Z[0m [36m[INFO] BACKTESTER-001.BacktestEngine:  MEMORY USAGE[0m
+[1m2026-09-30T03:27:11.269833000Z[0m [36m[INFO] BACKTESTER-001.BacktestEngine: =================================================================[0m
+[1m2026-09-30T03:27:11.269849400Z[0m [INFO] BACKTESTER-001.BacktestEngine: RAM-Total: 11.82 GiB[0m
+[1m2026-09-30T03:27:11.269851400Z[0m [INFO] BACKTESTER-001.BacktestEngine: RAM-Used: 8.11 GiB (68.65%)[0m
+[1m2026-09-30T03:27:11.269859000Z[0m [INFO] BACKTESTER-001.BacktestEngine: RAM-Avail: 3.71 GiB (31.35%)[0m
+[1m2026-09-30T03:27:11.269861300Z[0m [INFO] BACKTESTER-001.BacktestEngine: Swap-Total: 5.56 GiB[0m
+[1m2026-09-30T03:27:11.269862700Z[0m [INFO] BACKTESTER-001.BacktestEngine: Swap-Used: 2.24 GiB (40.38%)[0m
+[1m2026-09-30T03:27:11.269864000Z[0m [INFO] BACKTESTER-001.BacktestEngine: Swap-Avail: 3.31 GiB (59.62%)[0m
+[1m2026-09-30T03:27:11.269867800Z[0m [36m[INFO] BACKTESTER-001.BacktestEngine: =================================================================[0m
+[1m2026-09-30T03:27:11.269868400Z[0m [36m[INFO] BACKTESTER-001.BacktestEngine:  IDENTIFIERS[0m
+[1m2026-09-30T03:27:11.269869200Z[0m [36m[INFO] BACKTESTER-001.BacktestEngine: =================================================================[0m
+[1m2026-09-30T03:27:11.269871600Z[0m [INFO] BACKTESTER-001.BacktestEngine: trader_id: BACKTESTER-001[0m
+[1m2026-09-30T03:27:11.269872700Z[0m [INFO] BACKTESTER-001.BacktestEngine: machine_id: MyTingkap[0m
+[1m2026-09-30T03:27:11.269875000Z[0m [INFO] BACKTESTER-001.BacktestEngine: instance_id: c489661c-81bb-4536-8cb1-e0ad90a3759f[0m
+[1m2026-09-30T03:27:11.269876100Z[0m [INFO] BACKTESTER-001.BacktestEngine: PID: 23756[0m
+[1m2026-09-30T03:27:11.269876900Z[0m [36m[INFO] BACKTESTER-001.BacktestEngine: =================================================================[0m
+[1m2026-09-30T03:27:11.269877400Z[0m [36m[INFO] BACKTESTER-001.BacktestEngine:  VERSIONING[0m
+[1m2026-09-30T03:27:11.269878300Z[0m [36m[INFO] BACKTESTER-001.BacktestEngine: =================================================================[0m
+[1m2026-09-30T03:27:11.269931400Z[0m [INFO] BACKTESTER-001.BacktestEngine: nautilus_trader: 1.231.0[0m
+[1m2026-09-30T03:27:11.269945300Z[0m [INFO] BACKTESTER-001.BacktestEngine: python: 3.12.10[0m
+[1m2026-09-30T03:27:11.269951800Z[0m [INFO] BACKTESTER-001.BacktestEngine: numpy: 2.5.3[0m
+[1m2026-09-30T03:27:11.269957700Z[0m [INFO] BACKTESTER-001.BacktestEngine: pandas: 3.0.6[0m
+[1m2026-09-30T03:27:11.269963000Z[0m [INFO] BACKTESTER-001.BacktestEngine: msgspec: 0.22.0[0m
+[1m2026-09-30T03:27:11.269967100Z[0m [INFO] BACKTESTER-001.BacktestEngine: pyarrow: 25.0.1[0m
+[1m2026-09-30T03:27:11.269972000Z[0m [INFO] BACKTESTER-001.BacktestEngine: pytz: 2026.4[0m
+[1m2026-09-30T03:27:11.270714300Z[0m [36m[INFO] BACKTESTER-001.BacktestEngine: =================================================================[0m
+[1m2026-09-30T03:27:11.270792200Z[0m [INFO] BACKTESTER-001.BacktestEngine: Building system kernel[0m
+[1m2026-09-30T03:27:11.270861200Z[0m [94m[INFO] BACKTESTER-001.MessageBus: config.database=None[0m
+[1m2026-09-30T03:27:11.270873800Z[0m [94m[INFO] BACKTESTER-001.MessageBus: config.encoding='json'[0m
+[1m2026-09-30T03:27:11.270876300Z[0m [94m[INFO] BACKTESTER-001.MessageBus: config.timestamps_as_iso8601=False[0m
+[1m2026-09-30T03:27:11.270878200Z[0m [94m[INFO] BACKTESTER-001.MessageBus: config.buffer_interval_ms=None[0m
+[1m2026-09-30T03:27:11.270880000Z[0m [94m[INFO] BACKTESTER-001.MessageBus: config.autotrim_mins=None[0m
+[1m2026-09-30T03:27:11.270881600Z[0m [94m[INFO] BACKTESTER-001.MessageBus: config.use_trader_prefix=True[0m
+[1m2026-09-30T03:27:11.270883100Z[0m [94m[INFO] BACKTESTER-001.MessageBus: config.use_trader_id=True[0m
+[1m2026-09-30T03:27:11.270884900Z[0m [94m[INFO] BACKTESTER-001.MessageBus: config.use_instance_id=False[0m
+[1m2026-09-30T03:27:11.270886500Z[0m [94m[INFO] BACKTESTER-001.MessageBus: config.streams_prefix='stream'[0m
+[1m2026-09-30T03:27:11.270888900Z[0m [94m[INFO] BACKTESTER-001.MessageBus: config.types_filter=None[0m
+[1m2026-09-30T03:27:11.270998400Z[0m [INFO] BACKTESTER-001.Cache: READY[0m
+[1m2026-09-30T03:27:11.272336500Z[0m [INFO] BACKTESTER-001.DataEngine: READY[0m
+[1m2026-09-30T03:27:11.272818000Z[0m [INFO] BACKTESTER-001.RiskEngine: READY[0m
+[1m2026-09-30T03:27:11.272915900Z[0m [94m[INFO] BACKTESTER-001.RiskEngine: TradingState is ACTIVE[0m
+[1m2026-09-30T03:27:11.273235400Z[0m [INFO] BACKTESTER-001.Throttler-ORDER_SUBMIT_THROTTLER: READY[0m
+[1m2026-09-30T03:27:11.273289000Z[0m [94m[INFO] BACKTESTER-001.RiskEngine: Set MAX_ORDER_SUBMIT_RATE: 100/00:00:01[0m
+[1m2026-09-30T03:27:11.273362400Z[0m [INFO] BACKTESTER-001.Throttler-ORDER_MODIFY_THROTTLER: READY[0m
+[1m2026-09-30T03:27:11.273391400Z[0m [94m[INFO] BACKTESTER-001.RiskEngine: Set MAX_ORDER_MODIFY_RATE: 100/00:00:01[0m
+[1m2026-09-30T03:27:11.273732400Z[0m [INFO] BACKTESTER-001.ExecEngine: READY[0m
+[1m2026-09-30T03:27:11.273867100Z[0m [94m[INFO] BACKTESTER-001.ExecEngine: config.snapshot_orders=False[0m
+[1m2026-09-30T03:27:11.273879900Z[0m [94m[INFO] BACKTESTER-001.ExecEngine: config.snapshot_positions=False[0m
+[1m2026-09-30T03:27:11.273882700Z[0m [94m[INFO] BACKTESTER-001.ExecEngine: config.snapshot_positions_interval_secs=None[0m
+[1m2026-09-30T03:27:11.273884700Z[0m [94m[INFO] BACKTESTER-001.ExecEngine: config.allow_overfills=False[0m
+[1m2026-09-30T03:27:11.273967900Z[0m [INFO] BACKTESTER-001.Cache: Cached 0 general objects from database[0m
+[1m2026-09-30T03:27:11.273984400Z[0m [INFO] BACKTESTER-001.Cache: Cached 0 currencies from database[0m
+[1m2026-09-30T03:27:11.273998000Z[0m [INFO] BACKTESTER-001.Cache: Cached 0 instruments from database[0m
+[1m2026-09-30T03:27:11.274011100Z[0m [INFO] BACKTESTER-001.Cache: Cached 0 accounts from database[0m
+[1m2026-09-30T03:27:11.274016400Z[0m [INFO] BACKTESTER-001.Cache: Cached 0 orders from database[0m
+[1m2026-09-30T03:27:11.274024900Z[0m [INFO] BACKTESTER-001.Cache: Cached 0 order lists from database[0m
+[1m2026-09-30T03:27:11.274037000Z[0m [INFO] BACKTESTER-001.Cache: Cached 0 positions from database[0m
+[1m2026-09-30T03:27:11.274066200Z[0m [INFO] BACKTESTER-001.Cache: Checking data integrity[0m
+[1m2026-09-30T03:27:11.274102800Z[0m [92m[INFO] BACKTESTER-001.Cache: Integrity check passed in 0μs[0m
+[1m2026-09-30T03:27:11.274172900Z[0m [INFO] BACKTESTER-001.ExecEngine: Loaded cache in 0ms[0m
+[1m2026-09-30T03:27:11.274285200Z[0m [INFO] BACKTESTER-001.OrderEmulator: READY[0m
+[1m2026-09-30T03:27:11.274444600Z[0m [INFO] BACKTESTER-001.BACKTESTER-001: READY[0m
+[1m2026-09-30T03:27:11.274539300Z[0m [INFO] BACKTESTER-001.BacktestEngine: Initialized in 572ms[0m
+[1m2026-09-30T03:27:11.274793300Z[0m [INFO] BACKTESTER-001.SimulatedExchange(OANDA): OmsType=NETTING[0m
+[1m2026-09-30T03:27:11.274928500Z[0m [INFO] BACKTESTER-001.ExecClient-OANDA: READY[0m
+[1m2026-09-30T03:27:11.275036300Z[0m [INFO] BACKTESTER-001.SimulatedExchange(OANDA): Registered ExecutionClient-OANDA[0m
+[1m2026-09-30T03:27:11.275062600Z[0m [INFO] BACKTESTER-001.ExecEngine: Registered ExecutionClient-OANDA[0m
+[1m2026-09-30T03:27:11.275150100Z[0m [INFO] BACKTESTER-001.DataClient-OANDA: READY[0m
+[1m2026-09-30T03:27:11.275204200Z[0m [INFO] BACKTESTER-001.DataEngine: Registered OANDA[0m
+[1m2026-09-30T03:27:11.275223200Z[0m [INFO] BACKTESTER-001.BacktestEngine: Added SimulatedExchange(id=OANDA, oms_type=NETTING, account_type=MARGIN)[0m
+[1m2026-09-30T03:27:11.275506000Z[0m [INFO] BACKTESTER-001.SimulatedExchange(OANDA): Added instrument AUDUSD.OANDA and created matching engine[0m
+[1m2026-09-30T03:27:11.275522200Z[0m [INFO] BACKTESTER-001.BacktestEngine: Added AUDUSD.OANDA Instrument[0m
+[1m2026-09-30T03:27:11.275731100Z[0m [INFO] BACKTESTER-001.BacktestEngine: Added 24 AUDUSD.OANDA-15-MINUTE-BID-EXTERNAL Bar elements[0m
+[1m2026-09-30T03:27:11.275866000Z[0m [INFO] BACKTESTER-001.BacktestEngine: Added 24 AUDUSD.OANDA QuoteTick elements[0m
+[1m2026-09-30T03:27:11.276088300Z[0m [INFO] BACKTESTER-001.Sma3Strategy: READY[0m
+[1m2026-09-30T03:27:11.276279500Z[0m [INFO] BACKTESTER-001.ExecEngine: Registered OMS.UNSPECIFIED for Strategy Sma3Strategy-000[0m
+[1m2026-09-30T03:27:11.276297500Z[0m [INFO] BACKTESTER-001.BACKTESTER-001: Registered Strategy Sma3Strategy-000[0m
+C:\Users\RZ1\Desktop\RZ\260927-VCT-Trading\docs\evidence\G3\selection\a2-engines\nt_eval2.py:113: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  engine.run(start=dt.datetime(2027, 1, 1, tzinfo=dt.timezone.utc), end=dt.datetime(2027, 12, 31, tzinfo=dt.timezone.utc))
+[1m2026-09-30T03:27:11.278580200Z[0m [INFO] BACKTESTER-001.Portfolio: Updated AccountState(account_id=OANDA-001, account_type=MARGIN, base_currency=None, is_reported=True, balances=[AccountBalance(total=2_000.00 USD, locked=0.00 USD, free=2_000.00 USD)], margins=[], event_id=c40e65b3-b2f0-42d5-8c3e-c7929ada4a04)[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: STARTING[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.DataClient-OANDA: Connecting...[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.DataClient-OANDA: Connected[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.DataClient-OANDA: RUNNING[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.DataEngine: RUNNING[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.RiskEngine: RUNNING[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.ExecClient-OANDA: Connecting...[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.ExecClient-OANDA: Connected[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.ExecClient-OANDA: RUNNING[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.ExecEngine: RUNNING[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.DataEngine: Connecting all clients...[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.ExecEngine: Connecting all clients...[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.OrderEmulator: No emulated orders to reactivate[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.OrderEmulator: RUNNING[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: Initialized 0 open orders[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: Initialized 0 open positions[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [94m[INFO] BACKTESTER-001.Sma3Strategy: self.config.oms_type=None[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [94m[INFO] BACKTESTER-001.Sma3Strategy: self.config.external_order_claims=None[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [94m[INFO] BACKTESTER-001.Sma3Strategy: self.config.manage_gtd_expiry=False[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [94m[INFO] BACKTESTER-001.Sma3Strategy: Set ClientOrderIdGenerator client_order_id count to 0[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [94m[INFO] BACKTESTER-001.Sma3Strategy: Set ClientOrderIdGenerator order_list_id count to 0[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: [CMD]--> SubscribeBars(bar_type=AUDUSD.OANDA-15-MINUTE-BID-EXTERNAL, client_id=None, venue=OANDA)[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: RUNNING[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BACKTESTER-001: RUNNING[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [36m[INFO] BACKTESTER-001.BacktestEngine: =================================================================[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [36m[INFO] BACKTESTER-001.BacktestEngine:  MEMORY USAGE[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [36m[INFO] BACKTESTER-001.BacktestEngine: =================================================================[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: RAM-Total: 11.82 GiB[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: RAM-Used: 8.11 GiB (68.66%)[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: RAM-Avail: 3.70 GiB (31.34%)[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: Swap-Total: 5.56 GiB[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: Swap-Used: 2.25 GiB (40.42%)[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: Swap-Avail: 3.31 GiB (59.58%)[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m=================================================================[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m SimulatedVenue OANDA[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m=================================================================[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: MarginAccount(id=OANDA-001, type=MARGIN, base=None)[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m-----------------------------------------------------------------[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: Balances starting:[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: 2_000.00 USD[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m=================================================================[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m BACKTEST RUN[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m=================================================================[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: Run config ID:  None[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: Run ID:         71e33466-1b63-49dd-afff-cd194e79c5c6[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: Run started:    2026-09-30T03:27:11.277946000Z[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: Backtest start: 2027-01-01T00:00:00.000000000Z[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: Batch start:    2027-01-01T00:00:00.000000000Z[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: Batch end:      2027-12-31T00:00:00.000000000Z[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m-----------------------------------------------------------------[0m
+[1m2027-01-15T08:45:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderInitialized(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-084500-001-000-1, side=BUY, type=MARKET, quantity=10, time_in_force=GTC, post_only=False, reduce_only=False, quote_quantity=False, options={}, emulation_trigger=NO_TRIGGER, trigger_instrument_id=None, contingency_type=NO_CONTINGENCY, order_list_id=None, linked_order_ids=None, parent_order_id=None, exec_algorithm_id=None, exec_algorithm_params=None, exec_spawn_id=None, tags=None)[0m
+[1m2027-01-15T08:45:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: [CMD]--> [Risk] SubmitOrder(order=MarketOrder(BUY 10 AUDUSD.OANDA MARKET GTC, status=INITIALIZED, client_order_id=O-20270115-084500-001-000-1, venue_order_id=None, position_id=None, tags=None), position_id=None)[0m
+[1m2027-01-15T08:45:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderSubmitted(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-084500-001-000-1, account_id=OANDA-001, ts_event=1800002700000000000)[0m
+[1m2027-01-15T08:45:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_init=0.00 USD[0m
+[1m2027-01-15T08:45:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA account=OANDA-001 net_position=1[0m
+[1m2027-01-15T08:45:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_maint=0.30 USD[0m
+[1m2027-01-15T08:45:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: Updated AccountState(account_id=OANDA-001, account_type=MARGIN, base_currency=None, is_reported=False, balances=[AccountBalance(total=2_000.00 USD, locked=0.30 USD, free=1_999.70 USD)], margins=[MarginBalance(initial=0.00 USD, maintenance=0.30 USD, instrument_id=AUDUSD.OANDA)], event_id=6c4e6411-8fca-4ac4-ad40-b4638e24f8f4)[0m
+[1m2027-01-15T08:45:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderFilled(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-084500-001-000-1, venue_order_id=OANDA-1-001, account_id=OANDA-001, trade_id=T-bab71134b6c6fbe8-001, position_id=AUDUSD.OANDA-Sma3Strategy-000, order_side=BUY, order_type=MARKET, last_qty=1, last_px=100.50000 USD, commission=0.00 USD, liquidity_side=TAKER, ts_event=1800002700000000000)[0m
+[1m2027-01-15T08:45:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] PositionOpened(instrument_id=AUDUSD.OANDA, position_id=AUDUSD.OANDA-Sma3Strategy-000, account_id=OANDA-001, opening_order_id=O-20270115-084500-001-000-1, closing_order_id=None, entry=BUY, side=LONG, signed_qty=1.0, quantity=1, peak_qty=1, currency=USD, avg_px_open=100.5, avg_px_close=0.0, realized_return=0.00000, realized_pnl=0.00 USD, unrealized_pnl=0.00 USD, ts_opened=1800002700000000000, ts_last=1800002700000000000, ts_closed=0, duration_ns=0)[0m
+[1m2027-01-15T08:45:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_init=0.00 USD[0m
+[1m2027-01-15T08:45:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA account=OANDA-001 net_position=10[0m
+[1m2027-01-15T08:45:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_maint=3.02 USD[0m
+[1m2027-01-15T08:45:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: Updated AccountState(account_id=OANDA-001, account_type=MARGIN, base_currency=None, is_reported=False, balances=[AccountBalance(total=1_999.98 USD, locked=3.02 USD, free=1_996.96 USD)], margins=[MarginBalance(initial=0.00 USD, maintenance=3.02 USD, instrument_id=AUDUSD.OANDA)], event_id=357c1730-6f61-4721-83b0-92d4eb63eb73)[0m
+[1m2027-01-15T08:45:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderFilled(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-084500-001-000-1, venue_order_id=OANDA-1-001, account_id=OANDA-001, trade_id=T-bab71134b6c6fbe8-002, position_id=AUDUSD.OANDA-Sma3Strategy-000, order_side=BUY, order_type=MARKET, last_qty=9, last_px=100.50001 USD, commission=0.02 USD, liquidity_side=TAKER, ts_event=1800002700000000000)[0m
+[1m2027-01-15T08:45:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] PositionChanged(instrument_id=AUDUSD.OANDA, position_id=AUDUSD.OANDA-Sma3Strategy-000, account_id=OANDA-001, opening_order_id=O-20270115-084500-001-000-1, closing_order_id=None, entry=BUY, side=LONG, signed_qty=10.0, quantity=10, peak_qty=10, currency=USD, avg_px_open=100.500009, avg_px_close=0.0, realized_return=0.00000, realized_pnl=-0.02 USD, unrealized_pnl=0.00 USD, ts_opened=1800002700000000000, ts_last=1800002700000000000, ts_closed=0, duration_ns=0)[0m
+[1m2027-01-15T09:30:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderInitialized(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-093000-001-000-2, side=SELL, type=MARKET, quantity=10, time_in_force=GTC, post_only=False, reduce_only=False, quote_quantity=False, options={}, emulation_trigger=NO_TRIGGER, trigger_instrument_id=None, contingency_type=NO_CONTINGENCY, order_list_id=None, linked_order_ids=None, parent_order_id=None, exec_algorithm_id=None, exec_algorithm_params=None, exec_spawn_id=None, tags=None)[0m
+[1m2027-01-15T09:30:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: [CMD]--> [Risk] SubmitOrder(order=MarketOrder(SELL 10 AUDUSD.OANDA MARKET GTC, status=INITIALIZED, client_order_id=O-20270115-093000-001-000-2, venue_order_id=None, position_id=None, tags=None), position_id=None)[0m
+[1m2027-01-15T09:30:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderSubmitted(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-093000-001-000-2, account_id=OANDA-001, ts_event=1800005400000000000)[0m
+[1m2027-01-15T09:30:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_init=0.00 USD[0m
+[1m2027-01-15T09:30:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA account=OANDA-001 net_position=9[0m
+[1m2027-01-15T09:30:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_maint=2.71 USD[0m
+[1m2027-01-15T09:30:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: Updated AccountState(account_id=OANDA-001, account_type=MARGIN, base_currency=None, is_reported=False, balances=[AccountBalance(total=2_001.48 USD, locked=2.71 USD, free=1_998.77 USD)], margins=[MarginBalance(initial=0.00 USD, maintenance=2.71 USD, instrument_id=AUDUSD.OANDA)], event_id=90b367d8-686c-49ed-a0aa-8d30d51ae66f)[0m
+[1m2027-01-15T09:30:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderFilled(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-093000-001-000-2, venue_order_id=OANDA-1-002, account_id=OANDA-001, trade_id=T-3bc1648748774567-003, position_id=AUDUSD.OANDA-Sma3Strategy-000, order_side=SELL, order_type=MARKET, last_qty=1, last_px=102.00000 USD, commission=0.00 USD, liquidity_side=TAKER, ts_event=1800005400000000000)[0m
+[1m2027-01-15T09:30:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] PositionChanged(instrument_id=AUDUSD.OANDA, position_id=AUDUSD.OANDA-Sma3Strategy-000, account_id=OANDA-001, opening_order_id=O-20270115-084500-001-000-1, closing_order_id=None, entry=BUY, side=LONG, signed_qty=9.0, quantity=9, peak_qty=10, currency=USD, avg_px_open=100.500009, avg_px_close=102.0, realized_return=0.01493, realized_pnl=1.48 USD, unrealized_pnl=13.50 USD, ts_opened=1800002700000000000, ts_last=1800005400000000000, ts_closed=0, duration_ns=0)[0m
+[1m2027-01-15T09:30:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_init=0.00 USD[0m
+[1m2027-01-15T09:30:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_maint=0.00 USD[0m
+[1m2027-01-15T09:30:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: Updated AccountState(account_id=OANDA-001, account_type=MARGIN, base_currency=None, is_reported=False, balances=[AccountBalance(total=2_014.96 USD, locked=0.00 USD, free=2_014.96 USD)], margins=[], event_id=21e54a2c-30a8-4422-b937-be9d9c21872a)[0m
+[1m2027-01-15T09:30:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderFilled(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-093000-001-000-2, venue_order_id=OANDA-1-002, account_id=OANDA-001, trade_id=T-3bc1648748774567-004, position_id=AUDUSD.OANDA-Sma3Strategy-000, order_side=SELL, order_type=MARKET, last_qty=9, last_px=101.99999 USD, commission=0.02 USD, liquidity_side=TAKER, ts_event=1800005400000000000)[0m
+[1m2027-01-15T09:30:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] PositionClosed(instrument_id=AUDUSD.OANDA, position_id=AUDUSD.OANDA-Sma3Strategy-000, account_id=OANDA-001, opening_order_id=O-20270115-084500-001-000-1, closing_order_id=O-20270115-093000-001-000-2, entry=BUY, side=FLAT, signed_qty=0.0, quantity=0, peak_qty=10, currency=USD, avg_px_open=100.500009, avg_px_close=101.999991, realized_return=0.01493, realized_pnl=14.96 USD, unrealized_pnl=0.00 USD, ts_opened=1800002700000000000, ts_last=1800005400000000000, ts_closed=1800005400000000000, duration_ns=2700000000000)[0m
+[1m2027-01-15T10:00:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderInitialized(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-100000-001-000-3, side=BUY, type=MARKET, quantity=10, time_in_force=GTC, post_only=False, reduce_only=False, quote_quantity=False, options={}, emulation_trigger=NO_TRIGGER, trigger_instrument_id=None, contingency_type=NO_CONTINGENCY, order_list_id=None, linked_order_ids=None, parent_order_id=None, exec_algorithm_id=None, exec_algorithm_params=None, exec_spawn_id=None, tags=None)[0m
+[1m2027-01-15T10:00:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: [CMD]--> [Risk] SubmitOrder(order=MarketOrder(BUY 10 AUDUSD.OANDA MARKET GTC, status=INITIALIZED, client_order_id=O-20270115-100000-001-000-3, venue_order_id=None, position_id=None, tags=None), position_id=None)[0m
+[1m2027-01-15T10:00:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderSubmitted(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-100000-001-000-3, account_id=OANDA-001, ts_event=1800007200000000000)[0m
+[1m2027-01-15T10:00:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_init=0.00 USD[0m
+[1m2027-01-15T10:00:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA account=OANDA-001 net_position=1[0m
+[1m2027-01-15T10:00:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_maint=0.30 USD[0m
+[1m2027-01-15T10:00:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: Updated AccountState(account_id=OANDA-001, account_type=MARGIN, base_currency=None, is_reported=False, balances=[AccountBalance(total=2_014.96 USD, locked=0.30 USD, free=2_014.66 USD)], margins=[MarginBalance(initial=0.00 USD, maintenance=0.30 USD, instrument_id=AUDUSD.OANDA)], event_id=4e08bab7-ae3f-466d-8013-a69c33895403)[0m
+[1m2027-01-15T10:00:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderFilled(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-100000-001-000-3, venue_order_id=OANDA-1-003, account_id=OANDA-001, trade_id=T-242de20895fc2426-005, position_id=AUDUSD.OANDA-Sma3Strategy-000, order_side=BUY, order_type=MARKET, last_qty=1, last_px=101.50000 USD, commission=0.00 USD, liquidity_side=TAKER, ts_event=1800007200000000000)[0m
+[1m2027-01-15T10:00:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] PositionOpened(instrument_id=AUDUSD.OANDA, position_id=AUDUSD.OANDA-Sma3Strategy-000, account_id=OANDA-001, opening_order_id=O-20270115-100000-001-000-3, closing_order_id=None, entry=BUY, side=LONG, signed_qty=1.0, quantity=1, peak_qty=1, currency=USD, avg_px_open=101.5, avg_px_close=0.0, realized_return=0.00000, realized_pnl=0.00 USD, unrealized_pnl=0.00 USD, ts_opened=1800007200000000000, ts_last=1800007200000000000, ts_closed=0, duration_ns=0)[0m
+[1m2027-01-15T10:00:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_init=0.00 USD[0m
+[1m2027-01-15T10:00:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA account=OANDA-001 net_position=10[0m
+[1m2027-01-15T10:00:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_maint=3.05 USD[0m
+[1m2027-01-15T10:00:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: Updated AccountState(account_id=OANDA-001, account_type=MARGIN, base_currency=None, is_reported=False, balances=[AccountBalance(total=2_014.94 USD, locked=3.05 USD, free=2_011.89 USD)], margins=[MarginBalance(initial=0.00 USD, maintenance=3.05 USD, instrument_id=AUDUSD.OANDA)], event_id=f9c3555d-b629-4582-a03d-e732d4313e90)[0m
+[1m2027-01-15T10:00:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderFilled(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-100000-001-000-3, venue_order_id=OANDA-1-003, account_id=OANDA-001, trade_id=T-242de20895fc2426-006, position_id=AUDUSD.OANDA-Sma3Strategy-000, order_side=BUY, order_type=MARKET, last_qty=9, last_px=101.50001 USD, commission=0.02 USD, liquidity_side=TAKER, ts_event=1800007200000000000)[0m
+[1m2027-01-15T10:00:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] PositionChanged(instrument_id=AUDUSD.OANDA, position_id=AUDUSD.OANDA-Sma3Strategy-000, account_id=OANDA-001, opening_order_id=O-20270115-100000-001-000-3, closing_order_id=None, entry=BUY, side=LONG, signed_qty=10.0, quantity=10, peak_qty=10, currency=USD, avg_px_open=101.500009, avg_px_close=0.0, realized_return=0.00000, realized_pnl=-0.02 USD, unrealized_pnl=0.00 USD, ts_opened=1800007200000000000, ts_last=1800007200000000000, ts_closed=0, duration_ns=0)[0m
+[1m2027-01-15T10:30:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderInitialized(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-103000-001-000-4, side=SELL, type=MARKET, quantity=10, time_in_force=GTC, post_only=False, reduce_only=False, quote_quantity=False, options={}, emulation_trigger=NO_TRIGGER, trigger_instrument_id=None, contingency_type=NO_CONTINGENCY, order_list_id=None, linked_order_ids=None, parent_order_id=None, exec_algorithm_id=None, exec_algorithm_params=None, exec_spawn_id=None, tags=None)[0m
+[1m2027-01-15T10:30:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: [CMD]--> [Risk] SubmitOrder(order=MarketOrder(SELL 10 AUDUSD.OANDA MARKET GTC, status=INITIALIZED, client_order_id=O-20270115-103000-001-000-4, venue_order_id=None, position_id=None, tags=None), position_id=None)[0m
+[1m2027-01-15T10:30:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderSubmitted(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-103000-001-000-4, account_id=OANDA-001, ts_event=1800009000000000000)[0m
+[1m2027-01-15T10:30:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_init=0.00 USD[0m
+[1m2027-01-15T10:30:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA account=OANDA-001 net_position=9[0m
+[1m2027-01-15T10:30:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_maint=2.74 USD[0m
+[1m2027-01-15T10:30:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: Updated AccountState(account_id=OANDA-001, account_type=MARGIN, base_currency=None, is_reported=False, balances=[AccountBalance(total=2_016.44 USD, locked=2.74 USD, free=2_013.70 USD)], margins=[MarginBalance(initial=0.00 USD, maintenance=2.74 USD, instrument_id=AUDUSD.OANDA)], event_id=ee95ff92-9e94-45d8-acf5-49764855674b)[0m
+[1m2027-01-15T10:30:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderFilled(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-103000-001-000-4, venue_order_id=OANDA-1-004, account_id=OANDA-001, trade_id=T-b1bd33ef08618607-007, position_id=AUDUSD.OANDA-Sma3Strategy-000, order_side=SELL, order_type=MARKET, last_qty=1, last_px=103.00000 USD, commission=0.00 USD, liquidity_side=TAKER, ts_event=1800009000000000000)[0m
+[1m2027-01-15T10:30:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] PositionChanged(instrument_id=AUDUSD.OANDA, position_id=AUDUSD.OANDA-Sma3Strategy-000, account_id=OANDA-001, opening_order_id=O-20270115-100000-001-000-3, closing_order_id=None, entry=BUY, side=LONG, signed_qty=9.0, quantity=9, peak_qty=10, currency=USD, avg_px_open=101.500009, avg_px_close=103.0, realized_return=0.01478, realized_pnl=1.48 USD, unrealized_pnl=13.50 USD, ts_opened=1800007200000000000, ts_last=1800009000000000000, ts_closed=0, duration_ns=0)[0m
+[1m2027-01-15T10:30:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_init=0.00 USD[0m
+[1m2027-01-15T10:30:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_maint=0.00 USD[0m
+[1m2027-01-15T10:30:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: Updated AccountState(account_id=OANDA-001, account_type=MARGIN, base_currency=None, is_reported=False, balances=[AccountBalance(total=2_029.92 USD, locked=0.00 USD, free=2_029.92 USD)], margins=[], event_id=17021222-bc3e-4eb0-9f60-2dc4e11b10e8)[0m
+[1m2027-01-15T10:30:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderFilled(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-103000-001-000-4, venue_order_id=OANDA-1-004, account_id=OANDA-001, trade_id=T-b1bd33ef08618607-008, position_id=AUDUSD.OANDA-Sma3Strategy-000, order_side=SELL, order_type=MARKET, last_qty=9, last_px=102.99999 USD, commission=0.02 USD, liquidity_side=TAKER, ts_event=1800009000000000000)[0m
+[1m2027-01-15T10:30:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] PositionClosed(instrument_id=AUDUSD.OANDA, position_id=AUDUSD.OANDA-Sma3Strategy-000, account_id=OANDA-001, opening_order_id=O-20270115-100000-001-000-3, closing_order_id=O-20270115-103000-001-000-4, entry=BUY, side=FLAT, signed_qty=0.0, quantity=0, peak_qty=10, currency=USD, avg_px_open=101.500009, avg_px_close=102.999991, realized_return=0.01478, realized_pnl=14.96 USD, unrealized_pnl=0.00 USD, ts_opened=1800007200000000000, ts_last=1800009000000000000, ts_closed=1800009000000000000, duration_ns=1800000000000)[0m
+[1m2027-01-15T11:15:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderInitialized(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-111500-001-000-5, side=BUY, type=MARKET, quantity=10, time_in_force=GTC, post_only=False, reduce_only=False, quote_quantity=False, options={}, emulation_trigger=NO_TRIGGER, trigger_instrument_id=None, contingency_type=NO_CONTINGENCY, order_list_id=None, linked_order_ids=None, parent_order_id=None, exec_algorithm_id=None, exec_algorithm_params=None, exec_spawn_id=None, tags=None)[0m
+[1m2027-01-15T11:15:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: [CMD]--> [Risk] SubmitOrder(order=MarketOrder(BUY 10 AUDUSD.OANDA MARKET GTC, status=INITIALIZED, client_order_id=O-20270115-111500-001-000-5, venue_order_id=None, position_id=None, tags=None), position_id=None)[0m
+[1m2027-01-15T11:15:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderSubmitted(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-111500-001-000-5, account_id=OANDA-001, ts_event=1800011700000000000)[0m
+[1m2027-01-15T11:15:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_init=0.00 USD[0m
+[1m2027-01-15T11:15:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA account=OANDA-001 net_position=1[0m
+[1m2027-01-15T11:15:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_maint=0.30 USD[0m
+[1m2027-01-15T11:15:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: Updated AccountState(account_id=OANDA-001, account_type=MARGIN, base_currency=None, is_reported=False, balances=[AccountBalance(total=2_029.92 USD, locked=0.30 USD, free=2_029.62 USD)], margins=[MarginBalance(initial=0.00 USD, maintenance=0.30 USD, instrument_id=AUDUSD.OANDA)], event_id=a9ed823a-aad7-409b-9ce7-88f7d20d5e59)[0m
+[1m2027-01-15T11:15:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderFilled(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-111500-001-000-5, venue_order_id=OANDA-1-005, account_id=OANDA-001, trade_id=T-36bf7fe624f84842-009, position_id=AUDUSD.OANDA-Sma3Strategy-000, order_side=BUY, order_type=MARKET, last_qty=1, last_px=101.50000 USD, commission=0.00 USD, liquidity_side=TAKER, ts_event=1800011700000000000)[0m
+[1m2027-01-15T11:15:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] PositionOpened(instrument_id=AUDUSD.OANDA, position_id=AUDUSD.OANDA-Sma3Strategy-000, account_id=OANDA-001, opening_order_id=O-20270115-111500-001-000-5, closing_order_id=None, entry=BUY, side=LONG, signed_qty=1.0, quantity=1, peak_qty=1, currency=USD, avg_px_open=101.5, avg_px_close=0.0, realized_return=0.00000, realized_pnl=0.00 USD, unrealized_pnl=0.00 USD, ts_opened=1800011700000000000, ts_last=1800011700000000000, ts_closed=0, duration_ns=0)[0m
+[1m2027-01-15T11:15:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_init=0.00 USD[0m
+[1m2027-01-15T11:15:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA account=OANDA-001 net_position=10[0m
+[1m2027-01-15T11:15:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_maint=3.05 USD[0m
+[1m2027-01-15T11:15:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: Updated AccountState(account_id=OANDA-001, account_type=MARGIN, base_currency=None, is_reported=False, balances=[AccountBalance(total=2_029.90 USD, locked=3.05 USD, free=2_026.85 USD)], margins=[MarginBalance(initial=0.00 USD, maintenance=3.05 USD, instrument_id=AUDUSD.OANDA)], event_id=31e91164-8b6b-42c6-a166-c487ddaf1c23)[0m
+[1m2027-01-15T11:15:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderFilled(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-111500-001-000-5, venue_order_id=OANDA-1-005, account_id=OANDA-001, trade_id=T-36bf7fe624f84842-010, position_id=AUDUSD.OANDA-Sma3Strategy-000, order_side=BUY, order_type=MARKET, last_qty=9, last_px=101.50001 USD, commission=0.02 USD, liquidity_side=TAKER, ts_event=1800011700000000000)[0m
+[1m2027-01-15T11:15:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] PositionChanged(instrument_id=AUDUSD.OANDA, position_id=AUDUSD.OANDA-Sma3Strategy-000, account_id=OANDA-001, opening_order_id=O-20270115-111500-001-000-5, closing_order_id=None, entry=BUY, side=LONG, signed_qty=10.0, quantity=10, peak_qty=10, currency=USD, avg_px_open=101.500009, avg_px_close=0.0, realized_return=0.00000, realized_pnl=-0.02 USD, unrealized_pnl=0.00 USD, ts_opened=1800011700000000000, ts_last=1800011700000000000, ts_closed=0, duration_ns=0)[0m
+[1m2027-01-15T12:00:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderInitialized(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-120000-001-000-6, side=SELL, type=MARKET, quantity=10, time_in_force=GTC, post_only=False, reduce_only=False, quote_quantity=False, options={}, emulation_trigger=NO_TRIGGER, trigger_instrument_id=None, contingency_type=NO_CONTINGENCY, order_list_id=None, linked_order_ids=None, parent_order_id=None, exec_algorithm_id=None, exec_algorithm_params=None, exec_spawn_id=None, tags=None)[0m
+[1m2027-01-15T12:00:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: [CMD]--> [Risk] SubmitOrder(order=MarketOrder(SELL 10 AUDUSD.OANDA MARKET GTC, status=INITIALIZED, client_order_id=O-20270115-120000-001-000-6, venue_order_id=None, position_id=None, tags=None), position_id=None)[0m
+[1m2027-01-15T12:00:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderSubmitted(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-120000-001-000-6, account_id=OANDA-001, ts_event=1800014400000000000)[0m
+[1m2027-01-15T12:00:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_init=0.00 USD[0m
+[1m2027-01-15T12:00:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA account=OANDA-001 net_position=9[0m
+[1m2027-01-15T12:00:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_maint=2.74 USD[0m
+[1m2027-01-15T12:00:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: Updated AccountState(account_id=OANDA-001, account_type=MARGIN, base_currency=None, is_reported=False, balances=[AccountBalance(total=2_031.90 USD, locked=2.74 USD, free=2_029.16 USD)], margins=[MarginBalance(initial=0.00 USD, maintenance=2.74 USD, instrument_id=AUDUSD.OANDA)], event_id=3bb6bb54-cdca-4672-9f74-20fe4892fcc0)[0m
+[1m2027-01-15T12:00:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderFilled(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-120000-001-000-6, venue_order_id=OANDA-1-006, account_id=OANDA-001, trade_id=T-0dd2531bdf1ed723-011, position_id=AUDUSD.OANDA-Sma3Strategy-000, order_side=SELL, order_type=MARKET, last_qty=1, last_px=103.50000 USD, commission=0.00 USD, liquidity_side=TAKER, ts_event=1800014400000000000)[0m
+[1m2027-01-15T12:00:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] PositionChanged(instrument_id=AUDUSD.OANDA, position_id=AUDUSD.OANDA-Sma3Strategy-000, account_id=OANDA-001, opening_order_id=O-20270115-111500-001-000-5, closing_order_id=None, entry=BUY, side=LONG, signed_qty=9.0, quantity=9, peak_qty=10, currency=USD, avg_px_open=101.500009, avg_px_close=103.5, realized_return=0.01970, realized_pnl=1.98 USD, unrealized_pnl=18.00 USD, ts_opened=1800011700000000000, ts_last=1800014400000000000, ts_closed=0, duration_ns=0)[0m
+[1m2027-01-15T12:00:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_init=0.00 USD[0m
+[1m2027-01-15T12:00:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_maint=0.00 USD[0m
+[1m2027-01-15T12:00:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: Updated AccountState(account_id=OANDA-001, account_type=MARGIN, base_currency=None, is_reported=False, balances=[AccountBalance(total=2_049.88 USD, locked=0.00 USD, free=2_049.88 USD)], margins=[], event_id=ab103deb-30ac-4564-a334-e8afa86eedc5)[0m
+[1m2027-01-15T12:00:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderFilled(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-120000-001-000-6, venue_order_id=OANDA-1-006, account_id=OANDA-001, trade_id=T-0dd2531bdf1ed723-012, position_id=AUDUSD.OANDA-Sma3Strategy-000, order_side=SELL, order_type=MARKET, last_qty=9, last_px=103.49999 USD, commission=0.02 USD, liquidity_side=TAKER, ts_event=1800014400000000000)[0m
+[1m2027-01-15T12:00:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] PositionClosed(instrument_id=AUDUSD.OANDA, position_id=AUDUSD.OANDA-Sma3Strategy-000, account_id=OANDA-001, opening_order_id=O-20270115-111500-001-000-5, closing_order_id=O-20270115-120000-001-000-6, entry=BUY, side=FLAT, signed_qty=0.0, quantity=0, peak_qty=10, currency=USD, avg_px_open=101.500009, avg_px_close=103.499991, realized_return=0.01970, realized_pnl=19.96 USD, unrealized_pnl=0.00 USD, ts_opened=1800011700000000000, ts_last=1800014400000000000, ts_closed=1800014400000000000, duration_ns=2700000000000)[0m
+[1m2027-01-15T14:00:00.000000000Z[0m [1;33m[WARN] BACKTESTER-001.Sma3Strategy: The `Strategy.on_stop` handler was called when not overridden. It's expected that any actions required when stopping the strategy occur here, such as unsubscribing from data[0m
+[1m2027-01-15T14:00:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: STOPPED[0m
+[1m2027-01-15T14:00:00.000000000Z[0m [INFO] BACKTESTER-001.BACKTESTER-001: STOPPED[0m
+[1m2027-01-15T14:00:00.000000000Z[0m [INFO] BACKTESTER-001.DataClient-OANDA: Disconnecting...[0m
+[1m2027-01-15T14:00:00.000000000Z[0m [INFO] BACKTESTER-001.DataClient-OANDA: Disconnected[0m
+[1m2027-01-15T14:00:00.000000000Z[0m [INFO] BACKTESTER-001.DataClient-OANDA: STOPPED[0m
+[1m2027-01-15T14:00:00.000000000Z[0m [INFO] BACKTESTER-001.DataEngine: STOPPED[0m
+[1m2027-01-15T14:00:00.000000000Z[0m [INFO] BACKTESTER-001.RiskEngine: STOPPED[0m
+[1m2027-01-15T14:00:00.000000000Z[0m [INFO] BACKTESTER-001.ExecClient-OANDA: Disconnecting...[0m
+[1m2027-01-15T14:00:00.000000000Z[0m [INFO] BACKTESTER-001.ExecClient-OANDA: Disconnected[0m
+[1m2027-01-15T14:00:00.000000000Z[0m [INFO] BACKTESTER-001.ExecClient-OANDA: STOPPED[0m
+[1m2027-01-15T14:00:00.000000000Z[0m [INFO] BACKTESTER-001.ExecEngine: STOPPED[0m
+[1m2027-01-15T14:00:00.000000000Z[0m [INFO] BACKTESTER-001.OrderEmulator: STOPPED[0m
+C:\Users\RZ1\Desktop\RZ\260927-VCT-Trading\docs\evidence\G3\selection\a2-engines\nt_eval2.py:113: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  engine.run(start=dt.datetime(2027, 1, 1, tzinfo=dt.timezone.utc), end=dt.datetime(2027, 12, 31, tzinfo=dt.timezone.utc))
+[1m2026-09-30T03:27:11.317008200Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m=================================================================[0m
+[1m2026-09-30T03:27:11.317023200Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m BACKTEST POST-RUN[0m
+[1m2026-09-30T03:27:11.317025000Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m=================================================================[0m
+[1m2026-09-30T03:27:11.317031900Z[0m [INFO] BACKTESTER-001.BacktestEngine: Run config ID:  None[0m
+[1m2026-09-30T03:27:11.317036000Z[0m [INFO] BACKTESTER-001.BacktestEngine: Run ID:         71e33466-1b63-49dd-afff-cd194e79c5c6[0m
+[1m2026-09-30T03:27:11.317048100Z[0m [INFO] BACKTESTER-001.BacktestEngine: Run started:    2026-09-30T03:27:11.277946000Z[0m
+[1m2026-09-30T03:27:11.317051400Z[0m [INFO] BACKTESTER-001.BacktestEngine: Run finished:   2026-09-30T03:27:11.315097000Z[0m
+[1m2026-09-30T03:27:11.317092700Z[0m [INFO] BACKTESTER-001.BacktestEngine: Elapsed time:   0 days 00:00:00.037151[0m
+[1m2026-09-30T03:27:11.317097000Z[0m [INFO] BACKTESTER-001.BacktestEngine: Backtest start: 2027-01-01T00:00:00.000000000Z[0m
+[1m2026-09-30T03:27:11.317100000Z[0m [INFO] BACKTESTER-001.BacktestEngine: Backtest end:   2027-01-15T14:00:00.000000000Z[0m
+[1m2026-09-30T03:27:11.317116800Z[0m [INFO] BACKTESTER-001.BacktestEngine: Backtest range: 14 days 14:00:00[0m
+[1m2026-09-30T03:27:11.317121400Z[0m [INFO] BACKTESTER-001.BacktestEngine: Iterations: 48[0m
+[1m2026-09-30T03:27:11.317126700Z[0m [INFO] BACKTESTER-001.BacktestEngine: Total events: 18[0m
+[1m2026-09-30T03:27:11.317155200Z[0m [INFO] BACKTESTER-001.BacktestEngine: Total orders: 6[0m
+[1m2026-09-30T03:27:11.317622100Z[0m [INFO] BACKTESTER-001.BacktestEngine: Total positions: 3[0m
+[1m2026-09-30T03:27:11.317645500Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m=================================================================[0m
+[1m2026-09-30T03:27:11.317652200Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m SimulatedVenue OANDA[0m
+[1m2026-09-30T03:27:11.317653600Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m=================================================================[0m
+[1m2026-09-30T03:27:11.317663900Z[0m [INFO] BACKTESTER-001.BacktestEngine: MarginAccount(id=OANDA-001, type=MARGIN, base=None)[0m
+[1m2026-09-30T03:27:11.317665600Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m-----------------------------------------------------------------[0m
+[1m2026-09-30T03:27:11.317667600Z[0m [INFO] BACKTESTER-001.BacktestEngine: Balances starting:[0m
+[1m2026-09-30T03:27:11.317697300Z[0m [INFO] BACKTESTER-001.BacktestEngine: 2_000.00 USD[0m
+[1m2026-09-30T03:27:11.317700000Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m-----------------------------------------------------------------[0m
+[1m2026-09-30T03:27:11.317701100Z[0m [INFO] BACKTESTER-001.BacktestEngine: Balances ending:[0m
+[1m2026-09-30T03:27:11.317725500Z[0m [INFO] BACKTESTER-001.BacktestEngine: 2_049.88 USD[0m
+[1m2026-09-30T03:27:11.317728900Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m-----------------------------------------------------------------[0m
+[1m2026-09-30T03:27:11.317730100Z[0m [INFO] BACKTESTER-001.BacktestEngine: Commissions:[0m
+[1m2026-09-30T03:27:11.317745900Z[0m [INFO] BACKTESTER-001.BacktestEngine: -0.12 USD[0m
+[1m2026-09-30T03:27:11.317747700Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m-----------------------------------------------------------------[0m
+[1m2026-09-30T03:27:11.317748900Z[0m [INFO] BACKTESTER-001.BacktestEngine: Unrealized PnLs (included in totals):[0m
+[1m2026-09-30T03:27:11.317781000Z[0m [INFO] BACKTESTER-001.BacktestEngine: None[0m
+[1m2026-09-30T03:27:11.317784500Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m=================================================================[0m
+[1m2026-09-30T03:27:11.317786000Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m PORTFOLIO PERFORMANCE[0m
+[1m2026-09-30T03:27:11.317787100Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m=================================================================[0m
+[1m2026-09-30T03:27:11.340412700Z[0m [INFO] BACKTESTER-001.BacktestEngine:  PnL Statistics (USD)[0m
+[1m2026-09-30T03:27:11.340441200Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m-----------------------------------------------------------------[0m
+[1m2026-09-30T03:27:11.343023300Z[0m [INFO] BACKTESTER-001.BacktestEngine: PnL (total):                    49.88[0m
+[1m2026-09-30T03:27:11.343042500Z[0m [INFO] BACKTESTER-001.BacktestEngine: PnL% (total):                   2.4940000000000055[0m
+[1m2026-09-30T03:27:11.343043900Z[0m [INFO] BACKTESTER-001.BacktestEngine: Max Winner:                     19.96[0m
+[1m2026-09-30T03:27:11.343044800Z[0m [INFO] BACKTESTER-001.BacktestEngine: Avg Winner:                     16.62666666666667[0m
+[1m2026-09-30T03:27:11.343045400Z[0m [INFO] BACKTESTER-001.BacktestEngine: Min Winner:                     14.96[0m
+[1m2026-09-30T03:27:11.343046200Z[0m [INFO] BACKTESTER-001.BacktestEngine: Min Loser:                      nan[0m
+[1m2026-09-30T03:27:11.343047000Z[0m [INFO] BACKTESTER-001.BacktestEngine: Avg Loser:                      nan[0m
+[1m2026-09-30T03:27:11.343047700Z[0m [INFO] BACKTESTER-001.BacktestEngine: Max Loser:                      nan[0m
+[1m2026-09-30T03:27:11.343048400Z[0m [INFO] BACKTESTER-001.BacktestEngine: Expectancy:                     16.62666666666667[0m
+[1m2026-09-30T03:27:11.343049300Z[0m [INFO] BACKTESTER-001.BacktestEngine: Win Rate:                       1.0[0m
+[1m2026-09-30T03:27:11.343052500Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m-----------------------------------------------------------------[0m
+[1m2026-09-30T03:27:11.343054700Z[0m [INFO] BACKTESTER-001.BacktestEngine:  Returns Statistics[0m
+[1m2026-09-30T03:27:11.343056000Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m-----------------------------------------------------------------[0m
+[1m2026-09-30T03:27:11.344476600Z[0m [INFO] BACKTESTER-001.BacktestEngine: Returns Volatility (252 days):  0.10581145873675482[0m
+[1m2026-09-30T03:27:11.344500800Z[0m [INFO] BACKTESTER-001.BacktestEngine: Average (Return):               0.0017814285714285688[0m
+[1m2026-09-30T03:27:11.344502200Z[0m [INFO] BACKTESTER-001.BacktestEngine: Average Loss (Return):          nan[0m
+[1m2026-09-30T03:27:11.344503700Z[0m [INFO] BACKTESTER-001.BacktestEngine: Average Win (Return):           0.024939999999999962[0m
+[1m2026-09-30T03:27:11.344504500Z[0m [INFO] BACKTESTER-001.BacktestEngine: Sharpe Ratio (252 days):        4.242640687119285[0m
+[1m2026-09-30T03:27:11.344505700Z[0m [INFO] BACKTESTER-001.BacktestEngine: Sortino Ratio (252 days):       nan[0m
+[1m2026-09-30T03:27:11.344506600Z[0m [INFO] BACKTESTER-001.BacktestEngine: Profit Factor:                  nan[0m
+[1m2026-09-30T03:27:11.344508900Z[0m [INFO] BACKTESTER-001.BacktestEngine: Risk Return Ratio:              0.26726124191242434[0m
+[1m2026-09-30T03:27:11.344512000Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m-----------------------------------------------------------------[0m
+[1m2026-09-30T03:27:11.344514000Z[0m [INFO] BACKTESTER-001.BacktestEngine:  General Statistics[0m
+[1m2026-09-30T03:27:11.344515700Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m-----------------------------------------------------------------[0m
+[1m2026-09-30T03:27:11.344606700Z[0m [INFO] BACKTESTER-001.BacktestEngine: Long Ratio:                     1.0[0m
+[1m2026-09-30T03:27:11.344609600Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m-----------------------------------------------------------------[0m
+[1m2026-09-30T03:27:11.368326500Z[0m [INFO] BACKTESTER-001.BacktestEngine: Building system kernel[0m
+[1m2026-09-30T03:27:11.368379600Z[0m [94m[INFO] BACKTESTER-001.MessageBus: config.database=None[0m
+[1m2026-09-30T03:27:11.368383000Z[0m [94m[INFO] BACKTESTER-001.MessageBus: config.encoding='json'[0m
+[1m2026-09-30T03:27:11.368385200Z[0m [94m[INFO] BACKTESTER-001.MessageBus: config.timestamps_as_iso8601=False[0m
+[1m2026-09-30T03:27:11.368387300Z[0m [94m[INFO] BACKTESTER-001.MessageBus: config.buffer_interval_ms=None[0m
+[1m2026-09-30T03:27:11.368389100Z[0m [94m[INFO] BACKTESTER-001.MessageBus: config.autotrim_mins=None[0m
+[1m2026-09-30T03:27:11.368390900Z[0m [94m[INFO] BACKTESTER-001.MessageBus: config.use_trader_prefix=True[0m
+[1m2026-09-30T03:27:11.368392400Z[0m [94m[INFO] BACKTESTER-001.MessageBus: config.use_trader_id=True[0m
+[1m2026-09-30T03:27:11.368393900Z[0m [94m[INFO] BACKTESTER-001.MessageBus: config.use_instance_id=False[0m
+[1m2026-09-30T03:27:11.368395700Z[0m [94m[INFO] BACKTESTER-001.MessageBus: config.streams_prefix='stream'[0m
+[1m2026-09-30T03:27:11.368397200Z[0m [94m[INFO] BACKTESTER-001.MessageBus: config.types_filter=None[0m
+[1m2026-09-30T03:27:11.368470500Z[0m [INFO] BACKTESTER-001.Cache: READY[0m
+[1m2026-09-30T03:27:11.369081200Z[0m [INFO] BACKTESTER-001.DataEngine: READY[0m
+[1m2026-09-30T03:27:11.369245600Z[0m [INFO] BACKTESTER-001.RiskEngine: READY[0m
+[1m2026-09-30T03:27:11.369294200Z[0m [94m[INFO] BACKTESTER-001.RiskEngine: TradingState is ACTIVE[0m
+[1m2026-09-30T03:27:11.369415500Z[0m [INFO] BACKTESTER-001.Throttler-ORDER_SUBMIT_THROTTLER: READY[0m
+[1m2026-09-30T03:27:11.369464400Z[0m [94m[INFO] BACKTESTER-001.RiskEngine: Set MAX_ORDER_SUBMIT_RATE: 100/00:00:01[0m
+[1m2026-09-30T03:27:11.369520700Z[0m [INFO] BACKTESTER-001.Throttler-ORDER_MODIFY_THROTTLER: READY[0m
+[1m2026-09-30T03:27:11.369547800Z[0m [94m[INFO] BACKTESTER-001.RiskEngine: Set MAX_ORDER_MODIFY_RATE: 100/00:00:01[0m
+[1m2026-09-30T03:27:11.369643100Z[0m [INFO] BACKTESTER-001.ExecEngine: READY[0m
+[1m2026-09-30T03:27:11.369707500Z[0m [94m[INFO] BACKTESTER-001.ExecEngine: config.snapshot_orders=False[0m
+[1m2026-09-30T03:27:11.369732800Z[0m [94m[INFO] BACKTESTER-001.ExecEngine: config.snapshot_positions=False[0m
+[1m2026-09-30T03:27:11.369735800Z[0m [94m[INFO] BACKTESTER-001.ExecEngine: config.snapshot_positions_interval_secs=None[0m
+[1m2026-09-30T03:27:11.369737400Z[0m [94m[INFO] BACKTESTER-001.ExecEngine: config.allow_overfills=False[0m
+[1m2026-09-30T03:27:11.369782400Z[0m [INFO] BACKTESTER-001.Cache: Cached 0 general objects from database[0m
+[1m2026-09-30T03:27:11.369788600Z[0m [INFO] BACKTESTER-001.Cache: Cached 0 currencies from database[0m
+[1m2026-09-30T03:27:11.369793700Z[0m [INFO] BACKTESTER-001.Cache: Cached 0 instruments from database[0m
+[1m2026-09-30T03:27:11.369799100Z[0m [INFO] BACKTESTER-001.Cache: Cached 0 accounts from database[0m
+[1m2026-09-30T03:27:11.369804200Z[0m [INFO] BACKTESTER-001.Cache: Cached 0 orders from database[0m
+[1m2026-09-30T03:27:11.369809600Z[0m [INFO] BACKTESTER-001.Cache: Cached 0 order lists from database[0m
+[1m2026-09-30T03:27:11.369814600Z[0m [INFO] BACKTESTER-001.Cache: Cached 0 positions from database[0m
+[1m2026-09-30T03:27:11.369832600Z[0m [INFO] BACKTESTER-001.Cache: Checking data integrity[0m
+[1m2026-09-30T03:27:11.369848800Z[0m [92m[INFO] BACKTESTER-001.Cache: Integrity check passed in 0μs[0m
+[1m2026-09-30T03:27:11.369861800Z[0m [INFO] BACKTESTER-001.ExecEngine: Loaded cache in 0ms[0m
+[1m2026-09-30T03:27:11.369929400Z[0m [INFO] BACKTESTER-001.OrderEmulator: READY[0m
+[1m2026-09-30T03:27:11.370048200Z[0m [INFO] BACKTESTER-001.BACKTESTER-001: READY[0m
+[1m2026-09-30T03:27:11.370116500Z[0m [INFO] BACKTESTER-001.BacktestEngine: Initialized in 2ms[0m
+[1m2026-09-30T03:27:11.370248400Z[0m [INFO] BACKTESTER-001.SimulatedExchange(OANDA): OmsType=NETTING[0m
+[1m2026-09-30T03:27:11.370317700Z[0m [INFO] BACKTESTER-001.ExecClient-OANDA: READY[0m
+[1m2026-09-30T03:27:11.370377400Z[0m [INFO] BACKTESTER-001.SimulatedExchange(OANDA): Registered ExecutionClient-OANDA[0m
+[1m2026-09-30T03:27:11.370392200Z[0m [INFO] BACKTESTER-001.ExecEngine: Registered ExecutionClient-OANDA[0m
+[1m2026-09-30T03:27:11.370431500Z[0m [INFO] BACKTESTER-001.DataClient-OANDA: READY[0m
+[1m2026-09-30T03:27:11.370461800Z[0m [INFO] BACKTESTER-001.DataEngine: Registered OANDA[0m
+[1m2026-09-30T03:27:11.370469500Z[0m [INFO] BACKTESTER-001.BacktestEngine: Added SimulatedExchange(id=OANDA, oms_type=NETTING, account_type=MARGIN)[0m
+[1m2026-09-30T03:27:11.370587700Z[0m [INFO] BACKTESTER-001.SimulatedExchange(OANDA): Added instrument AUDUSD.OANDA and created matching engine[0m
+[1m2026-09-30T03:27:11.370601800Z[0m [INFO] BACKTESTER-001.BacktestEngine: Added AUDUSD.OANDA Instrument[0m
+[1m2026-09-30T03:27:11.370742200Z[0m [INFO] BACKTESTER-001.BacktestEngine: Added 24 AUDUSD.OANDA-15-MINUTE-BID-EXTERNAL Bar elements[0m
+[1m2026-09-30T03:27:11.370855100Z[0m [INFO] BACKTESTER-001.BacktestEngine: Added 24 AUDUSD.OANDA QuoteTick elements[0m
+[1m2026-09-30T03:27:11.371000400Z[0m [INFO] BACKTESTER-001.Sma3Strategy: READY[0m
+[1m2026-09-30T03:27:11.371117500Z[0m [INFO] BACKTESTER-001.ExecEngine: Registered OMS.UNSPECIFIED for Strategy Sma3Strategy-000[0m
+[1m2026-09-30T03:27:11.371134000Z[0m [INFO] BACKTESTER-001.BACKTESTER-001: Registered Strategy Sma3Strategy-000[0m
+C:\Users\RZ1\Desktop\RZ\260927-VCT-Trading\docs\evidence\G3\selection\a2-engines\nt_eval2.py:113: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  engine.run(start=dt.datetime(2027, 1, 1, tzinfo=dt.timezone.utc), end=dt.datetime(2027, 12, 31, tzinfo=dt.timezone.utc))
+[1m2026-09-30T03:27:11.372021400Z[0m [INFO] BACKTESTER-001.Portfolio: Updated AccountState(account_id=OANDA-001, account_type=MARGIN, base_currency=None, is_reported=True, balances=[AccountBalance(total=2_000.00 USD, locked=0.00 USD, free=2_000.00 USD)], margins=[], event_id=817c2ccc-9303-4286-88e4-6b929e5c4c09)[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: STARTING[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.DataClient-OANDA: Connecting...[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.DataClient-OANDA: Connected[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.DataClient-OANDA: RUNNING[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.DataEngine: RUNNING[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.RiskEngine: RUNNING[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.ExecClient-OANDA: Connecting...[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.ExecClient-OANDA: Connected[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.ExecClient-OANDA: RUNNING[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.ExecEngine: RUNNING[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.DataEngine: Connecting all clients...[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.ExecEngine: Connecting all clients...[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.OrderEmulator: No emulated orders to reactivate[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.OrderEmulator: RUNNING[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: Initialized 0 open orders[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: Initialized 0 open positions[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [94m[INFO] BACKTESTER-001.Sma3Strategy: self.config.oms_type=None[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [94m[INFO] BACKTESTER-001.Sma3Strategy: self.config.external_order_claims=None[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [94m[INFO] BACKTESTER-001.Sma3Strategy: self.config.manage_gtd_expiry=False[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [94m[INFO] BACKTESTER-001.Sma3Strategy: Set ClientOrderIdGenerator client_order_id count to 0[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [94m[INFO] BACKTESTER-001.Sma3Strategy: Set ClientOrderIdGenerator order_list_id count to 0[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: [CMD]--> SubscribeBars(bar_type=AUDUSD.OANDA-15-MINUTE-BID-EXTERNAL, client_id=None, venue=OANDA)[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: RUNNING[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BACKTESTER-001: RUNNING[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [36m[INFO] BACKTESTER-001.BacktestEngine: =================================================================[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [36m[INFO] BACKTESTER-001.BacktestEngine:  MEMORY USAGE[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [36m[INFO] BACKTESTER-001.BacktestEngine: =================================================================[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: RAM-Total: 11.82 GiB[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: RAM-Used: 8.11 GiB (68.66%)[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: RAM-Avail: 3.70 GiB (31.34%)[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: Swap-Total: 5.56 GiB[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: Swap-Used: 2.26 GiB (40.65%)[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: Swap-Avail: 3.30 GiB (59.35%)[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m=================================================================[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m SimulatedVenue OANDA[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m=================================================================[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: MarginAccount(id=OANDA-001, type=MARGIN, base=None)[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m-----------------------------------------------------------------[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: Balances starting:[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: 2_000.00 USD[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m=================================================================[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m BACKTEST RUN[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m=================================================================[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: Run config ID:  None[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: Run ID:         e6bb8731-d633-4f57-90e2-d8926b812340[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: Run started:    2026-09-30T03:27:11.369922000Z[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: Backtest start: 2027-01-01T00:00:00.000000000Z[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: Batch start:    2027-01-01T00:00:00.000000000Z[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: Batch end:      2027-12-31T00:00:00.000000000Z[0m
+[1m2027-01-01T00:00:00.000000000Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m-----------------------------------------------------------------[0m
+[1m2027-01-15T08:45:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderInitialized(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-084500-001-000-1, side=BUY, type=MARKET, quantity=10, time_in_force=GTC, post_only=False, reduce_only=False, quote_quantity=False, options={}, emulation_trigger=NO_TRIGGER, trigger_instrument_id=None, contingency_type=NO_CONTINGENCY, order_list_id=None, linked_order_ids=None, parent_order_id=None, exec_algorithm_id=None, exec_algorithm_params=None, exec_spawn_id=None, tags=None)[0m
+[1m2027-01-15T08:45:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: [CMD]--> [Risk] SubmitOrder(order=MarketOrder(BUY 10 AUDUSD.OANDA MARKET GTC, status=INITIALIZED, client_order_id=O-20270115-084500-001-000-1, venue_order_id=None, position_id=None, tags=None), position_id=None)[0m
+[1m2027-01-15T08:45:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderSubmitted(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-084500-001-000-1, account_id=OANDA-001, ts_event=1800002700000000000)[0m
+[1m2027-01-15T08:45:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_init=0.00 USD[0m
+[1m2027-01-15T08:45:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA account=OANDA-001 net_position=1[0m
+[1m2027-01-15T08:45:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_maint=0.30 USD[0m
+[1m2027-01-15T08:45:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: Updated AccountState(account_id=OANDA-001, account_type=MARGIN, base_currency=None, is_reported=False, balances=[AccountBalance(total=2_000.00 USD, locked=0.30 USD, free=1_999.70 USD)], margins=[MarginBalance(initial=0.00 USD, maintenance=0.30 USD, instrument_id=AUDUSD.OANDA)], event_id=4ba988de-b15f-480c-9525-0601823e0437)[0m
+[1m2027-01-15T08:45:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderFilled(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-084500-001-000-1, venue_order_id=OANDA-1-001, account_id=OANDA-001, trade_id=T-bab71134b6c6fbe8-001, position_id=AUDUSD.OANDA-Sma3Strategy-000, order_side=BUY, order_type=MARKET, last_qty=1, last_px=100.50000 USD, commission=0.00 USD, liquidity_side=TAKER, ts_event=1800002700000000000)[0m
+[1m2027-01-15T08:45:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] PositionOpened(instrument_id=AUDUSD.OANDA, position_id=AUDUSD.OANDA-Sma3Strategy-000, account_id=OANDA-001, opening_order_id=O-20270115-084500-001-000-1, closing_order_id=None, entry=BUY, side=LONG, signed_qty=1.0, quantity=1, peak_qty=1, currency=USD, avg_px_open=100.5, avg_px_close=0.0, realized_return=0.00000, realized_pnl=0.00 USD, unrealized_pnl=0.00 USD, ts_opened=1800002700000000000, ts_last=1800002700000000000, ts_closed=0, duration_ns=0)[0m
+[1m2027-01-15T08:45:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_init=0.00 USD[0m
+[1m2027-01-15T08:45:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA account=OANDA-001 net_position=10[0m
+[1m2027-01-15T08:45:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_maint=3.02 USD[0m
+[1m2027-01-15T08:45:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: Updated AccountState(account_id=OANDA-001, account_type=MARGIN, base_currency=None, is_reported=False, balances=[AccountBalance(total=1_999.98 USD, locked=3.02 USD, free=1_996.96 USD)], margins=[MarginBalance(initial=0.00 USD, maintenance=3.02 USD, instrument_id=AUDUSD.OANDA)], event_id=79fcee32-df32-4473-8ac1-462e194dd58b)[0m
+[1m2027-01-15T08:45:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderFilled(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-084500-001-000-1, venue_order_id=OANDA-1-001, account_id=OANDA-001, trade_id=T-bab71134b6c6fbe8-002, position_id=AUDUSD.OANDA-Sma3Strategy-000, order_side=BUY, order_type=MARKET, last_qty=9, last_px=100.50001 USD, commission=0.02 USD, liquidity_side=TAKER, ts_event=1800002700000000000)[0m
+[1m2027-01-15T08:45:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] PositionChanged(instrument_id=AUDUSD.OANDA, position_id=AUDUSD.OANDA-Sma3Strategy-000, account_id=OANDA-001, opening_order_id=O-20270115-084500-001-000-1, closing_order_id=None, entry=BUY, side=LONG, signed_qty=10.0, quantity=10, peak_qty=10, currency=USD, avg_px_open=100.500009, avg_px_close=0.0, realized_return=0.00000, realized_pnl=-0.02 USD, unrealized_pnl=0.00 USD, ts_opened=1800002700000000000, ts_last=1800002700000000000, ts_closed=0, duration_ns=0)[0m
+[1m2027-01-15T09:30:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderInitialized(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-093000-001-000-2, side=SELL, type=MARKET, quantity=10, time_in_force=GTC, post_only=False, reduce_only=False, quote_quantity=False, options={}, emulation_trigger=NO_TRIGGER, trigger_instrument_id=None, contingency_type=NO_CONTINGENCY, order_list_id=None, linked_order_ids=None, parent_order_id=None, exec_algorithm_id=None, exec_algorithm_params=None, exec_spawn_id=None, tags=None)[0m
+[1m2027-01-15T09:30:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: [CMD]--> [Risk] SubmitOrder(order=MarketOrder(SELL 10 AUDUSD.OANDA MARKET GTC, status=INITIALIZED, client_order_id=O-20270115-093000-001-000-2, venue_order_id=None, position_id=None, tags=None), position_id=None)[0m
+[1m2027-01-15T09:30:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderSubmitted(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-093000-001-000-2, account_id=OANDA-001, ts_event=1800005400000000000)[0m
+[1m2027-01-15T09:30:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_init=0.00 USD[0m
+[1m2027-01-15T09:30:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA account=OANDA-001 net_position=9[0m
+[1m2027-01-15T09:30:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_maint=2.71 USD[0m
+[1m2027-01-15T09:30:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: Updated AccountState(account_id=OANDA-001, account_type=MARGIN, base_currency=None, is_reported=False, balances=[AccountBalance(total=2_001.48 USD, locked=2.71 USD, free=1_998.77 USD)], margins=[MarginBalance(initial=0.00 USD, maintenance=2.71 USD, instrument_id=AUDUSD.OANDA)], event_id=2be9be53-3907-48da-80ef-83236c869cb3)[0m
+[1m2027-01-15T09:30:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderFilled(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-093000-001-000-2, venue_order_id=OANDA-1-002, account_id=OANDA-001, trade_id=T-3bc1648748774567-003, position_id=AUDUSD.OANDA-Sma3Strategy-000, order_side=SELL, order_type=MARKET, last_qty=1, last_px=102.00000 USD, commission=0.00 USD, liquidity_side=TAKER, ts_event=1800005400000000000)[0m
+[1m2027-01-15T09:30:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] PositionChanged(instrument_id=AUDUSD.OANDA, position_id=AUDUSD.OANDA-Sma3Strategy-000, account_id=OANDA-001, opening_order_id=O-20270115-084500-001-000-1, closing_order_id=None, entry=BUY, side=LONG, signed_qty=9.0, quantity=9, peak_qty=10, currency=USD, avg_px_open=100.500009, avg_px_close=102.0, realized_return=0.01493, realized_pnl=1.48 USD, unrealized_pnl=13.50 USD, ts_opened=1800002700000000000, ts_last=1800005400000000000, ts_closed=0, duration_ns=0)[0m
+[1m2027-01-15T09:30:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_init=0.00 USD[0m
+[1m2027-01-15T09:30:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_maint=0.00 USD[0m
+[1m2027-01-15T09:30:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: Updated AccountState(account_id=OANDA-001, account_type=MARGIN, base_currency=None, is_reported=False, balances=[AccountBalance(total=2_014.96 USD, locked=0.00 USD, free=2_014.96 USD)], margins=[], event_id=ddb6dfc9-1288-4fc8-abfd-0862cce2b0bd)[0m
+[1m2027-01-15T09:30:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderFilled(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-093000-001-000-2, venue_order_id=OANDA-1-002, account_id=OANDA-001, trade_id=T-3bc1648748774567-004, position_id=AUDUSD.OANDA-Sma3Strategy-000, order_side=SELL, order_type=MARKET, last_qty=9, last_px=101.99999 USD, commission=0.02 USD, liquidity_side=TAKER, ts_event=1800005400000000000)[0m
+[1m2027-01-15T09:30:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] PositionClosed(instrument_id=AUDUSD.OANDA, position_id=AUDUSD.OANDA-Sma3Strategy-000, account_id=OANDA-001, opening_order_id=O-20270115-084500-001-000-1, closing_order_id=O-20270115-093000-001-000-2, entry=BUY, side=FLAT, signed_qty=0.0, quantity=0, peak_qty=10, currency=USD, avg_px_open=100.500009, avg_px_close=101.999991, realized_return=0.01493, realized_pnl=14.96 USD, unrealized_pnl=0.00 USD, ts_opened=1800002700000000000, ts_last=1800005400000000000, ts_closed=1800005400000000000, duration_ns=2700000000000)[0m
+[1m2027-01-15T10:00:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderInitialized(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-100000-001-000-3, side=BUY, type=MARKET, quantity=10, time_in_force=GTC, post_only=False, reduce_only=False, quote_quantity=False, options={}, emulation_trigger=NO_TRIGGER, trigger_instrument_id=None, contingency_type=NO_CONTINGENCY, order_list_id=None, linked_order_ids=None, parent_order_id=None, exec_algorithm_id=None, exec_algorithm_params=None, exec_spawn_id=None, tags=None)[0m
+[1m2027-01-15T10:00:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: [CMD]--> [Risk] SubmitOrder(order=MarketOrder(BUY 10 AUDUSD.OANDA MARKET GTC, status=INITIALIZED, client_order_id=O-20270115-100000-001-000-3, venue_order_id=None, position_id=None, tags=None), position_id=None)[0m
+[1m2027-01-15T10:00:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderSubmitted(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-100000-001-000-3, account_id=OANDA-001, ts_event=1800007200000000000)[0m
+[1m2027-01-15T10:00:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_init=0.00 USD[0m
+[1m2027-01-15T10:00:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA account=OANDA-001 net_position=1[0m
+[1m2027-01-15T10:00:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_maint=0.30 USD[0m
+[1m2027-01-15T10:00:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: Updated AccountState(account_id=OANDA-001, account_type=MARGIN, base_currency=None, is_reported=False, balances=[AccountBalance(total=2_014.96 USD, locked=0.30 USD, free=2_014.66 USD)], margins=[MarginBalance(initial=0.00 USD, maintenance=0.30 USD, instrument_id=AUDUSD.OANDA)], event_id=01472346-8f11-43f1-9c42-252b7af7be91)[0m
+[1m2027-01-15T10:00:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderFilled(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-100000-001-000-3, venue_order_id=OANDA-1-003, account_id=OANDA-001, trade_id=T-242de20895fc2426-005, position_id=AUDUSD.OANDA-Sma3Strategy-000, order_side=BUY, order_type=MARKET, last_qty=1, last_px=101.50000 USD, commission=0.00 USD, liquidity_side=TAKER, ts_event=1800007200000000000)[0m
+[1m2027-01-15T10:00:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] PositionOpened(instrument_id=AUDUSD.OANDA, position_id=AUDUSD.OANDA-Sma3Strategy-000, account_id=OANDA-001, opening_order_id=O-20270115-100000-001-000-3, closing_order_id=None, entry=BUY, side=LONG, signed_qty=1.0, quantity=1, peak_qty=1, currency=USD, avg_px_open=101.5, avg_px_close=0.0, realized_return=0.00000, realized_pnl=0.00 USD, unrealized_pnl=0.00 USD, ts_opened=1800007200000000000, ts_last=1800007200000000000, ts_closed=0, duration_ns=0)[0m
+[1m2027-01-15T10:00:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_init=0.00 USD[0m
+[1m2027-01-15T10:00:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA account=OANDA-001 net_position=10[0m
+[1m2027-01-15T10:00:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_maint=3.05 USD[0m
+[1m2027-01-15T10:00:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: Updated AccountState(account_id=OANDA-001, account_type=MARGIN, base_currency=None, is_reported=False, balances=[AccountBalance(total=2_014.94 USD, locked=3.05 USD, free=2_011.89 USD)], margins=[MarginBalance(initial=0.00 USD, maintenance=3.05 USD, instrument_id=AUDUSD.OANDA)], event_id=9dc05888-7eb5-4ca6-b86c-daae5f659894)[0m
+[1m2027-01-15T10:00:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderFilled(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-100000-001-000-3, venue_order_id=OANDA-1-003, account_id=OANDA-001, trade_id=T-242de20895fc2426-006, position_id=AUDUSD.OANDA-Sma3Strategy-000, order_side=BUY, order_type=MARKET, last_qty=9, last_px=101.50001 USD, commission=0.02 USD, liquidity_side=TAKER, ts_event=1800007200000000000)[0m
+[1m2027-01-15T10:00:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] PositionChanged(instrument_id=AUDUSD.OANDA, position_id=AUDUSD.OANDA-Sma3Strategy-000, account_id=OANDA-001, opening_order_id=O-20270115-100000-001-000-3, closing_order_id=None, entry=BUY, side=LONG, signed_qty=10.0, quantity=10, peak_qty=10, currency=USD, avg_px_open=101.500009, avg_px_close=0.0, realized_return=0.00000, realized_pnl=-0.02 USD, unrealized_pnl=0.00 USD, ts_opened=1800007200000000000, ts_last=1800007200000000000, ts_closed=0, duration_ns=0)[0m
+[1m2027-01-15T10:30:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderInitialized(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-103000-001-000-4, side=SELL, type=MARKET, quantity=10, time_in_force=GTC, post_only=False, reduce_only=False, quote_quantity=False, options={}, emulation_trigger=NO_TRIGGER, trigger_instrument_id=None, contingency_type=NO_CONTINGENCY, order_list_id=None, linked_order_ids=None, parent_order_id=None, exec_algorithm_id=None, exec_algorithm_params=None, exec_spawn_id=None, tags=None)[0m
+[1m2027-01-15T10:30:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: [CMD]--> [Risk] SubmitOrder(order=MarketOrder(SELL 10 AUDUSD.OANDA MARKET GTC, status=INITIALIZED, client_order_id=O-20270115-103000-001-000-4, venue_order_id=None, position_id=None, tags=None), position_id=None)[0m
+[1m2027-01-15T10:30:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderSubmitted(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-103000-001-000-4, account_id=OANDA-001, ts_event=1800009000000000000)[0m
+[1m2027-01-15T10:30:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_init=0.00 USD[0m
+[1m2027-01-15T10:30:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA account=OANDA-001 net_position=9[0m
+[1m2027-01-15T10:30:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_maint=2.74 USD[0m
+[1m2027-01-15T10:30:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: Updated AccountState(account_id=OANDA-001, account_type=MARGIN, base_currency=None, is_reported=False, balances=[AccountBalance(total=2_016.44 USD, locked=2.74 USD, free=2_013.70 USD)], margins=[MarginBalance(initial=0.00 USD, maintenance=2.74 USD, instrument_id=AUDUSD.OANDA)], event_id=7cb30f87-7251-4a13-addd-46595ed00eec)[0m
+[1m2027-01-15T10:30:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderFilled(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-103000-001-000-4, venue_order_id=OANDA-1-004, account_id=OANDA-001, trade_id=T-b1bd33ef08618607-007, position_id=AUDUSD.OANDA-Sma3Strategy-000, order_side=SELL, order_type=MARKET, last_qty=1, last_px=103.00000 USD, commission=0.00 USD, liquidity_side=TAKER, ts_event=1800009000000000000)[0m
+[1m2027-01-15T10:30:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] PositionChanged(instrument_id=AUDUSD.OANDA, position_id=AUDUSD.OANDA-Sma3Strategy-000, account_id=OANDA-001, opening_order_id=O-20270115-100000-001-000-3, closing_order_id=None, entry=BUY, side=LONG, signed_qty=9.0, quantity=9, peak_qty=10, currency=USD, avg_px_open=101.500009, avg_px_close=103.0, realized_return=0.01478, realized_pnl=1.48 USD, unrealized_pnl=13.50 USD, ts_opened=1800007200000000000, ts_last=1800009000000000000, ts_closed=0, duration_ns=0)[0m
+[1m2027-01-15T10:30:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_init=0.00 USD[0m
+[1m2027-01-15T10:30:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_maint=0.00 USD[0m
+[1m2027-01-15T10:30:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: Updated AccountState(account_id=OANDA-001, account_type=MARGIN, base_currency=None, is_reported=False, balances=[AccountBalance(total=2_029.92 USD, locked=0.00 USD, free=2_029.92 USD)], margins=[], event_id=90eac8ab-d3c8-4ec4-b72d-88d5ca7d7dfc)[0m
+[1m2027-01-15T10:30:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderFilled(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-103000-001-000-4, venue_order_id=OANDA-1-004, account_id=OANDA-001, trade_id=T-b1bd33ef08618607-008, position_id=AUDUSD.OANDA-Sma3Strategy-000, order_side=SELL, order_type=MARKET, last_qty=9, last_px=102.99999 USD, commission=0.02 USD, liquidity_side=TAKER, ts_event=1800009000000000000)[0m
+[1m2027-01-15T10:30:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] PositionClosed(instrument_id=AUDUSD.OANDA, position_id=AUDUSD.OANDA-Sma3Strategy-000, account_id=OANDA-001, opening_order_id=O-20270115-100000-001-000-3, closing_order_id=O-20270115-103000-001-000-4, entry=BUY, side=FLAT, signed_qty=0.0, quantity=0, peak_qty=10, currency=USD, avg_px_open=101.500009, avg_px_close=102.999991, realized_return=0.01478, realized_pnl=14.96 USD, unrealized_pnl=0.00 USD, ts_opened=1800007200000000000, ts_last=1800009000000000000, ts_closed=1800009000000000000, duration_ns=1800000000000)[0m
+[1m2027-01-15T11:15:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderInitialized(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-111500-001-000-5, side=BUY, type=MARKET, quantity=10, time_in_force=GTC, post_only=False, reduce_only=False, quote_quantity=False, options={}, emulation_trigger=NO_TRIGGER, trigger_instrument_id=None, contingency_type=NO_CONTINGENCY, order_list_id=None, linked_order_ids=None, parent_order_id=None, exec_algorithm_id=None, exec_algorithm_params=None, exec_spawn_id=None, tags=None)[0m
+[1m2027-01-15T11:15:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: [CMD]--> [Risk] SubmitOrder(order=MarketOrder(BUY 10 AUDUSD.OANDA MARKET GTC, status=INITIALIZED, client_order_id=O-20270115-111500-001-000-5, venue_order_id=None, position_id=None, tags=None), position_id=None)[0m
+[1m2027-01-15T11:15:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderSubmitted(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-111500-001-000-5, account_id=OANDA-001, ts_event=1800011700000000000)[0m
+[1m2027-01-15T11:15:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_init=0.00 USD[0m
+[1m2027-01-15T11:15:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA account=OANDA-001 net_position=1[0m
+[1m2027-01-15T11:15:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_maint=0.30 USD[0m
+[1m2027-01-15T11:15:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: Updated AccountState(account_id=OANDA-001, account_type=MARGIN, base_currency=None, is_reported=False, balances=[AccountBalance(total=2_029.92 USD, locked=0.30 USD, free=2_029.62 USD)], margins=[MarginBalance(initial=0.00 USD, maintenance=0.30 USD, instrument_id=AUDUSD.OANDA)], event_id=9454aa50-6e30-4093-8fd4-36aa22a64a93)[0m
+[1m2027-01-15T11:15:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderFilled(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-111500-001-000-5, venue_order_id=OANDA-1-005, account_id=OANDA-001, trade_id=T-36bf7fe624f84842-009, position_id=AUDUSD.OANDA-Sma3Strategy-000, order_side=BUY, order_type=MARKET, last_qty=1, last_px=101.50000 USD, commission=0.00 USD, liquidity_side=TAKER, ts_event=1800011700000000000)[0m
+[1m2027-01-15T11:15:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] PositionOpened(instrument_id=AUDUSD.OANDA, position_id=AUDUSD.OANDA-Sma3Strategy-000, account_id=OANDA-001, opening_order_id=O-20270115-111500-001-000-5, closing_order_id=None, entry=BUY, side=LONG, signed_qty=1.0, quantity=1, peak_qty=1, currency=USD, avg_px_open=101.5, avg_px_close=0.0, realized_return=0.00000, realized_pnl=0.00 USD, unrealized_pnl=0.00 USD, ts_opened=1800011700000000000, ts_last=1800011700000000000, ts_closed=0, duration_ns=0)[0m
+[1m2027-01-15T11:15:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_init=0.00 USD[0m
+[1m2027-01-15T11:15:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA account=OANDA-001 net_position=10[0m
+[1m2027-01-15T11:15:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_maint=3.05 USD[0m
+[1m2027-01-15T11:15:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: Updated AccountState(account_id=OANDA-001, account_type=MARGIN, base_currency=None, is_reported=False, balances=[AccountBalance(total=2_029.90 USD, locked=3.05 USD, free=2_026.85 USD)], margins=[MarginBalance(initial=0.00 USD, maintenance=3.05 USD, instrument_id=AUDUSD.OANDA)], event_id=df61b0a1-8363-4e77-9858-1a3eff09fa7b)[0m
+[1m2027-01-15T11:15:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderFilled(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-111500-001-000-5, venue_order_id=OANDA-1-005, account_id=OANDA-001, trade_id=T-36bf7fe624f84842-010, position_id=AUDUSD.OANDA-Sma3Strategy-000, order_side=BUY, order_type=MARKET, last_qty=9, last_px=101.50001 USD, commission=0.02 USD, liquidity_side=TAKER, ts_event=1800011700000000000)[0m
+[1m2027-01-15T11:15:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] PositionChanged(instrument_id=AUDUSD.OANDA, position_id=AUDUSD.OANDA-Sma3Strategy-000, account_id=OANDA-001, opening_order_id=O-20270115-111500-001-000-5, closing_order_id=None, entry=BUY, side=LONG, signed_qty=10.0, quantity=10, peak_qty=10, currency=USD, avg_px_open=101.500009, avg_px_close=0.0, realized_return=0.00000, realized_pnl=-0.02 USD, unrealized_pnl=0.00 USD, ts_opened=1800011700000000000, ts_last=1800011700000000000, ts_closed=0, duration_ns=0)[0m
+[1m2027-01-15T12:00:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderInitialized(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-120000-001-000-6, side=SELL, type=MARKET, quantity=10, time_in_force=GTC, post_only=False, reduce_only=False, quote_quantity=False, options={}, emulation_trigger=NO_TRIGGER, trigger_instrument_id=None, contingency_type=NO_CONTINGENCY, order_list_id=None, linked_order_ids=None, parent_order_id=None, exec_algorithm_id=None, exec_algorithm_params=None, exec_spawn_id=None, tags=None)[0m
+[1m2027-01-15T12:00:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: [CMD]--> [Risk] SubmitOrder(order=MarketOrder(SELL 10 AUDUSD.OANDA MARKET GTC, status=INITIALIZED, client_order_id=O-20270115-120000-001-000-6, venue_order_id=None, position_id=None, tags=None), position_id=None)[0m
+[1m2027-01-15T12:00:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderSubmitted(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-120000-001-000-6, account_id=OANDA-001, ts_event=1800014400000000000)[0m
+[1m2027-01-15T12:00:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_init=0.00 USD[0m
+[1m2027-01-15T12:00:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA account=OANDA-001 net_position=9[0m
+[1m2027-01-15T12:00:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_maint=2.74 USD[0m
+[1m2027-01-15T12:00:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: Updated AccountState(account_id=OANDA-001, account_type=MARGIN, base_currency=None, is_reported=False, balances=[AccountBalance(total=2_031.90 USD, locked=2.74 USD, free=2_029.16 USD)], margins=[MarginBalance(initial=0.00 USD, maintenance=2.74 USD, instrument_id=AUDUSD.OANDA)], event_id=3ec7b1cd-5c44-4de9-be0c-62cbb4b38a3f)[0m
+[1m2027-01-15T12:00:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderFilled(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-120000-001-000-6, venue_order_id=OANDA-1-006, account_id=OANDA-001, trade_id=T-0dd2531bdf1ed723-011, position_id=AUDUSD.OANDA-Sma3Strategy-000, order_side=SELL, order_type=MARKET, last_qty=1, last_px=103.50000 USD, commission=0.00 USD, liquidity_side=TAKER, ts_event=1800014400000000000)[0m
+[1m2027-01-15T12:00:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] PositionChanged(instrument_id=AUDUSD.OANDA, position_id=AUDUSD.OANDA-Sma3Strategy-000, account_id=OANDA-001, opening_order_id=O-20270115-111500-001-000-5, closing_order_id=None, entry=BUY, side=LONG, signed_qty=9.0, quantity=9, peak_qty=10, currency=USD, avg_px_open=101.500009, avg_px_close=103.5, realized_return=0.01970, realized_pnl=1.98 USD, unrealized_pnl=18.00 USD, ts_opened=1800011700000000000, ts_last=1800014400000000000, ts_closed=0, duration_ns=0)[0m
+[1m2027-01-15T12:00:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_init=0.00 USD[0m
+[1m2027-01-15T12:00:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: AUDUSD.OANDA margin_maint=0.00 USD[0m
+[1m2027-01-15T12:00:00.000000000Z[0m [INFO] BACKTESTER-001.Portfolio: Updated AccountState(account_id=OANDA-001, account_type=MARGIN, base_currency=None, is_reported=False, balances=[AccountBalance(total=2_049.88 USD, locked=0.00 USD, free=2_049.88 USD)], margins=[], event_id=59c32924-9ac4-4558-8c1d-63c4305b646b)[0m
+[1m2027-01-15T12:00:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] OrderFilled(instrument_id=AUDUSD.OANDA, client_order_id=O-20270115-120000-001-000-6, venue_order_id=OANDA-1-006, account_id=OANDA-001, trade_id=T-0dd2531bdf1ed723-012, position_id=AUDUSD.OANDA-Sma3Strategy-000, order_side=SELL, order_type=MARKET, last_qty=9, last_px=103.49999 USD, commission=0.02 USD, liquidity_side=TAKER, ts_event=1800014400000000000)[0m
+[1m2027-01-15T12:00:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: <--[EVT] PositionClosed(instrument_id=AUDUSD.OANDA, position_id=AUDUSD.OANDA-Sma3Strategy-000, account_id=OANDA-001, opening_order_id=O-20270115-111500-001-000-5, closing_order_id=O-20270115-120000-001-000-6, entry=BUY, side=FLAT, signed_qty=0.0, quantity=0, peak_qty=10, currency=USD, avg_px_open=101.500009, avg_px_close=103.499991, realized_return=0.01970, realized_pnl=19.96 USD, unrealized_pnl=0.00 USD, ts_opened=1800011700000000000, ts_last=1800014400000000000, ts_closed=1800014400000000000, duration_ns=2700000000000)[0m
+[1m2027-01-15T14:00:00.000000000Z[0m [1;33m[WARN] BACKTESTER-001.Sma3Strategy: The `Strategy.on_stop` handler was called when not overridden. It's expected that any actions required when stopping the strategy occur here, such as unsubscribing from data[0m
+[1m2027-01-15T14:00:00.000000000Z[0m [INFO] BACKTESTER-001.Sma3Strategy: STOPPED[0m
+[1m2027-01-15T14:00:00.000000000Z[0m [INFO] BACKTESTER-001.BACKTESTER-001: STOPPED[0m
+[1m2027-01-15T14:00:00.000000000Z[0m [INFO] BACKTESTER-001.DataClient-OANDA: Disconnecting...[0m
+[1m2027-01-15T14:00:00.000000000Z[0m [INFO] BACKTESTER-001.DataClient-OANDA: Disconnected[0m
+[1m2027-01-15T14:00:00.000000000Z[0m [INFO] BACKTESTER-001.DataClient-OANDA: STOPPED[0m
+[1m2027-01-15T14:00:00.000000000Z[0m [INFO] BACKTESTER-001.DataEngine: STOPPED[0m
+[1m2027-01-15T14:00:00.000000000Z[0m [INFO] BACKTESTER-001.RiskEngine: STOPPED[0m
+[1m2027-01-15T14:00:00.000000000Z[0m [INFO] BACKTESTER-001.ExecClient-OANDA: Disconnecting...[0m
+[1m2027-01-15T14:00:00.000000000Z[0m [INFO] BACKTESTER-001.ExecClient-OANDA: Disconnected[0m
+[1m2027-01-15T14:00:00.000000000Z[0m [INFO] BACKTESTER-001.ExecClient-OANDA: STOPPED[0m
+[1m2027-01-15T14:00:00.000000000Z[0m [INFO] BACKTESTER-001.ExecEngine: STOPPED[0m
+[1m2027-01-15T14:00:00.000000000Z[0m [INFO] BACKTESTER-001.OrderEmulator: STOPPED[0m
+C:\Users\RZ1\Desktop\RZ\260927-VCT-Trading\docs\evidence\G3\selection\a2-engines\nt_eval2.py:113: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  engine.run(start=dt.datetime(2027, 1, 1, tzinfo=dt.timezone.utc), end=dt.datetime(2027, 12, 31, tzinfo=dt.timezone.utc))
+[1m2026-09-30T03:27:11.398063100Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m=================================================================[0m
+[1m2026-09-30T03:27:11.398078400Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m BACKTEST POST-RUN[0m
+[1m2026-09-30T03:27:11.398080400Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m=================================================================[0m
+[1m2026-09-30T03:27:11.398082100Z[0m [INFO] BACKTESTER-001.BacktestEngine: Run config ID:  None[0m
+[1m2026-09-30T03:27:11.398086800Z[0m [INFO] BACKTESTER-001.BacktestEngine: Run ID:         e6bb8731-d633-4f57-90e2-d8926b812340[0m
+[1m2026-09-30T03:27:11.398100400Z[0m [INFO] BACKTESTER-001.BacktestEngine: Run started:    2026-09-30T03:27:11.369922000Z[0m
+[1m2026-09-30T03:27:11.398104300Z[0m [INFO] BACKTESTER-001.BacktestEngine: Run finished:   2026-09-30T03:27:11.397837000Z[0m
+[1m2026-09-30T03:27:11.398148900Z[0m [INFO] BACKTESTER-001.BacktestEngine: Elapsed time:   0 days 00:00:00.027915[0m
+[1m2026-09-30T03:27:11.398155700Z[0m [INFO] BACKTESTER-001.BacktestEngine: Backtest start: 2027-01-01T00:00:00.000000000Z[0m
+[1m2026-09-30T03:27:11.398158700Z[0m [INFO] BACKTESTER-001.BacktestEngine: Backtest end:   2027-01-15T14:00:00.000000000Z[0m
+[1m2026-09-30T03:27:11.398177100Z[0m [INFO] BACKTESTER-001.BacktestEngine: Backtest range: 14 days 14:00:00[0m
+[1m2026-09-30T03:27:11.398181600Z[0m [INFO] BACKTESTER-001.BacktestEngine: Iterations: 48[0m
+[1m2026-09-30T03:27:11.398187600Z[0m [INFO] BACKTESTER-001.BacktestEngine: Total events: 18[0m
+[1m2026-09-30T03:27:11.398210200Z[0m [INFO] BACKTESTER-001.BacktestEngine: Total orders: 6[0m
+[1m2026-09-30T03:27:11.398713800Z[0m [INFO] BACKTESTER-001.BacktestEngine: Total positions: 3[0m
+[1m2026-09-30T03:27:11.398735600Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m=================================================================[0m
+[1m2026-09-30T03:27:11.398742400Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m SimulatedVenue OANDA[0m
+[1m2026-09-30T03:27:11.398744100Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m=================================================================[0m
+[1m2026-09-30T03:27:11.398755100Z[0m [INFO] BACKTESTER-001.BacktestEngine: MarginAccount(id=OANDA-001, type=MARGIN, base=None)[0m
+[1m2026-09-30T03:27:11.398756900Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m-----------------------------------------------------------------[0m
+[1m2026-09-30T03:27:11.398759500Z[0m [INFO] BACKTESTER-001.BacktestEngine: Balances starting:[0m
+[1m2026-09-30T03:27:11.398790600Z[0m [INFO] BACKTESTER-001.BacktestEngine: 2_000.00 USD[0m
+[1m2026-09-30T03:27:11.398793700Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m-----------------------------------------------------------------[0m
+[1m2026-09-30T03:27:11.398794900Z[0m [INFO] BACKTESTER-001.BacktestEngine: Balances ending:[0m
+[1m2026-09-30T03:27:11.398807700Z[0m [INFO] BACKTESTER-001.BacktestEngine: 2_049.88 USD[0m
+[1m2026-09-30T03:27:11.398809900Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m-----------------------------------------------------------------[0m
+[1m2026-09-30T03:27:11.398811100Z[0m [INFO] BACKTESTER-001.BacktestEngine: Commissions:[0m
+[1m2026-09-30T03:27:11.398835100Z[0m [INFO] BACKTESTER-001.BacktestEngine: -0.12 USD[0m
+[1m2026-09-30T03:27:11.398837600Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m-----------------------------------------------------------------[0m
+[1m2026-09-30T03:27:11.398838900Z[0m [INFO] BACKTESTER-001.BacktestEngine: Unrealized PnLs (included in totals):[0m
+[1m2026-09-30T03:27:11.398860800Z[0m [INFO] BACKTESTER-001.BacktestEngine: None[0m
+[1m2026-09-30T03:27:11.398863400Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m=================================================================[0m
+[1m2026-09-30T03:27:11.398865300Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m PORTFOLIO PERFORMANCE[0m
+[1m2026-09-30T03:27:11.398866400Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m=================================================================[0m
+[1m2026-09-30T03:27:11.414032700Z[0m [INFO] BACKTESTER-001.BacktestEngine:  PnL Statistics (USD)[0m
+[1m2026-09-30T03:27:11.414056400Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m-----------------------------------------------------------------[0m
+[1m2026-09-30T03:27:11.415810800Z[0m [INFO] BACKTESTER-001.BacktestEngine: PnL (total):                    49.88[0m
+[1m2026-09-30T03:27:11.415832500Z[0m [INFO] BACKTESTER-001.BacktestEngine: PnL% (total):                   2.4940000000000055[0m
+[1m2026-09-30T03:27:11.415834200Z[0m [INFO] BACKTESTER-001.BacktestEngine: Max Winner:                     19.96[0m
+[1m2026-09-30T03:27:11.415836700Z[0m [INFO] BACKTESTER-001.BacktestEngine: Avg Winner:                     16.62666666666667[0m
+[1m2026-09-30T03:27:11.415837600Z[0m [INFO] BACKTESTER-001.BacktestEngine: Min Winner:                     14.96[0m
+[1m2026-09-30T03:27:11.415838500Z[0m [INFO] BACKTESTER-001.BacktestEngine: Min Loser:                      nan[0m
+[1m2026-09-30T03:27:11.415839300Z[0m [INFO] BACKTESTER-001.BacktestEngine: Avg Loser:                      nan[0m
+[1m2026-09-30T03:27:11.415840000Z[0m [INFO] BACKTESTER-001.BacktestEngine: Max Loser:                      nan[0m
+[1m2026-09-30T03:27:11.415840800Z[0m [INFO] BACKTESTER-001.BacktestEngine: Expectancy:                     16.62666666666667[0m
+[1m2026-09-30T03:27:11.415841700Z[0m [INFO] BACKTESTER-001.BacktestEngine: Win Rate:                       1.0[0m
+[1m2026-09-30T03:27:11.415845100Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m-----------------------------------------------------------------[0m
+[1m2026-09-30T03:27:11.415846800Z[0m [INFO] BACKTESTER-001.BacktestEngine:  Returns Statistics[0m
+[1m2026-09-30T03:27:11.415848100Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m-----------------------------------------------------------------[0m
+[1m2026-09-30T03:27:11.418052200Z[0m [INFO] BACKTESTER-001.BacktestEngine: Returns Volatility (252 days):  0.10581145873675482[0m
+[1m2026-09-30T03:27:11.418158500Z[0m [INFO] BACKTESTER-001.BacktestEngine: Average (Return):               0.0017814285714285688[0m
+[1m2026-09-30T03:27:11.418194200Z[0m [INFO] BACKTESTER-001.BacktestEngine: Average Loss (Return):          nan[0m
+[1m2026-09-30T03:27:11.418209000Z[0m [INFO] BACKTESTER-001.BacktestEngine: Average Win (Return):           0.024939999999999962[0m
+[1m2026-09-30T03:27:11.418210900Z[0m [INFO] BACKTESTER-001.BacktestEngine: Sharpe Ratio (252 days):        4.242640687119285[0m
+[1m2026-09-30T03:27:11.418211800Z[0m [INFO] BACKTESTER-001.BacktestEngine: Sortino Ratio (252 days):       nan[0m
+[1m2026-09-30T03:27:11.418212900Z[0m [INFO] BACKTESTER-001.BacktestEngine: Profit Factor:                  nan[0m
+[1m2026-09-30T03:27:11.418214100Z[0m [INFO] BACKTESTER-001.BacktestEngine: Risk Return Ratio:              0.26726124191242434[0m
+[1m2026-09-30T03:27:11.418219100Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m-----------------------------------------------------------------[0m
+[1m2026-09-30T03:27:11.418221100Z[0m [INFO] BACKTESTER-001.BacktestEngine:  General Statistics[0m
+[1m2026-09-30T03:27:11.418223000Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m-----------------------------------------------------------------[0m
+[1m2026-09-30T03:27:11.418321300Z[0m [INFO] BACKTESTER-001.BacktestEngine: Long Ratio:                     1.0[0m
+[1m2026-09-30T03:27:11.418324200Z[0m [INFO] BACKTESTER-001.BacktestEngine: [36m-----------------------------------------------------------------[0m
+NT-RESULT {
+ "nt_version": "1.231.0",
+ "fill_count_run1": 6,
+ "fill_count_run2": 6,
+ "deterministic": true,
+ "fills_run1": [
+  {
+   "side": "BUY",
+   "qty": "10",
+   "avg_px": 100.500009,
+   "ts_last": "2027-01-15 08:45:00+00:00",
+   "commissions": "['0.02 USD']",
+   "slippage": 0.0
+  },
+  {
+   "side": "SELL",
+   "qty": "10",
+   "avg_px": 101.999991,
+   "ts_last": "2027-01-15 09:30:00+00:00",
+   "commissions": "['0.02 USD']",
+   "slippage": 0.0
+  },
+  {
+   "side": "BUY",
+   "qty": "10",
+   "avg_px": 101.500009,
+   "ts_last": "2027-01-15 10:00:00+00:00",
+   "commissions": "['0.02 USD']",
+   "slippage": 0.0
+  },
+  {
+   "side": "SELL",
+   "qty": "10",
+   "avg_px": 102.999991,
+   "ts_last": "2027-01-15 10:30:00+00:00",
+   "commissions": "['0.02 USD']",
+   "slippage": 0.0
+  },
+  {
+   "side": "BUY",
+   "qty": "10",
+   "avg_px": 101.500009,
+   "ts_last": "2027-01-15 11:15:00+00:00",
+   "commissions": "['0.02 USD']",
+   "slippage": 0.0
+  },
+  {
+   "side": "SELL",
+   "qty": "10",
+   "avg_px": 103.499991,
+   "ts_last": "2027-01-15 12:00:00+00:00",
+   "commissions": "['0.02 USD']",
+   "slippage": 0.0
+  }
+ ],
+ "balances_run1": [
+  "locked=0.00",
+  "free=2049.88"
+ ]
+}

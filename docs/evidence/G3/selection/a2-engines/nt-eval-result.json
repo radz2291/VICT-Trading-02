@@ -1,0 +1,60 @@
+{
+  "nt_version": "1.231.0",
+  "fill_count_run1": 6,
+  "fill_count_run2": 6,
+  "deterministic": true,
+  "fills_run1": [
+    {
+      "side": "BUY",
+      "qty": "10",
+      "avg_px": 100.500009,
+      "ts_last": "2027-01-15 08:45:00+00:00",
+      "commissions": "['0.02 USD']",
+      "slippage": 0
+    },
+    {
+      "side": "SELL",
+      "qty": "10",
+      "avg_px": 101.999991,
+      "ts_last": "2027-01-15 09:30:00+00:00",
+      "commissions": "['0.02 USD']",
+      "slippage": 0
+    },
+    {
+      "side": "BUY",
+      "qty": "10",
+      "avg_px": 101.500009,
+      "ts_last": "2027-01-15 10:00:00+00:00",
+      "commissions": "['0.02 USD']",
+      "slippage": 0
+    },
+    {
+      "side": "SELL",
+      "qty": "10",
+      "avg_px": 102.999991,
+      "ts_last": "2027-01-15 10:30:00+00:00",
+      "commissions": "['0.02 USD']",
+      "slippage": 0
+    },
+    {
+      "side": "BUY",
+      "qty": "10",
+      "avg_px": 101.500009,
+      "ts_last": "2027-01-15 11:15:00+00:00",
+      "commissions": "['0.02 USD']",
+      "slippage": 0
+    },
+    {
+      "side": "SELL",
+      "qty": "10",
+      "avg_px": 103.499991,
+      "ts_last": "2027-01-15 12:00:00+00:00",
+      "commissions": "['0.02 USD']",
+      "slippage": 0
+    }
+  ],
+  "balances_run1": [
+    "locked=0.00",
+    "free=2049.88"
+  ]
+}
