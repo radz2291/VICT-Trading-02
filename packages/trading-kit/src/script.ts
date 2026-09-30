@@ -98,11 +98,50 @@ export const DRIVER_SOURCE = `
     kitFatal('SCRIPT_CONTRACT_INVALID', 'script must define function onBar(bar, api)');
   }
   var count = Number(callHost('barCount', '{}').count);
-  var inputs = callHost('inputs', '{}').inputs || {};
+  // Per-granularity served-prefix cache. The run cursor only advances, so the
+  // available prefix (bars with close <= cursor close) grows MONOTONICALLY
+  // during a run: extending a cached prefix via __vict_barsSince is exactly
+  // equivalent to re-querying, and the cache can never contain a bar whose
+  // close is beyond the current bar's close (the cursor is host state).
+  // Mutating a returned array corrupts only this script's own cached view —
+  // deterministic and self-inflicted; documented in the kit README.
+  var __cache = {};
+  function servedSlice(granularity, until) {
+    var g = granularity || '';
+    var c = __cache[g];
+    if (!c) {
+      var first = callHost('bars', JSON.stringify({ granularity: g }));
+      c = { bars: first.bars, servedUntil: first.servedUntil, last: first.bars.length ? first.bars[first.bars.length - 1].time : -1 };
+      __cache[g] = c;
+    } else {
+      var ext = callHost('barsSince', JSON.stringify({ granularity: g, since: c.last }));
+      for (var k = 0; k < ext.bars.length; k++) c.bars.push(ext.bars[k]);
+      if (ext.bars.length) c.last = ext.bars[ext.bars.length - 1].time;
+      c.servedUntil = ext.servedUntil;
+    }
+    var servedUntil = c.servedUntil;
+    var arr = c.bars;
+    var capped = false;
+    if (until !== null && until !== undefined && Number(until) > servedUntil) {
+      // capped request: routed to the host so the request/served record is
+      // authoritative (R1 evidence) — the host serves the same capped prefix
+      return callHost('bars', JSON.stringify({ until: Number(until), granularity: g }));
+    }
+    if (until !== null && until !== undefined) {
+      var lim = Number(until);
+      capped = servedUntil < lim;
+      var hi = arr.length;
+      var lo = 0;
+      while (lo < hi) { var mid = (lo + hi) >> 1; if (arr[mid].time <= lim) lo = mid + 1; else hi = mid; }
+      arr = arr.slice(0, lo);
+      servedUntil = Math.min(servedUntil, lim);
+    }
+    return { bars: arr, servedUntil: servedUntil, requestedUntil: until === undefined || until === null ? null : Number(until), capped: capped };
+  }
   var api = {
     bars: function (q) {
       q = q || {};
-      return callHost('bars', JSON.stringify({ until: q.until === undefined || q.until === null ? null : Number(q.until), granularity: q.granularity ? String(q.granularity) : '' }));
+      return servedSlice(q.granularity ? String(q.granularity) : '', q.until === undefined || q.until === null ? null : Number(q.until));
     },
     availability: function (granularity) {
       return callHost('availability', JSON.stringify({ granularity: granularity ? String(granularity) : '' })).missing;
@@ -125,7 +164,6 @@ export const DRIVER_SOURCE = `
       return callHost('state', '{}');
     }
   };
-  void inputs;
   for (var i = 0; i < count; i++) {
     var bar = callHost('barAt', JSON.stringify({ index: i }));
     onBar(bar, api);

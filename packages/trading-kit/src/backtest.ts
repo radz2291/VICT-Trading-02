@@ -295,6 +295,21 @@ export async function runBacktest(config: BacktestConfig): Promise<BacktestResul
 				return kitFatalJson('SCRIPT_ERROR', `api.bars failed: ${(e as Error).message}`);
 			}
 		},
+		// monotonic cache extension: everything beyond `since`, still capped at
+		// the current cursor by the data session (the guest cache can never
+		// observe a bar beyond the current bar's close through this)
+		barsSince: (argsJson) => {
+			try {
+				const req = JSON.parse(argsJson) as { granularity: string; since: number };
+				const granularity = (req.granularity && req.granularity.length ? req.granularity : config.timeframe) as Granularity;
+				const since = Number(req.since);
+				const res = ds.bars({ until: null, granularity });
+				const fresh = res.bars.filter((b) => b.time > since);
+				return JSON.stringify({ bars: fresh, servedUntil: res.servedUntil });
+			} catch (e) {
+				return kitFatalJson('SCRIPT_ERROR', `api.barsSince failed: ${(e as Error).message}`);
+			}
+		},
 		availability: () => {
 			try {
 				return JSON.stringify({ missing: ds.availabilityAt() });
