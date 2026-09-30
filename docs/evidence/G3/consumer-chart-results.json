@@ -1,0 +1,42 @@
+{
+  "steps": {
+    "pack": {
+      "ok": true,
+      "tarball": "vict-trading-chart-workspace-0.1.2.tgz",
+      "sha512": "32e4f929d6d9462f323d2580a400f0276a5cdcaa061acd4475d3f751fe59ae17bb0b37513dda973d62a53d827ecdc73657da782e74443aaa820f4e83a77bf39e",
+      "bytes": 20094
+    },
+    "consumer-install": {
+      "ok": true,
+      "consumerRoot": "C:/Users/RZ1/Desktop/RZ/g3-chart-consumer",
+      "version": "0.1.2",
+      "lwcPresent": true
+    },
+    "consumer-page": {
+      "ok": true,
+      "bundled": true
+    },
+    "consumer-browser-proof": {
+      "ok": true,
+      "checks": {
+        "ok": true,
+        "chartOk": true,
+        "hasAddOverlay": true,
+        "candlePixels": 3834,
+        "bluePixelsAfterAdd": 1195,
+        "stackedOrphanGone": true,
+        "replacedColorLive": true,
+        "oldHandleInert": true,
+        "removeClearsPixels": true,
+        "subPaneOk": true,
+        "removeOk": true,
+        "candlesStillRender": true
+      },
+      "pageErrors": []
+    },
+    "consumer-verdict": {
+      "ok": true,
+      "verdict": "PASS"
+    }
+  }
+}

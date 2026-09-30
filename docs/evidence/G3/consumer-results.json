@@ -6,15 +6,15 @@
     },
     "npm-pack": {
       "ok": true,
-      "tarball": "vict-trading-trading-kit-0.2.0.tgz",
-      "bytes": 44638,
-      "sha512": "a6d4b02a1f63be7359d7dfd6df535aaa327c7b6872ff417ddf94eed439030387507252b03667fbc0510bd5935bef5a9fce4fffb7b0fd4c78c1b2a0ff3caa01cb",
-      "sha256": "5775181fc134a7efb5ad81e06547521805a925b5bad8aaae203fadba76ffea56"
+      "tarball": "vict-trading-trading-kit-0.2.1.tgz",
+      "bytes": 48333,
+      "sha512": "12851cb4357103c8f49013899b3a0481b1f077077cdfa60e1a0a6e26278564c8d67555efa648ad38c0c373ec0ee82559bf305b67f84ca6d711f541c4b7e8f4ff",
+      "sha256": "b7cec2727ea3c267820e16d14b10f20ff1cedd37e387935a63732df624f812e7"
     },
     "consumer-outside-monorepo": {
       "ok": true,
       "consumerRoot": "C:/Users/RZ1/Desktop/RZ/g3-consumer",
-      "kitVersion": "0.2.0",
+      "kitVersion": "0.2.1",
       "quickjsDepInstalled": true
     },
     "consumer-install": {

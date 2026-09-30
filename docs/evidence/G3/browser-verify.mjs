@@ -133,11 +133,25 @@ await step('w5-fix-and-run', async () => {
 	await sleep(300);
 	const msg = await txt('[data-testid="run-message"]');
 	const overlayLegend = await txt('[data-testid="overlay-legend"]').catch(() => null);
+	const bluePixels = await page.evaluate(() => {
+		let count = 0;
+		for (const canvas of document.querySelectorAll('[data-testid="chart-container"] canvas')) {
+			try {
+				const c2 = canvas.getContext('2d');
+				const d = c2.getImageData(0, 0, canvas.width, canvas.height).data;
+				for (let i = 0; i < d.length; i += 4) {
+					if (d[i] === 0x4e && d[i + 1] === 0xa1 && d[i + 2] === 0xff) count++;
+				}
+			} catch {}
+		}
+		return count;
+	});
+	if (!(bluePixels > 50)) throw new Error('SMA overlay not visible on the chart pixels: ' + bluePixels);
 	const svgPaneGone = (await page.$('[data-testid="plot-svg"]')) === null;
 	const runs = JSON.parse(await lsGet('g3.runs.v1'));
 	const succeeded = runs.runs.filter((r) => r.status === 'succeeded');
 	const last = succeeded[succeeded.length - 1];
-	return { msg: msg.slice(0, 100), fills: last.stats.tradeCount, identity: last.id.slice(0, 12), tradesStored: last.trades.length, overlayLegendFound: !!overlayLegend && overlayLegend.includes(last.id.slice(0, 12)), svgPaneRemoved: svgPaneGone };
+	return { msg: msg.slice(0, 100), fills: last.stats.tradeCount, identity: last.id.slice(0, 12), tradesStored: last.trades.length, overlayLegendFound: !!overlayLegend && overlayLegend.includes(last.id.slice(0, 12)), svgPaneRemoved: svgPaneGone, overlayBluePixels: bluePixels };
 });
 
 await step('w5-identical-inputs-identical-run', async () => {

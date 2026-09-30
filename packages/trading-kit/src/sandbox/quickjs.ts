@@ -23,6 +23,7 @@
  *   - anything else                  → SCRIPT_ERROR (message preserved)
  */
 import { newQuickJSWASMModule, RELEASE_SYNC, type QuickJSWASMModule } from 'quickjs-emscripten';
+import { PINNED_DATE_SNIPPET } from '../snippets.js';
 import type {
 	SandboxRunRequest,
 	SandboxRunResult,
@@ -102,6 +103,16 @@ export function createQuickJsScriptRuntime(): ScriptRuntime {
 				ctx.setProp(dateObj, 'now', nowFn);
 				nowFn.dispose();
 				dateObj.dispose();
+				// PINNED DATE (round-2): the Date CONSTRUCTOR is the remaining
+				// wall-clock path (new Date() / Date() read real time). Replace
+				// global Date so no-arg paths consult the pinned Date.now.
+				const pinned = ctx.evalCode(PINNED_DATE_SNIPPET, 'vict-pinned-date.js');
+				if (pinned.error) {
+					const message = dumpMessage(ctx.dump.bind(ctx), pinned.error);
+					if (pinned.error.alive) pinned.error.dispose();
+					return fail('SCRIPT_ERROR', 'sandbox pinned-date setup failed: ' + message);
+				}
+				if (pinned.value.alive) pinned.value.dispose();
 
 				for (const [name, fn] of Object.entries(req.hostFunctions)) {
 					const h = ctx.newFunction('__vict_' + name, (argsPtr) => {

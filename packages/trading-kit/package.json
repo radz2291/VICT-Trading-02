@@ -1,6 +1,6 @@
 {
 	"name": "@vict-trading/trading-kit",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"description": "Headless replay capability: market-time replay clock with a hard future-guard, clock-capped and evidence-recorded data queries (R1), honest availability semantics with explicit missing intervals (R2), drawing visibility provenance rules (R3/D-003), and a replay session persisted only through a consumer-supplied port. Renders nothing, fetches nothing, owns no storage, zero runtime dependencies.",
 	"type": "module",
 	"main": "./dist/index.js",

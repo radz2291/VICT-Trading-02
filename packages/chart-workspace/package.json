@@ -1,6 +1,6 @@
 {
 	"name": "@vict-trading/chart-workspace",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "Headless chart workspace capability: lightweight-charts 5.0.8 chart surface, horizontal price-level drawing lifecycle (create/select/edit/move/remove/undo/redo), anchored price-coordinate mapping, and a persistence port so storage stays the consumer's concern. Owns no app storage keys, fixtures, or product wording.",
 	"type": "module",
 	"main": "./dist/index.js",

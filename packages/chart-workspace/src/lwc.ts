@@ -230,52 +230,71 @@ export function createLwcChart(host: ChartHost, bars: Bar[], cb: ChartCallbacks)
 	type MarkerPlugin = ReturnType<typeof createSeriesMarkers>;
 	const overlays = new Map<
 		string,
-		{ series: ISeriesApi<'Line'> | ISeriesApi<'Area'> | ISeriesApi<'Histogram'>; markers: MarkerPlugin | null; spec: OverlaySpec }
+		{ series: ISeriesApi<'Line'> | ISeriesApi<'Area'> | ISeriesApi<'Histogram'>; markers: MarkerPlugin | null; spec: OverlaySpec; dead: boolean }
 	>();
 
 	function addOverlay(spec: OverlaySpec): OverlayHandle {
+		// REPLACE semantics (V-G3-R3): a same-id re-add must not stack an
+		// orphaned series — the previous entry's series is removed first, and
+		// its handle is marked DEAD so stale references can never draw again.
+		const existing = overlays.get(spec.id);
+		if (existing) {
+			try { chart.removeSeries(existing.series as never); } catch { /* chart gone */ }
+			existing.dead = true;
+		}
 		const def = spec.kind === 'area' ? AreaSeries : spec.kind === 'histogram' ? HistogramSeries : LineSeries;
 		const options: Record<string, unknown> = {};
 		if (spec.color) options.color = spec.color;
 		if (spec.lineWidth) options.lineWidth = spec.lineWidth;
 		if (spec.pane === 'sub') options.priceScaleId = ''; // forces a separate scale inside the lower pane
 		const s = (spec.pane === 'sub' ? chart.addSeries(def, options, 1) : chart.addSeries(def, options)) as ISeriesApi<'Line'>;
-		const entry: { series: ISeriesApi<'Line'> | ISeriesApi<'Area'> | ISeriesApi<'Histogram'>; markers: MarkerPlugin | null; spec: OverlaySpec } = { series: s, markers: null, spec };
+		const entry: { series: ISeriesApi<'Line'> | ISeriesApi<'Area'> | ISeriesApi<'Histogram'>; markers: MarkerPlugin | null; spec: OverlaySpec; dead: boolean } = { series: s, markers: null, spec, dead: false };
 		overlays.set(spec.id, entry);
+		const guard = <T>(fn: () => T): T | undefined => {
+			if (entry.dead) return undefined; // replaced/removed handle: inert by contract
+			return fn();
+		};
 		return {
 			setData(points: OverlayPoint[]): void {
-				// ascending unique times; null value renders as a whitespace gap
-				let last: number | null = null;
-				const rows: Record<string, unknown>[] = [];
-				for (const p of points) {
-					if (p.time === last) continue;
-					if (last !== null && p.time < last) continue; // refuse out-of-order rather than corrupt the series
-					last = p.time;
-					rows.push(p.value === null ? { time: p.time as UTCTimestamp } : { time: p.time as UTCTimestamp, value: p.value });
-				}
-				s.setData(rows as never);
+				guard(() => {
+					// ascending unique times; null value renders as a whitespace gap
+					let last: number | null = null;
+					const rows: Record<string, unknown>[] = [];
+					for (const p of points) {
+						if (p.time === last) continue;
+						if (last !== null && p.time < last) continue; // refuse out-of-order rather than corrupt the series
+						last = p.time;
+						rows.push(p.value === null ? { time: p.time as UTCTimestamp } : { time: p.time as UTCTimestamp, value: p.value });
+						}
+					s.setData(rows as never);
+				});
 			},
 			setMarkers(markers: OverlayMarker[]): void {
-				if (!markers.length) {
-					entry.markers?.setMarkers([]);
-					return;
-				}
-				if (!entry.markers) {
-					entry.markers = createSeriesMarkers(s as never, []);
-				}
-				entry.markers.setMarkers(
-					markers.map((m) => ({
-						time: m.time as UTCTimestamp,
-						position: (m.shape === 'arrowUp' ? 'aboveBar' : 'belowBar') as 'aboveBar' | 'belowBar',
-						shape: m.shape,
-						color: spec.color ?? '#e0c96b',
-						text: m.text ?? ''
-					}))
-				);
+				guard(() => {
+					if (!markers.length) {
+						entry.markers?.setMarkers([]);
+						return;
+					}
+					if (!entry.markers) {
+						entry.markers = createSeriesMarkers(s as never, []);
+					}
+					entry.markers.setMarkers(
+						markers.map((m) => ({
+							time: m.time as UTCTimestamp,
+							position: (m.shape === 'arrowUp' ? 'aboveBar' : 'belowBar') as 'aboveBar' | 'belowBar',
+							shape: m.shape,
+							color: spec.color ?? '#e0c96b',
+							text: m.text ?? ''
+						}))
+					);
+				});
 			},
 			remove(): void {
-				try { chart.removeSeries(s); } catch { /* already removed with the chart */ }
-				overlays.delete(spec.id);
+				guard(() => {
+					try { chart.removeSeries(s); } catch { /* already removed with the chart */ }
+					if (overlays.get(spec.id) === entry) overlays.delete(spec.id);
+					entry.dead = true;
+				});
 			}
 		};
 	}

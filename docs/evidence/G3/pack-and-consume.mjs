@@ -32,7 +32,7 @@ step('standalone-build', () => {
 
 let tarball = '';
 step('npm-pack', () => {
-	for (const f of ['vict-trading-trading-kit-0.2.0.tgz']) {
+	for (const f of ['vict-trading-trading-kit-0.2.1.tgz']) {
 		rmSync(path.join(KIT, f), { force: true });
 	}
 	const out = execSync('npm pack --pack-destination .', { cwd: KIT, stdio: 'pipe' }).toString().trim();

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { scriptsStore as st } from '../scripts.svelte.js';
 	import { chartControllerRef } from '../island-state.svelte.js';
+	import type { OverlayHandle, OverlayPoint } from '../chart-api.js';
 
 	let props = $props<{ replayActive?: boolean }>();
 	let replayActive = $derived(props.replayActive === true);
@@ -13,6 +14,7 @@
 	let compareB = $state('');
 	let selectedPlot = $state('');
 	let overlayError = $state('');
+	let overlayApplied = $state(false);
 
 	const selected = $derived(st.drafts.find((d) => d.id === st.selectedDraftId) ?? null);
 	const succeededRuns = $derived(st.runs.filter((r) => r.status === 'succeeded'));
@@ -22,53 +24,91 @@
 	const activePlotName = $derived(selectedPlot && plotNames.includes(selectedPlot) ? selectedPlot : (plotNames[0] ?? ''));
 	const activePlot = $derived(lastRun && lastRun.plots ? (lastRun.plots[activePlotName] ?? []) : []);
 	const activeSignals = $derived(lastRun && lastRun.signals ? (lastRun.signals[activePlotName] ?? null) : null);
-	const overlayTimes = $derived(lastRun ? runTimesFor(lastRun) : []);
-
-	function runTimesFor(run: (typeof lastRun) & ({})): number[] {
-		if (run.barTimes && run.barTimes.length > 0) return run.barTimes;
-		// fall back to the chart's own candles clipped by count (bounded)
-		return [];
-	}
 
 	const fmtT = (t: number) => new Date(t * 1000).toISOString().slice(5, 16).replace('T', ' ');
 
 	// ---- on-chart overlays (G3, D-006-bounded extension) ---------------------
-	// The plots/signals map onto the WORKSPACE chart itself: same pane, same
-	// price scale (run values are in the instrument's units), same time scale,
-	// so candles + crosshair + time labels align natively. Data comes ONLY
-	// from the kit-capped run record (times are run-bar times; the run never
-	// contains bars beyond its own capped range).
+	// Non-reactive bookkeeping (plain fields; the $effect below is the driver).
+	let appliedController: object | null = null;
+	let appliedName: string | null = null;
+	let appliedHandle: OverlayHandle | null = null;
+
+	function clearApplied(): void {
+		if (appliedName !== null) {
+			try { chartControllerRef.current?.removeOverlay('g3-plot-' + appliedName); } catch { /* gone */ }
+		}
+		appliedController = null;
+		appliedName = null;
+		appliedHandle = null;
+		overlayApplied = false;
+	}
+
 	function applyOverlays(): void {
 		overlayError = '';
 		const c = chartControllerRef.current;
-		if (!c) return;
-		if (replayActive) return; // overlays target the current-mode chart
-		if (!lastRun || !activePlotName) return;
+		if (!c) {
+			if (appliedController !== null) clearApplied(); // chart was destroyed (mode switch)
+			return;
+		}
+		if (replayActive) {
+			// overlays target the current-mode chart only; the current chart is
+			// unmounted in replay, so nothing is drawn here
+			if (appliedController !== null) clearApplied();
+			return;
+		}
+		if (c !== appliedController) {
+			// fresh chart instance — drop stale bookkeeping entirely
+			appliedController = null;
+			appliedName = null;
+			appliedHandle = null;
+			overlayApplied = false;
+			appliedController = c;
+		}
+		if (!lastRun || !activePlotName) {
+			if (appliedName !== null) clearApplied();
+			return;
+		}
+		const times = lastRun.barTimes ?? [];
+		const points: OverlayPoint[] =
+			times.length === activePlot.length && times.length > 0
+				? activePlot.map((v, i) => ({ time: times[i], value: v }))
+				: []; // never guess an x-axis: no authoritative mapping → nothing drawn
 		try {
-			let h = c.addOverlay({ id: 'g3-plot-' + activePlotName, kind: 'line', pane: 'price', color: '#4ea1ff', lineWidth: 2 });
-			const times = overlayTimes;
-			if (times.length === activePlot.length && times.length > 0) {
-				const points = activePlot.map((v, i) => ({ time: times[i], value: v }));
-				h.setData(points.filter((p) => p !== null) as { time: number; value: number | null }[]);
-			} else {
-				// no bar times recorded (older run) — render nothing rather than guess
-				h = c.addOverlay({ id: 'g3-plot-' + activePlotName, kind: 'line', pane: 'price', color: '#4ea1ff', lineWidth: 2 });
-				h.setData([]);
+			if (appliedName !== activePlotName || appliedHandle === null) {
+				// one plot visible at a time: replace the whole applied overlay
+				if (appliedName !== null) {
+					try { c.removeOverlay('g3-plot-' + appliedName); } catch { /* gone */ }
+				}
+				appliedName = activePlotName;
+				appliedHandle = c.addOverlay({
+					id: 'g3-plot-' + appliedName,
+					kind: 'line',
+					pane: 'price',
+					color: '#4ea1ff',
+					lineWidth: 2
+				});
 			}
+			appliedHandle.setData(points);
 			if (activeSignals && activeSignals.length === times.length) {
 				const markers = activeSignals
-					.map((s, i) => (s === 1 ? { time: times[i], shape: 'circle' as const, text: activePlotName } : null))
+					.map((s, i) => (s === 1 ? { time: times[i], shape: 'circle' as const, text: appliedName ?? '' } : null))
 					.filter((m): m is { time: number; shape: 'circle'; text: string } => m !== null);
-				h.setMarkers(markers);
+				appliedHandle.setMarkers(markers);
 			}
+			overlayApplied = points.length > 0;
 		} catch (e) {
 			overlayError = `overlay render failed: ${(e as Error).message}`;
+			overlayApplied = false;
 		}
 	}
 
 	$effect(() => {
+		// depend explicitly on everything that can change the overlay
+		void chartControllerRef.current;
 		void lastRun;
 		void activePlotName;
+		void activePlot;
+		void activeSignals;
 		void replayActive;
 		applyOverlays();
 	});
@@ -168,18 +208,28 @@
 
 	{#if lastRun}
 		<div class="plots" data-testid="script-plots">
-			<span class="title small" data-testid="overlay-legend">Plots on chart — run {lastRun.shortId} ({lastRun.rangeBars} bars, {lastRun.timeframe}, {activePlotName})</span>
-			<select data-testid="sel-plot" value={activePlotName} onchange={(e) => (selectedPlot = e.currentTarget.value)} aria-label="Plot series">
-				{#each plotNames as name (name)}
-					<option value={name}>{name}</option>
-				{/each}
-			</select>
+			<span class="title small" data-testid="overlay-legend">
+				{#if overlayApplied}
+					Plots on chart — run {lastRun.shortId} ({lastRun.rangeBars} bars, {lastRun.timeframe}, {activePlotName}) · signals as markers at their candle
+				{:else}
+					No plot rendered yet — run a backtest
+					{#if replayActive} · (current-mode chart only; replay charts show their own session){/if}
+				{/if}
+			</span>
+			{#if overlayApplied}
+				<select data-testid="sel-plot" value={activePlotName} onchange={(e) => (selectedPlot = e.currentTarget.value)} aria-label="Plot series">
+					{#each plotNames as name (name)}
+						<option value={name}>{name}</option>
+					{/each}
+				</select>
+			{/if}
 			<span class="hint">
-				plots render on the chart (shared time + price scale) · signals as markers at their candle
-				· {#if (lastRun.unavailable ?? []).length > 0}{(lastRun.unavailable ?? []).length} unavailability interval(s) in range{:else}gaps are explicit unavailable intervals — never bridged{/if}
+				gaps are explicit unavailable intervals in data — never bridged
+				{#if (lastRun.unavailable ?? []).length > 0}
+					· {(lastRun.unavailable ?? []).length} unavailability interval(s) in range
+				{/if}
 			</span>
 			{#if overlayError}<span class="failed">{overlayError}</span>{/if}
-			{#if replayActive}<span class="hint">scripts run in current mode; charts in replay show their own session</span>{/if}
 		</div>
 	{/if}
 

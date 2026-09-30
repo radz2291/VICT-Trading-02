@@ -33,7 +33,8 @@
       "identity": "e1a0d7b4944f",
       "tradesStored": 36,
       "overlayLegendFound": true,
-      "svgPaneRemoved": true
+      "svgPaneRemoved": true,
+      "overlayBluePixels": 1485
     },
     "w5-identical-inputs-identical-run": {
       "ok": true,

@@ -377,3 +377,34 @@ test('failed runs still carry identity and full assumptions (criterion 9)', asyn
 	assert.deepEqual(r.assumptions.fill, fixture.fill);
 	assert.equal(r.assumptions.clockPolicy, 'bar-close-driven');
 });
+
+test('VERIFIER REGRESSION 2: new Date() and Date() cannot read the wall clock (criterion 5)', async () => {
+	const src = [
+		'function onBar(bar, api) {',
+		"		api.plot('instantNow', new Date().getTime());",
+		"		api.plot('callNow', String(Date()).length);",
+		'}'
+	].join('\n');
+	const cfg = {
+		symbol: 'T', baseTimeframe: '15m', timeframe: '15m',
+		fromTime: bars[0].time, toTime: bars[bars.length - 1].time + 900,
+		scriptSource: src, inputs: {}, fill: fixture.fill, sourceBars: bars, runtime: rt()
+	};
+	const a = await runBacktest(cfg);
+	const b = await runBacktest(cfg);
+	assert.equal(a.status, 'succeeded', JSON.stringify(a.error));
+	assert.deepEqual(a.plots.instantNow, b.plots.instantNow, 'new Date().getTime() must be deterministic across runs');
+	a.plots.instantNow.forEach((v, i) => {
+		assert.equal(v, bars[i].time * 1000 + 900000, 'new Date() must read the pinned bar close');
+	});
+	assert.deepEqual(a.plots.callNow, b.plots.callNow, 'Date() string form must be deterministic');
+});
+
+test('VERIFIER REGRESSION 3: run result carries authoritative barTimes', async () => {
+	const r1 = await handRun();
+	assert.ok(Array.isArray(r1.barTimes));
+	assert.equal(r1.barTimes.length, r1.assumptions.barsInRun);
+	r1.barTimes.forEach((tm, i) => assert.equal(tm, bars[i].time));
+	const r2 = await handRun({ period: 4 });
+	assert.equal(r2.barTimes.length, r2.assumptions.barsInRun);
+});

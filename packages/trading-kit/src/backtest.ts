@@ -87,6 +87,9 @@ export interface BacktestResult {
 	stats: BacktestStats;
 	/** availability (honest gaps) at the final clock instant of the range */
 	unavailable: MissingInterval[];
+	/** the run's own bar times (one per run-timeframe bar, ascending) — the
+	 * authoritative plotting x-axis a consumer maps overlay points onto */
+	barTimes: number[];
 	/** R1 evidence: how many queries the guest triggered; how many were capped */
 	queryRecordCount: number;
 	cappedQueryCount: number;
@@ -151,6 +154,7 @@ export async function runBacktest(config: BacktestConfig): Promise<BacktestResul
 		equity: [],
 		stats: { finalEquity: config.fill.startingCash, netProfit: 0, tradeCount: 0, maxDrawdown: 0, maxDrawdownPct: 0 },
 		unavailable: [],
+		barTimes: [],
 		queryRecordCount: 0,
 		cappedQueryCount: 0
 	});
@@ -433,6 +437,7 @@ export async function runBacktest(config: BacktestConfig): Promise<BacktestResul
 			maxDrawdownPct: maxDdPct
 		},
 		unavailable,
+		barTimes: runBars.map((b) => b.time),
 		queryRecordCount: records.length,
 		cappedQueryCount: records.filter((r) => r.capped).length
 	};

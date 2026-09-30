@@ -409,13 +409,9 @@ export const scriptsStore = {
 				signals: result.signals,
 				equity: result.equity,
 				unavailable: result.unavailable,
-				barTimes: [],
+				barTimes: result.barTimes, // authoritative from the kit run result
 				finishedAt: Date.now()
 			};
-			// bar times of the run (for plotting alignment) — recompute cheaply
-			run.barTimes = horizonBars
-				.filter((b) => b.time >= fromTime)
-				.map((b) => b.time);
 			const res = await runsTx.mutate((current) => {
 				const nextRuns = [...current.runs, run].slice(-MAX_RUNS);
 				return {
