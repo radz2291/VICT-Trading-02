@@ -1,0 +1,90 @@
+{
+  "startedAt": "2026-09-30T02:02:00.926Z",
+  "variant": "RELEASE_SYNC (wasmfile-release-sync) via newQuickJSWASMModule",
+  "probes": {
+    "no-fetch": {
+      "guestSaw": "undefined",
+      "isErr": false
+    },
+    "no-xhr": {
+      "guestSaw": "undefined",
+      "isErr": false
+    },
+    "no-document": {
+      "guestSaw": "undefined",
+      "isErr": false
+    },
+    "no-window": {
+      "guestSaw": "undefined",
+      "isErr": false
+    },
+    "no-localStorage": {
+      "guestSaw": "undefined",
+      "isErr": false
+    },
+    "no-process": {
+      "guestSaw": "undefined",
+      "isErr": false
+    },
+    "no-require": {
+      "guestSaw": "undefined",
+      "isErr": false
+    },
+    "no-dynamic-import": {
+      "guestSaw": "REFUSED:could not load module 'node:fs'",
+      "isErr": false
+    },
+    "fn-constructor-escape": {
+      "guestSaw": "{\"fetchViaFunc\":\"undefined\",\"processViaFunc\":\"undefined\"}",
+      "isErr": false
+    },
+    "proto-pollution": {
+      "hostObjectProtoPolluted": false,
+      "hostCanaryTouched": false
+    },
+    "infinite-loop": {
+      "isErr": true,
+      "val": "interrupted",
+      "elapsedMs": 502,
+      "deadlineMs": 500
+    },
+    "memory-bomb": {
+      "isErr": true,
+      "val": "out of memory"
+    },
+    "huge-output": {
+      "isErr": true,
+      "length": null,
+      "note": "out of memory"
+    },
+    "deep-recursion": {
+      "isErr": true,
+      "val": "SCRIPT_STACK_OVERFLOW (guest stack exhausted; host RangeError via FFI; fresh run"
+    },
+    "determinism-run-A": {
+      "isErr": false,
+      "val": "0.601104,0.448291,0.852466,0.669734,0.174814,T1770068700000"
+    },
+    "determinism-run-B": {
+      "isErr": false,
+      "val": "0.601104,0.448291,0.852466,0.669734,0.174814,T1770068700000"
+    },
+    "determinism-identical": {
+      "identical": true
+    },
+    "syntax-error": {
+      "isErr": true,
+      "val": "invalid property name"
+    },
+    "runtime-error": {
+      "isErr": true,
+      "val": "cannot read property 'nonexistent' of null"
+    },
+    "guest-api-roundtrip": {
+      "ok": true,
+      "got": 4.2
+    }
+  },
+  "notes": [],
+  "finishedAt": "2026-09-30T02:02:34.136Z"
+}
