@@ -78,7 +78,7 @@ Concise decision entries per RUNBOOK.md: question, options, chosen path, evidenc
 
 ## D-006 — G3 engine decision: NEITHER external engine; the kit-native bounded backtest runner approved as the G3 simulation implementation; bounded chart-workspace extension pre-authorized for the G3 on-chart criterion (owner-accepted)
 
-- **Date/authority:** 2026-09-30, direct owner instruction (this run), baseline verified  (local HEAD == , clean tree).
+- **Date/authority:** 2026-09-30, direct owner instruction (this run), baseline verified `42ad711379a3bea0cbfd9ca7bdaf7f8f0350077b` (local HEAD == `origin/main`, clean tree).
 - **Question:** At the G3 pause: NautilusTrader, LEAN, or neither as the external simulation engine?
 - **Chosen path (owner, verbatim key points):** "For G3, I choose **neither NautilusTrader nor LEAN as an external simulation engine**. I explicitly approve the bounded, kit-native backtest runner already in the G3 candidate as the G3 simulation implementation, subject to fresh independent verification. Keep the choice limited to G3's simulated, bar-based backtests; leave the external-engine question open for later requirements. Do not add an external sidecar, live execution path, or package publication."
 - **On-chart criterion (owner):** the fresh verifier must independently rule whether plots/signals in the separate pane satisfy the accepted "on chart" experience — "do not classify that as non-blocking solely because the builder did." If it fails: "propose or implement the smallest public chart-workspace extension needed, with package and consumer proof, and reverify at a new SHA. **This bounded extension is authorized for the G3 criterion.**"
