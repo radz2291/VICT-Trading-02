@@ -1,0 +1,83 @@
+{
+  "at": "2026-09-30T03:05:32.285Z",
+  "criterion": "G3 pass criterion 7 as amended by D-005",
+  "potency": {
+    "baseline": {
+      "fullHistoryMax": 3112.5,
+      "sma20Final": 3107.25
+    },
+    "alternate": {
+      "fullHistoryMax": 6112.5,
+      "sma20Final": 6107.25
+    },
+    "respondsToPoison": true,
+    "committedNaiveValues": {
+      "baseline": {
+        "fullHistoryMax": 3112.5,
+        "sma20Final": 3107.25
+      },
+      "alternate": {
+        "fullHistoryMax": 6112.5,
+        "sma20Final": 6107.25
+      }
+    }
+  },
+  "isolation": {
+    "rows": [
+      {
+        "tf": "15m",
+        "barsInRun": 1998,
+        "oracleBars": 1998,
+        "resultsIdenticalBaselineVsAlternate": true,
+        "scriptMaxMatchesIndependentOracle": true,
+        "scriptSmaMatchesIndependentOracle": true,
+        "oracleValues": {
+          "naiveMax": 2657.81,
+          "sma20": 2647.537
+        },
+        "scriptValues": {
+          "naiveMax": 2657.81,
+          "sma20": 2647.537
+        },
+        "identitiesDifferByDesign": true
+      },
+      {
+        "tf": "1h",
+        "barsInRun": 498,
+        "oracleBars": 498,
+        "resultsIdenticalBaselineVsAlternate": true,
+        "scriptMaxMatchesIndependentOracle": true,
+        "scriptSmaMatchesIndependentOracle": true,
+        "oracleValues": {
+          "naiveMax": 2657.81,
+          "sma20": 2649.3415
+        },
+        "scriptValues": {
+          "naiveMax": 2657.81,
+          "sma20": 2649.3415
+        },
+        "identitiesDifferByDesign": true
+      },
+      {
+        "tf": "4h",
+        "barsInRun": 122,
+        "oracleBars": 122,
+        "resultsIdenticalBaselineVsAlternate": true,
+        "scriptMaxMatchesIndependentOracle": true,
+        "scriptSmaMatchesIndependentOracle": true,
+        "oracleValues": {
+          "naiveMax": 2657.73,
+          "sma20": 2649.8015
+        },
+        "scriptValues": {
+          "naiveMax": 2657.73,
+          "sma20": 2649.8015
+        },
+        "identitiesDifferByDesign": true
+      }
+    ],
+    "allIsolated": true,
+    "allMatchIndependentOracle": true
+  },
+  "verdict": "PASS"
+}
