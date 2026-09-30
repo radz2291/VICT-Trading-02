@@ -251,3 +251,84 @@ EVALUATION.md **FAIL** = "a required behavior contradicts observed evidence." Ob
   "manualNotes": "Pane-rule API shape for the D-006-pre-authorized extension recorded in the report (addOverlay/addHandle with setData/setMarkers on price or sub pane over lightweight-charts 5 native series/panes; app maps capped run bars; R4 preserved). NT evaluation re-run out of verification scope (D-006 chose neither; recorded evidence files inspected, not re-executed — marked as such rather than verified)."
 }
 ```
+---
+
+# ADDENDUM — remediation re-verification (fresh verifier, same verifier session lineage)
+
+**Candidate re-tested:** `ce8f875fbc29e3383bdb097f5af0836eb216cddd` (HEAD == origin/main; repair commits `5400a45` + `ce8f875` on top of the FAIL verdict at `685d769…`). Per EVALUATION.md, the verifier reran the CHANGED behaviors with its own evidence; original report above is preserved unchanged.
+
+## Re-verification results — the two FAIL findings
+
+### 1. Criterion 5 (determinism) — repair partially effective; criterion **STILL FAIL**
+
+Verified PASS limbs (my own harness `verifier/v10-det.mjs`, results `v10-det-results.json`):
+
+- `r1` — my original failing case (`order size = 1 + Math.random()` at bar 3, two identical runs): sizes now bit-identical (`1.1353659911546856` twice) — Math.random replacement real, seeded deterministically from scriptSource+inputs.
+- `r2/r3` — guest `Date.now()` inside onBar returns the CURRENT BAR's market close in ms exactly (`1800003600000` = bar-3 close; unique per-bar delta of exactly 900000 ms across all bars).
+- `r4` — guest shadowing `Date.now` mid-run cannot import nondeterminism (results bit-identical).
+- `r7` — 50 consecutive Math.random draws identical across runs.
+
+**Still falsified (new evidence):**
+
+- `r5` — **`new Date().getTime()` inside onBar reads the REAL wall clock**: two identical-input runs produce `5096336` vs `5096359` (ms mod 1e7) — differing results. The repair pins `Date.now` and `Math.random` but NOT the `Date` constructor (QuickJS core reads the host clock internally); `String(Date())` also reaches the real clock/date. Two identical inputs still yield bit-different results for any script using `new Date()` — criterion 5's bit-identity requirement is still contradicted, and the repair commit's claim "guest cannot obtain nondeterminism (contract now true, not just documented)" is falsified by this probe. (Informational: the 2 new kit tests cover Math.random + Date.now but not the Date constructor case.)
+- **Kit artifact identity diverged** (packaging-integrity): the repair modified kit sources without bumping the version or refreshing the committed artifact — fresh `npm pack` of the ce8f875 kit source produces sha512 `7661d3972295268136bec994761e87a0c36006054fc0cd9d0481bf2315dfe601` (46,317 B) while BOTH committed `0.2.0` tarballs (`docs/evidence/G3/kit-0.2.0.tgz`, `packages/trading-kit/vict-trading-trading-kit-0.2.0.tgz`) remain `a6d4b02a…01cb` (44,638 B) and, verified by extraction (`tar`+grep), contain **zero** occurrences of `prngSeed`/`pinnedMs` — i.e. the recorded/packed kit artifact does NOT contain the determinism repair; an external consumer installing the recorded 0.2.0 artifact still has the original criterion-5 defect. The `0.2.0` version now names two different byte identities.
+
+### 2. Criterion 2 (placement) — extension real and working; HOST wiring ineffective; criterion **STILL FAIL**
+
+The `@vict-trading/chart-workspace@0.1.1` bounded extension itself is genuine and works, proven by my own consumer **outside the monorepo** (`verifier/v11-chart-consumer.mjs` + `v12-consumer-page.mjs` against a self-bundled page from the COMMITTED artifact; results `v11-chart-consumer-results.json`, screenshots `v11-shot-*.png`, `v12-shot-0*.png`):
+
+- Pack sha512 reproduced: fresh `npm pack` of cw == committed `docs/evidence/G3/chart-workspace-0.1.1.tgz` == **`e4576272c4b73fab693b66a9a9855054706f0d3b7b2ff21c9157be5359a7dcbfde3c02786189ba31553250ce6bf2b1f580b457622eb4714d6b62a68ed072e7a4`**.
+- In a real browser page with candles loaded (`controller.setData` contract): `addOverlay({kind:'line',pane:'price'})` renders a line sharing the candle price scale (my 108/103 test lines got price-axis labels on the candle axis, v12-shot-02) and the shared time axis; `pane:'sub'` gives a lower pane with its OWN price scale (4.00 label) sharing the candle time axis (v12-shot-04); `setMarkers` draws arrow/circle markers AT candle times ("sig" arrow over the 19:13 candle); overlapping/out-of-order points are refused without corrupting the series. R4 unchanged (chart-workspace imports nothing from trading-kit — grep clean).
+- **Falsified within the extension** (latent): re-adding the same overlay id does NOT replace — it STACKS an orphaned series (v11/v12: one logical id leaves BOTH a magenta 103 line and a cyan 108 line on the candle price scale, v12-shot-02); `removeOverlay` after stacking removes only the newest series and leaves the orphan permanently (v12-shot-03: cyan gone, magenta remains, unremovable). The `OverlaySpec` comment claims "re-adding replaces the handle" — the implementation does not. Latent because the host currently never succeeds in adding data (below), but the moment the host mismatch is fixed, the app inherits this stacking/leak behavior (every effect firing adds series; none are ever removed by the host).
+
+**The host application's use of the extension never renders anything — pixel- and byte-proven:**
+
+- `run.barTimes` is computed from BASE (15m) bars (`scripts.svelte.ts:416`, including the horizon-open bar at `time == horizonInstant`), giving 250 times for the app's `rangeBars=250` run, while the run's plot arrays have RUN-TIMEFRAME length (`sma20: 249`, live-verified via the stored run record — `verifier/v14-alignment-check.mjs`). The equality `times.length === activePlot.length` in `applyOverlays` can therefore NEVER hold for ANY (timeframe, rangeBars) combination (15m off-by-one; 1h/4h structurally impossible), so the code always takes the empty branch: `addOverlay(...)` + `setData([])`.
+- Live pixel proof (`verifier/v13-browser.mjs`): `#4ea1ff` (the configured overlay color) pixel count = **0** on every canvas of the workspace chart across THREE consecutive runs (period 20/2/24), while candle colors (#2f9e63: 4511 px, #d05050: 3430 px) are found on the same canvases; screenshot `v13-shot-01-sma20.png` shows the candles with NO SMA trace, despite the run having succeeded and the legend rendering "Plots on chart — run f01f2563d21f (249 bars, 15m, sma20)".
+- The repaired candidate REMOVED the previous SVG plot pane (builder suite step asserts `svgPaneRemoved: true`), so script plots and signal markers now render **NOWHERE in the host app** — a regression from "renders in a pane below the chart" (my earlier finding) to "renders nowhere", while the on-chart legend text claims they render. This is simultaneously the criterion-2 render failure and a misleading-state defect.
+- Note: the committed browser suite's overlay assertions check the LEGEND text and the absence of the SVG (`overlayLegendFound`/`svgPaneRemoved`) — they do not check that anything is actually drawn, which is why 15/15 passed while the overlay renders nothing.
+
+**Criterion 2 ruling (unchanged, independent):** the accepted criterion requires script series/signals rendered ON the chart. At `ce8f875…` nothing renders at all in the host app. **FAIL** (stricter than the previous placement-FAIL: now the render limb itself fails).
+
+## Rerun of unchanged-but-touching checks (all pass)
+
+- Kit suite: **20/20** (`node --test test/g3.test.mjs` after `tsc` build) — incl. the 2 new determinism tests.
+- Host: `npm run check` 0 errors (1 warning); `npm run build` clean; production preview served on :5199 (rebuilt BEFORE serving; server restarted after build).
+- Builder's committed full browser suite re-run by me at `ce8f875…` on the new build: **15/15** (identical-input identity `e1a0d7b4944f` ×2, one-input flip, runs immutability, refusal+recovery, W1 level regression, 375/768 overflow 0) — with the overlay-assertion caveat above.
+- My own host checks (`v13`): crosshair linkage alive (readout O/H/L/C + time at two probes), console: 1 console error = favicon 404 only; 0 page errors.
+- W3 surfaces untouched by the remediation diff (`replay.svelte.ts`, `ChartIslandLWC.svelte` — zero changed lines; `chart-api.ts` only re-exports the new overlay types), so my full W3 verification at `685d769` stands; the suite's replay smoke (`favc1-replay-recovery-clears-stale`: refusal → repaired → truthful recovery status) re-confirmed in the new build.
+- Kit artifact identity divergence (V-G3-R4 below): fresh kit pack sha512 7661d397… vs recorded a6d4b02a… — verified live.
+- cw pack sha512 verified live: fresh npm pack == committed artifact == e4567272… (full value in section 1).
+
+## Carry-over findings status from the original report
+
+- V-G3-3 (QuickJS GC abort after stack exhaustion): unchanged code path — not re-tested here; still recorded.
+- V-G3-4 (async silent no-op / false README pumping claim): unchanged (`executePendingJobs` still absent) — still carried.
+- V-G3-5 (MAX_RUNS=12 silent eviction): unchanged code — still carried.
+- V-G3-6 (F-1 wording): unchanged.
+- New findings this cycle:
+
+| ID | Severity | Finding |
+|---|---|---|
+| V-G3-R1 | **blocker (stage)** | Host overlay wiring dead: `runTimesFor`/`barTimes` (base-bar times incl. the horizon-open bar at time == horizonInstant) never equals run-plot length (live: 250 vs 249) => `setData([])` always => plots/signals render nowhere in the host; the on-chart legend text renders regardless (misleading state). Evidence: v13 pixel scans (0 blue px on 3 runs; candles present), v14 alignment check, v13-shot-01 screenshot. Fix shape (stage manager): compute barTimes from the RUN's own run-bar times (align with kit `assumptions.barsInRun`), or have the kit record run-bar times in the BacktestResult |
+| V-G3-R2 | **blocker (stage)** | Determinism contract still breakable via `new Date()` / `String(Date())` (real wall clock; r5 evidence). Fix shape: route the whole Date constructor/`getTime`/`getUTC*` surface through the per-bar `pinTime` value, or freeze Date construction; add a kit test for the constructor path |
+| V-G3-R3 | blocker-adjacent (must fix with R1) | cw `addOverlay` same-id re-add STACKS an orphaned series (pixel-proven: both 103 and 108 lines visible from one logical id); `removeOverlay` leaves the orphan unremovable; host never calls `removeOverlay` and adds TWO empty overlays per effect firing (ScriptsIsland lines 48/55). Fix shape: `addOverlay` must replace (remove existing same-id series) before adding; host holds handles and removes before re-add |
+| V-G3-R4 | minor (packaging) | Kit source changed at ce8f875 without version bump or artifact refresh: the committed 0.2.0 tarballs no longer correspond to the candidate's kit bytes (a6d4b02a vs fresh-pack 7661d397) and the packed artifact the evidence records does NOT contain the determinism repair (extraction grep: zero prngSeed/pinnedMs). Fix: bump the version (0.2.1) or re-record + refresh the committed artifact at the next candidate |
+
+## ADDENDUM VERDICT: **FAIL** at `ce8f875fbc29e3383bdb097f5af0836eb216cddd`
+
+Both originally-FAIL criteria remain contradicted: criterion 5 (nondeterminism still reachable via the Date constructor inside the guest; the packed kit artifact still lacks even the partial repair) and criterion 2 (the on-chart overlay is dead code in the host — nothing renders anywhere now that the SVG pane was removed — rendering regressed from pane to nothing; legend text claims renders that do not occur). Additionally the extension carries a latent stacking/orphan-series defect and the kit artifact identity diverged at fixed version 0.2.0. All other criteria remain PASS (rerun confirmed, incl. committed suite 15/15, kit 20/20, host check+build clean). Defects precisely identified with fix shapes; verifier repaired nothing. Path forward per D-005/D-006: repair + fresh re-verification at a new SHA.
+
+**Reproduction for this addendum (all verified run):**
+
+```bash
+git rev-parse HEAD            # ce8f875fbc29e3383bdb097f5af0836eb216cddd
+cd packages/trading-kit && npm run build && node --test test/g3.test.mjs   # 20/20
+node docs/evidence/G3/verifier/v10-det.mjs          # criterion-5: r1-r4/r7 pass; r5 FAILS (new Date())
+node docs/evidence/G3/verifier/v14-alignment-check.mjs   # barTimesLen 250 vs sma20 249 (overlay dead code)
+cd host && npm run check && npm run build; then restart :5199 preview
+node docs/evidence/G3/browser-verify.mjs            # committed suite 15/15 (legend-text overlay assertions)
+node docs/evidence/G3/verifier/v13-browser.mjs      # pixel probe: blue overlay 0 px x3 runs; candles found
+cd packages/chart-workspace && npm pack + sha512sum == e4567272… (committed artifact matches)
+node docs/evidence/G3/verifier/v11-chart-consumer.mjs / v12-consumer-page.mjs   # extension consumer proofs + stacking falsification
+```

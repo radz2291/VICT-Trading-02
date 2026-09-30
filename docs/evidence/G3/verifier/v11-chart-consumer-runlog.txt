@@ -1,0 +1,11 @@
+install => {"ok":true}
+install ok: cw 0.1.1 installed from committed artifact
+bundle ok
+bundle => {"ok":true,"bytes":265656}
+page loaded with CW global
+c1-overlay-api-and-render => {"ok":true,"chartOk":true,"hasAddOverlay":true,"hasRemoveOverlay":true,"magentaScanSample":{"#FF00FF":0}}
+c2-readd-same-id => {"ok":true,"counts":{"#FF00FF":2,"#00FFFF":2},"stacked":true,"replaced":false}
+c3-removeOverlay => {"ok":true,"removedBoth":false,"counts":{"#FF00FF":2,"#00FFFF":0}}
+c4-data-semantics => {"ok":true,"priceCoordinateAvailable":false,"paneCount":"see-probe","orangeTraceVisible":true}
+c5-sub-pane => {"ok":true,"greenTraceInLowerZone":false}
+SUMMARY ok=7/7

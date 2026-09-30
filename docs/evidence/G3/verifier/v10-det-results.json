@@ -1,0 +1,47 @@
+{
+  "label": "VERIFIER criterion-5 re-verification (ce8f875)",
+  "probes": {
+    "r1-math-random-sizes": {
+      "a": "[1.1353659911546856]",
+      "b": "[1.1353659911546856]",
+      "bitIdentical": true
+    },
+    "r2-date-now": {
+      "tsA": 1800003600000,
+      "tsB": 1800003600000,
+      "identical": true,
+      "pinnedToBar3CloseMs": true
+    },
+    "r3-date-now-per-bar": {
+      "uniqueDeltasMs": [
+        900000
+      ],
+      "allPinned900s": true
+    },
+    "r4-guest-shadow-now": {
+      "identical": true
+    },
+    "r5-new-date-escape": {
+      "newDateA": 5096336,
+      "newDateB": 5096359,
+      "identical": false
+    },
+    "r6-entropy-globals": {
+      "entropySources": 0,
+      "typeofDateNow": "null"
+    },
+    "r7-heavy-random": {
+      "identical": true,
+      "rsum0": 23.13563895621337,
+      "rsumEnd": 26.302192874485627
+    },
+    "r8-seed-not-in-identity": {
+      "note": "seed derives from scriptSource+inputs only (not data/fill/timeframe)",
+      "randA": 0.4964874372817576,
+      "randB": 0.4964874372817576
+    },
+    "r9-note": {
+      "deriveGuestSeed": "not publicly exported (kit-internal) — determinism verified via r1/r7/r2 observed equality instead"
+    }
+  }
+}

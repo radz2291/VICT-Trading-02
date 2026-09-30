@@ -1,0 +1,68 @@
+{
+  "steps": {
+    "v13-load": {
+      "ok": true
+    },
+    "v13-run-sma20": {
+      "ok": true,
+      "done": true,
+      "legend": "Plots on chart — run f01f2563d21f (249 bars, 15m, sma20)",
+      "plotSvgGone": true,
+      "scan": {
+        "counts": {
+          "#4ea1ff": 0,
+          "#2f9e63": 4511,
+          "#d05050": 3430
+        },
+        "bands": {
+          "#2f9e63": [
+            {
+              "pageTop": -61,
+              "y0": 99,
+              "y1": 443
+            },
+            {
+              "pageTop": -61,
+              "y0": 233,
+              "y1": 249
+            }
+          ],
+          "#d05050": [
+            {
+              "pageTop": -61,
+              "y0": 101,
+              "y1": 444
+            }
+          ]
+        }
+      }
+    },
+    "v13-crosshair-linkage": {
+      "ok": true,
+      "readout1": "O 2640.31 H 2640.6 L 2639.67 C 2640.04 · 2026-01-27 11:30Z · cursor 2646.88",
+      "readout2": "O 2644.01 H 2644.09 L 2643.83 C 2644.09 · 2026-01-22 19:00Z · cursor 2646.88",
+      "crosshairAlive": true
+    },
+    "v13-stacking-probe": {
+      "ok": true,
+      "done": true,
+      "traceBands": {},
+      "tracePixels": {
+        "#4ea1ff": 0
+      }
+    },
+    "v13-run-period-24": {
+      "ok": true,
+      "done": true,
+      "traceBands": {},
+      "tracePixels": {
+        "#4ea1ff": 0
+      }
+    }
+  },
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "finishedAt": "2026-09-30T05:20:29.874Z",
+  "consoleErrorCount": 1
+}

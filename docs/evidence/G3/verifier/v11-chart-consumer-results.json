@@ -1,0 +1,47 @@
+{
+  "steps": {
+    "install": {
+      "ok": true
+    },
+    "bundle": {
+      "ok": true,
+      "bytes": 265656
+    },
+    "c1-overlay-api-and-render": {
+      "ok": true,
+      "chartOk": true,
+      "hasAddOverlay": true,
+      "hasRemoveOverlay": true,
+      "magentaScanSample": {
+        "#FF00FF": 0
+      }
+    },
+    "c2-readd-same-id": {
+      "ok": true,
+      "counts": {
+        "#FF00FF": 2,
+        "#00FFFF": 2
+      },
+      "stacked": true,
+      "replaced": false
+    },
+    "c3-removeOverlay": {
+      "ok": true,
+      "removedBoth": false,
+      "counts": {
+        "#FF00FF": 2,
+        "#00FFFF": 0
+      }
+    },
+    "c4-data-semantics": {
+      "ok": true,
+      "priceCoordinateAvailable": false,
+      "paneCount": "see-probe",
+      "orangeTraceVisible": true
+    },
+    "c5-sub-pane": {
+      "ok": true,
+      "greenTraceInLowerZone": false
+    }
+  }
+}
