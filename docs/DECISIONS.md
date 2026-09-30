@@ -73,3 +73,15 @@ Concise decision entries per RUNBOOK.md: question, options, chosen path, evidenc
 - **Execution mandate (owner):** one stage manager owns the whole G3 cycle — builders and a genuinely fresh, independent verifier as useful; candidates at exact SHAs; verifier falsification-first; failed evidence preserved; in-scope repair + reverification; ordinary findings handled without returning them one at a time; after the engine decision, remaining accepted G3 work continues through the final independently verified verdict without a new scope approval. Still prohibited: live orders, account connections, package publication, G4 work.
 - **Impact:** G3 implementation is authorized within exactly the amended scope; HANDOFF.md G3 record converted DRAFT → ACCEPTED (amendments folded in); STATE/STAGES/AGENTS reconciled. The engine-adoption gate is the next scheduled owner stop.
 - **Provenance:** owner instruction verbatim (repository session, 2026-09-30); this register entry is the decision record.
+
+---
+
+## D-006 — G3 engine decision: NEITHER external engine; the kit-native bounded backtest runner approved as the G3 simulation implementation; bounded chart-workspace extension pre-authorized for the G3 on-chart criterion (owner-accepted)
+
+- **Date/authority:** 2026-09-30, direct owner instruction (this run), baseline verified  (local HEAD == , clean tree).
+- **Question:** At the G3 pause: NautilusTrader, LEAN, or neither as the external simulation engine?
+- **Chosen path (owner, verbatim key points):** "For G3, I choose **neither NautilusTrader nor LEAN as an external simulation engine**. I explicitly approve the bounded, kit-native backtest runner already in the G3 candidate as the G3 simulation implementation, subject to fresh independent verification. Keep the choice limited to G3's simulated, bar-based backtests; leave the external-engine question open for later requirements. Do not add an external sidecar, live execution path, or package publication."
+- **On-chart criterion (owner):** the fresh verifier must independently rule whether plots/signals in the separate pane satisfy the accepted "on chart" experience — "do not classify that as non-blocking solely because the builder did." If it fails: "propose or implement the smallest public chart-workspace extension needed, with package and consumer proof, and reverify at a new SHA. **This bounded extension is authorized for the G3 criterion.**"
+- **NT finding narrowed (owner):** the NautilusTrader evidence statement is narrowed to what the experiment proved — "its tested configuration did not match our fixture without further model, timing, or adapter work." Original evidence preserved unchanged.
+- **Impact:** G3 proceeds to fresh verification at the exact candidate SHA; the kit runner is no longer an ungoverned fallback but the APPROVED G3 simulation implementation (scope limited to G3 simulated bar-based backtests); O-05 remains OPEN for later requirements; no sidecar/live path/publication. The engine-adoption pause is RESOLVED.
+- **Provenance:** owner instruction verbatim (repository session, 2026-09-30); this register entry is the decision record.

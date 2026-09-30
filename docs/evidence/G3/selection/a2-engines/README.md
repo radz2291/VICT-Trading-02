@@ -40,3 +40,8 @@ The owner's acceptance explicitly scoped G3's delivery: **"Keep reusable run ide
 **If neither: external-engine selection remains open for G4+** (O-05 unchanged), to be revisited only when mechanical-trading requirements exceed the bounded per-symbol bar backtest — with a fresh proof at that point, not this one.
 
 **What you are deciding at this pause:** choose NautilusTrader, LEAN, or neither (recommended: neither) **before any simulation engine is integrated into the product.** Under "neither", G3 proceeds to final verification on the accepted kit architecture; under either engine, integration becomes NEW scope (not quietly absorbed into G3).
+---
+
+## Correction (owner-directed, 2026-09-30) — NT finding narrowed
+
+The NT findings above are narrowed to what the experiment actually proved: **NT's TESTED CONFIGURATION did not match our fixture without further model, timing, or adapter work** (market orders rejected 'no market' under pure bar execution; synthesized-quote fills landed one bar off the stated next-bar-open model; commission defaulted to 0.02 USD vs the stated 1.00). The experiment did NOT establish that NT could never express the model — only that this configuration, as tested, did not, and that expressing it requires further fill-model/timing/adapter work. All raw outputs above are preserved unchanged.
