@@ -30,3 +30,21 @@ The legacy `getQuickJS()` entry of quickjs-emscripten is **broken on this machin
 - Guest is executed as **synchronous** code per call; guest promises only settle when the host pumps the job queue — the runner pumps between bars under the same deadline, so an `await` that never settles is interrupted truthfully.
 - `Math.random` replaced by a seeded PRNG; `Date.now` pinned to the replay/bar time — determinism is a contract, not a hope.
 - Guest output is bounded by the runtime memory limit; the runner additionally caps structured outputs (plots/trades) at the pinned range length.
+
+---
+
+## CORRECTION (2026-09-30, verifier round A — owner-ordered contested check V-G3-4)
+
+The claim above (line: *"the runner pumps between bars under the same deadline, so an
+`await` that never settles is interrupted truthfully"*) was **FALSE** and is preserved
+here as history, corrected in place by this note. The fresh verifier (commit `6dc22b7`,
+`docs/evidence/G3/verifier/RED-NOTE.md`) proved: nothing pumps, anywhere — no pump API
+exists on the public port; async `onBar` continuations and `Promise.then` callbacks are
+silently dropped while the run reports `succeeded`; a never-settling `await` is **not**
+interrupted. This violated criteria 4 and 9.
+
+**Repair (kit 0.2.2):** the runtime now enforces a **synchronous-only script contract** —
+a thenable return from `onBar` or any pending guest job at the end of pass 2/3 fails the
+run with `SCRIPT_ASYNC_FORBIDDEN` and an actionable message. Pending jobs are deliberately
+NOT pumped: executing them outside the bar loop would be unordered relative to bar
+semantics; truthful refusal was chosen instead (both options were owner-authorized).

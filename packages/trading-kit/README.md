@@ -108,3 +108,20 @@ await session.createLevel(2650.5, 'support'); // replay-stamped, visible only at
 const verdict = visibilityInReplay({ id: 'x', provenance: 'provenance-unknown' }, clock);
 console.log(verdict); // { visible: false, reason: 'D-003: provenance-unknown …' }
 ```
+
+## Script contract (bounded backtests — SYNC-ONLY, as of 0.2.2)
+
+The user script must define **`onBar(bar, api)` as a synchronous function**.
+`async`/`await` and `Promise` are **not supported** and are **refused, never silently skipped**:
+
+- If `onBar` returns a promise (e.g. it is an `async function` or returns one), the run
+  **fails** with `SCRIPT_ASYNC_FORBIDDEN` and an actionable message.
+- If the script schedules asynchronous work (`Promise.resolve().then(...)`,
+  `new Promise(...)`, queueMicrotask-style continuations), the run **fails** with
+  `SCRIPT_ASYNC_FORBIDDEN` — pending guest jobs are never pumped, so scheduled work
+  would otherwise be silently dropped while the run reported success (V-G3-4, owner
+  contested check 2026-09-30; red evidence: `docs/evidence/G3/verifier/RED-NOTE.md`).
+
+Call `api.plot` / `api.signal` / `api.order` **directly inside `onBar`** (synchronously).
+Failed runs keep their identity and full recorded assumptions, so a refused script is
+always distinguishable from an executed one.

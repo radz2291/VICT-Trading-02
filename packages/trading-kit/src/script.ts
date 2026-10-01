@@ -39,6 +39,7 @@ export const DEFAULT_RUNTIME_LIMITS: RuntimeLimits = {
 export type ScriptErrorCode =
 	| 'SCRIPT_SYNTAX_ERROR'
 	| 'SCRIPT_CONTRACT_INVALID'
+	| 'SCRIPT_ASYNC_FORBIDDEN'
 	| 'SCRIPT_ERROR'
 	| 'SCRIPT_INTERRUPTED'
 	| 'SCRIPT_OOM'
@@ -51,7 +52,7 @@ export interface SandboxRunError {
 }
 
 export interface SandboxRunRequest {
-	/** the user script source (must define onBar(bar, api)) */
+	/** the user script source (must define synchronous onBar(bar, api); async/await and Promise are refused) */
 	scriptSource: string;
 	/** kit driver executed after the script (executes the bar loop) */
 	driverSource: string;
@@ -197,7 +198,17 @@ export const DRIVER_SOURCE = `
     var bar = callHost('barAt', JSON.stringify({ index: i }));
     __pinned = Number(callHost('pinTime', '{}').pinnedMs);
     Date.now = function () { return __pinned; };
-    onBar(bar, api);
+    var __ret = onBar(bar, api);
+    if (
+      __ret &&
+      (typeof __ret === 'object' || typeof __ret === 'function') &&
+      typeof __ret.then === 'function'
+    ) {
+      kitFatal(
+        'SCRIPT_ASYNC_FORBIDDEN',
+        'onBar returned a promise (async/await is not supported). The bounded backtest executes synchronous scripts only: remove async/await from onBar and call api.plot/api.order directly inside it so every action is recorded.'
+      );
+    }
   }
   callHost('complete', '{}');
 })();

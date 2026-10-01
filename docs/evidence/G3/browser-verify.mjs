@@ -119,6 +119,33 @@ await step('w5-invalid-edit-actionable', async () => {
 });
 
 // ---------- W5: mechanical idea ----------
+await step('vg34-async-refused-truthfully', async () => {
+	// Owner-ordered contested check (V-G3-4): an async script must FAIL with an
+	// actionable error — never a silent success with dropped plot/order work.
+	await page.click('[data-testid="draft-w2probe"]');
+	await sleep(200);
+	const asyncSrc = [
+		'async function onBar(bar, api) {',
+		"\tapi.plot('syncA', bar.close);",
+		'\tawait Promise.resolve();',
+		"\tapi.plot('asyncA', bar.close);",
+		"\tapi.order('buy', 1);",
+		'}'
+	].join('\n');
+	await page.evaluate((src) => { document.querySelector('[data-testid="draft-source"]').value = src; }, asyncSrc);
+	await page.type('[data-testid="draft-source"]', ' ');
+	await page.evaluate(() => { const el = document.querySelector('[data-testid="draft-source"]'); el.value = el.value.trim(); el.dispatchEvent(new Event('input', { bubbles: true })); });
+	await page.click('[data-testid="btn-save-draft"]');
+	await sleep(400);
+	await page.click('[data-testid="btn-run-backtest"]');
+	await page.waitForFunction("document.querySelector('[data-testid=\"run-message\"]') && document.querySelector('[data-testid=\"run-message\"]').textContent.includes('run failed')", { timeout: 30000 });
+	const msg = await txt('[data-testid="run-message"]');
+	const rowsAfter = (await lsGet('g3.runs.v1')) || '[]';
+	if (!msg.includes('SCRIPT_ASYNC_FORBIDDEN')) throw new Error('expected the actionable SCRIPT_ASYNC_FORBIDDEN refusal, got: ' + msg);
+	if (rowsAfter.includes('asyncA') || !rowsAfter.includes('SCRIPT_ASYNC_FORBIDDEN')) throw new Error('run record must carry the refusal code, not dropped-work evidence');
+	return { msg: msg.slice(0, 110), refusalRecorded: rowsAfter.includes('SCRIPT_ASYNC_FORBIDDEN') };
+});
+
 await step('w5-fix-and-run', async () => {
 	await page.click('[data-testid="draft-w2probe"]');
 	await sleep(200);

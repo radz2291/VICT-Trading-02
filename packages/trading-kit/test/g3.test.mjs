@@ -408,3 +408,78 @@ test('VERIFIER REGRESSION 3: run result carries authoritative barTimes', async (
 	const r2 = await handRun({ period: 4 });
 	assert.equal(r2.barTimes.length, r2.assumptions.barsInRun);
 });
+
+// --- V-G3-4 contested-check repair: SYNC-ONLY script contract (owner-ordered) ---
+
+test('CONTRACT positive: the same intent expressed synchronously fully executes (criteria 4+9)', async () => {
+	const src = [
+		'function onBar(bar, api) {',
+		"		api.plot('syncPlot', bar.close);",
+		"		if (bar.close > bar.open) api.order('buy', 1);",
+		'}'
+	].join('\n');
+	const r = await runBacktest({
+		symbol: 'T', baseTimeframe: '15m', timeframe: '15m',
+		fromTime: bars[0].time, toTime: bars[bars.length - 1].time + 900,
+		scriptSource: src, inputs: {}, fill: fixture.fill, sourceBars: bars, runtime: rt()
+	});
+	assert.equal(r.status, 'succeeded', JSON.stringify(r.error));
+	assert.equal(r.plots.syncPlot.length, r.assumptions.barsInRun, 'every bar produced its plot point');
+	assert.ok(r.trades.length >= 1, 'the order emitted synchronously was recorded');
+});
+
+test('CONTRACT negative 1: async onBar fails the run with an actionable error (never silent success)', async () => {
+	const src = [
+		'async function onBar(bar, api) {',
+		"		api.plot('syncA', bar.close);",
+		'		await Promise.resolve();',
+		"		api.plot('asyncA', bar.close);",
+		"		api.order('buy', 1);",
+		'}'
+	].join('\n');
+	const r = await runBacktest({
+		symbol: 'T', baseTimeframe: '15m', timeframe: '15m',
+		fromTime: bars[0].time, toTime: bars[bars.length - 1].time + 900,
+		scriptSource: src, inputs: {}, fill: fixture.fill, sourceBars: bars, runtime: rt(),
+		limits: { deadlineMs: 500 }
+	});
+	assert.equal(r.status, 'failed', 'async onBar must FAIL the run, not report success');
+	assert.equal(r.error.code, 'SCRIPT_ASYNC_FORBIDDEN', JSON.stringify(r.error));
+	assert.match(r.error.message, /async\/await/, 'the error must tell the user what to change');
+	assert.ok(r.identity.id.length === 64, 'failed run still carries its identity');
+});
+
+test('CONTRACT negative 2: Promise.then scheduling from a sync onBar fails the run', async () => {
+	const src = [
+		'function onBar(bar, api) {',
+		"		api.plot('syncB', bar.close);",
+		"		Promise.resolve().then(function () { api.plot('thenB', bar.close); api.order('buy', 1); });",
+		'}'
+	].join('\n');
+	const r = await runBacktest({
+		symbol: 'T', baseTimeframe: '15m', timeframe: '15m',
+		fromTime: bars[0].time, toTime: bars[bars.length - 1].time + 900,
+		scriptSource: src, inputs: {}, fill: fixture.fill, sourceBars: bars, runtime: rt()
+	});
+	assert.equal(r.status, 'failed', 'promise-scheduled work must not be silently dropped');
+	assert.equal(r.error.code, 'SCRIPT_ASYNC_FORBIDDEN', JSON.stringify(r.error));
+	assert.match(r.error.message, /Promise/, 'the error must name the forbidden mechanism');
+	assert.equal(r.plots && r.plots.thenB, undefined, 'the dropped callback must NOT appear as if it ran');
+});
+
+test('CONTRACT negative 3: a never-settling await fails the run (round-A red case)', async () => {
+	const src = [
+		'async function onBar(bar, api) {',
+		'		await new Promise(function () {});',
+		"		api.plot('never', bar.close);",
+		'}'
+	].join('\n');
+	const r = await runBacktest({
+		symbol: 'T', baseTimeframe: '15m', timeframe: '15m',
+		fromTime: bars[0].time, toTime: bars[bars.length - 1].time + 900,
+		scriptSource: src, inputs: {}, fill: fixture.fill, sourceBars: bars, runtime: rt(),
+		limits: { deadlineMs: 500 }
+	});
+	assert.equal(r.status, 'failed', 'the previously-silent hang must now fail truthfully');
+	assert.equal(r.error.code, 'SCRIPT_ASYNC_FORBIDDEN', JSON.stringify(r.error));
+});

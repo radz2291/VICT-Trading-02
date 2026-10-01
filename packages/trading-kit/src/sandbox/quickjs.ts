@@ -141,6 +141,17 @@ export function createQuickJsScriptRuntime(): ScriptRuntime {
 					return fail(classify(message, interrupted, hostRangeError).code, classify(message, interrupted, hostRangeError).message);
 				}
 				if (run.value.alive) run.value.dispose();
+				// SYNC-ONLY CONTRACT (V-G3-4 repair): any guest Promise usage
+				// enqueues a QuickJS job this runtime never pumps — executing it
+				// later would be unbounded/unordered relative to the bar loop.
+				// A pending job here means scheduled async work exists; the run
+				// FAILS truthfully instead of silently dropping that work.
+				if (rt.hasPendingJob()) {
+					return fail(
+						'SCRIPT_ASYNC_FORBIDDEN',
+						'script scheduled asynchronous work (Promise). The bounded backtest executes synchronous scripts only: remove Promise/async from the script and call api.plot/api.order directly inside onBar so every action is recorded.'
+					);
+				}
 
 				// pass 3 — the kit driver (bar loop)
 				const driven = ctx.evalCode(req.driverSource, 'vict-driver.js');
@@ -150,6 +161,16 @@ export function createQuickJsScriptRuntime(): ScriptRuntime {
 					return fail(classify(message, interrupted, hostRangeError).code, classify(message, interrupted, hostRangeError).message);
 				}
 				if (driven.value.alive) driven.value.dispose();
+				// SYNC-ONLY CONTRACT backstop: a promise created but never
+				// settled (or a .then callback never pumped) still shows here —
+				// fail the run rather than report a clean success with silently
+				// dropped actions (V-G3-4).
+				if (rt.hasPendingJob()) {
+					return fail(
+						'SCRIPT_ASYNC_FORBIDDEN',
+						'script left unfinished asynchronous work (Promise). The bounded backtest executes synchronous scripts only: remove Promise/async from the script and call api.plot/api.order directly inside onBar so every action is recorded.'
+					);
+				}
 
 				return { status: 'completed' };
 			} catch (e) {

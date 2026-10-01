@@ -26,6 +26,11 @@
       "status": "saved",
       "runsBytesContainSyntaxError": true
     },
+    "vg34-async-refused-truthfully": {
+      "ok": true,
+      "msg": "run failed: SCRIPT_ASYNC_FORBIDDEN: onBar returned a promise (async/await is not supported). The bounded backt",
+      "refusalRecorded": true
+    },
     "w5-fix-and-run": {
       "ok": true,
       "msg": "run e1a0d7b4944f: 36 fills, net -67.80",
