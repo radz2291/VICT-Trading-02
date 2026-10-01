@@ -1,0 +1,72 @@
+{
+  "harness": "v18-async-red-tgz.mjs (G3 contested check round A, committed artifact)",
+  "testedHead": "34effc356d2410ef24b61b575bf9330d9e1ade8c",
+  "productCodeByteIdenticalTo_8a33b00": true,
+  "committedTgz": "C:\\Users\\RZ1\\Desktop\\RZ\\260927-VCT-Trading\\docs\\evidence\\G3\\kit-0.2.1.tgz",
+  "tgzSha256": "b7cec2727ea3c267820e16d14b10f20ff1cedd37e387935a63732df624f812e7",
+  "install": {
+    "ok": true,
+    "consumerDir": "C:\\Users\\RZ1\\AppData\\Local\\Temp\\v18-async-red-consumer-1790841330084",
+    "logTail": " | added 8 packages in 1s | "
+  },
+  "probes": [
+    {
+      "label": "TGZ-A1-async-onBar",
+      "status": "succeeded",
+      "identityId": "f9d92a47fa6019170bbc4a6a5726b925de258a080106780f93597da40ae407d3",
+      "error": null,
+      "plots": {
+        "syncA": {
+          "len": 47,
+          "nonNull": 47
+        }
+      },
+      "tradeCount": 0,
+      "determinism_twoRunsIdentical": true,
+      "expectation": {
+        "kind": "async",
+        "plot": "asyncA",
+        "order": true
+      },
+      "redFlags": {
+        "statusReportsSuccess": true,
+        "anyErrorSurfaced": false,
+        "asyncPlotPresent": false,
+        "asyncOrderFilled": false
+      },
+      "verdict": "RED: async work silently skipped, run succeeded, no flag (COMMITTED ARTIFACT)"
+    },
+    {
+      "label": "TGZ-B1-then-pattern",
+      "status": "succeeded",
+      "identityId": "4a7367ae1a35543d53ba942f5bc54284f63b5992fd5af358e5b54e6793c00901",
+      "error": null,
+      "plots": {
+        "syncB": {
+          "len": 47,
+          "nonNull": 47
+        }
+      },
+      "tradeCount": 0,
+      "determinism_twoRunsIdentical": true,
+      "expectation": {
+        "kind": "async",
+        "plot": "thenB",
+        "order": true
+      },
+      "redFlags": {
+        "statusReportsSuccess": true,
+        "anyErrorSurfaced": false,
+        "asyncPlotPresent": false,
+        "asyncOrderFilled": false
+      },
+      "verdict": "RED: async work silently skipped, run succeeded, no flag (COMMITTED ARTIFACT)"
+    }
+  ],
+  "kitResolvedFrom": "C:\\Users\\RZ1\\AppData\\Local\\Temp\\v18-async-red-consumer-1790841330084\\node_modules\\@vict-trading\\trading-kit\\dist\\index.js",
+  "installedKitVersion": "0.2.1",
+  "overall": {
+    "redConfirmed_onCommittedArtifact": 2,
+    "notes": "Same silent-skip on the committed kit-0.2.1.tgz installed outside the monorepo — behavior is intrinsic to the shipped artifact, not a workspace-build artifact."
+  }
+}

@@ -1,0 +1,208 @@
+{
+  "harness": "v18-async-red-a.mjs (G3 contested check round A, Pattern A)",
+  "testedHead": "34effc356d2410ef24b61b575bf9330d9e1ade8c",
+  "productCodeByteIdenticalTo_8a33b00": true,
+  "kitResolvedFrom": "C:\\Users\\RZ1\\Desktop\\RZ\\260927-VCT-Trading\\packages\\trading-kit\\dist\\index.js",
+  "data": {
+    "kind": "verifier-own synthetic 15m bars",
+    "bars": 48,
+    "fromTime": 1800000000,
+    "markerBarTime": 1800009000
+  },
+  "marker": "MARKER bar time 1800009000 — an order emitted there fills at bar 11 open if executed",
+  "probes": [
+    {
+      "label": "A0-control-sync",
+      "run1": {
+        "status": "succeeded",
+        "identityId": "166dfef3bd9027b1cd61d0b545d441bbfd51f150a74cd2ea54871735271a10cd",
+        "error": null,
+        "plots": {
+          "ctrl": {
+            "len": 47,
+            "nonNull": 47
+          }
+        },
+        "signalKeys": [],
+        "tradeCount": 1,
+        "trades": [
+          {
+            "side": "buy",
+            "size": 1,
+            "signalBarTime": 1800009000,
+            "fillBarTime": 1800009900
+          }
+        ],
+        "unfilledOrders": [],
+        "netProfit": -1.9200000000000728,
+        "barsInRun": 47
+      },
+      "determinism_twoRunsIdentical": true,
+      "expectation": {
+        "kind": "control",
+        "plot": "ctrl"
+      },
+      "redFlags": {
+        "statusReportsSuccess": true,
+        "plotPresent": true,
+        "orderFilled": true
+      },
+      "verdict": "CONTROL_OK (harness sees executed work)"
+    },
+    {
+      "label": "A1-async-onBar-await-then-plot+order",
+      "run1": {
+        "status": "succeeded",
+        "identityId": "f9d92a47fa6019170bbc4a6a5726b925de258a080106780f93597da40ae407d3",
+        "error": null,
+        "plots": {
+          "syncA": {
+            "len": 47,
+            "nonNull": 47
+          }
+        },
+        "signalKeys": [],
+        "tradeCount": 0,
+        "trades": [],
+        "unfilledOrders": [],
+        "netProfit": 0,
+        "barsInRun": 47
+      },
+      "determinism_twoRunsIdentical": true,
+      "expectation": {
+        "kind": "async",
+        "syncPlot": "syncA",
+        "plot": "asyncA",
+        "order": true
+      },
+      "redFlags": {
+        "statusReportsSuccess": true,
+        "anyErrorSurfaced": false,
+        "syncPartExecuted": true,
+        "asyncPlotPresent": false,
+        "asyncOrderFilled": false,
+        "interruptionCode": false
+      },
+      "verdict": "RED: async work silently skipped, run succeeded, no flag"
+    },
+    {
+      "label": "A2-async-onBar-never-settling-await",
+      "run1": {
+        "status": "succeeded",
+        "identityId": "92a5ddb84ffc4385614a8250733cf567307696b16667d67a7060bc12b5bebb49",
+        "error": null,
+        "plots": {
+          "syncA2": {
+            "len": 47,
+            "nonNull": 47
+          }
+        },
+        "signalKeys": [],
+        "tradeCount": 0,
+        "trades": [],
+        "unfilledOrders": [],
+        "netProfit": 0,
+        "barsInRun": 47
+      },
+      "determinism_twoRunsIdentical": true,
+      "expectation": {
+        "kind": "async",
+        "syncPlot": "syncA2",
+        "plot": "neverA",
+        "order": false
+      },
+      "redFlags": {
+        "statusReportsSuccess": true,
+        "anyErrorSurfaced": false,
+        "syncPartExecuted": true,
+        "asyncPlotPresent": false,
+        "interruptionCode": false
+      },
+      "verdict": "RED: async work silently skipped, run succeeded, no flag"
+    },
+    {
+      "label": "A3-onBar-returns-promise",
+      "run1": {
+        "status": "succeeded",
+        "identityId": "e4b8698a9a6aa571598df25f9ca17082c2dc8e3224fe71a579e250395b55630d",
+        "error": null,
+        "plots": {},
+        "signalKeys": [],
+        "tradeCount": 0,
+        "trades": [],
+        "unfilledOrders": [],
+        "netProfit": 0,
+        "barsInRun": 47
+      },
+      "determinism_twoRunsIdentical": true,
+      "expectation": {
+        "kind": "async",
+        "syncPlot": null,
+        "plot": "retA",
+        "order": true
+      },
+      "redFlags": {
+        "statusReportsSuccess": true,
+        "anyErrorSurfaced": false,
+        "syncPartExecuted": true,
+        "asyncPlotPresent": false,
+        "asyncOrderFilled": false,
+        "interruptionCode": false
+      },
+      "verdict": "RED: async work silently skipped, run succeeded, no flag"
+    },
+    {
+      "label": "A4-guest-async-env",
+      "run1": {
+        "status": "succeeded",
+        "identityId": "217d936eea18d6558b369eb32b77464e30fdd327e701f01080ced89dfaa253a8",
+        "error": null,
+        "plots": {
+          "envbar": {
+            "len": 47,
+            "nonNull": 47
+          }
+        },
+        "signalKeys": [
+          "env_Promise_typeof_function",
+          "env_queueMicrotask_typeof_undefined",
+          "env_setTimeout_typeof_undefined"
+        ],
+        "tradeCount": 0,
+        "trades": [],
+        "unfilledOrders": [],
+        "netProfit": 0,
+        "barsInRun": 47
+      },
+      "determinism_twoRunsIdentical": true,
+      "expectation": {
+        "kind": "env",
+        "syncPlot": "envbar",
+        "plot": null,
+        "order": false
+      },
+      "redFlags": {
+        "statusReportsSuccess": true,
+        "anyErrorSurfaced": false,
+        "syncPartExecuted": true,
+        "asyncPlotPresent": false,
+        "interruptionCode": false
+      },
+      "verdict": "ENV-PROBE (signalKeys embed guest typeof values; no async expectation)"
+    }
+  ],
+  "publicRuntimePortSurface": {
+    "keys": [
+      "kind",
+      "version",
+      "run"
+    ],
+    "kind": "quickjs-emscripten",
+    "version": "0.32.0"
+  },
+  "distMentionsExecutePendingJobs": false,
+  "overall": {
+    "redConfirmed_patternA": 3,
+    "notes": "A1/A2/A3: if verdict RED — guest async continuation never ran; run reported succeeded with no error/flag; omission is deterministic (two-run identical), so determinism is NOT the violated property — honesty is."
+  }
+}
