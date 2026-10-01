@@ -1,0 +1,68 @@
+{
+  "harness": "v20-async-postrepair-tgz.mjs (round-A committed-artifact harness rerun against committed kit-0.2.2.tgz; output redirected to preserve round-A red evidence)",
+  "testedHead": "842122b03ccb5d923ce810689ab3ba37d3fff32b",
+  "productCodeByteIdenticalTo_8a33b00": false,
+  "committedTgz": "C:\\Users\\RZ1\\Desktop\\RZ\\260927-VCT-Trading\\docs\\evidence\\G3\\kit-0.2.2.tgz",
+  "tgzSha256": "609a945c61131ee83451ea53e7675a97b5c357676636c2f3953e2c6a49763b10",
+  "install": {
+    "ok": true,
+    "consumerDir": "C:\\Users\\RZ1\\AppData\\Local\\Temp\\v20-async-postrepair-consumer-1790842838145",
+    "logTail": " | added 8 packages in 4s | "
+  },
+  "probes": [
+    {
+      "label": "TGZ-A1-async-onBar",
+      "status": "failed",
+      "identityId": "f9d92a47fa6019170bbc4a6a5726b925de258a080106780f93597da40ae407d3",
+      "error": {
+        "code": "SCRIPT_ASYNC_FORBIDDEN",
+        "message": "onBar returned a promise (async/await is not supported). The bounded backtest executes synchronous scripts only: remove async/await from onBar and call api.plot/api.order directly inside it so every action is recorded."
+      },
+      "plots": {},
+      "tradeCount": 0,
+      "determinism_twoRunsIdentical": true,
+      "expectation": {
+        "kind": "async",
+        "plot": "asyncA",
+        "order": true
+      },
+      "redFlags": {
+        "statusReportsSuccess": false,
+        "anyErrorSurfaced": true,
+        "asyncPlotPresent": false,
+        "asyncOrderFilled": false
+      },
+      "verdict": "NOT_REPRODUCED (inspect row)"
+    },
+    {
+      "label": "TGZ-B1-then-pattern",
+      "status": "failed",
+      "identityId": "4a7367ae1a35543d53ba942f5bc54284f63b5992fd5af358e5b54e6793c00901",
+      "error": {
+        "code": "SCRIPT_ASYNC_FORBIDDEN",
+        "message": "script left unfinished asynchronous work (Promise). The bounded backtest executes synchronous scripts only: remove Promise/async from the script and call api.plot/api.order directly inside onBar so every action is recorded."
+      },
+      "plots": {},
+      "tradeCount": 0,
+      "determinism_twoRunsIdentical": true,
+      "expectation": {
+        "kind": "async",
+        "plot": "thenB",
+        "order": true
+      },
+      "redFlags": {
+        "statusReportsSuccess": false,
+        "anyErrorSurfaced": true,
+        "asyncPlotPresent": false,
+        "asyncOrderFilled": false
+      },
+      "verdict": "NOT_REPRODUCED (inspect row)"
+    }
+  ],
+  "kitResolvedFrom": "C:\\Users\\RZ1\\AppData\\Local\\Temp\\v20-async-postrepair-consumer-1790842838145\\node_modules\\@vict-trading\\trading-kit\\dist\\index.js",
+  "installedKitVersion": "0.2.2",
+  "overall": {
+    "redConfirmed_onCommittedArtifact": 0,
+    "notes": "Same silent-skip on the committed kit-0.2.1.tgz installed outside the monorepo — behavior is intrinsic to the shipped artifact, not a workspace-build artifact."
+  }
+}

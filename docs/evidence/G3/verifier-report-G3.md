@@ -499,3 +499,90 @@ Every required criterion is demonstrated with reproducible evidence; both prior 
   "manualNotes": "Tested SHA 8a33b00a9bd0c12f7c8a5fc8ebc78ff9e28bb6e6 (HEAD == origin/main, no drift after fetch). The killed prior final instance's untracked v15 tooling was adopted, fully re-executed (all results this session's own), and committed; its unfinished v16 was completed (runtime wiring + per-bar pin comparison over closed bars + meaningful capped-slice check) and run. Evidence tooling edits only — product code untouched, nothing published, no orders, preview server stopped after use."
 }
 ```
+
+---
+
+# ADDENDUM — G3 CONTESTED CHECK, ROUND B (fresh verifier, owner-ordered): challenging the repair
+
+**Session:** independent fresh verifier; did not build the candidate; product code untouched.
+**Tested SHA:** `842122b03ccb5d923ce810689ab3ba37d3fff32b` (HEAD == origin/main at session start; working tree clean; verified by this session via `git status` / `git rev-parse HEAD` / `git rev-parse origin/main`).
+**Mandate:** falsify the round-A repair (diff `6dc22b7..842122b`: kit sync-only script contract as 0.2.2, docs, tarballs). Round-A red evidence (`RED-NOTE.md`, v18 harnesses at `6dc22b7`) preserved untouched.
+**Evidence files (this session):** `verifier/v20-async-postrepair-{a,b,tgz}.mjs` + results (round-A harnesses re-run; output redirected so the round-A red results remain byte-preserved), `verifier/v19-bypass.mjs` + results (own bypass attacks), `verifier/v22-browser-postrepair.mjs` + results + `verifier/br-0*.png` (full 16-step browser suite re-run; the builder's `browser-results.json` untouched).
+
+## B1. Round-A red must now be truthful — IT IS
+
+Re-ran the round-A harnesses (logic-identical copies, output redirected; verified faithful by diff) against the candidate tree, plus the committed-artifact path installing **kit-0.2.2.tgz** outside the monorepo:
+
+| Pattern (round-A id) | at 8a33b00 (round A) | at 842122b (this session) |
+|---|---|---|
+| A0 / B0 control (sync) | CONTROL_OK | CONTROL_OK (plot 47/47, order filled, netProfit −1.92) |
+| A1 async onBar + await → plot+order | RED silent `succeeded` | **failed, SCRIPT_ASYNC_FORBIDDEN**, actionable message, identity `f9d92a47…` kept |
+| A2 never-settling await | RED: silent `succeeded`, NOT interrupted | **failed, SCRIPT_ASYNC_FORBIDDEN** (no hang, no silent success) |
+| A3 onBar returns promise | RED silent `succeeded` | **failed, SCRIPT_ASYNC_FORBIDDEN**, `plots: {}`, 0 trades |
+| B1 sync onBar + `Promise.then` plot+order | RED silent `succeeded` | **failed, SCRIPT_ASYNC_FORBIDDEN**, identity `4a7367ae…` kept |
+| B2 two-deep `.then` chain | RED silent `succeeded` | **failed, SCRIPT_ASYNC_FORBIDDEN** |
+| B3 thrown-error contrast | failed SCRIPT_ERROR | failed SCRIPT_ERROR (contrast intact) |
+| B4 B1 + host waits 250 ms | RED silent `succeeded` | **failed, SCRIPT_ASYNC_FORBIDDEN** (host-side waiting changes nothing) |
+| TGZ-A1 / TGZ-B1 on committed kit-0.2.2.tgz (fresh consumer outside the monorepo, installed version 0.2.2) | RED on 0.2.1 | **failed, SCRIPT_ASYNC_FORBIDDEN on both** |
+
+Every previously-red pattern: status `failed`, code `SCRIPT_ASYNC_FORBIDDEN`, actionable message naming the fix (two distinct truthful messages observed: "onBar returned a promise (async/await is not supported)…" for the thenable-return class; "script scheduled/left unfinished asynchronous work (Promise)…" for the pending-job class). **None reports `succeeded`; none shows dropped-work evidence in any succeeded record.** Failed runs carry full identity (64-hex) + assumptions (`barsInRun` 47) — spot-checked on every failed row. Two identical-input runs of every failing script: byte-identical failure (`determinism_twoRunsIdentical: true` on all rows of all three harnesses). Identity values for identical inputs are unchanged from round A (A1 `f9d92a47…`, B1 `4a7367ae…`) — the refusal does not perturb run identity.
+
+## B2. Bypass attempts (`v19-bypass.mjs`, this session's own) — repair holds
+
+Ten attack vectors through the public `runBacktest` path; each run twice (determinism asserted):
+
+| Attack | Result | Gate that caught it / classification |
+|---|---|---|
+| (a) sync `onBar` reassigned to async arrow before the loop | failed `SCRIPT_ASYNC_FORBIDDEN` | driver per-call thenable check ("onBar returned a promise…") |
+| (b) sync `onBar` returns thenable object `{then: fn}` | failed `SCRIPT_ASYNC_FORBIDDEN` | driver per-call thenable check |
+| (c) top-level (pass-2) `Promise.resolve().then(...)` | failed `SCRIPT_ASYNC_FORBIDDEN` | pass-2 pending-job gate ("script scheduled asynchronous work…") — zero bars executed |
+| (d) `.then` chain whose callback returns another promise | failed `SCRIPT_ASYNC_FORBIDDEN` | pass-3 backstop ("script left unfinished asynchronous work…") |
+| (e) guest overwrites `Promise` with fake whose `then` runs synchronously | **succeeded, all work executed** (both plots 47/47, order filled at the MARKER bar, netProfit −1.92) | ACCEPTABLE: the "scheduled" work executed synchronously inside the bar — the executed strategy IS the written strategy; nothing dropped |
+| (f1) async IIFE (no await), promise discarded | **succeeded, both plots 47/47** | ACCEPTABLE: an async body without await executes fully synchronously; nothing dropped |
+| (f2) async IIFE with `await`, promise discarded | failed `SCRIPT_ASYNC_FORBIDDEN` | pass-3 backstop |
+| (g) EXTRA: `onBar` installed as a getter alternating sync/async per call | failed `SCRIPT_ASYNC_FORBIDDEN` | driver per-call check fires on the async call (`kitFatal` is driver-local — cannot be overridden by the guest) |
+| (h) EXTRA: inert fake `Promise` whose `then` DISCARDS the callback | succeeded, callback's plot absent | GUEST-SABOTAGE EDGE (see F-RB-2): the "dropped" work never entered the runtime — the guest replaced the scheduler with an inert object; equivalent to passing a callback to a no-op. No runtime-submitted work was dropped; every recorded action executed |
+| (i) EXTRA: real `Promise.prototype.then` overridden to run callbacks synchronously | **succeeded, both plots 47/47 + order filled** | ACCEPTABLE: synchronous execution, nothing dropped |
+
+**Zero silent-drop paths survived:** every case where guest-submitted work could die unaired produced a truthful `failed` record; every `succeeded` record contains exactly the work that actually executed. All three defense layers demonstrably fire (driver per-call check / pass-2 gate / pass-3 backstop). All runs deterministic; all failed records honest (identity + assumptions + actionable message).
+
+## B3. Positive path unchanged — VERIFIED
+
+- **Kit tests: 26/26** (`cd packages/trading-kit && node --test test/g3.test.mjs`), including the hand-calculated fixture exactness block and the 4 new sync-contract tests (1 positive sync-execution + 3 refusal regressions). Kit `dist/` rebuilt first: tsc output **byte-identical** to the builder's committed-state dist (freshness proven by sha256 before/after).
+- **In-app SMA identity reproduced: `e1a0d7b4944f`** — full 16-step browser suite re-run in a real headless Chrome against the already-running preview build on :5199 (the served bundle was first re-verified to contain the repair code; the host was NOT rebuilt — documented build-while-serving pitfall avoided): `verifier/v22-browser-postrepair-results.json`, **16/16 steps ok**, including `vg34-async-refused-truthfully` (app renders "run failed: SCRIPT_ASYNC_FORBIDDEN: onBar returned a promise (async/await is not supported)…", refusal code present in the stored run record, zero dropped-work evidence), `w5-identical-inputs-identical-run` (same identity + byte-identical trades/equity), `w5-one-input-change-flips-identity`, `w5-draft-edit-cannot-rewrite-run`, F-C2-2 + F-AVC-1 refusal/recovery steps, W1 regression, overflow 0 px @ 375/768. Console: 1 benign 404 (same as the builder's recorded run). Screenshots: `verifier/br-0{1,2,3,4}-*.png` (this session's own).
+
+## B4. Artifact identity — THREE-WAY REPRODUCED
+
+`sha512` of `docs/evidence/G3/kit-0.2.2.tgz` == `packages/trading-kit/vict-trading-trading-kit-0.2.2.tgz` == **this session's fresh `npm pack`** == `4601a528f25069a8020dc591727f98ff286ae93ff5afd4e1a24be9da5d4e3ade4db276c4ca55612c9274ff0c967300fc96503c27fc0f89021fff7f16f58cfae6` (lineage row digest exact). Tarball contents inspected: `version 0.2.2`; README contains the **Script contract (bounded backtests — SYNC-ONLY)** section (2× `SCRIPT_ASYNC_FORBIDDEN`); dist carries the refusal (2× adapter + 1× driver). The lineage README row for 0.2.2 is truthful: the builder's re-run record `consumer-results.json` (all steps ok) carries the same sha512/sha256 (`609a945c…` — independently recomputed by this session on the committed file), and this session adds a third independent pack reproduction, so "pack reproduced twice at `4601a528…`" understates rather than overstates.
+
+## B5. Scope + docs audit — CLEAN
+
+`git diff 6dc22b7..842122b` confined to: kit `src/sandbox/quickjs.ts`, `src/script.ts`, `test/g3.test.mjs`, `README.md`, `package.json` (version 0.2.1→0.2.2 + whitespace reindent; content otherwise identical), both kit-0.2.2.tgz copies, evidence (browser suite + new step, consumer results, a1-README correction preserving the false claim as history, README lineage row, re-captured screenshots), and status texts (AGENTS §3 live-vs-historical split correct with the superseded text preserved verbatim; STAGES G3 pause note marked **HISTORICAL snapshot** with a LIVE STATUS block; STATE contested-check block). Secret scan of the full diff: clean. No prohibited work: no orders, no publication ("Not published to npm" retained), no account touch, no external-engine integration, no G4 work. This session modified NO product code; only `docs/evidence/G3/verifier/*` additions + the STATE.md contested-check block's final line.
+
+## Findings (round B; none blocking)
+
+- **F-RB-1 (tooling, informational):** the in-repo round-A harnesses' provenance flag `productCodeByteIdenticalTo_8a33b00` is **vacuous when run from the verifier subdirectory** — the git pathspecs (`packages`, `host`) are cwd-relative and match nothing from `docs/evidence/G3/verifier/`, so the flag reads `true` regardless of real diffs. At `842122b` it is additionally factually wrong (the repair changed `packages/` — by design). Round A's red conclusion is unaffected (the no-delta claim was independently true at the docs-head `34effc3`, and this session re-reproduced the red-turned-truthful transition against the real product delta). Future harnesses should resolve the repo root via `import.meta.dirname` (as the tgz harness already does). Not repaired in place — recorded.
+- **F-RB-2 (contract edge, informational, bounded):** a guest that overwrites `Promise` with an **inert fake** gets its `.then` callback silently no-op'ed under a `succeeded` record (attack h). Judgment: not a runner-honesty violation — the callback is never submitted to the runtime (the user replaced the scheduler with a broken object; identical to passing a callback to a user-defined no-op), every recorded action executed, and the shipped contract documents Promise/async as unsupported and to be removed. Recorded so the owner can decide later whether a future kit revision should freeze guest globals at sandbox setup. Severity: minor; user effect: only self-sabotaging scripts; no false executed-work claims.
+- Carried set unchanged and still non-blocking: V-G3-3/-5, F-G3-1/-4, F-1, V-G3-R5, V-G3-R6. **V-G3-4 is remediated** by this repair.
+
+## RULING (explicit, per the accepted criteria)
+
+- **Criterion 4 — SATISFIED at `842122b`** (was VIOLATED at `8a33b00`): the supported syntax subset is now documented where the user meets it (kit README "Script contract (bounded backtests — SYNC-ONLY)", shipped inside the packed 0.2.2 artifact), the error behavior for the async class is truthful and actionable (`SCRIPT_ASYNC_FORBIDDEN`, two specific messages), and committed tests cover the contract (1 positive sync-execution + 3 refusal regressions inside the 26/26 suite). The false a1-README "runner pumps between bars" claim is corrected in place with the history preserved.
+- **Criterion 9 — SATISFIED at `842122b`** (was VIOLATED at `8a33b00`): across 8 re-run round-A patterns + 10 bypass vectors + the committed-artifact path, **no run reports `succeeded` with dropped guest work**; every scheduled-but-unexecuted path yields `failed` with the actionable code, and failed records keep full identity + assumptions. The remaining (h) edge drops nothing the runtime ever accepted for execution.
+
+## VERDICT (round B)
+
+**PASS WITH NON-BLOCKING FINDINGS at `842122b03ccb5d923ce810689ab3ba37d3fff32b`.** The repair survives falsification: round-A red is now truthful, ten bypass attempts (including getter-swap and Promise-forgery classes) all fail closed or execute truthfully, the positive path is unchanged where it must be (SMA identity `e1a0d7b4944f`, kit tests 26/26, browser suite 16/16), and the artifact identity reproduces three ways. This verdict **supersedes the earlier G3 verdict at `8a33b00a9bd0c12f7c8a5fc8ebc78ff9e28bb6e6`** (including that candidate's criterion 4+9 violation ruling); the `8a33b00` record and both contested-check rounds are preserved as history.
+
+## Reproduction commands (this session, all run)
+
+```bash
+cd packages/trading-kit && npm run build && node --test test/g3.test.mjs   # 26/26 pass
+cd docs/evidence/G3/verifier
+node v20-async-postrepair-a.mjs      # round-A Pattern A re-run -> all red patterns now truthful failures
+node v20-async-postrepair-b.mjs      # round-A Pattern B re-run -> same
+node v20-async-postrepair-tgz.mjs    # committed kit-0.2.2.tgz outside the monorepo -> same
+node v19-bypass.mjs                  # 10 bypass attacks -> 0 silent drops
+node v22-browser-postrepair.mjs      # full 16-step suite vs :5199 (already-serving current build)
+sha512sum ../kit-0.2.2.tgz ../../../../packages/trading-kit/vict-trading-trading-kit-0.2.2.tgz
+```

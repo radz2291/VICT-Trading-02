@@ -1,0 +1,94 @@
+{
+  "steps": {
+    "w2-load": {
+      "ok": true
+    },
+    "w2-add-sma-indicator": {
+      "ok": true,
+      "editorOpened": true,
+      "name": "SMA 1",
+      "srcHasSma": true,
+      "srcLen": 447
+    },
+    "w2-new-draft-hide-reopen": {
+      "ok": true,
+      "hidden": true,
+      "byteExactAfterReopen": true
+    },
+    "w2-reload-draft-survives": {
+      "ok": true,
+      "draftInList": true,
+      "contentAfterReload": true
+    },
+    "w5-invalid-edit-actionable": {
+      "ok": true,
+      "msg": "run failed: SCRIPT_SYNTAX_ERROR: invalid property name",
+      "status": "saved",
+      "runsBytesContainSyntaxError": true
+    },
+    "vg34-async-refused-truthfully": {
+      "ok": true,
+      "msg": "run failed: SCRIPT_ASYNC_FORBIDDEN: onBar returned a promise (async/await is not supported). The bounded backt",
+      "refusalRecorded": true
+    },
+    "w5-fix-and-run": {
+      "ok": true,
+      "msg": "run e1a0d7b4944f: 36 fills, net -67.80",
+      "fills": 36,
+      "identity": "e1a0d7b4944f",
+      "tradesStored": 36,
+      "overlayLegendFound": true,
+      "svgPaneRemoved": true,
+      "overlayBluePixels": 1485
+    },
+    "w5-identical-inputs-identical-run": {
+      "ok": true,
+      "runA": "e1a0d7b4944f",
+      "runB": "e1a0d7b4944f",
+      "identicalIdentityAndResults": true
+    },
+    "w5-one-input-change-flips-identity": {
+      "ok": true,
+      "differentIdentity": true,
+      "bInputs": "{\"period\":24}"
+    },
+    "w5-draft-edit-cannot-rewrite-run": {
+      "ok": true,
+      "runsBytesUnchangedAfterDraftEdit": true
+    },
+    "w5-compare-two-runs": {
+      "ok": true,
+      "compareRendered": true,
+      "showsBothIdentities": true,
+      "snippet": "Compare e1a0d7b4944f vs b2a2ee7f7001 identitye1a0d7b4944f / b2a2ee7f7001inputs{\"period\":20} / {\"period\":24}net-67.80 / -55.60final equity9932.20 / 994"
+    },
+    "fc22-refused-write-rendered": {
+      "ok": true,
+      "refusalRendered": true,
+      "corruptBytesPreserved": true,
+      "afterHealStatus": "idle"
+    },
+    "favc1-replay-recovery-clears-stale": {
+      "ok": true,
+      "refusalRendered": true,
+      "staleAfterRecovery": false,
+      "after": "stepped to 2026-01-05 00:30Z"
+    },
+    "w1-regression-level-drawing": {
+      "ok": true,
+      "mutationStatus": "saved",
+      "persistedLevels": 1
+    },
+    "narrow-375": {
+      "ok": true,
+      "horizontalOverflowPx": 0
+    },
+    "narrow-768": {
+      "ok": true,
+      "horizontalOverflowPx": 0
+    }
+  },
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+}

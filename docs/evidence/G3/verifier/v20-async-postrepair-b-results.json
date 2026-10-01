@@ -1,0 +1,176 @@
+{
+  "harness": "v20-async-postrepair-b.mjs (round-A Pattern-B harness rerun at repair candidate; output redirected to preserve round-A red evidence)",
+  "testedHead": "842122b03ccb5d923ce810689ab3ba37d3fff32b",
+  "productCodeByteIdenticalTo_8a33b00": true,
+  "kitResolvedFrom": "C:\\Users\\RZ1\\Desktop\\RZ\\260927-VCT-Trading\\packages\\trading-kit\\dist\\index.js",
+  "data": {
+    "kind": "verifier-own synthetic 15m bars",
+    "bars": 48,
+    "fromTime": 1800000000,
+    "markerBarTime": 1800009000
+  },
+  "probes": [
+    {
+      "label": "B0-control-sync",
+      "run1": {
+        "status": "succeeded",
+        "identityId": "166dfef3bd9027b1cd61d0b545d441bbfd51f150a74cd2ea54871735271a10cd",
+        "error": null,
+        "plots": {
+          "ctrl": {
+            "len": 47,
+            "nonNull": 47
+          }
+        },
+        "signalKeys": [],
+        "tradeCount": 1,
+        "trades": [
+          {
+            "side": "buy",
+            "size": 1,
+            "signalBarTime": 1800009000,
+            "fillBarTime": 1800009900
+          }
+        ],
+        "netProfit": -1.9200000000000728,
+        "barsInRun": 47
+      },
+      "determinism_twoRunsIdentical": true,
+      "expectation": {
+        "kind": "control",
+        "plot": "ctrl"
+      },
+      "redFlags": {
+        "statusReportsSuccess": true,
+        "plotPresent": true,
+        "orderFilled": true
+      },
+      "verdict": "CONTROL_OK (harness sees executed work)"
+    },
+    {
+      "label": "B1-sync-onBar-then-plot+order",
+      "run1": {
+        "status": "failed",
+        "identityId": "4a7367ae1a35543d53ba942f5bc54284f63b5992fd5af358e5b54e6793c00901",
+        "error": {
+          "code": "SCRIPT_ASYNC_FORBIDDEN",
+          "message": "script left unfinished asynchronous work (Promise). The bounded backtest executes synchronous scripts only: remove Promise/async from the script and call api.plot/api.order directly inside onBar so every action is recorded."
+        },
+        "plots": {},
+        "signalKeys": [],
+        "tradeCount": 0,
+        "trades": [],
+        "netProfit": 0,
+        "barsInRun": 47
+      },
+      "determinism_twoRunsIdentical": true,
+      "expectation": {
+        "kind": "async",
+        "syncPlot": "syncB",
+        "plot": "thenB",
+        "order": true
+      },
+      "redFlags": {
+        "statusReportsSuccess": false,
+        "anyErrorSurfaced": true,
+        "syncPartExecuted": false,
+        "scheduledPlotPresent": false,
+        "scheduledOrderFilled": false
+      },
+      "verdict": "NOT_REPRODUCED (inspect row)"
+    },
+    {
+      "label": "B2-sync-onBar-chained-then",
+      "run1": {
+        "status": "failed",
+        "identityId": "c354730a2377ed5ec3e063217e31470b7d7c360095e9fe5df326e3a30fad1ae3",
+        "error": {
+          "code": "SCRIPT_ASYNC_FORBIDDEN",
+          "message": "script left unfinished asynchronous work (Promise). The bounded backtest executes synchronous scripts only: remove Promise/async from the script and call api.plot/api.order directly inside onBar so every action is recorded."
+        },
+        "plots": {},
+        "signalKeys": [],
+        "tradeCount": 0,
+        "trades": [],
+        "netProfit": 0,
+        "barsInRun": 47
+      },
+      "determinism_twoRunsIdentical": true,
+      "expectation": {
+        "kind": "async",
+        "syncPlot": "syncB2",
+        "plot": "chainB",
+        "order": false
+      },
+      "redFlags": {
+        "statusReportsSuccess": false,
+        "anyErrorSurfaced": true,
+        "syncPartExecuted": false,
+        "scheduledPlotPresent": false
+      },
+      "verdict": "NOT_REPRODUCED (inspect row)"
+    },
+    {
+      "label": "B3-thrown-error-contrast",
+      "run1": {
+        "status": "failed",
+        "identityId": "1ffe9e80414e773c1f2c22920f56d4f242c073a6f031fdb86ef85e7c3b4110a3",
+        "error": {
+          "code": "SCRIPT_ERROR",
+          "message": "'setTimeout' is not defined"
+        },
+        "plots": {},
+        "signalKeys": [],
+        "tradeCount": 0,
+        "trades": [],
+        "netProfit": 0,
+        "barsInRun": 47
+      },
+      "determinism_twoRunsIdentical": true,
+      "expectation": {
+        "kind": "thrown-error-contrast"
+      },
+      "redFlags": {
+        "failed": true,
+        "truthfulCode": "SCRIPT_ERROR",
+        "nothingFromThisRunInResults": true
+      },
+      "verdict": "CONTRAST_OK: a thrown guest error IS surfaced truthfully (run failed)"
+    },
+    {
+      "label": "B4-then-pattern-with-host-side-wait",
+      "run1": {
+        "status": "failed",
+        "identityId": "8186651b2abea7486aa3292038662779ab2e0d6b535b17d57cd9f364046fc74a",
+        "error": {
+          "code": "SCRIPT_ASYNC_FORBIDDEN",
+          "message": "script left unfinished asynchronous work (Promise). The bounded backtest executes synchronous scripts only: remove Promise/async from the script and call api.plot/api.order directly inside onBar so every action is recorded."
+        },
+        "plots": {},
+        "signalKeys": [],
+        "tradeCount": 0,
+        "trades": [],
+        "netProfit": 0,
+        "barsInRun": 47
+      },
+      "determinism_twoRunsIdentical": true,
+      "expectation": {
+        "kind": "async",
+        "syncPlot": "syncB4",
+        "plot": "thenB4",
+        "order": false
+      },
+      "redFlags": {
+        "statusReportsSuccess": false,
+        "anyErrorSurfaced": true,
+        "syncPartExecuted": false,
+        "scheduledPlotPresent": false
+      },
+      "verdict": "NOT_REPRODUCED (inspect row)"
+    }
+  ],
+  "overall": {
+    "redConfirmed_patternB": 0,
+    "notes": "B1/B2/B4: scheduled guest work (Promise.then jobs) never executes; run reports succeeded; no error/refusal/flag; omission deterministic. B3 shows the CONTRAST: the same runner DOES surface thrown errors truthfully — the silence is specific to scheduled-but-never-pumped work."
+  }
+}
