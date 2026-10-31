@@ -1,5 +1,7 @@
 # Repository-specific autonomous handoff — VICT Trading Workspace
 
+> **2026-10-31 — owner steering / fresh-app recommendation:** the owner has asked to evaluate a fresh trading app on the newer VICT UI foundation while leaving the previous host. [Research and recommendation](NEW-APP-UI-FOUNDATION-RECOMMENDATION-2026-10-31.md) distinguishes accepted VICT mainline from the newer paused snapshot. The earlier ownership findings remain valid, but copying/extracting the old custom UI wholesale is no longer the recommended implementation route. Treat the in-place G3-R UI migration instructions as provisional pending this direction review. No new app target, exact artifact set or implementation acceptance is invented by this note; G4 remains unstarted.
+
 ## G3-R — owner-directed app/package realignment (2026-10-31)
 
 **Authority:** current owner instruction: "I need you to look at the current app. If any from the app should be governed or responsible by packages instead. Please check and we need to do realignment. But if everything is good, then very well. But moving forward, app responsibility has to be low." This authorizes audit and correction of existing feature ownership. It does not authorize G4 features. The implementation scope below is an audit-derived plan under that instruction, not an invented owner acceptance quote.

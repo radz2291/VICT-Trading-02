@@ -1,5 +1,7 @@
 # Stage plan and exit gates
 
+> **2026-10-31 — owner steering / fresh-app recommendation:** the owner has asked to evaluate a fresh trading app on the newer VICT UI foundation while leaving the previous host. [Research and recommendation](NEW-APP-UI-FOUNDATION-RECOMMENDATION-2026-10-31.md) distinguishes accepted VICT mainline from the newer paused snapshot. The earlier ownership findings remain valid, but copying/extracting the old custom UI wholesale is no longer the recommended implementation route. Treat the in-place G3-R UI migration instructions as provisional pending this direction review. No new app target, exact artifact set or implementation acceptance is invented by this note; G4 remains unstarted.
+
 ## Next work — G3-R: existing-feature package ownership realignment (2026-10-31)
 
 Owner-directed audit found reusable workspace behavior/panels in `host/` and reproduced current-mode host/kit aggregation divergence. G3-R corrects existing ownership before G4; no G4 features are included. Scope and eight pass criteria: [realignment contract](APP-PACKAGE-REALIGNMENT-2026-10-31.md), authority: HANDOFF.md G3-R record. Status: audit complete; implementation and fresh independent verification pending. G0–G3 verdicts are retained as historical evidence, not proof that G3-R has passed. G4 still requires its own accepted scope.

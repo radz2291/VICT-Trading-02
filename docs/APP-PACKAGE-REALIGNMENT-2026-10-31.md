@@ -1,5 +1,7 @@
 # App/package ownership audit and realignment
 
+> **2026-10-31 — owner steering / fresh-app recommendation:** the owner has asked to evaluate a fresh trading app on the newer VICT UI foundation while leaving the previous host. [Research and recommendation](NEW-APP-UI-FOUNDATION-RECOMMENDATION-2026-10-31.md) distinguishes accepted VICT mainline from the newer paused snapshot. The earlier ownership findings remain valid, but copying/extracting the old custom UI wholesale is no longer the recommended implementation route. Treat the in-place G3-R UI migration instructions as provisional pending this direction review. No new app target, exact artifact set or implementation acceptance is invented by this note; G4 remains unstarted.
+
 Date: 2026-10-31. Repository: https://github.com/radz2291/VICT-Trading-02.
 Audited `main`: `b075c3e086154c84fc10e71d4334cdf027248cea`.
 

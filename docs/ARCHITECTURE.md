@@ -1,5 +1,7 @@
 # Architecture and selection boundaries
 
+> **2026-10-31 — owner steering / fresh-app recommendation:** the owner has asked to evaluate a fresh trading app on the newer VICT UI foundation while leaving the previous host. [Research and recommendation](NEW-APP-UI-FOUNDATION-RECOMMENDATION-2026-10-31.md) distinguishes accepted VICT mainline from the newer paused snapshot. The earlier ownership findings remain valid, but copying/extracting the old custom UI wholesale is no longer the recommended implementation route. Treat the in-place G3-R UI migration instructions as provisional pending this direction review. No new app target, exact artifact set or implementation acceptance is invented by this note; G4 remains unstarted.
+
 ## Current ownership amendment — D-007 (2026-10-31)
 
 The app owns product identity/routes/theme/configuration, raw data/provider choice, and storage backend/namespace injection. Reusable domain lifecycle and persistence correctness belong in trading-kit. Reusable chart primitives belong in chart-workspace. Reusable panels, reactive controllers, chart/kit coordination and VICT integration belong in a presentation/composition package (recommended `@vict-trading/workspace-svelte`, not implemented yet). It may import both core packages; the two cores remain mutually independent and free of app imports. The older app/composition wording below does not authorize keeping these reusable implementations inside the app. See [ownership audit and migration contract](APP-PACKAGE-REALIGNMENT-2026-10-31.md).
