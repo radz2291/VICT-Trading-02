@@ -1,6 +1,6 @@
 # VICT Trading Workspace — Agent Development Pack
 
-**Edition:** 0.1, 2026-09-26. **Status:** proposed product and execution specification for owner review. It becomes repository authority only through a repo-specific, accepted handoff. No new repository URL or release identity has been supplied.
+**Original edition:** 0.1, 2026-09-26. Current repository authority and progress: [STATE.md](STATE.md) and [HANDOFF.md](HANDOFF.md). **2026-10-31:** D-007 requires low app responsibility; [the source audit and G3-R realignment contract](APP-PACKAGE-REALIGNMENT-2026-10-31.md) are recorded. Source extraction and G3-R verification remain pending; G4 is not started.
 
 ## Start here
 
@@ -15,9 +15,9 @@ Read in order:
 5. [EVALUATION.md](EVALUATION.md) — evidence, verdicts, and review method.
 6. [RUNBOOK.md](RUNBOOK.md) — agent roles, autonomy, scope, and failure handling.
 7. [STATE.md](STATE.md) — accepted context, proposals, and unresolved facts.
-8. [HANDOFF-TEMPLATE.md](HANDOFF-TEMPLATE.md) — binding repo-specific kickoff.
+8. [HANDOFF.md](HANDOFF.md) — actual repository-specific authority and current scoped work.
 
-[AGENTS.md](AGENTS.md) is a short entry point for agents after these files are installed in the new repository. Avoid copying the same rules into multiple locations.
+[AGENTS.md](../AGENTS.md) is the entry point for agents after these files are installed in the new repository. Avoid copying the same rules into multiple locations.
 
 ## Destination in one paragraph
 
@@ -36,3 +36,4 @@ The pack is a standing reference, not blanket authority to edit VICT, publish pa
 - Earlier Trading OS, reference only: https://github.com/radz2291/VICT-Trading/tree/38f654e2ceffa0455fd5e7c2f1b4da24d73aea25
 
 The published VICT release, UI package state, and Builder Kit distribution must be rechecked at Stage 0. Work on a branch is not a published consumer contract.
+

@@ -1,5 +1,7 @@
 # Product intent
 
+> **D-007 (owner direction, 2026-10-31):** the app must remain a small consumer of reusable capabilities, including ready-to-use workspace interactions and presentation. Reusable panels, controllers and persistence correctness must not accumulate in `host/`. The source audit found realignment necessary; see [the ownership audit](APP-PACKAGE-REALIGNMENT-2026-10-31.md). This strengthens D-001; it does not remove the runnable app deliverable.
+
 > **D-001 (owner-directed, 2026-09-29, supersedes in part):** The delivery outcome is **both** a working chart-first trading app **and** reusable capabilities that a future version of the app can install (identified directions: a Chart Workspace capability — chart interaction, drawings, panels, layouts — and a Trading Kit direction — data rules, replay, scripts, simulation, risk, evidence). The app composes these capabilities through public VICT contracts. Package *publication* is a later release decision; *proving an independently installable package* is part of the development outcome. See DECISIONS.md D-001.
 
 ## Promise
@@ -43,3 +45,4 @@ This is a task demonstration, not a promise that every feature arrives in Stage 
 ## Deliberately open decisions
 
 The chart library, scripting language, simulation engine, data sources, broker adapters, package count, and precise navigation remain open until demonstrated by the relevant gate. Pine Script compatibility is not implied. No live broker authority is created by this document.
+

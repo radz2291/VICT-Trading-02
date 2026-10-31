@@ -1,0 +1,48 @@
+{
+  "baseline": "b075c3e086154c84fc10e71d4334cdf027248cea",
+  "note": "Same source, horizon after last close. Kit source copied with .js import suffixes changed to .ts solely for Node execution; no algorithm changes.",
+  "results": [
+    {
+      "timeframe": "1h",
+      "baseBars": 2023,
+      "hostBars": 506,
+      "kitBars": 505,
+      "hostPartialBuckets": 1,
+      "examples": [
+        {
+          "time": "2026-01-05T04:00:00.000Z",
+          "sourceSlots": 3,
+          "expectedSlots": 4,
+          "returnedByKit": false
+        }
+      ]
+    },
+    {
+      "timeframe": "4h",
+      "baseBars": 2023,
+      "hostBars": 127,
+      "kitBars": 124,
+      "hostPartialBuckets": 3,
+      "examples": [
+        {
+          "time": "2026-01-05T04:00:00.000Z",
+          "sourceSlots": 15,
+          "expectedSlots": 16,
+          "returnedByKit": false
+        },
+        {
+          "time": "2026-01-08T00:00:00.000Z",
+          "sourceSlots": 12,
+          "expectedSlots": 16,
+          "returnedByKit": false
+        },
+        {
+          "time": "2026-01-08T04:00:00.000Z",
+          "sourceSlots": 12,
+          "expectedSlots": 16,
+          "returnedByKit": false
+        }
+      ]
+    }
+  ]
+}

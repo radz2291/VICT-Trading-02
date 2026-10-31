@@ -1,5 +1,9 @@
 # Evaluation and evidence protocol
 
+## D-007 ownership gate (2026-10-31)
+
+G3-R is the next correction before G4. A package gate must prove reuse of the complete workspace, not just the headless engines. The external consumer must mount it using its own data/storage/configuration without copying host UI or controllers. The host must contain only product configuration, composition and adapters. Verify instance isolation, disposal, unified market-data semantics, saved-record compatibility and actual VICT command integration. The eight concrete exit criteria and risk-scoped checks are in [the realignment contract](APP-PACKAGE-REALIGNMENT-2026-10-31.md#exit-criteria). No effort-percentage or raw line-count target replaces these ownership checks.
+
 ## Verdict vocabulary
 
 > **D-001 packaging proof requirements (owner-directed, 2026-09-29):** a packaging gate verdict requires, as evidence of *real* reuse (not file moves): a standalone package build; an `npm pack` artifact with recorded contents/integrity; an **independent consumer outside the monorepo workspace** installing that artifact and demonstrating the packaged capability without importing app source or using workspace aliases; exact commands, package contents, dependency identities, an API example, bundle observations, and screenshots. Storage/read-failure behavior of the packaged capability is in scope. Publication is a separate later decision and is not part of any gate.
@@ -55,3 +59,4 @@ The owner may later identify friction that automated tests miss. Convert that fe
 ## Closure
 
 A stage closes only after candidate report, independent verdict, bounded remediation where needed, and a status update reflecting the verified SHA. A final program report maps G0–G7 verdicts and lists deferred features. It must distinguish a completed research proof, implemented code, independently verified behavior, and owner-approved product fit.
+

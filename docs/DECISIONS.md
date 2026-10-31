@@ -1,5 +1,14 @@
 # Decision register
 
+## D-007 — low app responsibility; reusable workspace behavior must be packaged (2026-10-31)
+
+- **Owner authority:** current conversation: "Please check and we need to do realignment ... moving forward, app responsibility has to be low." Full quote in the G3-R handoff and audit report.
+- **Accepted direction:** strengthen D-001 so reuse includes relevant ready-to-use UI/controllers and lifecycle correctness, not only headless engines. The app remains the runnable product and supplies identity/configuration, raw data/providers and storage wiring.
+- **Evidence:** audit at `b075c3e086154c84fc10e71d4334cdf027248cea` found substantial host-owned reusable behavior and reproduced host/kit same-source aggregation differences (1 partial 1h and 3 partial 4h buckets). Report: `APP-PACKAGE-REALIGNMENT-2026-10-31.md`; reproduction: `evidence/G3-R/ownership-audit/`.
+- **Implementation recommendation (agent-derived):** one `@vict-trading/workspace-svelte` presentation/composition package may depend on both independent cores and supported VICT integration. Headless lifecycle/rules go into trading-kit; chart primitives stay chart-workspace. The recommended name/API is not a verbatim owner decision and may be adjusted within this ownership boundary.
+- **Impact:** G3-R realigns existing features before G4 under the current owner mandate; PRODUCT, ARCHITECTURE, EVALUATION, STAGES, HANDOFF, STATE and AGENTS carry the rule/pointers. No prior stage verdict is erased or transferred to G3-R. No G4/new trading capability, publication or upstream VICT change is authorized.
+- **Status:** source audit and contract recorded; code extraction, new package and fresh independent gate proof are pending. No implementation or gate pass is implied.
+
 Concise decision entries per RUNBOOK.md: question, options, chosen path, evidence, impact, authority, date/SHA. Earlier verdicts and evidence are retained; superseded decisions remain listed with their status.
 
 ## D-001 — Delivery outcome: composed app AND independently installable capabilities (SUPERSEDING, owner-directed)
@@ -85,3 +94,4 @@ Concise decision entries per RUNBOOK.md: question, options, chosen path, evidenc
 - **NT finding narrowed (owner):** the NautilusTrader evidence statement is narrowed to what the experiment proved — "its tested configuration did not match our fixture without further model, timing, or adapter work." Original evidence preserved unchanged.
 - **Impact:** G3 proceeds to fresh verification at the exact candidate SHA; the kit runner is no longer an ungoverned fallback but the APPROVED G3 simulation implementation (scope limited to G3 simulated bar-based backtests); O-05 remains OPEN for later requirements; no sidecar/live path/publication. The engine-adoption pause is RESOLVED.
 - **Provenance:** owner instruction verbatim (repository session, 2026-09-30); this register entry is the decision record.
+

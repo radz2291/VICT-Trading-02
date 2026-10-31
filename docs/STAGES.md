@@ -1,5 +1,9 @@
 # Stage plan and exit gates
 
+## Next work — G3-R: existing-feature package ownership realignment (2026-10-31)
+
+Owner-directed audit found reusable workspace behavior/panels in `host/` and reproduced current-mode host/kit aggregation divergence. G3-R corrects existing ownership before G4; no G4 features are included. Scope and eight pass criteria: [realignment contract](APP-PACKAGE-REALIGNMENT-2026-10-31.md), authority: HANDOFF.md G3-R record. Status: audit complete; implementation and fresh independent verification pending. G0–G3 verdicts are retained as historical evidence, not proof that G3-R has passed. G4 still requires its own accepted scope.
+
 **Status:** planned gates. The builder may split a stage into smaller commits and internal tasks. Stage names govern development, not product navigation. Every gate requires the relevant checks in EVALUATION.md and a fresh verifier's verdict. A passing unit suite cannot substitute for the user walkthrough.
 
 ## G0 — Repository and technology intake
@@ -81,3 +85,4 @@ The delivered replay meets the amended time/data rules: slot-complete HTF aggreg
 > **G3 (status note, 2026-09-30 — HISTORICAL snapshot of the execution pause):** delivered per the builder report (docs/evidence/G3/builder-report-G3.md): A1 runtime selected on probe evidence (quickjs-emscripten 0.32.0, explicit RELEASE_SYNC); kit script/run/backtest contracts with 18/18 tests incl. hand-calculated fixture exactness; app ScriptsIsland (W2/W5); criterion-7 proof AS AMENDED (potency + isolation vs independent oracle, all timeframes); D-001 packaging proof (kit 0.2.0 + independent consumer); F-AVC-1/F-3/F-C2-2 resolved, F-1 carried with reason; A2 engine comparison complete (NT local eval + LEAN local-run blocked) — **PAUSED for the owner engine choice (NT/LEAN/neither) before any engine integration; fresh verifier + final verdict follow the decision.**
 >
 > **LIVE STATUS (2026-09-30, supersedes the snapshot above):** the pause was resolved by the owner choosing NEITHER engine (D-006); G3 reached a verdict PASS WITH NON-BLOCKING FINDINGS at `8a33b00…` (verifier addendum `b1c9ef9…`) — **since SUPERSEDED (end of this block)**. The owner then ordered a bounded contested check on V-G3-4 (async-guest silent skip): round-A verifier RULING — criterion 4 and 9 VIOLATED (red evidence `docs/evidence/G3/verifier/RED-NOTE.md`, commit `6dc22b7`); repair: kit 0.2.2 sync-only script contract with actionable `SCRIPT_ASYNC_FORBIDDEN` refusal (kit 26/26; browser suite 16/16 incl. the refusal step). **CURRENT VERDICT (round-B verifier): PASS WITH NON-BLOCKING FINDINGS at `842122b03ccb5d923ce810689ab3ba37d3fff32b`** (evidence `caaa174…`); **V-G3-4 RESOLVED.** Details: `docs/STATE.md`.
+

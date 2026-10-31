@@ -1,5 +1,11 @@
 # Architecture and selection boundaries
 
+## Current ownership amendment — D-007 (2026-10-31)
+
+The app owns product identity/routes/theme/configuration, raw data/provider choice, and storage backend/namespace injection. Reusable domain lifecycle and persistence correctness belong in trading-kit. Reusable chart primitives belong in chart-workspace. Reusable panels, reactive controllers, chart/kit coordination and VICT integration belong in a presentation/composition package (recommended `@vict-trading/workspace-svelte`, not implemented yet). It may import both core packages; the two cores remain mutually independent and free of app imports. The older app/composition wording below does not authorize keeping these reusable implementations inside the app. See [ownership audit and migration contract](APP-PACKAGE-REALIGNMENT-2026-10-31.md).
+
+Existing pinned VICT seams remain the integration baseline; this amendment does not assert full runtime governance of every existing operation. Verify actual coarse-command dispatch and truthful refusal, not just permission metadata. A future app should configure and mount a complete packaged workspace without copying controllers, panels or domain algorithms.
+
 ## Dependency direction
 
 New trading app → reusable trading capability or adapter → public, pinned VICT contracts. A specialized chart surface and an external market/simulation engine sit behind explicit interfaces. VICT core never imports trading concepts. The app remains the composition point for provider choice, account identity, presentation, and deployment.
@@ -45,3 +51,4 @@ Paper, replay and live account endpoints have distinct identities and visible st
 ## Change control
 
 Compatibility upgrades and substitutions are explicit proof tasks. A dependency replacement must rerun the affected walkthroughs and identity/time tests. Document a material departure from this architecture in DECISIONS.md with evidence and changed evaluation criteria before adopting it.
+

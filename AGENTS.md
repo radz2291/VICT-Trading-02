@@ -1,5 +1,7 @@
 # AGENTS.md — session constitution
 
+> **Current owner amendment (2026-10-31, D-007):** G3-R is the next owner-directed existing-feature ownership correction; read the live STATE update and HANDOFF G3-R record before interpreting historical snapshots below. The app must remain a small consumer: reusable domain rules/persistence correctness belong in core packages; reusable panels/controllers and chart/kit coordination belong in a workspace presentation package. Host owns product configuration, composition and injected data/storage adapters. Do not implement reusable feature behavior in host merely because it renders UI. G3-R has not passed; G4+ remains outside this correction.
+
 This file binds every agent session in this repository, from session start to completion. It is the entry point; the documents under `docs/` carry the full detail and always win where they are more specific. This file never grants authority — it constrains behavior.
 
 ## 1. Mandatory session start (in order, before any edit)
