@@ -1,5 +1,7 @@
 # Current state and decision register
 
+> **Current direction — D-008, 2026-10-31:** the owner has confirmed a fresh app assembled from reusable trading packages and the newer VICT UI foundation. Transfer reusable behavior out of the old host; leave its custom frontend as reference. General UI must use the selected VICT catalog/theme/canonical compositions. [Trading UI coherence review and acceptance contract](TRADING-UI-COHERENCE-2026-10-31.md) records the actual gaps and requirements. This supersedes the prior pending-direction wording and wholesale old-panel extraction recommendation. Core ownership corrections remain relevant. New app target and exact foundation artifacts are still unspecified; no new app or package implementation is claimed. G4 remains outside this work.
+
 > **2026-10-31 — owner steering / fresh-app recommendation:** the owner has asked to evaluate a fresh trading app on the newer VICT UI foundation while leaving the previous host. [Research and recommendation](NEW-APP-UI-FOUNDATION-RECOMMENDATION-2026-10-31.md) distinguishes accepted VICT mainline from the newer paused snapshot. The earlier ownership findings remain valid, but copying/extracting the old custom UI wholesale is no longer the recommended implementation route. Treat the in-place G3-R UI migration instructions as provisional pending this direction review. No new app target, exact artifact set or implementation acceptance is invented by this note; G4 remains unstarted.
 
 ## Live update — 2026-10-31, D-007 / G3-R

@@ -1,5 +1,7 @@
 # Evaluation and evidence protocol
 
+> **Current direction — D-008, 2026-10-31:** the owner has confirmed a fresh app assembled from reusable trading packages and the newer VICT UI foundation. Transfer reusable behavior out of the old host; leave its custom frontend as reference. General UI must use the selected VICT catalog/theme/canonical compositions. [Trading UI coherence review and acceptance contract](TRADING-UI-COHERENCE-2026-10-31.md) records the actual gaps and requirements. This supersedes the prior pending-direction wording and wholesale old-panel extraction recommendation. Core ownership corrections remain relevant. New app target and exact foundation artifacts are still unspecified; no new app or package implementation is claimed. G4 remains outside this work.
+
 ## D-007 ownership gate (2026-10-31)
 
 G3-R is the next correction before G4. A package gate must prove reuse of the complete workspace, not just the headless engines. The external consumer must mount it using its own data/storage/configuration without copying host UI or controllers. The host must contain only product configuration, composition and adapters. Verify instance isolation, disposal, unified market-data semantics, saved-record compatibility and actual VICT command integration. The eight concrete exit criteria and risk-scoped checks are in [the realignment contract](APP-PACKAGE-REALIGNMENT-2026-10-31.md#exit-criteria). No effort-percentage or raw line-count target replaces these ownership checks.
